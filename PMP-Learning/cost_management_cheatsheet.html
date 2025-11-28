@@ -2,484 +2,504 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PMP Key Concepts — Cost Management Cheatsheet</title>
+  <title>PMP Cheat Sheet — Cost Management</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Bootstrap & Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
   <style>
     body {
       font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
       background: #f5f7fb;
-      color: #111827;
+      color: #222;
     }
     .page-wrap {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 24px 12px 40px;
+      padding: 24px 12px 48px;
     }
-    .hero {
-      background: radial-gradient(circle at top left, #0f766e 0, #082f49 60%);
-      border-radius: 18px;
-      padding: 22px 20px;
-      color: #f9fafb;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.45);
-      margin-bottom: 24px;
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
-    .hero h1 {
+    h1, h2, h3 {
       font-weight: 700;
-      margin-bottom: 4px;
     }
-    .hero-lead {
-      max-width: 640px;
-      margin-bottom: 10px;
+    h4 {
+      font-weight: 600;
     }
-    .chip {
+    .tag-pill {
       border-radius: 999px;
-      padding: 4px 12px;
       font-size: 0.8rem;
-      border: 1px solid rgba(249, 250, 251, 0.35);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      padding: 3px 10px;
     }
-    .chip i {
+    .nav-chip {
+      border-radius: 999px;
       font-size: 0.9rem;
     }
-    .section-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 0.05em;
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
       text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 6px;
     }
-    .subheading {
-      font-weight: 600;
-      font-size: 1.02rem;
-      margin-bottom: 4px;
-      color: #111827;
-    }
-    .card-topic {
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      padding: 14px 16px 14px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-      margin-bottom: 14px;
-    }
-    .badge-pill {
-      border-radius: 999px;
-      font-size: 0.72rem;
-      padding: 3px 9px;
-    }
-    .badge-soft-green {
-      background: #ecfdf3;
-      color: #166534;
-    }
-    .badge-soft-amber {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    .badge-soft-sky {
-      background: #e0f2fe;
-      color: #0369a1;
-    }
-    .badge-soft-slate {
-      background: #e5e7eb;
-      color: #374151;
-    }
-    .icon-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #ecfdf3;
-      color: #166534;
-      margin-right: 8px;
-      flex-shrink: 0;
-    }
-    .exam-tip {
+    .mini-card {
       border-radius: 14px;
-      border-left: 4px solid #0f766e;
-      background: #ecfdf3;
-      padding: 10px 12px;
-      font-size: 0.88rem;
-      margin-top: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
     }
-    .exam-tip i {
-      color: #0f766e;
-      margin-right: 4px;
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
     }
-    .comparison-table th {
-      background: #0f172a;
-      color: #f9fafb;
-      font-size: 0.86rem;
-    }
-    .comparison-table td {
-      font-size: 0.86rem;
-      vertical-align: top;
-    }
-    .mini-label {
+    .section-label {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
+      letter-spacing: .08em;
       color: #6b7280;
-      font-weight: 600;
     }
-    .formula-box {
-      font-family: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.85rem;
-      background: #0f172a;
-      color: #e5e7eb;
-      padding: 8px 10px;
-      border-radius: 10px;
-      margin: 6px 0;
-      white-space: nowrap;
-      overflow-x: auto;
-    }
-    .pill-list {
-      font-size: 0.86rem;
-      margin-bottom: 2px;
-    }
-    .pill-list span {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 2px 9px;
-      margin-right: 4px;
-      margin-bottom: 4px;
-      background: #f3f4f6;
-      font-size: 0.78rem;
-    }
-    .pill-list span i {
-      margin-right: 4px;
-    }
-    footer {
-      margin-top: 18px;
-      font-size: 0.78rem;
-      color: #9ca3af;
-      text-align: center;
-    }
-    @media (max-width: 575px) {
-      .hero {
-        padding: 18px 16px;
-      }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
     }
   </style>
 </head>
-
 <body>
 <div class="page-wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
       <div>
-        <h1><i class="bi bi-cash-coin"></i> Cost Management — Key Concepts</h1>
-        <p class="hero-lead mb-1">
-          Snapshot of core cost concepts for the PMP: estimate types, reserves, accuracy vs precision,
-          and the essentials of Earned Value &amp; variance analysis.
+        <h1 class="mb-2">💰 Cost Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          Focused PMP cheat sheet on <strong>Cost Management</strong> — from estimate ranges and reserves to
+          accuracy vs precision and earned value analysis.
         </p>
-        <div class="d-flex flex-wrap gap-2 mt-1">
-          <div class="chip">
-            <i class="bi bi-graph-up-arrow"></i> Budget control &amp; forecasting
-          </div>
-          <div class="chip">
-            <i class="bi bi-lightbulb"></i> Exam-friendly cues
-          </div>
-        </div>
-      </div>
-      <div class="text-sm-end small">
-        <div class="mini-label mb-1">Cost Domain Focus</div>
-        <span class="badge bg-success">
-          <i class="bi bi-check2-circle"></i> Plan • Estimate • Monitor
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Cost
         </span>
       </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Formula / Metric</span>
+          <span>🧭 Exam Hint</span>
+          <span>📑 Budget / Reserve</span>
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- 1. COST MANAGEMENT OVERVIEW -->
-  <section class="mb-3">
-    <div class="section-title">1. Cost Management Key Concepts</div>
-    <div class="card-topic">
-      <div class="d-flex align-items-center mb-1">
-        <div class="icon-circle">
-          <i class="bi bi-wallet2"></i>
-        </div>
-        <div>
-          <div class="subheading mb-0">Cost Management at a Glance</div>
-          <div class="small text-muted">
-            Plan how you estimate, budget, and control project costs throughout the life cycle.
-          </div>
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#cost-overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-cash-coin"></i> 1. Overview</a>
+        <a href="#estimate-ranges" class="btn btn-outline-secondary btn-sm nav-chip">2. Estimate Ranges</a>
+        <a href="#reserves" class="btn btn-outline-secondary btn-sm nav-chip">3. Reserves</a>
+        <a href="#accuracy-precision" class="btn btn-outline-secondary btn-sm nav-chip">4. Accuracy vs Precision</a>
+        <a href="#earned-value" class="btn btn-outline-secondary btn-sm nav-chip">5. Earned Value</a>
+        <a href="#variance-analysis" class="btn btn-outline-secondary btn-sm nav-chip">6. Variance &amp; EAC</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. COST MANAGEMENT KEY CONCEPTS -->
+  <section id="cost-overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Cost Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      Cost Management is about <strong>planning, estimating, budgeting, financing, funding and controlling</strong>
+      project costs so the project can be completed <strong>within the approved budget</strong>.
+    </p>
+
+    <div class="row g-3 small mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Core Ideas</h5>
+          <ul class="mb-0">
+            <li>Costs start as <strong>rough estimates</strong> and become more accurate over time.</li>
+            <li>We add <strong>contingency</strong> and possibly <strong>management reserves</strong> to handle uncertainty.</li>
+            <li>We monitor performance using <strong>Earned Value Analysis (EVA)</strong>.</li>
+          </ul>
         </div>
       </div>
-
-      <ul class="mb-1">
-        <li><strong>Estimate evolution</strong> — from rough order of magnitude (ROM) to definitive estimates as clarity increases.</li>
-        <li><strong>Reserves</strong> — contingency &amp; management reserves added to deal with risk and unknowns.</li>
-        <li><strong>Accuracy vs precision</strong> — how correct your estimate is vs how exact the number looks.</li>
-        <li><strong>Earned Value Analysis (EVA)</strong> — classic technique to compare plan vs actual cost &amp; schedule performance.</li>
-      </ul>
-
-      <div class="exam-tip">
-        <i class="bi bi-lightning-charge-fill"></i>
-        For the exam, focus on: different estimate ranges, the purpose of each reserve, and the “&lt; 1 / &gt; 1” logic for CPI &amp; SPI.
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Key Topics</h5>
+          <ul class="mb-0">
+            <li>Estimate ranges: ROM, budget, definitive.</li>
+            <li>Contingency vs management reserves.</li>
+            <li>Accuracy vs precision of estimates.</li>
+            <li>Earned Value and variance analysis.</li>
+          </ul>
+        </div>
       </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Why It Matters</h5>
+          <ul class="mb-0">
+            <li>Executives care about <strong>budget predictability</strong>.</li>
+            <li>Helps avoid late surprises and funding gaps.</li>
+            <li>Supports early decisions on feasibility and trade-offs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Cost management is not just “making a budget” — it is about
+      <strong>progressively refining estimates and actively controlling performance</strong> with reserves and metrics.
     </div>
   </section>
 
   <!-- 2. ESTIMATE RANGES -->
-  <section class="mb-3">
-    <div class="section-title">2. Estimate Ranges</div>
-    <div class="card-topic">
-      <div class="subheading">How estimate accuracy improves over time</div>
-      <p class="mb-2">
-        Early in the project, cost estimates have a wide range (low accuracy). As we move into planning
-        and execution, more detailed information allows tighter, more accurate estimates.
-      </p>
+  <section id="estimate-ranges" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. Estimate Ranges</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Estimate Types</span>
+    </div>
 
-      <div class="table-responsive mb-2">
-        <table class="table table-sm table-bordered comparison-table align-middle mb-1">
-          <thead>
-          <tr>
-            <th>Estimate Type</th>
-            <th>Typical Timing</th>
-            <th>Accuracy Range (approx.)</th>
-            <th>How it’s Built</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><span class="badge-pill badge-soft-amber">Rough Order of Magnitude (ROM)</span></td>
-            <td>Very early / initiation, discovery</td>
-            <td>&minus;25% to +75%</td>
-            <td>Top-down, analogous, minimal detail. “Ballpark” only.</td>
-          </tr>
-          <tr>
-            <td>Preliminary</td>
-            <td>Concept stage</td>
-            <td>&minus;15% to +50%</td>
-            <td>Refined ROM, still high-level, often for early approvals.</td>
-          </tr>
-          <tr>
-            <td>Budget estimate</td>
-            <td>Early planning</td>
-            <td>&minus;10% to +25%</td>
-            <td>More breakdown; used for initial budget baselines.</td>
-          </tr>
-          <tr>
-            <td><span class="badge-pill badge-soft-green">Definitive</span></td>
-            <td>Detailed planning</td>
-            <td>&minus;5% to +10%</td>
-            <td>Bottom-up from work packages; most accurate planned estimate.</td>
-          </tr>
-          <tr>
-            <td>Final / As-built</td>
-            <td>After work is completed</td>
-            <td>0% (actual cost)</td>
-            <td>Real cost once scope has been delivered.</td>
-          </tr>
-          </tbody>
-        </table>
+    <p>
+      Cost estimates become <strong>more accurate</strong> as the project moves from initiation to planning to execution.
+      Early on, uncertainty is high, so we use <strong>ranges</strong> instead of single numbers.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-7">
+        <div class="mini-card">
+          <h5>Typical Estimate Types &amp; Ranges</h5>
+          <table class="table table-sm align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>When Used</th>
+                <th>Typical Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Rough Order of Magnitude (ROM)</strong></td>
+                <td>Very early (initiation / feasibility)</td>
+                <td>≈ -25% to +75%</td>
+              </tr>
+              <tr>
+                <td><strong>Preliminary</strong></td>
+                <td>Early planning / concept</td>
+                <td>≈ -15% to +50%</td>
+              </tr>
+              <tr>
+                <td><strong>Budget Estimate</strong></td>
+                <td>Planning, for overall budget</td>
+                <td>≈ -10% to +25%</td>
+              </tr>
+              <tr>
+                <td><strong>Definitive Estimate</strong></td>
+                <td>Late planning / near execution</td>
+                <td>≈ -5% to +10%</td>
+              </tr>
+              <tr>
+                <td><strong>Final / As-built</strong></td>
+                <td>After work is done</td>
+                <td>0% (actual)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="mt-2 mb-0">
+            These specific ranges might not be tested numerically on the exam anymore,
+            but they are <strong>very useful in real projects</strong> for setting expectations with sponsors.
+          </p>
+        </div>
       </div>
 
-      <p class="small text-muted mb-0">
-        <strong>Bottom-up estimating</strong> takes longest but is the most accurate, and is typically used in the detailed
-        planning phase once the WBS/work packages are clear.
-      </p>
+      <div class="col-md-5">
+        <div class="mini-card">
+          <h5>How Estimates Are Built</h5>
+          <ul class="mb-1">
+            <li><strong>Top-down (analogous):</strong> use similar past projects; faster, less accurate.</li>
+            <li><strong>Bottom-up:</strong> estimate each work package and roll-up; slower, more accurate.</li>
+          </ul>
+          <p class="mb-0">
+            Early = <strong>ROM / analogous</strong>.  
+            Later = <strong>definitive / bottom-up</strong>, based on detailed WBS and real information.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> “Early in the project with limited info” → think
+      <strong>ROM / analogous / wider range</strong>. “Later with detailed scope and WBS” → think
+      <strong>definitive / bottom-up</strong>.
     </div>
   </section>
 
   <!-- 3. CONTINGENCY & MANAGEMENT RESERVES -->
-  <section class="mb-3">
-    <div class="section-title">3. Contingency &amp; Management Reserves</div>
-    <div class="card-topic">
-      <div class="subheading">Two different “safety nets” in your budget</div>
+  <section id="reserves" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Contingency vs Management Reserves</h2>
+      <span class="tag-pill bg-success text-white">📑 Reserves</span>
+    </div>
 
-      <div class="row g-3">
-        <div class="col-md-6">
-          <h6 class="mb-1">
-            <i class="bi bi-shield-plus text-success"></i>
-            Contingency Reserve
-          </h6>
-          <ul class="mb-1">
-            <li>Money set aside for <strong>identified risks</strong> in the risk register.</li>
-            <li>Added to the <strong>work package cost estimates</strong> → forms the <strong>cost baseline</strong>.</li>
-            <li>Used when those known risks actually occur.</li>
+    <p>
+      Reserves are <strong>extra money in the budget</strong> to deal with uncertainty, but they serve
+      <strong>different purposes</strong> and sit in different places in the budget structure.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Contingency Reserve</h5>
+          <ul class="mb-0">
+            <li>Set aside for <strong>identified risks</strong> in the risk register.</li>
+            <li>Based on risk impact analysis (e.g., probability × impact).</li>
+            <li>Added on top of <strong>work package cost estimates</strong>.</li>
+            <li>Included in the <strong>Cost Baseline</strong>.</li>
+            <li>Used when known risks occur (“known-unknowns”).</li>
           </ul>
-          <span class="badge-pill badge-soft-green">For known-unknowns</span>
-        </div>
-        <div class="col-md-6">
-          <h6 class="mb-1">
-            <i class="bi bi-safe2 text-warning"></i>
-            Management Reserve
-          </h6>
-          <ul class="mb-1">
-            <li>Extra budget for <strong>unforeseen scope-related work</strong>.</li>
-            <li>Not part of the cost baseline; sits on top of it.</li>
-            <li>Controlled by sponsor / PMO / sometimes PM; released through change control.</li>
-          </ul>
-          <span class="badge-pill badge-soft-amber">For unknown-unknowns</span>
         </div>
       </div>
 
-      <div class="exam-tip">
-        <i class="bi bi-clipboard-check"></i>
-        Exam logic: <strong>Cost baseline = estimates + contingency</strong>.  
-        <strong>Total project budget = cost baseline + management reserves.</strong>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Management Reserve</h5>
+          <ul class="mb-0">
+            <li>Set aside for <strong>unforeseen work within scope</strong>.</li>
+            <li>Not tied to specific identified risks.</li>
+            <li><strong>Not part of the cost baseline</strong>, but part of the total project budget.</li>
+            <li>Typically controlled by sponsor, PMO, or senior management.</li>
+            <li>Used when scope-related surprises appear but are still considered in-scope.</li>
+          </ul>
+        </div>
       </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-1">
+      🧭 <strong>Exam hint:</strong>  
+      <strong>Contingency</strong> = for identified risks, inside cost baseline.  
+      <strong>Management reserve</strong> = for unknowns, outside baseline, part of total budget.
     </div>
   </section>
 
   <!-- 4. ACCURACY VS PRECISION -->
-  <section class="mb-3">
-    <div class="section-title">4. Accuracy vs Precision</div>
-    <div class="card-topic">
-      <div class="subheading">Same number? Not always the same meaning.</div>
-      <p class="mb-2">
-        Accuracy and precision are easy to mix up. In cost questions, they usually relate to:
-      </p>
+  <section id="accuracy-precision" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. Accuracy vs Precision</h2>
+      <span class="tag-pill bg-warning text-dark">💡 Estimate Quality</span>
+    </div>
 
-      <div class="row g-3">
-        <div class="col-md-6">
-          <h6><i class="bi bi-bullseye"></i> Accuracy — “How correct?”</h6>
-          <ul class="mb-1">
-            <li>Refers to <strong>closeness to the true value</strong>, expressed as a range.</li>
-            <li>Low accuracy → wide range (e.g. ROM &minus;25% / +75%).</li>
-            <li>High accuracy → tight range (e.g. definitive &minus;5% / +10%).</li>
+    <p>
+      Accuracy and precision are <strong>not the same thing</strong>. The exam loves to test this distinction.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Accuracy</h5>
+          <ul class="mb-0">
+            <li>Relates to <strong>correctness</strong> of the estimate.</li>
+            <li>Often expressed as the <strong>range</strong> around an estimate.</li>
+            <li>Low accuracy → <strong>wide range</strong> (e.g., -25% to +75%).</li>
+            <li>High accuracy → <strong>narrow range</strong> (e.g., -5% to +10%).</li>
+            <li>Accuracy improves as the project progresses and more is known.</li>
           </ul>
-          <span class="badge-pill badge-soft-sky">Think: size of the uncertainty band</span>
-        </div>
-        <div class="col-md-6">
-          <h6><i class="bi bi-rulers"></i> Precision — “How detailed?”</h6>
-          <ul class="mb-1">
-            <li>Refers to the <strong>level of exactness</strong> in the number given.</li>
-            <li>“USD 995.30” is more precise than “about 1,000”.</li>
-            <li>“Next Wednesday” is more precise than “sometime next week”.</li>
-          </ul>
-          <span class="badge-pill badge-soft-slate">Think: number of decimal places / specificity</span>
         </div>
       </div>
 
-      <div class="exam-tip">
-        <i class="bi bi-question-circle-fill"></i>
-        Typical trap: a number can look very precise (e.g. 995.37) but still be
-        <em>inaccurate</em> if it was based on weak data or a very early estimate.
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Precision</h5>
+          <ul class="mb-0">
+            <li>Relates to <strong>exactness</strong> of the value.</li>
+            <li>Example: 995.30 is more precise than 1,000.</li>
+            <li>“Two days” is more precise than “next week”.</li>
+            <li>Precision is about the <strong>number of decimal places / level of detail</strong>, not about being correct.</li>
+          </ul>
+        </div>
       </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> An estimate can be <strong>precise but inaccurate</strong> (e.g., 99,532.17 but far from reality)
+      or <strong>accurate but not very precise</strong> (e.g., “~100k, ±5%”).
     </div>
   </section>
 
   <!-- 5. EARNED VALUE ANALYSIS -->
-  <section class="mb-3">
-    <div class="section-title">5. Earned Value Analysis (EVA)</div>
-    <div class="card-topic">
-      <div class="subheading">Comparing plan vs actual cost &amp; schedule</div>
+  <section id="earned-value" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Earned Value Analysis — Core Concepts</h2>
+      <span class="tag-pill bg-info text-white">📊 Performance Measures</span>
+    </div>
 
-      <p class="mb-1">
-        EVA looks at three core numbers for each work package / project checkpoint:
-      </p>
-      <ul class="mb-2">
-        <li><strong>Planned Value (PV)</strong> — how much work <em>should</em> be done by now.</li>
-        <li><strong>Earned Value (EV)</strong> — value of work actually completed.</li>
-        <li><strong>Actual Cost (AC)</strong> — what we have actually spent.</li>
-      </ul>
+    <p>
+      Earned Value Analysis (EVA) compares the <strong>plan</strong> to the <strong>actual performance</strong> in terms of
+      both <strong>cost</strong> and <strong>schedule</strong>. It tells you if you are <strong>ahead/behind schedule</strong>
+      and <strong>under/over budget</strong>.
+    </p>
 
-      <div class="pill-list mb-1">
-        <span><i class="bi bi-flag"></i> BAC = Budget at Completion (total planned cost)</span>
-        <span><i class="bi bi-graph-up"></i> PV grows over time until it equals BAC at project finish</span>
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Core Terms</h5>
+          <ul class="mb-0">
+            <li><strong>PV — Planned Value:</strong> value of work that <em>should</em> be done by now.</li>
+            <li><strong>EV — Earned Value:</strong> value of work that is <em>actually</em> completed now.</li>
+            <li><strong>AC — Actual Cost:</strong> money actually spent so far.</li>
+            <li><strong>BAC — Budget at Completion:</strong> total planned budget for the project.</li>
+          </ul>
+        </div>
       </div>
 
-      <p class="small text-muted mb-0">
-        Visual signals: if AC is above PV, you’re spending faster than planned.  
-        If EV is below PV, you’ve delivered less work than planned.
-      </p>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Interpreting the Basics</h5>
+          <ul class="mb-0">
+            <li>If <strong>EV &lt; PV</strong> → you have done less work than planned → <strong>behind schedule</strong>.</li>
+            <li>If <strong>AC &gt; EV</strong> → you spent more than the value delivered → <strong>over budget</strong>.</li>
+            <li>If <strong>EV &gt; AC</strong> → you delivered more value than cost → <strong>under budget</strong> at this point.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key idea:</strong> EV is always the central figure — it is the “value of work actually completed”.
+      PV and AC are compared to EV to get schedule and cost signals.
     </div>
   </section>
 
-  <!-- 6. VARIANCE ANALYSIS -->
-  <section class="mb-3">
-    <div class="section-title">6. Variance Analysis &amp; Forecasting</div>
-    <div class="card-topic">
-      <div class="subheading">Using EVA numbers to understand performance</div>
+  <!-- 6. VARIANCE ANALYSIS & EAC -->
+  <section id="variance-analysis" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Variance Analysis &amp; Forecasting (EAC)</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Variances &amp; Indices</span>
+    </div>
 
-      <p class="mb-2">
-        Variance analysis combines EV, PV, and AC to show whether you are on or off track.
-      </p>
+    <p>
+      Using PV, EV and AC, we can calculate <strong>variances</strong> and <strong>indices</strong> to understand how well
+      we are performing and to forecast the final cost.
+    </p>
 
-      <h6 class="mb-1">Cost performance</h6>
-      <div class="formula-box mb-1">
-        <span>CV (Cost Variance) = EV − AC</span>
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Cost &amp; Schedule Variance</h5>
+          <ul class="mb-1">
+            <li><strong>Cost Variance (CV)</strong> = EV − AC
+              <ul>
+                <li>CV &lt; 0 → <strong>over budget</strong>.</li>
+                <li>CV &gt; 0 → <strong>under budget</strong>.</li>
+              </ul>
+            </li>
+            <li><strong>Schedule Variance (SV)</strong> = EV − PV
+              <ul>
+                <li>SV &lt; 0 → <strong>behind schedule</strong>.</li>
+                <li>SV &gt; 0 → <strong>ahead of schedule</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h5 class="mt-2 mb-1">Performance Indices</h5>
+          <ul class="mb-0">
+            <li><strong>Cost Performance Index (CPI)</strong> = EV / AC
+              <ul>
+                <li>CPI &lt; 1 → cost efficiency is <strong>poor</strong> (over budget).</li>
+                <li>CPI &gt; 1 → cost efficiency is <strong>good</strong> (under budget).</li>
+              </ul>
+            </li>
+            <li><strong>Schedule Performance Index (SPI)</strong> = EV / PV
+              <ul>
+                <li>SPI &lt; 1 → <strong>behind schedule</strong>.</li>
+                <li>SPI &gt; 1 → <strong>ahead of schedule</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul class="mb-2">
-        <li><strong>CV &gt; 0</strong> → under budget (good).</li>
-        <li><strong>CV &lt; 0</strong> → over budget (bad).</li>
-      </ul>
 
-      <div class="formula-box mb-1">
-        <span>CPI (Cost Performance Index) = EV ÷ AC</span>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Forecasting — Estimate at Completion (EAC)</h5>
+          <p class="mb-1">
+            EAC is the updated forecast of the <strong>total project cost</strong>, given current performance.
+          </p>
+          <ul class="mb-1">
+            <li><strong>Simple EAC (one common form)</strong><br/>
+              EAC = BAC + AC − EV
+            </li>
+            <li class="mt-1"><strong>Performance-based EAC</strong> (using CPI)<br/>
+              EAC = BAC / CPI
+            </li>
+          </ul>
+          <p class="mb-0">
+            Use <strong>BAC / CPI</strong> when you assume the current cost efficiency will continue.  
+            Use <strong>BAC + AC − EV</strong> when you expect future work to follow the original plan.
+          </p>
+        </div>
       </div>
-      <ul class="mb-2">
-        <li><strong>CPI &gt; 1</strong> → getting more value per dollar (cost efficient).</li>
-        <li><strong>CPI &lt; 1</strong> → poor cost efficiency, overspending.</li>
-      </ul>
+    </div>
 
-      <h6 class="mb-1">Schedule performance</h6>
-      <div class="formula-box mb-1">
-        <span>SV (Schedule Variance) = EV − PV</span>
-      </div>
-      <ul class="mb-2">
-        <li><strong>SV &gt; 0</strong> → ahead of schedule.</li>
-        <li><strong>SV &lt; 0</strong> → behind schedule.</li>
-      </ul>
-
-      <div class="formula-box mb-1">
-        <span>SPI (Schedule Performance Index) = EV ÷ PV</span>
-      </div>
-      <ul class="mb-2">
-        <li><strong>SPI &gt; 1</strong> → delivering faster than planned.</li>
-        <li><strong>SPI &lt; 1</strong> → slower than planned.</li>
-      </ul>
-
-      <h6 class="mb-1">Forecasting — Estimate at Completion (EAC)</h6>
-      <p class="mb-1">
-        <strong>BAC</strong> = original Budget at Completion.  
-        EAC adjusts this based on actual performance.
-      </p>
-
-      <ul class="mb-2">
-        <li>
-          Simple adjustment (one-time variance):
-          <div class="formula-box">EAC = BAC + AC − EV</div>
-        </li>
-        <li>
-          Performance-based (current CPI continues):
-          <div class="formula-box">EAC = BAC ÷ CPI</div>
-        </li>
-      </ul>
-
-      <div class="exam-tip mb-0">
-        <i class="bi bi-exclamation-circle-fill"></i>
-        Shortcut memory: in cost formulas, <strong>AC is always the “troublemaker”</strong> —
-        it’s the term you subtract from or divide into.  
-        CPI &amp; SPI both compare EV against AC or PV and are centered around <strong>1.0</strong>.
-      </div>
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Remember the direction: in most EVA formulas, <strong>AC is in the denominator or subtracted</strong>,
+      and <strong>indices are centered around 1</strong> (1 = on target).
     </div>
   </section>
 
-  <footer>
-    Cost Management Cheatsheet — built for quick PMP revision and practical project use.
-  </footer>
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Cost Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Concept Flow</h5>
+          <ul class="mb-0">
+            <li>Start with <strong>rough estimates</strong> (ROM) → refine to <strong>budget</strong> and <strong>definitive</strong> estimates.</li>
+            <li>Add <strong>contingency</strong> (for identified risks) to build the <strong>cost baseline</strong>.</li>
+            <li>Optionally add <strong>management reserve</strong> for unknowns to get the <strong>total budget</strong>.</li>
+            <li>Track progress using <strong>PV, EV, AC</strong>.</li>
+            <li>Calculate variances and indices (CV, SV, CPI, SPI) to see if you are on budget/on schedule.</li>
+            <li>Update forecasts with <strong>EAC</strong> when performance patterns emerge.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>What the Exam Cares About</h5>
+          <ul class="mb-0">
+            <li>Knowing the <strong>difference between estimate types</strong> and when to use each.</li>
+            <li>Clearly distinguishing <strong>contingency vs management reserves</strong>.</li>
+            <li>Understanding <strong>accuracy vs precision</strong> in estimates.</li>
+            <li>Interpreting <strong>CPI, SPI, CV, SV</strong> (over/under budget, ahead/behind schedule).</li>
+            <li>Choosing the <strong>right EAC formula</strong> based on the scenario description.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Cost Management is about <strong>accepting uncertainty, adding smart reserves,
+      and using earned value to see early if you are in trouble</strong> so you can adjust before it is too late.
+    </div>
+  </section>
 
 </div>
 </body>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Resource Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">🧑‍🤝‍🧑 Resource Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          Focused PMP cheat sheet on <strong>Resource Management</strong> — RAM / RACI, team charter,
+          Tuckman’s ladder, meeting management, and conflict management.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: People / Process • Knowledge Area: Resource
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Tool / Artifact</span>
+          <span>🧭 Exam Hint</span>
+          <span>🤝 Team Dynamics</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#resource-overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-diagram-3"></i> 1. Overview</a>
+        <a href="#ram-raci" class="btn btn-outline-secondary btn-sm nav-chip">2. RAM &amp; RACI</a>
+        <a href="#team-charter" class="btn btn-outline-secondary btn-sm nav-chip">3. Team Charter</a>
+        <a href="#tuckman" class="btn btn-outline-secondary btn-sm nav-chip">4. Tuckman’s Ladder</a>
+        <a href="#meeting-management" class="btn btn-outline-secondary btn-sm nav-chip">5. Meeting Management</a>
+        <a href="#conflict-management" class="btn btn-outline-secondary btn-sm nav-chip">6. Conflict Management</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. RESOURCE MANAGEMENT KEY CONCEPTS -->
+  <section id="resource-overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Resource Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      Resource Management covers how we <strong>plan, acquire, develop, and manage</strong> both
+      <strong>human resources</strong> (people) and <strong>physical resources</strong>
+      (equipment, materials) needed to deliver the project.
+    </p>
+
+    <div class="row g-3 small mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Types of Resources</h5>
+          <ul class="mb-0">
+            <li><strong>Human resources:</strong> project team, SMEs, stakeholders.</li>
+            <li><strong>Physical resources:</strong> equipment, tools, facilities, materials.</li>
+            <li>Both must be <strong>planned, allocated, and monitored</strong> carefully.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Key Tools</h5>
+          <ul class="mb-0">
+            <li>📊 <strong>Responsibility Assignment Matrix (RAM) / RACI</strong>.</li>
+            <li>📦 <strong>Organizational Breakdown Structure (OBS)</strong>.</li>
+            <li>📦 <strong>Resource Breakdown Structure (RBS)</strong>.</li>
+            <li>📜 <strong>Team Charter</strong> and ways of working.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Team Dynamics</h5>
+          <ul class="mb-0">
+            <li>Team development using <strong>Tuckman’s Ladder</strong>.</li>
+            <li><strong>Meeting management</strong> for decisions and alignment.</li>
+            <li><strong>Conflict management</strong> to keep the team productive.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Resource Management is about <strong>clarity (who does what)</strong> and
+      <strong>health (how the team works together)</strong>.
+    </div>
+  </section>
+
+  <!-- 2. RESPONSIBILITY ASSIGNMENT MATRIX (RAM & RACI) -->
+  <section id="ram-raci" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. Responsibility Assignment Matrix (RAM) and RACI</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Who Does What</span>
+    </div>
+
+    <p>
+      The <strong>Responsibility Assignment Matrix (RAM)</strong>, commonly in the form of a
+      <strong>RACI chart</strong>, links <strong>work packages or activities</strong> to
+      <strong>project team members</strong>. It answers:
+      <em>“What are we doing, and who is assigned to it?”</em>
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>RACI Components</h5>
+          <ul class="mb-0">
+            <li><strong>Responsible (R):</strong> does the work or creates the deliverable.</li>
+            <li><strong>Accountable (A):</strong> owns the outcome, signs off, “the buck stops here”.</li>
+            <li><strong>Consulted (C):</strong> provides expert input; two-way communication.</li>
+            <li><strong>Informed (I):</strong> kept up to date; one-way communication.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How RAM / RACI is Used</h5>
+          <ul class="mb-0">
+            <li>List <strong>activities or deliverables</strong> along one axis (e.g. columns).</li>
+            <li>List <strong>roles or people</strong> along the other axis (e.g. rows).</li>
+            <li>Mark R, A, C, I per cell to show each person’s involvement.</li>
+            <li>Can be high-level (features, work packages) or detailed (team-level tasks).</li>
+            <li>Reduces confusion and overlap by clarifying <strong>who owns what</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> If the question mentions “clarify roles”, “remove confusion about
+      responsibilities”, or “who is accountable”, think <strong>RACI / RAM</strong>.
+    </div>
+  </section>
+
+  <!-- 3. TEAM CHARTER -->
+  <section id="team-charter" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Team Charter</h2>
+      <span class="tag-pill bg-info text-white">📜 Ways of Working</span>
+    </div>
+
+    <p>
+      The <strong>Team Charter</strong> is a document that captures the team’s
+      <strong>values, working agreements, and operating guidelines</strong> — how the team
+      chooses to work together.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Typical Contents</h5>
+          <ul class="mb-0">
+            <li><strong>Team Vision / Mission</strong> — what we aim to achieve.</li>
+            <li><strong>Definition of Done (DoD)</strong> — what “done” looks like.</li>
+            <li><strong>Roles &amp; Responsibilities</strong> — may link to a RACI.</li>
+            <li><strong>Stakeholders</strong> — SMEs, approvers, recipients of output.</li>
+            <li><strong>Team values</strong> — how we want to behave and collaborate.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Decision &amp; Conflict Handling</h5>
+          <ul class="mb-1">
+            <li>How decisions are made (consensus, majority, product owner, sponsor, etc.).</li>
+            <li>Who can approve or sign off on what.</li>
+            <li>Conflict resolution steps if the team cannot agree.</li>
+            <li>Definition of key <strong>ceremonies</strong>:
+              <ul>
+                <li>Stand-ups — day &amp; time, purpose.</li>
+                <li>Retrospectives, sprint planning, reviews — cadence and format.</li>
+              </ul>
+            </li>
+          </ul>
+          <p class="mb-0">
+            The charter works best when <strong>co-created by the team</strong> and reviewed
+            regularly (e.g. in retrospectives).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> The team charter is a <strong>living agreement</strong>, not a one-off document.
+      It sets expectations before conflicts and misunderstandings arise.
+    </div>
+  </section>
+
+  <!-- 4. TUCKMAN'S LADDER -->
+  <section id="tuckman" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. Tuckman’s Ladder</h2>
+      <span class="tag-pill bg-secondary text-white">🤝 Team Development</span>
+    </div>
+
+    <p>
+      <strong>Tuckman’s Ladder</strong> describes the stages a team moves through from first coming together
+      to finishing the project. Knowing these stages helps you recognise and guide team dynamics.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Core Stages</h5>
+          <ul class="mb-0">
+            <li><strong>Forming:</strong> team meets; roles are unclear; people work more independently.</li>
+            <li><strong>Storming:</strong> work styles clash; conflict arises; power struggles and disagreements.</li>
+            <li><strong>Norming:</strong> roles become clear; conflicts are resolved; cooperation increases.</li>
+            <li><strong>Performing:</strong> team is high-functioning; norms are established; focus on goals.</li>
+            <li><strong>Adjourning:</strong> project ends; team disbands; members move on to new work.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It Helps the PM</h5>
+          <ul class="mb-0">
+            <li>Expect <strong>conflict and confusion</strong> in early stages (storming).</li>
+            <li>Use facilitation and conflict management to move toward <strong>norming</strong>.</li>
+            <li>Support the team with clear goals and empowerment to reach <strong>performing</strong>.</li>
+            <li>Recognise <strong>adjourning</strong> as a real phase — allow wrap-up, recognition, lessons learned.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Situational questions describing “new team, confusion, conflict” are often pointing
+      to the <strong>Forming / Storming</strong> stages and need supportive leadership.
+    </div>
+  </section>
+
+  <!-- 5. MEETING MANAGEMENT -->
+  <section id="meeting-management" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Meeting Management</h2>
+      <span class="tag-pill bg-warning text-dark">📅 Productive Sessions</span>
+    </div>
+
+    <p>
+      Meetings are a key tool for <strong>problem solving, decision making, and consensus building</strong>.
+      Meeting management is about making sure meetings are <strong>effective and efficient</strong>.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Common Problems</h5>
+          <ul class="mb-0">
+            <li>No clear purpose or agenda.</li>
+            <li>Wrong people in the room (missing decision makers or SMEs).</li>
+            <li>Meetings drag on, off-topic discussions, no decisions.</li>
+            <li>No record of actions; no follow-up.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Good Meeting Practices</h5>
+          <ul class="mb-0">
+            <li>Prepare and share an <strong>agenda</strong> with clear objectives and outcomes.</li>
+            <li>Start and finish <strong>on time</strong> — respect participants’ time.</li>
+            <li>Invite the <strong>right participants</strong> (decision makers, SMEs, key stakeholders).</li>
+            <li>Use facilitation skills to keep discussion <strong>on topic</strong>.</li>
+            <li>Ensure everyone has a voice; avoid domination by the loudest or most senior.</li>
+            <li>Record <strong>actions, owners, and due dates</strong> and share them.</li>
+            <li>Follow up after the meeting to confirm progress on agreed actions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> A “good meeting” ends with <strong>clear decisions, agreed actions,
+      and owners</strong>, not just discussion.
+    </div>
+  </section>
+
+  <!-- 6. CONFLICT MANAGEMENT -->
+  <section id="conflict-management" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Conflict Management</h2>
+      <span class="tag-pill bg-info text-white">🤝 Handling Tension</span>
+    </div>
+
+    <p>
+      Conflict is <strong>inevitable</strong> in projects — new teams, competing priorities, scarce resources,
+      and different working styles all contribute. The project manager’s job is to
+      <strong>manage conflict constructively</strong>.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>General Principles</h5>
+          <ul class="mb-0">
+            <li>Address conflict <strong>early</strong> and usually <strong>in private</strong>.</li>
+            <li>Use <strong>direct, clear communication</strong> — avoid vague language.</li>
+            <li>Take a <strong>collaborative</strong> approach where possible.</li>
+            <li>Be aware of organisational procedures if escalation or discipline is needed.</li>
+            <li>Consider:
+              <ul>
+                <li>Importance / intensity of the conflict.</li>
+                <li>Time pressure to resolve.</li>
+                <li>Relative power of the parties.</li>
+                <li>Need to preserve long-term relationships.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Five Conflict Resolution Techniques</h5>
+          <ul class="mb-0">
+            <li><strong>Withdrawing / Avoiding:</strong> retreating or postponing; suitable for low-priority issues or cooling-off.</li>
+            <li><strong>Smoothing / Accommodating:</strong> emphasise agreement, yield to maintain harmony; lose–win.</li>
+            <li><strong>Compromising / Reconciling:</strong> each side gives something up; often lose–lose but workable.</li>
+            <li><strong>Forcing / Directing:</strong> use authority or power to decide; win–lose, used in emergencies.</li>
+            <li><strong>Collaborating / Problem Solving:</strong> integrate multiple viewpoints, jointly find solution; win–win, usually best long-term choice.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question asks for the <strong>best, long-term</strong> approach to conflict,
+      the preferred answer is usually <strong>Collaborating / Problem Solving</strong>.
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Resource Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Concept Flow</h5>
+          <ul class="mb-0">
+            <li>Identify needed <strong>people and physical resources</strong>.</li>
+            <li>Use <strong>RAM / RACI</strong> to clarify who is Responsible and Accountable.</li>
+            <li>Establish <strong>team charter</strong> to agree on values, roles, and ways of working.</li>
+            <li>Recognise where the team is on <strong>Tuckman’s Ladder</strong> and adjust leadership style.</li>
+            <li>Run <strong>effective meetings</strong> with clear agendas, decisions, and actions.</li>
+            <li>Apply <strong>conflict management techniques</strong> with emphasis on collaboration where possible.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>What the Exam Cares About</h5>
+          <ul class="mb-0">
+            <li>Being able to <strong>match tools to situations</strong> (RACI, team charter, Tuckman, etc.).</li>
+            <li>Understanding that good resource management is both <strong>structural</strong> (matrices, charters)
+              and <strong>behavioural</strong> (leadership, conflict handling).</li>
+            <li>Recognising <strong>collaboration</strong>, early conflict resolution, and inclusive meeting practices as
+              strong PMP-style answers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Resource Management is about <strong>getting the right people and materials
+      in place, giving them clarity, and creating an environment where the team can perform at its best</strong>.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
