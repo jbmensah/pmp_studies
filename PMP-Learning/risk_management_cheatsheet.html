@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Risk Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">⚠️ Risk Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          Focused PMP cheat sheet on <strong>Risk Management</strong> — categories, registers, SWOT, probability &amp; impact, 
+          quantitative tools, responses to threats vs opportunities, and reserve analysis.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Risk
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Tool / Artifact</span>
+          <span>🧮 Quantitative</span>
+          <span>🧭 Exam Hint</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#risk-overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-exclamation-triangle"></i> 1. Overview</a>
+        <a href="#risk-categories" class="btn btn-outline-secondary btn-sm nav-chip">2. Categories &amp; RBS</a>
+        <a href="#risk-register" class="btn btn-outline-secondary btn-sm nav-chip">3. Risk Register</a>
+        <a href="#swot" class="btn btn-outline-secondary btn-sm nav-chip">4. SWOT</a>
+        <a href="#prob-impact" class="btn btn-outline-secondary btn-sm nav-chip">5. Probability &amp; Impact</a>
+        <a href="#decision-trees" class="btn btn-outline-secondary btn-sm nav-chip">6. Decision Trees</a>
+        <a href="#quant-tools" class="btn btn-outline-secondary btn-sm nav-chip">7. Quantitative Tools</a>
+        <a href="#responses" class="btn btn-outline-secondary btn-sm nav-chip">8. Threat vs Opportunity</a>
+        <a href="#reserves" class="btn btn-outline-secondary btn-sm nav-chip">9. Reserve Analysis</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. RISK MANAGEMENT KEY CONCEPTS -->
+  <section id="risk-overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Risk Management — Key Concepts</h2>
+      <span class="tag-pill bg-warning text-dark">💡 Big Picture</span>
+    </div>
+
+    <p>
+      <strong>Risk Management</strong> is about dealing with <strong>uncertainty</strong> — things that may or may not happen
+      but could affect project objectives positively (opportunities) or negatively (threats).
+    </p>
+
+    <div class="row g-3 small mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Why Risk Matters</h5>
+          <ul class="mb-0">
+            <li>Every project operates in a <strong>VUCA</strong> world: volatile, uncertain, complex, ambiguous.</li>
+            <li>Ignoring risk = being surprised later, often at higher cost and impact.</li>
+            <li>Proactive risk work protects <strong>scope, schedule, cost, quality</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Core Concepts</h5>
+          <ul class="mb-0">
+            <li><strong>Risk Categories</strong> &amp; <strong>RBS</strong> (Risk Breakdown Structure).</li>
+            <li><strong>Risk Register</strong> for documenting and tracking risks.</li>
+            <li><strong>Qualitative tools:</strong> SWOT, probability &amp; impact matrix.</li>
+            <li><strong>Quantitative tools:</strong> decision trees, Monte Carlo, sensitivity.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Responses &amp; Reserves</h5>
+          <ul class="mb-0">
+            <li>Different strategies for <strong>threats vs opportunities</strong>.</li>
+            <li><strong>Contingency</strong> &amp; <strong>management reserves</strong> to fund responses.</li>
+            <li>Reserve analysis &amp; <strong>burndown charts</strong> to see if reserves are adequate.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-warning mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Risk management is not just a register; it is a
+      <strong>continuous cycle of identify → analyse → plan responses → monitor</strong>.
+    </div>
+  </section>
+
+  <!-- 2. RISK CATEGORIES & RBS -->
+  <section id="risk-categories" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. Risk Categories &amp; Risk Breakdown Structure (RBS)</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Brainstorming Frameworks</span>
+    </div>
+
+    <p>
+      <strong>Risk categories</strong> give structure when you are searching for risks. They are usually defined in the
+      <strong>Risk Management Plan</strong> and often visualised as a <strong>Risk Breakdown Structure (RBS)</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Common Category Frameworks</h5>
+          <ul class="mb-0">
+            <li><strong>PESTEL:</strong> Political, Economic, Social, Technological, Environmental, Legal.</li>
+            <li><strong>TCP / TECO:</strong> Technical, Commercial, Operational, Environmental / Political variants.</li>
+            <li><strong>VUCA:</strong> Volatility, Uncertainty, Complexity, Ambiguity (good for overall project risk).</li>
+            <li>Organisation may have its own <strong>standard risk taxonomy</strong> — use it if available.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Risk Breakdown Structure (RBS)</h5>
+          <ul class="mb-0">
+            <li>Hierarchical chart of <strong>sources of risk</strong>.</li>
+            <li>Example: Technical → Requirements, Technology, Interfaces, Infrastructure.</li>
+            <li>Other branches: Management, Commercial, External, Stakeholder, etc.</li>
+            <li>Used as a <strong>brainstorming checklist</strong> to ensure you do not miss major sources of risk.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question asks about “grouping risks” or “identifying sources of overall project risk”,
+      think of <strong>risk categories, RBS, or frameworks like PESTEL / VUCA</strong>.
+    </div>
+  </section>
+
+  <!-- 3. RISK REGISTER -->
+  <section id="risk-register" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Risk Register</h2>
+      <span class="tag-pill bg-secondary text-white">📋 Core Artifact</span>
+    </div>
+
+    <p>
+      The <strong>Risk Register</strong> is the central document where you record details of each identified project risk.
+      It can be simple or very detailed depending on the project.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Minimum Content</h5>
+          <ul class="mb-0">
+            <li><strong>Unique ID</strong> (e.g., R-001, R-002).</li>
+            <li><strong>Risk owner</strong> — person accountable for monitoring &amp; response.</li>
+            <li><strong>Risk response(s)</strong> — how we plan to handle the risk.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Optional but Useful Fields</h5>
+          <ul class="mb-0">
+            <li>Risk title &amp; description.</li>
+            <li>Category, triggers, and related WBS activities.</li>
+            <li>Probability, impact, and overall risk score.</li>
+            <li>Current status (open, closed, escalated, etc.).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> The <strong>Risk Register</strong> is a key output from <em>Identify Risks</em>, and is updated in
+      later risk processes (analysis, planning responses, monitoring).
+    </div>
+  </section>
+
+  <!-- 4. SWOT ANALYSIS -->
+  <section id="swot" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. SWOT Analysis</h2>
+      <span class="tag-pill bg-info text-white">📊 Qualitative Brainstorming</span>
+    </div>
+
+    <p>
+      <strong>SWOT</strong> analysis is used to recognise risks by looking at the project’s
+      <strong>Strengths, Weaknesses, Opportunities, and Threats</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Internal View: S &amp; W</h5>
+          <ul class="mb-0">
+            <li><strong>Strengths:</strong> What are we good at? (Capabilities, assets, expertise.)</li>
+            <li><strong>Weaknesses:</strong> Where are we vulnerable? (Gaps in skills, resources, processes.)</li>
+            <li>Weaknesses often point to <strong>threats</strong> if not managed.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>External View: O &amp; T</h5>
+          <ul class="mb-0">
+            <li><strong>Opportunities:</strong> Positive risks we can exploit or enhance.</li>
+            <li><strong>Threats:</strong> Negative risks that could harm objectives.</li>
+            <li>Turn strengths into opportunities; manage weaknesses so they do not turn into threats.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      💡 <strong>Tip:</strong> SWOT is quick, intuitive, and works well in workshops for generating an initial risk list.
+    </div>
+  </section>
+
+  <!-- 5. PROBABILITY & IMPACT MATRIX -->
+  <section id="prob-impact" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Probability &amp; Impact Matrix</h2>
+      <span class="tag-pill bg-warning text-dark">📊 Prioritising Risks</span>
+    </div>
+
+    <p>
+      The <strong>Probability &amp; Impact Matrix</strong> is a grid used in <strong>qualitative analysis</strong>
+      to compare and prioritise risks.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It Works</h5>
+          <ul class="mb-0">
+            <li>For each risk, estimate:
+              <ul>
+                <li><strong>Probability</strong> – how likely it is to occur.</li>
+                <li><strong>Impact</strong> – how big the consequence is if it happens.</li>
+              </ul>
+            </li>
+            <li>Use scales like <strong>Very Low → Very High</strong> or numeric <strong>1–5</strong>.</li>
+            <li>You can compute a <strong>risk score</strong> = Probability × Impact (e.g., 4 × 3 = 12).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Why It’s Useful</h5>
+          <ul class="mb-0">
+            <li>Risks with high P and high I get the most attention.</li>
+            <li>Visual matrix helps stakeholders quickly see the “red zone”.</li>
+            <li>Supports decisions on which risks to plan detailed responses for.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-warning mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> If a question talks about “rating risks based on likelihood and impact” or “prioritising the risk list”,
+      they are usually hinting at the <strong>probability–impact matrix</strong>.
+    </div>
+  </section>
+
+  <!-- 6. DECISION TREES -->
+  <section id="decision-trees" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Decision Trees</h2>
+      <span class="tag-pill bg-info text-white">🧮 Quantitative Decisions</span>
+    </div>
+
+    <p>
+      <strong>Decision trees</strong> support <strong>quantitative risk analysis</strong> for choosing between several options
+      where each option has different <strong>costs, payoffs, and probabilities</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Structure</h5>
+          <ul class="mb-0">
+            <li>Diagram uses:
+              <ul>
+                <li><strong>Decision nodes</strong> (squares) – where you choose among alternatives.</li>
+                <li><strong>Chance nodes</strong> (circles) – where different outcomes occur with probabilities.</li>
+              </ul>
+            </li>
+            <li>Each branch has <strong>costs or benefits</strong> and <strong>probabilities</strong> attached.</li>
+            <li>End of each path gives an <strong>outcome value</strong> (e.g., profit or cost).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It’s Used</h5>
+          <ul class="mb-0">
+            <li>Calculate the <strong>Expected Monetary Value (EMV)</strong> for each path.</li>
+            <li>EMV = Σ (probability × outcome) across all possible outcomes.</li>
+            <li>Pick the option with the <strong>best EMV</strong> (usually highest profit or lowest cost).</li>
+            <li>Shows both the <strong>size of payoff</strong> and the <strong>riskiness</strong> of each decision.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When you see “choose between two alternatives with different probabilities and payoffs”,
+      think <strong>decision tree + EMV</strong>.
+    </div>
+  </section>
+
+  <!-- 7. QUANTITATIVE RISK TOOLS -->
+  <section id="quant-tools" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>7. Quantitative Risk Tools</h2>
+      <span class="tag-pill bg-primary text-white">🧮 Advanced Analysis</span>
+    </div>
+
+    <p>
+      <strong>Quantitative risk analysis</strong> is used mainly on larger or high-risk projects to understand the
+      <strong>numerical impact</strong> of risk on schedule and cost.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Monte Carlo Simulation</h5>
+          <ul class="mb-0">
+            <li>Runs <strong>thousands of simulations</strong> of the project with different random inputs.</li>
+            <li>Produces a <strong>probability distribution</strong> of possible end dates or budgets.</li>
+            <li>Helps answer questions like: “What is the chance we finish before 30 Sept?”</li>
+            <li>Results are often shown as histograms and cumulative probability curves.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Sensitivity Analysis &amp; Tornado Charts</h5>
+          <ul class="mb-0">
+            <li>Looks at <strong>which individual risks</strong> have the greatest effect on objectives.</li>
+            <li><strong>Tornado chart:</strong>
+              <ul>
+                <li>Bars show impact range of each risk (positive or negative).</li>
+                <li>Sorted from largest to smallest impact → shape looks like a tornado.</li>
+              </ul>
+            </li>
+            <li>Helps focus responses on the <strong>few risks that drive most of the uncertainty</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RESPONSES FOR THREATS & OPPORTUNITIES -->
+  <section id="responses" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>8. Responses for Threats &amp; Opportunities</h2>
+      <span class="tag-pill bg-warning text-dark">💡 Strategy Toolkit</span>
+    </div>
+
+    <p>
+      We use different strategies for <strong>threats (negative risks)</strong> and <strong>opportunities (positive risks)</strong>.
+      Some strategies are shared (e.g., escalate, accept), others are specific.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Strategies for Opportunities (Positive Risks)</h5>
+          <ul class="mb-0">
+            <li><strong>Escalate:</strong> Hand over to higher level (e.g., programme portfolio) if outside the project’s scope or authority.</li>
+            <li><strong>Exploit:</strong> Make sure the opportunity happens — assign top resources, prioritise, fund it.</li>
+            <li><strong>Share:</strong> Transfer ownership to a third party who can help realise it (e.g., joint venture).</li>
+            <li><strong>Enhance:</strong> Increase the probability or impact of the opportunity.</li>
+            <li><strong>Accept:</strong> Take no proactive action, but acknowledge and monitor it.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Strategies for Threats (Negative Risks)</h5>
+          <ul class="mb-0">
+            <li><strong>Escalate:</strong> Raise to senior management if outside project control.</li>
+            <li><strong>Avoid:</strong> Change the plan to remove the threat (e.g., change scope, supplier, approach).</li>
+            <li><strong>Transfer:</strong> Shift the impact to a third party (e.g., insurance, warranty, fixed-price contract).</li>
+            <li><strong>Mitigate:</strong> Reduce probability or impact (e.g., extra testing, prototyping, simplifying design).</li>
+            <li><strong>Accept:</strong> Do nothing beyond monitoring (often for low-priority risks or when mitigation is not cost-effective).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-warning mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Watch for wording: <strong>Exploit / Enhance / Share</strong> are for opportunities;
+      <strong>Avoid / Transfer / Mitigate</strong> are for threats. <strong>Escalate</strong> and <strong>Accept</strong> can apply to both.
+    </div>
+  </section>
+
+  <!-- 9. RESERVE ANALYSIS & BURNDOWN -->
+  <section id="reserves" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>9. Reserve Analysis &amp; Burndown</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Funding Risk Responses</span>
+    </div>
+
+    <p>
+      <strong>Reserve analysis</strong> checks whether we have enough <strong>contingency reserve</strong> left
+      to cover the remaining risks in the project.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Contingency &amp; Management Reserves</h5>
+          <ul class="mb-0">
+            <li><strong>Contingency reserve:</strong>
+              <ul>
+                <li>Part of the <strong>cost baseline</strong>.</li>
+                <li>Funds <strong>identified risks</strong> (from the risk register).</li>
+              </ul>
+            </li>
+            <li><strong>Management reserve:</strong>
+              <ul>
+                <li>Not part of the cost baseline, but part of total budget.</li>
+                <li>Used for <strong>unknown / unforeseen work within scope</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Reserve Burndown</h5>
+          <ul class="mb-0">
+            <li>Compare <strong>remaining risks</strong> vs <strong>remaining contingency</strong>.</li>
+            <li>Visualise using a <strong>burndown chart</strong>:
+              <ul>
+                <li>Line for total risk exposure over time.</li>
+                <li>Line for remaining contingency reserve.</li>
+              </ul>
+            </li>
+            <li>If risk line stays high but reserve line drops too fast → <strong>underfunded</strong>.</li>
+            <li>Helps justify adjusting reserves or changing risk responses.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      💡 <strong>Tip:</strong> Reserve analysis is about <strong>“Do we still have enough money to cover the risks we have left?”</strong>
+      rather than just tracking how much contingency we’ve spent.
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Risk Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Concept Flow</h5>
+          <ul class="mb-0">
+            <li>Use <strong>risk categories / RBS / SWOT</strong> to identify a wide set of risks.</li>
+            <li>Record them in the <strong>Risk Register</strong> with owners and potential responses.</li>
+            <li>Apply <strong>Probability–Impact matrix</strong> to prioritise which risks matter most.</li>
+            <li>For bigger projects, use <strong>quantitative tools</strong> (decision trees, Monte Carlo, sensitivity).</li>
+            <li>Choose appropriate <strong>response strategies</strong> and fund them via reserves.</li>
+            <li>Monitor via <strong>reserve analysis & burndown</strong> to ensure you stay covered.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Mindset & Exam Signals</h5>
+          <ul class="mb-0">
+            <li>Risk is about <strong>uncertainty</strong>, not just bad events.</li>
+            <li>Opportunities are just as important as threats — know their distinct responses.</li>
+            <li>When you see “choose between alternatives with cost & probabilities” → <strong>decision tree, EMV</strong>.</li>
+            <li>When you see “rate risks based on likelihood & impact” → <strong>probability–impact matrix</strong>.</li>
+            <li>When you see “have we got enough reserve left?” → <strong>reserve analysis / burndown chart</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Risk Management is about <strong>seeing uncertainty early, choosing smart responses,
+      and making sure you have the reserves to pay for them</strong> as the project progresses.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
