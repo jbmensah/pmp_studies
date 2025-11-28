@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP People Domain – Brainstorming, Voting & Tuckman’s Ladder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #111827;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.12);
+      --accent-2: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --shadow: 0 18px 40px rgba(0,0,0,0.75);
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .deck {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .slide {
+      background: radial-gradient(circle at top left, rgba(249,115,22,0.06), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(34,197,94,0.08), transparent 55%),
+                  var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 28px 24px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .slide-title {
+      font-size: 1.7rem;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-title span.emoji {
+      font-size: 1.9rem;
+    }
+
+    .slide-tag {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15,23,42,0.7);
+    }
+
+    .slide-tag strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .slide-body {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .full-width {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    h2, h3 {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+    }
+
+    p {
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    ul {
+      margin-left: 1.1rem;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    li {
+      font-size: 0.93rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .pill strong {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, var(--accent-soft), transparent 50%),
+                  rgba(15,23,42,0.92);
+      padding: 10px 12px;
+      margin-top: 4px;
+    }
+
+    .highlight-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .highlight-title span.emoji {
+      font-size: 1.1rem;
+    }
+
+    .highlight-box p {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      font-size: 0.79rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      background: rgba(15,23,42,0.85);
+    }
+
+    .badge.accent {
+      border-color: rgba(249,115,22,0.7);
+      color: #fed7aa;
+      background: rgba(249,115,22,0.12);
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 0.82rem;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      border: 1px solid rgba(55,65,81,0.8);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .mini-table th {
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .mini-table td {
+      color: var(--muted);
+    }
+
+    .icon-column-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .icon-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 1.2rem;
+    }
+
+    .icon-text-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .icon-text-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-strip {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px dashed rgba(55,65,81,0.8);
+      padding-top: 6px;
+    }
+
+    .footer-strip span.accent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      overflow: hidden;
+      border: 1px solid rgba(55,65,81,0.9);
+    }
+
+    .progress-inner {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #facc15, #f97316);
+      width: 42%;
+    }
+
+    @media (max-width: 900px) {
+      .slide-body {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .slide {
+        padding: 22px 18px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slide-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .slide-title {
+        font-size: 1.4rem;
+      }
+      .slide-body {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- Slide 1 – Cover -->
+    <section class="slide">
+      <div class="slide-header">
+        <div>
+          <div class="slide-title">
+            <span class="emoji">🧠</span>
+            <span>PMP People Domain:<br/>Brainstorming, Voting & Tuckman’s Ladder</span>
+          </div>
+          <p style="margin-top:6px;font-size:0.92rem;">
+            A visual study guide for PMP situational questions – focused on how a project manager
+            builds collaboration and high-performing teams.
+          </p>
+        </div>
+        <div>
+          <div class="slide-tag">
+            <span>📘 <strong>People Domain</strong></span>
+          </div>
+          <div style="margin-top:6px;" class="progress-bar">
+            <div class="progress-inner"></div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:4px;">
+            People Domain ≈ <span class="accent">42%</span> of PMP exam questions
+          </p>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🎯</span>
+              <span>Exam Focus</span>
+            </div>
+            <p>
+              The PMP exam is <strong>situational</strong>. It is not asking “What is brainstorming?”
+              as much as “In this scenario, what should the project manager do next?”.
+            </p>
+            <p>
+              These slides help you recognize
+              <strong>when and how</strong> to apply Brainstorming, Voting, and Tuckman’s Ladder
+              to build a collaborative team and make better decisions.
+            </p>
+          </div>
+          <div style="margin-top:10px;">
+            <span class="pill">👥 <strong>People Domain</strong> – Team performance & collaboration</span>
+            <span class="pill">📊 Scenario-based questions</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Role: 👩🏽‍🎨 Graphic-minded PM | 💻 Front-end dev | 📜 PMP candidate</span>
+        <span>Slide 1</span>
+      </div>
+    </section>
+
+    <!-- Slide 2 – Agenda -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🗺️</span>
+          <span>Session Map</span>
+        </div>
+        <div class="slide-tag">
+          <span>⏱️ ~30–40 mins</span>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div class="icon-column-list">
+          <div class="icon-row">
+            <div class="icon-badge">💡</div>
+            <div>
+              <div class="icon-text-title">1. Brainstorming</div>
+              <div class="icon-text-body">
+                What it is, how it works in PMP context, and how it links to Collect Requirements,
+                risk identification, and creativity.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🗳️</div>
+            <div>
+              <div class="icon-text-title">2. Voting & Prioritization</div>
+              <div class="icon-text-body">
+                Majority, Plurality, Unanimity, Agile voting (Planning Poker®, MoSCoW) and when each
+                approach is appropriate.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">📈</div>
+            <div>
+              <div class="icon-text-title">3. Tuckman’s Ladder</div>
+              <div class="icon-text-body">
+                The five stages of team formation and how a project manager adapts leadership style
+                at each stage.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🎓</div>
+            <div>
+              <div class="icon-text-title">4. Situational View</div>
+              <div class="icon-text-body">
+                How exam questions “hide” these concepts in practical scenarios and what answers PMI
+                expects from a good project manager.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Tip: Ask yourself on each slide &ldquo;Where in the project would this happen?&rdquo;</span>
+        <span>Slide 2</span>
+      </div>
+    </section>
+
+    <!-- Slide 3 – Brainstorming Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">💡</span>
+          <span>Brainstorming – Big Picture</span>
+        </div>
+        <div class="slide-tag">
+          <span>📍 Data Gathering & Creativity</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>What is Brainstorming?</h2>
+          <p>
+            Brainstorming is a <strong>group creativity technique</strong> used to
+            <strong>generate many ideas quickly</strong> before evaluating them. It is a core tool in:
+          </p>
+          <ul>
+            <li><strong>Collect Requirements</strong> – product & project requirements</li>
+            <li><strong>Identify Risks</strong> – risk sources, threats, and opportunities</li>
+            <li>Problem solving & solution design across the project</li>
+          </ul>
+          <div class="badge-grid">
+            <span class="badge accent">Quantity first</span>
+            <span class="badge">No criticism during idea flow</span>
+            <span class="badge">Encourages participation</span>
+            <span class="badge">Often followed by voting</span>
+          </div>
+          <div class="highlight-box" style="margin-top:10px;">
+            <div class="highlight-title">
+              <span class="emoji">📘</span>
+              <span>Exam lens</span>
+            </div>
+            <p>
+              If the question shows a team stuck, silent, or limited to one person’s ideas,
+              PMI expects the PM to use a <strong>collaborative technique like brainstorming</strong>
+              before deciding alone.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h3>Key Elements (Study Table)</h3>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Description & PMP Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Purpose</strong></td>
+                <td>
+                  Elicit and analyze requirements, generate ideas, identify risks, or find solutions
+                  – especially during <strong>business analysis</strong> before scope is fully defined.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Techniques</strong></td>
+                <td>
+                  Use people with <strong>different perspectives</strong> (users, SMEs, devs).
+                  A variation is <strong>Brain writing</strong>: participants think and write ideas
+                  individually, then share with the group.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Goal</strong></td>
+                <td>
+                  Maximize the <strong>number of ideas</strong>; evaluation comes later via prioritization
+                  or voting.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Post-session</strong></td>
+                <td>
+                  Use <strong>Nominal Group Technique</strong> or other voting to rank the most useful ideas,
+                  then convert them into requirements, backlog items, or risk responses.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Whenever you see &ldquo;PM wants to gather ideas from stakeholders&rdquo; → think Brainstorming.</span>
+        <span>Slide 3</span>
+      </div>
+    </section>
+
+    <!-- Slide 4 – Brainstorming Analogy & Do/Don’t -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🌊</span>
+          <span>Brainstorming Analogy & Good Practice</span>
+        </div>
+        <div class="slide-tag">
+          <span>💭 Flash Flood of Ideas</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Analogy: The Flash Flood of Ideas</h2>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🌧️</span>
+              <span>Phase 1 – Flood (Idea Generation)</span>
+            </div>
+            <p>
+              Think of brainstorming as a <strong>flash flood</strong> rushing through a dry riverbed.
+              The goal is to let as much water (ideas) flow as possible.
+            </p>
+            <ul>
+              <li>No <strong>dams</strong> – no judgment, no debate, no early filtering.</li>
+              <li>All ideas are welcome, even wild or unrealistic ones.</li>
+              <li>Silence the inner critic – defer analysis.</li>
+            </ul>
+          </div>
+          <div class="highlight-box" style="margin-top:10px;">
+            <div class="highlight-title">
+              <span class="emoji">🧹</span>
+              <span>Phase 2 – Sorting Debris (Analysis)</span>
+            </div>
+            <p>
+              After the flood, you sort through what was carried downstream:
+              categorize, clarify, and <strong>select the most valuable ideas</strong>.
+            </p>
+            <ul>
+              <li>Cluster ideas (affinity diagrams, mind maps).</li>
+              <li>Use <strong>Nominal Group Technique</strong> or voting to rank them.</li>
+              <li>Turn top ideas into <strong>requirements, actions, or risks</strong>.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3>PM Do / Don’t Checklist</h3>
+          <div class="icon-column-list">
+            <div class="icon-row">
+              <div class="icon-badge">✅</div>
+              <div>
+                <div class="icon-text-title">Do</div>
+                <div class="icon-text-body">
+                  <ul>
+                    <li>State a clear problem/question before the session.</li>
+                    <li>Invite diverse stakeholders, not only technical team.</li>
+                    <li>Encourage quiet members (brain writing if needed).</li>
+                    <li>Capture every idea visibly (board, sticky notes, tool).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">⛔</div>
+              <div>
+                <div class="icon-text-title">Don’t</div>
+                <div class="icon-text-body">
+                  <ul>
+                    <li>Allow criticism or evaluation during idea generation.</li>
+                    <li>Let one loud stakeholder dominate the session.</li>
+                    <li>Stop after generating ideas – always follow with prioritization.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">📝</div>
+              <div>
+                <div class="icon-text-title">Exam Tip</div>
+                <div class="icon-text-body">
+                  If a scenario shows a PM jumping straight to a solution without consulting
+                  stakeholders, a better answer is often:
+                  <strong>&ldquo;Facilitate a brainstorming session with key stakeholders.&rdquo;</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Remember: Brainstorm first, evaluate later. PMI loves that sequence.</span>
+        <span>Slide 4</span>
+      </div>
+    </section>
+
+    <!-- Slide 5 – Voting Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🗳️</span>
+          <span>Voting – Participatory Decision Making</span>
+        </div>
+        <div class="slide-tag">
+          <span>🤝 From ideas → decisions</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Why Voting Matters</h2>
+          <p>
+            Voting is a <strong>collective decision-making technique</strong> used to turn
+            many ideas or options into a ranked, agreed, and prioritized list.
+          </p>
+          <p>
+            It helps the team make decisions <strong>quickly</strong> while
+            using the <strong>diverse knowledge</strong> of the group.
+          </p>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">📊</span>
+              <span>PMP Use Cases</span>
+            </div>
+            <ul>
+              <li>Prioritizing <strong>requirements</strong> after brainstorming.</li>
+              <li>Choosing <strong>risks</strong> to analyze in detail.</li>
+              <li>Deciding between <strong>solution alternatives</strong>.</li>
+              <li>Improving commitment to <strong>estimates or cost figures</strong>.</li>
+            </ul>
+          </div>
+          <div class="badge-grid" style="margin-top:8px;">
+            <span class="badge accent">Engages the team</span>
+            <span class="badge">Supports consensus building</span>
+            <span class="badge">Often combined with multicriteria analysis</span>
+          </div>
+        </div>
+        <div>
+          <h3>Types of Voting (Predictive / Hybrid)</h3>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Definition & When to Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Unanimity</strong></td>
+                <td>
+                  Everyone agrees on a single course of action.  
+                  Best for <strong>high-stakes decisions</strong> (e.g., team charter, core security
+                  standards) where buy-in is critical.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Majority</strong></td>
+                <td>
+                  More than 50% of the group agrees.  
+                  Efficient when you want a <strong>fast decision</strong> and the group is not too
+                  fragmented.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Plurality</strong></td>
+                <td>
+                  The largest block decides, even if not a majority.  
+                  Used when there are <strong>many options</strong> and no clear majority emerges.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:6px;font-size:0.86rem;color:var(--muted);">
+            The PM may also use <strong>autocratic decision making</strong> (one person decides)
+            or <strong>multicriteria decision analysis</strong> (using weighted criteria) depending
+            on context.
+          </p>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Exam clue: many options + no majority → often &ldquo;plurality&rdquo; is the tool.</span>
+        <span>Slide 5</span>
+      </div>
+    </section>
+
+    <!-- Slide 6 – Voting in Agile + Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">⚖️</span>
+          <span>Voting in Agile & Practical Analogy</span>
+        </div>
+        <div class="slide-tag">
+          <span>📦 Backlog & Prioritization</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Voting in Agile / Adaptive Environments</h2>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🃏</span>
+              <span>Planning Poker®</span>
+            </div>
+            <p>
+              Team members secretly select estimate cards (e.g., story points) and reveal them
+              at the same time. Differences are discussed and the team votes again until
+              <strong>consensus</strong> is reached.
+            </p>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">📌</span>
+              <span>MoSCoW Analysis</span>
+            </div>
+            <ul>
+              <li><strong>M</strong> – Must have</li>
+              <li><strong>S</strong> – Should have</li>
+              <li><strong>C</strong> – Could have</li>
+              <li><strong>W</strong> – Would like to have (later)</li>
+            </ul>
+            <p style="margin-top:3px;">
+              This is a structured way of “voting” on importance and urgency of items in a
+              product backlog or high-level requirements list.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h3>Analogy: Choosing Restaurant Specials 🍽️</h3>
+          <p>
+            Imagine a restaurant team deciding which dishes should be the special of the day:
+          </p>
+          <ul>
+            <li>
+              For low-stakes items (e.g., appetizer of the day), the team might use
+              <strong>Majority</strong> or <strong>Plurality</strong> to decide quickly.
+            </li>
+            <li>
+              For high-stakes items (e.g., signature dish or brand-defining menu change),
+              they may require <strong>Unanimity</strong> to ensure full commitment.
+            </li>
+          </ul>
+          <div class="highlight-box" style="margin-top:10px;">
+            <div class="highlight-title">
+              <span class="emoji">🧩</span>
+              <span>Situational Insight</span>
+            </div>
+            <p>
+              In exam scenarios, when the team is stuck between several strong options, the PM
+              should <strong>facilitate a voting session</strong> or use
+              <strong>multicriteria decision analysis</strong> rather than deciding alone.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Good PMs decide <em>with</em> the team whenever possible, not <em>for</em> the team.</span>
+        <span>Slide 6</span>
+      </div>
+    </section>
+
+    <!-- Slide 7 – Tuckman Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">📈</span>
+          <span>Tuckman’s Ladder – Team Formation Model</span>
+        </div>
+        <div class="slide-tag">
+          <span>👥 Team Development</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>The 5 Stages</h2>
+          <p>
+            Tuckman’s Ladder describes how a team evolves from strangers to a
+            <strong>high-performing unit</strong>. Understanding where your team is on this ladder
+            helps you choose the right <strong>leadership style</strong>.
+          </p>
+          <div class="icon-column-list" style="margin-top:8px;">
+            <div class="icon-row">
+              <div class="icon-badge">1️⃣</div>
+              <div>
+                <div class="icon-text-title">Forming</div>
+                <div class="icon-text-body">
+                  First meeting, polite behaviour, roles unclear. Members are learning
+                  about the project, their responsibilities, and each other.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">2️⃣</div>
+              <div>
+                <div class="icon-text-title">Storming</div>
+                <div class="icon-text-body">
+                  Conflicts appear over approaches, priorities, and power. This is
+                  <strong>normal</strong> and expected.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">3️⃣</div>
+              <div>
+                <div class="icon-text-title">Norming</div>
+                <div class="icon-text-body">
+                  Team starts to work effectively, trust grows, and “team agreements”
+                  (norms) are created and followed.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">4️⃣</div>
+              <div>
+                <div class="icon-text-title">Performing</div>
+                <div class="icon-text-body">
+                  High-performing, self-directed team with strong collaboration and
+                  fast problem solving.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">5️⃣</div>
+              <div>
+                <div class="icon-text-title">Adjourning</div>
+                <div class="icon-text-body">
+                  Work is completed, the team disbands or moves to new projects.
+                  Emotions can be mixed: pride and sometimes sadness.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>PM Focus at Each Stage</h3>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>PM Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Forming</strong></td>
+                <td>
+                  <strong>Directing</strong> – clarify roles, purpose, and expectations.
+                  Establish or reinforce the <strong>Team Charter</strong>.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Storming</strong></td>
+                <td>
+                  <strong>Coaching</strong> – manage conflict, encourage open communication,
+                  protect psychological safety.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Norming</strong></td>
+                <td>
+                  <strong>Supporting</strong> – reinforce norms, encourage collaboration,
+                  let the team handle minor issues.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Performing</strong></td>
+                <td>
+                  <strong>Delegating/Empowering</strong> – remove impediments, secure resources,
+                  let the team drive execution.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Adjourning</strong></td>
+                <td>
+                  Capture <strong>lessons learned</strong>, recognize contributions,
+                  support transitions to new assignments.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:6px;font-size:0.86rem;color:var(--muted);">
+            Teams can move back and forth between stages (e.g., new member joins → temporary
+            regression to Storming).
+          </p>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Hint: &ldquo;Increasing conflict&rdquo; usually means the team is in <strong>Storming</strong>.</span>
+        <span>Slide 7</span>
+      </div>
+    </section>
+
+    <!-- Slide 8 – Tuckman Sports Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🏆</span>
+          <span>Tuckman Analogy – Sports Team Journey</span>
+        </div>
+        <div class="slide-tag">
+          <span>⚽ From tryouts → championships</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Sports Team Progression</h2>
+          <p>
+            Imagine a sports team preparing for a championship season – this mirrors Tuckman’s
+            Ladder clearly:
+          </p>
+          <ul>
+            <li>
+              <strong>Forming (Tryouts):</strong> Players meet, learn the playbook, and
+              discover the coach’s expectations.
+            </li>
+            <li>
+              <strong>Storming (Pre-season clashes):</strong> Players argue about positions,
+              tactics, and roles.
+            </li>
+            <li>
+              <strong>Norming (Chemistry builds):</strong> The team agrees on tactics,
+              practice routines, and discipline rules.
+            </li>
+            <li>
+              <strong>Performing (Championship mode):</strong> Players anticipate each other’s movements
+              and execute plays smoothly.
+            </li>
+            <li>
+              <strong>Adjourning (Season ends):</strong> Team breaks up or changes, but lessons and
+              relationships remain.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Situational Leadership Tie-in</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🎛️</span>
+              <span>PM as Coach</span>
+            </div>
+            <p>
+              A strong project manager adjusts leadership style as the team climbs Tuckman’s Ladder:
+            </p>
+            <ul>
+              <li><strong>Forming → Directing</strong> (more guidance, structure).</li>
+              <li><strong>Storming → Coaching</strong> (conflict resolution, listening).</li>
+              <li><strong>Norming → Supporting</strong> (encourage ownership).</li>
+              <li><strong>Performing → Delegating</strong> (trust and empower).</li>
+            </ul>
+            <p style="margin-top:4px;">
+              Exam scenarios often describe a team behaviour and expect you to infer:
+              <em>&ldquo;Which stage is this? What leadership response is appropriate?&rdquo;</em>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>If the PM micro-manages a performing team, that’s usually <strong>not</strong> the PMI answer.</span>
+        <span>Slide 8</span>
+      </div>
+    </section>
+
+    <!-- Slide 9 – Putting It Together (Brainstorming + Voting + Tuckman) -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🧩</span>
+          <span>How These Tools Work Together</span>
+        </div>
+        <div class="slide-tag">
+          <span>🔗 Integrated People Domain View</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Typical Flow in a Project Scenario</h2>
+          <ol style="margin-left:1.1rem;margin-top:4px;">
+            <li>
+              Team is in <strong>Forming</strong>: PM clarifies goals and invites stakeholders
+              to contribute ideas.
+            </li>
+            <li>
+              PM runs a <strong>Brainstorming session</strong> to gather requirements, risks, or
+              solution options.
+            </li>
+            <li>
+              Team moves through <strong>Storming</strong> as they debate ideas. PM uses
+              facilitation and conflict management.
+            </li>
+            <li>
+              PM organizes ideas and uses <strong>Voting</strong> (e.g., majority, Planning Poker®,
+              MoSCoW) to prioritize.
+            </li>
+            <li>
+              As the team agrees on direction, they enter <strong>Norming</strong> and later
+              <strong>Performing</strong> with clear roles and shared ownership.
+            </li>
+          </ol>
+          <div class="badge-grid" style="margin-top:6px;">
+            <span class="badge accent">People skills + Tools + Situational leadership</span>
+            <span class="badge">Brainstorm → Vote → Execute</span>
+          </div>
+        </div>
+        <div>
+          <h3>Exam-style Mini Scenarios</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">❓</span>
+              <span>Scenario 1</span>
+            </div>
+            <p>
+              The team has many different ideas for a new feature and they keep arguing about
+              which one is best. What should the PM do?
+            </p>
+            <p><strong>Likely PMI answer:</strong> Facilitate a <strong>brainstorming</strong>
+              session followed by a <strong>voting technique</strong> (e.g., majority vote or
+              multicriteria decision analysis) to prioritize options.</p>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">❓</span>
+              <span>Scenario 2</span>
+            </div>
+            <p>
+              A previously stable team has gained two new members, and conflicts have increased.
+              Team productivity drops.
+            </p>
+            <p>
+              <strong>Likely PMI answer:</strong> Recognize the team has temporarily moved back to
+              <strong>Storming</strong>. The PM should <strong>coach</strong>, reinforce the team charter,
+              and facilitate open communication.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Think: &ldquo;Where is the team on Tuckman? Which tool fits here – brainstorming or voting?&rdquo;</span>
+        <span>Slide 9</span>
+      </div>
+    </section>
+
+    <!-- Slide 10 – Quick Review -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🔁</span>
+          <span>Rapid Review & Takeaways</span>
+        </div>
+        <div class="slide-tag">
+          <span>🧠 Lock in the concepts</span>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div class="icon-column-list">
+          <div class="icon-row">
+            <div class="icon-badge">💡</div>
+            <div>
+              <div class="icon-text-title">Brainstorming</div>
+              <div class="icon-text-body">
+                Use to <strong>generate lots of ideas</strong> with stakeholders.  
+                No evaluation during idea flow; evaluate afterwards with techniques
+                like Nominal Group Technique or other voting.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🗳️</div>
+            <div>
+              <div class="icon-text-title">Voting</div>
+              <div class="icon-text-body">
+                Use to <strong>prioritize and decide</strong> when you have many options.
+                Choose Unanimity for high-stakes decisions, Majority or Plurality for fast
+                decisions, and Agile tools (Planning Poker®, MoSCoW) for adaptive projects.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">📈</div>
+            <div>
+              <div class="icon-text-title">Tuckman’s Ladder</div>
+              <div class="icon-text-body">
+                Recognize whether the team is Forming, Storming, Norming, Performing,
+                or Adjourning, and adapt your leadership style accordingly
+                (Direct → Coach → Support → Delegate).
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🎯</div>
+            <div>
+              <div class="icon-text-title">People Domain Link</div>
+              <div class="icon-text-body">
+                All three topics support the People Domain’s goal: building and leading
+                <strong>collaborative, high-performing project teams</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Next step: turn 2–3 of these scenarios into practice questions for your study group.</span>
+        <span>Slide 10</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

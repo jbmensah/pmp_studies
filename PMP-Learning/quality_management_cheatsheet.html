@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Quality Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 { font-weight: 700; }
+    h4 { font-weight: 600; }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">✅ Quality Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          PMP-focused cheat sheet covering cost of quality, problem-analysis tools, inspections vs audits,
+          checklists vs check sheets, and grade vs quality.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Quality
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Data / Analysis</span>
+          <span>🧰 Tool / Technique</span>
+          <span>🧭 Exam Hint</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#overview" class="btn btn-outline-dark btn-sm nav-chip">1. Overview</a>
+        <a href="#cost-quality" class="btn btn-outline-secondary btn-sm nav-chip">2. Cost of Quality</a>
+        <a href="#fishbone" class="btn btn-outline-secondary btn-sm nav-chip">3. Cause &amp; Effect</a>
+        <a href="#histograms" class="btn btn-outline-secondary btn-sm nav-chip">4. Histograms &amp; Pareto</a>
+        <a href="#inspections" class="btn btn-outline-secondary btn-sm nav-chip">5. Inspections vs Audits</a>
+        <a href="#checklists" class="btn btn-outline-secondary btn-sm nav-chip">6. Checklists vs Check Sheets</a>
+        <a href="#grade-quality" class="btn btn-outline-secondary btn-sm nav-chip">7. Grade vs Quality</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. QUALITY MANAGEMENT OVERVIEW -->
+  <section id="overview" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>1. Quality Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      Quality management focuses on making sure the <strong>product and processes</strong> meet agreed standards
+      and customer requirements. It’s not just about testing at the end — it’s about prevention, detection,
+      and continuous improvement.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Core Ideas</h5>
+          <ul class="mb-0">
+            <li><strong>Cost of Quality (CoQ)</strong> — prevention, appraisal, failures.</li>
+            <li>Focus on <strong>meeting requirements</strong>, not perfection.</li>
+            <li>Balance cost vs level of quality needed.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Problem-Finding Tools</h5>
+          <ul class="mb-0">
+            <li>Cause &amp; effect (Ishikawa / fishbone).</li>
+            <li>Histograms &amp; Pareto charts.</li>
+            <li>Check sheets (tally data).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Governance &amp; Documentation</h5>
+          <ul class="mb-0">
+            <li>Inspections (product-focused).</li>
+            <li>Audits (process-focused).</li>
+            <li>Checklists for process adherence.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Good quality is cheaper when you invest early in prevention and clear processes.
+    </div>
+  </section>
+
+  <!-- 2. COST OF QUALITY -->
+  <section id="cost-quality" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>2. Cost of Quality (CoQ)</h2>
+      <span class="tag-pill bg-info text-white">📊 Cost Structure</span>
+    </div>
+
+    <p>
+      Cost of quality is the <strong>total cost of ensuring and failing to ensure quality</strong>.
+      It answers: “What are we spending to meet requirements — or fix things when we don’t?”
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Conformance Costs</h5>
+          <ul class="mb-0">
+            <li><strong>Prevention</strong> — avoid defects:
+              <ul>
+                <li>Training &amp; coaching.</li>
+                <li>Process improvement, better tools.</li>
+                <li>Refactoring, clear naming, proper design time.</li>
+              </ul>
+            </li>
+            <li class="mt-2"><strong>Appraisal</strong> — find defects:
+              <ul>
+                <li>Testing and inspections.</li>
+                <li>Reviews, walkthroughs, audits.</li>
+                <li>Sprint reviews, quality checks.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Non-Conformance Costs</h5>
+          <ul class="mb-0">
+            <li><strong>Internal Failure</strong> — found before customer:
+              <ul>
+                <li>Rework after failed tests.</li>
+                <li>Retesting and delays.</li>
+              </ul>
+            </li>
+            <li class="mt-2"><strong>External Failure</strong> — found by customer:
+              <ul>
+                <li>Returns, complaints, support calls.</li>
+                <li>Reputational damage.</li>
+                <li>Fix → retest → redeploy cycle.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Prevention &amp; appraisal are cheaper than failure. 
+      External failure is the <strong>most expensive</strong> type of quality cost.
+    </div>
+  </section>
+
+  <!-- 3. CAUSE & EFFECT / ISHIKAWA -->
+  <section id="fishbone" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>3. Cause &amp; Effect Diagram (Ishikawa / Fishbone)</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Root Cause Analysis</span>
+    </div>
+
+    <p>
+      The cause &amp; effect diagram is a visual tool for <strong>root cause analysis</strong>.  
+      It helps you brainstorm and organise possible causes of a defect or problem.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It Works</h5>
+          <ul class="mb-0">
+            <li>Write the <strong>problem statement</strong> at the “head” of the fish.</li>
+            <li>Draw “bones” for major cause categories.</li>
+            <li>Brainstorm specific causes under each category.</li>
+            <li>Use it with a team session or workshop.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Typical Categories</h5>
+          <ul class="mb-0">
+            <li><strong>General (services / IT):</strong>
+              <ul>
+                <li>Information</li>
+                <li>People</li>
+                <li>Process</li>
+                <li>System</li>
+              </ul>
+            </li>
+            <li class="mt-2"><strong>Manufacturing (4 M’s):</strong>
+              <ul>
+                <li>Man / Woman (people)</li>
+                <li>Method (process)</li>
+                <li>Materials</li>
+                <li>Machine (equipment)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key idea:</strong> Don’t jump to solutions. Use the fishbone to systematically explore all possible causes first.
+    </div>
+  </section>
+
+  <!-- 4. HISTOGRAMS & PARETO -->
+  <section id="histograms" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>4. Histograms &amp; Pareto Analysis</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Data Visualisation</span>
+    </div>
+
+    <p>
+      Histograms and Pareto charts are both <strong>bar-chart based tools</strong> that help you see where most
+      of your quality problems sit so you know where to focus.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Histogram</h5>
+          <ul class="mb-0">
+            <li>Simple bar chart showing counts (frequency).</li>
+            <li>Use for:
+              <ul>
+                <li>Defect counts by type.</li>
+                <li>Returns per product.</li>
+                <li>Number of incidents per day, etc.</li>
+              </ul>
+            </li>
+            <li>Helps spot the <strong>biggest problem areas</strong> at a glance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Pareto Chart</h5>
+          <ul class="mb-0">
+            <li>Histogram with bars sorted from <strong>highest to lowest</strong>.</li>
+            <li>Often includes a cumulative percentage line.</li>
+            <li>Based on the <strong>Pareto principle</strong>:
+              <ul>
+                <li>Roughly 80% of effects from 20% of causes.</li>
+              </ul>
+            </li>
+            <li>Highlight the “vital few” issues that cause most of the pain.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> If the question asks “Which tool identifies the few categories causing most defects?”
+      → <strong>Pareto chart</strong>.
+    </div>
+  </section>
+
+  <!-- 5. INSPECTIONS & AUDITS -->
+  <section id="inspections" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>5. Inspections vs Audits</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Product vs Process</span>
+    </div>
+
+    <p>
+      Both inspections and audits are quality tools, but they focus on different things.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Inspections 🔍 (Product-Focused)</h5>
+          <ul class="mb-0">
+            <li>Examine the <strong>deliverable</strong> or result.</li>
+            <li>Check: “Does it meet requirements and standards?”</li>
+            <li>Examples:
+              <ul>
+                <li>Testing &amp; verification.</li>
+                <li>Sprint reviews, demos.</li>
+                <li>Peer reviews, walkthroughs.</li>
+              </ul>
+            </li>
+            <li>Defects found → rework or change requests.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Audits 🧾 (Process-Focused)</h5>
+          <ul class="mb-0">
+            <li>Examine the <strong>process</strong> you follow.</li>
+            <li>Check: “Are we complying with policies, procedures, standards?”</li>
+            <li>Usually done by:
+              <ul>
+                <li>Internal audit / PMO / external auditors.</li>
+              </ul>
+            </li>
+            <li>Goal:
+              <ul>
+                <li>Ensure correct templates, approvals, steps.</li>
+                <li>Recommend improvements and best practices.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Quick memory:</strong> Inspection → <strong>Is the product right?</strong>  
+      Audit → <strong>Are we doing it the right way?</strong>
+    </div>
+  </section>
+
+  <!-- 6. CHECKLISTS & CHECK SHEETS -->
+  <section id="checklists" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>6. Checklists vs Check Sheets</h2>
+      <span class="tag-pill bg-info text-white">🧰 Process vs Data</span>
+    </div>
+
+    <p>
+      Checklists and check sheets sound similar but serve very different purposes.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Checklist ✅</h5>
+          <ul class="mb-0">
+            <li>List of steps or items to ensure nothing is missed.</li>
+            <li>Used as a <strong>process reminder</strong>.</li>
+            <li>Examples:
+              <ul>
+                <li>“Pre-release checklist” before go-live.</li>
+                <li>Audit step list.</li>
+                <li>Meeting preparation checklist.</li>
+              </ul>
+            </li>
+            <li>Focus: <strong>Follow the process correctly.</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Check Sheet / Tally Sheet 📋</h5>
+          <ul class="mb-0">
+            <li>Used to <strong>collect data</strong> as events occur.</li>
+            <li>Each occurrence = a tick / tally.</li>
+            <li>Examples:
+              <ul>
+                <li>Count defect types over a week.</li>
+                <li>Track number of incidents per day.</li>
+                <li>Record customer complaints by category.</li>
+              </ul>
+            </li>
+            <li>Often feeds into histograms or Pareto charts.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong>  
+      <strong>Checklist</strong> = follow steps.  
+      <strong>Check sheet</strong> = collect &amp; tally data.
+    </div>
+  </section>
+
+  <!-- 7. GRADE vs QUALITY -->
+  <section id="grade-quality" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>7. Grade vs Quality</h2>
+      <span class="tag-pill bg-secondary text-white">💡 Clarifying Concepts</span>
+    </div>
+
+    <p>
+      Grade and quality are different, and exam questions love this distinction.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Grade</h5>
+          <ul class="mb-0">
+            <li>Refers to the <strong>feature set / capability level</strong>.</li>
+            <li>High-grade: rich features, advanced performance.</li>
+            <li>Low-grade: basic functionality, few features.</li>
+            <li>Example: iPhone vs simple wind-up toy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Quality</h5>
+          <ul class="mb-0">
+            <li>Refers to <strong>conformance to requirements</strong> and acceptance criteria.</li>
+            <li>High quality: few/no defects, meets specs.</li>
+            <li>Low quality: many defects, fails specs.</li>
+            <li>Examples:
+              <ul>
+                <li>High-grade, low-quality: fancy phone full of bugs.</li>
+                <li>Low-grade, high-quality: simple toy that works perfectly.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Key rule:</strong>  
+      Low quality is always a problem.  
+      Low grade can be acceptable if requirements are met and customer expectations are aligned.
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Quality Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Concepts to Memorise</h5>
+          <ul class="mb-0">
+            <li>Cost of quality: prevention, appraisal, internal &amp; external failure.</li>
+            <li>Fishbone for structured root cause analysis.</li>
+            <li>Histograms vs Pareto (80/20 focus).</li>
+            <li>Inspections (product) vs audits (process).</li>
+            <li>Checklists vs check sheets (process vs data).</li>
+            <li>Grade vs quality distinction.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Fast Exam Triggers</h5>
+          <ul class="mb-0">
+            <li>“Prevent defects” → <strong>Prevention cost</strong>.</li>
+            <li>“Customer found the issue” → <strong>External failure</strong>.</li>
+            <li>“Find root cause of defects” → <strong>Ishikawa / fishbone</strong>.</li>
+            <li>“Identify few categories causing most problems” → <strong>Pareto</strong>.</li>
+            <li>“Follow steps” → <strong>Checklist</strong>.</li>
+            <li>“Collect &amp; tally occurrences” → <strong>Check sheet</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Quality management is about preventing defects early, detecting issues quickly,
+      and using data and process discipline to deliver products that reliably meet requirements.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

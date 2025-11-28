@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Project Integration Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .emoji {
+      font-size: 1.6rem;
+      margin-right: 4px;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER / OVERVIEW -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">📘 Project Integration Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          High-level cheat sheet for PMP prep — focused on <strong>Project Integration</strong> and its core tools:
+          business case, benchmarking, make-or-buy, rates of return, expert judgment, benefits, baselines, changes, PMIS, issue log, and performance data.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Project Integration
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>🧮 Calculation / Financial</span>
+          <span>⚙️ Process / Plan</span>
+          <span>🧭 Exam Hint / Priority Rule</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-diagram-3"></i> Integration Overview</a>
+        <a href="#business-case" class="btn btn-outline-secondary btn-sm nav-chip">📄 Business Case</a>
+        <a href="#benchmarking" class="btn btn-outline-secondary btn-sm nav-chip">📊 Benchmarking</a>
+        <a href="#make-buy" class="btn btn-outline-secondary btn-sm nav-chip">⚖️ Make or Buy</a>
+        <a href="#rates-return" class="btn btn-outline-secondary btn-sm nav-chip">🧮 Rates of Return</a>
+        <a href="#expert-judgment" class="btn btn-outline-secondary btn-sm nav-chip">🧠 Expert Judgment</a>
+        <a href="#benefits-plan" class="btn btn-outline-secondary btn-sm nav-chip">🎯 Benefits Plan</a>
+        <a href="#baselines-config" class="btn btn-outline-secondary btn-sm nav-chip">📌 Baselines & Config</a>
+        <a href="#change-mgmt" class="btn btn-outline-secondary btn-sm nav-chip">♻️ Change Mgmt</a>
+        <a href="#pmis" class="btn btn-outline-secondary btn-sm nav-chip">💻 PMIS</a>
+        <a href="#issue-log" class="btn btn-outline-secondary btn-sm nav-chip">🚩 Issue Log</a>
+        <a href="#data-info" class="btn btn-outline-secondary btn-sm nav-chip">📈 Data & Info</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. PROJECT INTEGRATION OVERVIEW -->
+  <section id="overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Project Integration — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+    <p>
+      Project Integration is about <strong>managing and coordinating the entire project lifecycle</strong> —
+      ensuring that all processes, plans, and decisions are aligned and work together.
+    </p>
+
+    <div class="row g-3 mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>🔗 What Integration Does</h5>
+          <ul class="small mb-0">
+            <li>Connects <strong>initiating</strong> to <strong>planning, executing, monitoring, and closing</strong>.</li>
+            <li>Balances scope, schedule, cost, quality, risk, and resources.</li>
+            <li>Ensures work aligns with <strong>organizational strategy and benefits</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mini-card">
+          <h5>🔍 Core Integration Inputs</h5>
+          <div class="row small">
+            <div class="col-sm-6">
+              <ul class="mb-0">
+                <li>📄 <strong>Business Case</strong> (Why the project?)</li>
+                <li>📊 <strong>Benchmarking</strong> (Compare & learn)</li>
+                <li>⚖️ <strong>Make or Buy</strong> (Internal vs external)</li>
+                <li>🧠 <strong>Expert Judgment</strong></li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul class="mb-0">
+                <li>🧮 <strong>Rates of Return</strong> (financial view)</li>
+                <li>🎯 <strong>Benefits Management</strong></li>
+                <li>📌 <strong>Baselines & Config Mgmt</strong></li>
+                <li>♻️ <strong>Change Requests & Change Mgmt Plan</strong></li>
+                <li>💻 <strong>PMIS</strong> & reporting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam angle:</strong> Integration questions often ask for the
+      <em>“best next action”</em> when something changes. Think: <strong>check the plan → analyze impact → raise a formal change → update baselines if approved.</strong>
+    </div>
+  </section>
+
+  <!-- 2. BUSINESS CASE -->
+  <section id="business-case" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. The Business Case</h2>
+      <span class="tag-pill bg-secondary text-white">📄 Feasibility & Go/No-Go</span>
+    </div>
+    <p>
+      The business case is a <strong>feasibility study</strong> that answers:
+      <em>“Is this project worth our time and money?”</em> It supports a <strong>go / no-go decision</strong>.
+    </p>
+
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>🔍 Purpose</h5>
+          <ul class="small">
+            <li>Evaluates <strong>cost vs. expected benefits</strong>.</li>
+            <li>Ensures the project truly delivers <strong>value</strong>.</li>
+            <li>Reduces surprises by analyzing options up front.</li>
+          </ul>
+          <p class="small mb-0"><strong>Flow:</strong> Needs Assessment → Business Case → Project Charter → Project Management Plan.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>🧩 Typical Contents</h5>
+          <ul class="small mb-0">
+            <li>Business need & problem/opportunity.</li>
+            <li>Goals & objectives of the organization.</li>
+            <li>Current situation & root cause analysis.</li>
+            <li>Known risks and assumptions.</li>
+            <li>Solution options (required / desired / optional).</li>
+            <li>Recommendation (incl. <em>“do nothing”</em> option & impacts).</li>
+            <li>High-level milestones & financial implications.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">📌 Needs Assessment & Benefits</h5>
+    <ul class="small">
+      <li>Identifies the <strong>trigger</strong> (strategy shift, tech change, competitive pressure).</li>
+      <li>Links needs to a <strong>Benefits Management Plan</strong> (what benefits, when, and how measured).</li>
+      <li>Feeds into the <strong>Project Charter</strong>, authorizing the project.</li>
+    </ul>
+
+    <h5 class="mt-3">⚡ Business Case in Agile</h5>
+    <ul class="small">
+      <li>Features are prioritized by <strong>value vs cost</strong>.</li>
+      <li>Each feature or epic can have a <strong>mini-business case</strong>.</li>
+      <li>Product owner uses this to order the backlog: <strong>highest value first</strong>.</li>
+    </ul>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question is “should we even start this project?”
+      → think <strong>Business Case</strong> (not the Project Charter).
+    </div>
+  </section>
+
+  <!-- 3. BENCHMARKING -->
+  <section id="benchmarking" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Benchmarking</h2>
+      <span class="tag-pill bg-info text-white">📊 Compare & Improve</span>
+    </div>
+    <p>
+      Benchmarking means <strong>comparing your product or process</strong> with others to find
+      <strong>best practices</strong> and ideas for improvement.
+    </p>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>🔍 What It Does</h5>
+          <ul class="small mb-0">
+            <li>Maps your process step-by-step.</li>
+            <li>Compares with <strong>similar teams or organizations</strong> (internal or external).</li>
+            <li>Identifies <strong>gaps, inefficiencies, and opportunities</strong>.</li>
+            <li>Generates <strong>new project ideas or features</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>📋 Typical Benchmarking Flow</h5>
+          <ol class="small mb-0">
+            <li>Select the process to improve.</li>
+            <li>Document it (process maps, step lists).</li>
+            <li>Choose comparison orgs / data sources.</li>
+            <li>Gather & compare performance data.</li>
+            <li>Identify improvement ideas.</li>
+            <li>Plan and implement changes.</li>
+            <li>Review, measure, and repeat.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">⚡ Benchmarking in Agile</h5>
+    <ul class="small">
+      <li>Ideas → become <strong>backlog items</strong> owned by the product owner.</li>
+      <li>Broken down into <strong>user stories</strong> and delivered in sprints.</li>
+      <li>Used to constantly refine the product and process.</li>
+    </ul>
+  </section>
+
+  <!-- 4. MAKE OR BUY ANALYSIS -->
+  <section id="make-buy" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. Make or Buy Analysis</h2>
+      <span class="tag-pill bg-warning text-dark">⚖️ Build vs Buy</span>
+    </div>
+    <p>
+      Make or buy analysis decides whether <strong>work should be done internally</strong> or
+      <strong>purchased from a third party</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Key Factors</h5>
+          <ul class="mb-0">
+            <li>Resource availability & capacity.</li>
+            <li>Do we have the <strong>right skills</strong> internally?</li>
+            <li>Cost effectiveness: initial and ongoing costs.</li>
+            <li>Need for specialist expertise.</li>
+            <li>Strategic control vs relying on vendors.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>💰 Initial vs Ongoing Costs</h5>
+          <ul class="mb-0">
+            <li>Buying may have a <strong>lower upfront cost</strong>, but higher long-term fees (licenses, subscriptions).</li>
+            <li>Making may be expensive initially, but <strong>cheaper over time</strong> if recurring costs are low.</li>
+            <li>Graph view: buy curve starts lower but may cross and exceed the make curve in later years.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">👥 Agile Considerations</h5>
+    <ul class="small">
+      <li>Prefer <strong>small, co-located teams</strong> to reduce communication complexity.</li>
+      <li>Value <strong>T-shaped generalizing specialists</strong> (broad skills + one deep specialty).</li>
+      <li>Vendor resources may be integrated into the team with suitable contracts.</li>
+    </ul>
+
+    <h5 class="mt-3">📜 Contract Thoughts (High Level)</h5>
+    <ul class="small mb-0">
+      <li>Early cancellation clauses.</li>
+      <li>Fixed price per increment / feature.</li>
+      <li>Dynamic scope contracts (scope flexible, price constrained).</li>
+    </ul>
+  </section>
+
+  <!-- 5. RATES OF RETURN -->
+  <section id="rates-return" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Rates of Return</h2>
+      <span class="tag-pill bg-primary text-white">🧮 Financial View</span>
+    </div>
+    <p>
+      Rates of return are <strong>financial measures</strong> used to evaluate project options
+      and prioritize initiatives by their economic benefit.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Key Measures & Exam Rules</h5>
+          <table class="table table-sm mb-0">
+            <thead>
+              <tr>
+                <th>Measure</th>
+                <th>Rule of Thumb (Exam)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Net Present Value (NPV)</strong></td>
+                <td>Choose the <strong>highest NPV</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Internal Rate of Return (IRR)</strong></td>
+                <td>Choose the <strong>highest IRR</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Return on Investment (ROI)</strong></td>
+                <td>Choose the <strong>highest ROI %</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Payback Period</strong></td>
+                <td>Choose the <strong>shortest payback period</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Benefit–Cost Ratio</strong></td>
+                <td>Choose the <strong>highest benefit : cost</strong> ratio.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Simple Definitions</h5>
+          <ul class="mb-2">
+            <li><strong>NPV:</strong> Present value of future cash flows minus initial investment.</li>
+            <li><strong>IRR:</strong> The discount rate that makes NPV = 0.</li>
+            <li><strong>ROI:</strong> (Return − Investment) / Investment × 100%.</li>
+            <li><strong>Payback:</strong> Time to recover the initial investment.</li>
+            <li><strong>Benefit–Cost Ratio:</strong> Total benefits / total costs.</li>
+          </ul>
+          <p class="mb-0"><strong>Note:</strong> You rarely need to calculate these on the exam; you mostly choose based on the comparison rule.</p>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">⚡ Use in Agile</h5>
+    <ul class="small mb-0">
+      <li>Helps prioritize features in the backlog (highest economic value first).</li>
+      <li>Used alongside techniques like <strong>MoSCoW</strong>, <strong>Cost of Delay</strong>, and <strong>Weighted Shortest Job First (WSJF)</strong> in scaled agile.</li>
+    </ul>
+  </section>
+
+  <!-- 6. EXPERT JUDGMENT -->
+  <section id="expert-judgment" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Expert Judgment</h2>
+      <span class="tag-pill bg-dark text-white">🧠 Experience as a Tool</span>
+    </div>
+
+    <p>
+      Expert judgment is the use of <strong>specialized knowledge and experience</strong>
+      to guide decisions and shape the project.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Who Counts as an Expert?</h5>
+          <ul class="mb-0">
+            <li>Functional managers and business SMEs.</li>
+            <li>Senior developers, architects, or engineers.</li>
+            <li>Customers and end-users with real experience.</li>
+            <li>Risk specialists, strategists, or analysts.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Where It’s Used</h5>
+          <ul class="mb-0">
+            <li>Aligning project scope with <strong>organizational strategy</strong>.</li>
+            <li>Identifying <strong>risks</strong> and opportunities.</li>
+            <li>Choosing <strong>technical approaches</strong> and solutions.</li>
+            <li>Estimating cost, duration, quality thresholds.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When you see options like <em>“consult SMEs”</em>, <em>“use expert judgment”</em>,
+      this often appears early in planning or when facing uncertainty.
+    </div>
+  </section>
+
+  <!-- 7. BENEFITS MANAGEMENT PLAN -->
+  <section id="benefits-plan" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>7. Benefits Management Plan</h2>
+      <span class="tag-pill bg-success text-white">🎯 Value Realization</span>
+    </div>
+
+    <p>
+      The Benefits Management Plan describes <strong>how and when project benefits will be delivered, measured, and sustained</strong>.
+      Sponsors care deeply about this.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Key Elements</h5>
+          <ul class="mb-0">
+            <li><strong>Target benefits:</strong> e.g., “+20% usage,” “+$200k annual revenue.”</li>
+            <li><strong>Alignment with strategy:</strong> how benefits support organizational goals.</li>
+            <li><strong>Timeframe:</strong> when benefits are expected (months, years).</li>
+            <li><strong>Ownership:</strong> who owns each benefit (sponsor, product manager, functional manager).</li>
+            <li><strong>Measurement:</strong> KPIs and metrics to track realization.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Assumptions & Risks</h5>
+          <ul class="mb-0">
+            <li>Document assumptions (e.g., stable market, regulatory environment).</li>
+            <li>Identify risks that threaten benefits (e.g., competitive products, tech changes).</li>
+            <li>Define <strong>mitigation strategies</strong> or contingency plans.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. BASELINES & CONFIGURATION MANAGEMENT -->
+  <section id="baselines-config" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>8. Baselines & Configuration Management Plan</h2>
+      <span class="tag-pill bg-secondary text-white">📌 Control & Versioning</span>
+    </div>
+
+    <p>
+      A <strong>baseline</strong> is an approved version of a project artifact fixed at a point in time.
+      The <strong>configuration management plan</strong> defines how those artifacts are controlled and versioned.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Baselines</h5>
+          <ul class="mb-0">
+            <li>Common baselines:
+              <ul>
+                <li>Scope baseline.</li>
+                <li>Schedule baseline.</li>
+                <li>Cost baseline.</li>
+              </ul>
+            </li>
+            <li>Used as the <strong>reference point</strong> for measuring performance.</li>
+            <li>Changes require <strong>formal change control</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Configuration Management Plan</h5>
+          <ul class="mb-0">
+            <li>Defines which items are under <strong>configuration control</strong>.</li>
+            <li>Specifies how versions are recorded and updated.</li>
+            <li>Ensures consistency of the product and documentation.</li>
+            <li>Works hand-in-hand with the <strong>change management plan</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CHANGE REQUESTS & CHANGE MANAGEMENT PLAN -->
+  <section id="change-mgmt" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>9. Change Requests & Change Management Plan</h2>
+      <span class="tag-pill bg-warning text-dark">♻️ Formal Change Control</span>
+    </div>
+
+    <p>
+      Change requests are <strong>formal proposals</strong> to modify a baseline or configuration item.
+      The change management plan defines <strong>how those changes are processed</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Types of Change Requests</h5>
+          <ul class="mb-0">
+            <li><strong>Corrective action:</strong> brings performance back in line with the plan.</li>
+            <li><strong>Preventive action:</strong> prevents future deviations.</li>
+            <li><strong>Defect repair:</strong> fixes non-conforming deliverables.</li>
+            <li><strong>Updates:</strong> changes to plans or documents.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Change Management Plan</h5>
+          <ul class="mb-0">
+            <li>Defines <strong>who can raise</strong> change requests (any stakeholder).</li>
+            <li>Specifies <strong>impact analysis</strong> (cost, schedule, scope, risk).</li>
+            <li>Identifies the <strong>approval authority</strong> (PM, sponsor, CCB).</li>
+            <li>Requires outcomes to be <strong>documented in a change log</strong>.</li>
+            <li>Ensures requesters are informed of decisions (approved / deferred / rejected).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When a stakeholder asks for a change that impacts scope, schedule, or cost:
+      <strong>do not implement immediately</strong>. First: check the plan, analyze impact, submit a formal change request.
+    </div>
+  </section>
+
+  <!-- 10. PMIS -->
+  <section id="pmis" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>10. Project Management Information System (PMIS)</h2>
+      <span class="tag-pill bg-info text-white">💻 Tools & Dashboards</span>
+    </div>
+
+    <p>
+      A PMIS is the combination of <strong>software tools and processes</strong> used to
+      <strong>collect, store, analyze, and distribute project information</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Typical Components</h5>
+          <ul class="mb-0">
+            <li>Scheduling tools (e.g., MS Project, Jira).</li>
+            <li>Work authorization systems.</li>
+            <li>Configuration & version control systems.</li>
+            <li>Document management repositories.</li>
+            <li>Resource calendars.</li>
+            <li>KPI dashboards (cost, schedule, quality, risk).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Key Idea</h5>
+          <ul class="mb-0">
+            <li>PMIS is not one specific tool — it can be any <strong>combination</strong> of tools and processes.</li>
+            <li>Supports <strong>reporting</strong>: status reports, final reports, lessons learned registers.</li>
+            <li>Helps stakeholders make <strong>informed decisions</strong> on the project.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. ISSUE LOG -->
+  <section id="issue-log" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>11. Issue Log</h2>
+      <span class="tag-pill bg-danger text-white">🚩 Problems to Fix</span>
+    </div>
+
+    <p>
+      An issue log is used to <strong>capture, track, and manage problems, conflicts, or gaps</strong>
+      that need attention during the project.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-7">
+        <div class="mini-card">
+          <h5>Typical Fields in an Issue Log</h5>
+          <ul class="mb-0">
+            <li>Issue ID / type.</li>
+            <li>Who raised the issue.</li>
+            <li>Description.</li>
+            <li>Priority (high / medium / low).</li>
+            <li>Owner / assignee.</li>
+            <li>Target resolution date.</li>
+            <li>Status (open / in progress / resolved).</li>
+            <li>Final solution / resolution notes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="mini-card">
+          <h5>Why It Matters</h5>
+          <ul class="mb-0">
+            <li>Ensures issues are <strong>visible and assigned</strong>.</li>
+            <li>Supports transparency and governance.</li>
+            <li>Patterns (e.g., one person raising many issues) may reveal <strong>engagement problems</strong> or deeper risks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. PROJECT MANAGEMENT DATA & INFORMATION -->
+  <section id="data-info" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>12. Project Management Data & Information</h2>
+      <span class="tag-pill bg-secondary text-white">📈 From Data to Reports</span>
+    </div>
+
+    <p>
+      In project management, we move from <strong>raw data</strong> → <strong>information</strong> → <strong>reports</strong>
+      to support decisions across the entire lifecycle.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card text-center">
+          <h5>1️⃣ Work Performance Data</h5>
+          <p class="mb-2">Raw observations & measurements:</p>
+          <ul class="text-start mb-0">
+            <li>Number of defects.</li>
+            <li>Actual costs spent.</li>
+            <li>Actual durations.</li>
+            <li>% work completed.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card text-center">
+          <h5>2️⃣ Work Performance Information</h5>
+          <p class="mb-2">Analyzed data with context:</p>
+          <ul class="text-start mb-0">
+            <li>Schedule variance & cost variance.</li>
+            <li>Forecasts (estimate to complete, EAC).</li>
+            <li>Comparison of deliverables against plan.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card text-center">
+          <h5>3️⃣ Work Performance Reports</h5>
+          <p class="mb-2">Formatted for stakeholders:</p>
+          <ul class="text-start mb-0">
+            <li>Status reports, dashboards.</li>
+            <li>Presentations, memos, emails.</li>
+            <li>Agile info radiators (Kanban boards, burndown charts).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Top Concept Links</h5>
+          <ul class="mb-0">
+            <li>Business Case → Go/No-Go decision & value justification.</li>
+            <li>Benchmarking → New ideas & improvement projects.</li>
+            <li>Make or Buy → Internal vs vendor, think <strong>total cost over time</strong>.</li>
+            <li>Rates of Return → 
+              <span class="fw-semibold">NPV/IRR/ROI/Benefit: choose highest; Payback: shortest.</span>
+            </li>
+            <li>Expert Judgment → Use when uncertain, early planning, or evaluating options.</li>
+            <li>Benefits Plan → “When will we see value and how will we know?”</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Change & Control</h5>
+          <ul class="mb-0">
+            <li>Baselines = scope/schedule/cost plans fixed in time.</li>
+            <li>Config Mgmt Plan says <em>what</em> is under version control.</li>
+            <li>Change Request needed when touching a baseline or config item.</li>
+            <li>Change Mgmt Plan defines <em>how</em> to submit, analyze, and approve changes.</li>
+            <li>PMIS + issue log + performance data → the “control system” for the project.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Project Integration is the art of <strong>making the whole project hang together</strong> —
+      from justifying it (business case) to planning it (baselines), controlling it (changes, PMIS, logs), and proving it delivered value (benefits).
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

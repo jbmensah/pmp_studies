@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP People Domain – Leadership, Communication, Conflict & Negotiation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #0b1220;
+      --card: #020617;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.18);
+      --accent-2: #22c55e;
+      --accent-3: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --shadow: 0 18px 40px rgba(0,0,0,0.85);
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .deck {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .slide {
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.13), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(34,197,94,0.18), transparent 55%),
+        var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 26px 22px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .slide-title {
+      font-size: 1.7rem;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-title span.emoji {
+      font-size: 1.9rem;
+    }
+
+    .slide-tag {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15,23,42,0.85);
+    }
+
+    .slide-tag strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .slide-body {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .full-width {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    h2, h3 {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      color: #e5e7eb;
+    }
+
+    p {
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    ul, ol {
+      margin-left: 1.1rem;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    li {
+      font-size: 0.93rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.4);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 3px 6px 3px 0;
+    }
+
+    .pill strong {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.45);
+      background:
+        radial-gradient(circle at top left, var(--accent-soft), transparent 55%),
+        rgba(15,23,42,0.94);
+      padding: 10px 12px;
+      margin-top: 4px;
+    }
+
+    .highlight-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .highlight-title span.emoji {
+      font-size: 1.1rem;
+    }
+
+    .highlight-box p {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      color: var(--muted);
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      font-size: 0.79rem;
+      border: 1px solid rgba(148,163,184,0.45);
+      color: var(--muted);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .badge.accent {
+      border-color: rgba(249,115,22,0.7);
+      color: #fed7aa;
+      background: rgba(249,115,22,0.14);
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 0.82rem;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .mini-table th {
+      background: rgba(15,23,42,0.98);
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .mini-table td {
+      color: var(--muted);
+    }
+
+    .icon-column-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .icon-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .icon-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(148,163,184,0.45);
+      font-size: 1.2rem;
+    }
+
+    .icon-text-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .icon-text-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-strip {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px dashed rgba(55,65,81,0.85);
+      padding-top: 6px;
+    }
+
+    .footer-strip span.accent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      width: 140px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      overflow: hidden;
+      border: 1px solid rgba(55,65,81,0.9);
+    }
+
+    .progress-inner {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #facc15, #f97316);
+      width: 42%;
+    }
+
+    code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      background: rgba(15,23,42,0.9);
+      padding: 1px 4px;
+      border-radius: 4px;
+      border: 1px solid rgba(75,85,99,0.8);
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 900px) {
+      .slide-body {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .slide {
+        padding: 22px 18px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slide-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .slide-title {
+        font-size: 1.45rem;
+      }
+      .slide-body {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- Slide 1 – Cover -->
+    <section class="slide">
+      <div class="slide-header">
+        <div>
+          <div class="slide-title">
+            <span class="emoji">👥</span>
+            <span>PMP People Domain:<br/>Leadership, Communication, Conflict &amp; Negotiation</span>
+          </div>
+          <p style="margin-top:6px;font-size:0.92rem;">
+            A visual, situational-focused guide to the interpersonal skills behind high-performing project teams.
+          </p>
+        </div>
+        <div>
+          <div class="slide-tag">
+            <span>📘 <strong>People Domain (Domain I)</strong></span>
+          </div>
+          <div style="margin-top:6px;" class="progress-bar">
+            <div class="progress-inner"></div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:4px;">
+            People Domain ≈ <span class="accent">42%</span> of PMP exam questions
+          </p>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div class="highlight-box">
+          <div class="highlight-title">
+            <span class="emoji">🎯</span>
+            <span>Situational Exam Focus</span>
+          </div>
+          <p>
+            The PMP exam rarely asks for definitions. Instead, it gives a scenario and asks:
+            <strong>“What is the best thing to do next?”</strong>
+          </p>
+          <p>
+            These slides connect <strong>Leadership, Communication Techniques, Conflict Management,
+            and Negotiation</strong> with realistic project situations so you can recognize
+            PMI’s preferred response.
+          </p>
+        </div>
+        <div style="margin-top:10px;">
+          <span class="pill">🧠 Emotional Intelligence &amp; Leadership</span>
+          <span class="pill">💬 Communication Techniques</span>
+          <span class="pill">⚔️ Conflict Management</span>
+          <span class="pill">🤝 Negotiation</span>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Role: 👩🏽‍🎨 Graphic-minded PM | 💻 Front-end dev | 📜 PMP candidate</span>
+        <span>Slide 1</span>
+      </div>
+    </section>
+
+    <!-- Slide 2 – Agenda -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🗺️</span>
+          <span>Session Roadmap</span>
+        </div>
+        <div class="slide-tag">
+          <span>⏱️ ~40 minutes</span>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div class="icon-column-list">
+          <div class="icon-row">
+            <div class="icon-badge">🏅</div>
+            <div>
+              <div class="icon-text-title">1. Leadership</div>
+              <div class="icon-text-body">
+                PM’s dual role, servant leadership, emotional intelligence, and core leadership behaviours.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">💬</div>
+            <div>
+              <div class="icon-text-title">2. Communication Techniques</div>
+              <div class="icon-text-body">
+                Communication flows, adaptive communication, 5 Cs, channels and complexity.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">⚔️</div>
+            <div>
+              <div class="icon-text-title">3. Conflict Management</div>
+              <div class="icon-text-body">
+                Sources of conflict, resolution styles, and how conflict can be healthy when handled correctly.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🤝</div>
+            <div>
+              <div class="icon-text-title">4. Negotiation</div>
+              <div class="icon-text-body">
+                Win–win mindset, internal vs external negotiation, and Agile’s view on collaboration vs contracts.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🎓</div>
+            <div>
+              <div class="icon-text-title">5. Exam Situations</div>
+              <div class="icon-text-body">
+                How these four skills show up in PMP scenarios – and how to pick the best answer.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Ask yourself on each slide: &ldquo;What would PMI want the PM to do here?&rdquo;</span>
+        <span>Slide 2</span>
+      </div>
+    </section>
+
+    <!-- Slide 3 – Leadership Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🏅</span>
+          <span>Leadership – PM as Leader &amp; Manager</span>
+        </div>
+        <div class="slide-tag">
+          <span>👑 Influence &amp; Inspiration</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Leadership Core Concepts</h2>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Leadership Concept</th>
+                <th>Key Details &amp; PMP Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PM's Dual Role</strong></td>
+                <td>
+                  The PM must <strong>manage and lead</strong>. Management plans, organizes,
+                  and controls work; leadership <strong>guides, motivates, and influences</strong>
+                  people to achieve the vision. The PM balances conflicting stakeholder goals
+                  and builds consensus.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Servant Leadership</strong></td>
+                <td>
+                  Common in Agile/adaptive environments. The PM focuses on
+                  <strong>removing impediments</strong>, enabling the team, protecting them
+                  from distractions, and helping them grow beyond their current roles.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Emotional Intelligence (EI)</strong></td>
+                <td>
+                  Ability to perceive, understand, and manage emotions in oneself and others.
+                  EI supports trust, fairness, and strong relationships – all core to effective leadership.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Leadership Behaviours</strong></td>
+                <td>
+                  Setting a motivating vision, seeking resources, influencing without authority,
+                  <strong>negotiating</strong> and <strong>resolving conflict</strong>. Aligned with the PMP
+                  principle: <strong>Demonstrate Leadership Behaviours</strong>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="badge-grid">
+            <span class="badge accent">Influence &gt; Authority</span>
+            <span class="badge">Vision &amp; Direction</span>
+            <span class="badge">Empathy &amp; EI</span>
+            <span class="badge">Conflict &amp; Negotiation</span>
+          </div>
+        </div>
+        <div>
+          <h3>Leadership Exam Lens</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🥇</span>
+              <span>What PMI Looks For</span>
+            </div>
+            <p>
+              In situations where the PM can either “command and control” or “influence and collaborate”,
+              PMI usually prefers the more <strong>collaborative, servant-leader approach</strong>,
+              as long as it still protects the project objectives.
+            </p>
+            <ul>
+              <li>Empower the team rather than micromanage.</li>
+              <li>Involve stakeholders, don’t ignore them.</li>
+              <li>Lead with data and empathy, not just title.</li>
+            </ul>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">🧠</span>
+              <span>EI in Action</span>
+            </div>
+            <p>
+              An emotionally intelligent PM notices tension in a meeting and pauses to clarify concerns,
+              instead of rushing to decisions and pretending everything is fine.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Think: &ldquo;How can I lead in a way that increases trust and ownership?&rdquo;</span>
+        <span>Slide 3</span>
+      </div>
+    </section>
+
+    <!-- Slide 4 – Leadership Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🎼</span>
+          <span>Leadership Analogy – The Orchestra Conductor</span>
+        </div>
+        <div class="slide-tag">
+          <span>🎻 Harmonizing Experts</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>PM as an Orchestra Conductor</h2>
+          <p>
+            Think of the project team as an orchestra and the PM as the conductor:
+          </p>
+          <ul>
+            <li>The conductor sets the <strong>tempo and interpretation</strong> (vision and pace).</li>
+            <li>Each musician is a specialist (BA, developer, tester, SME) with their own &ldquo;instrument&rdquo;.</li>
+            <li>The conductor ensures harmony and timing but does <strong>not play every instrument</strong>.</li>
+            <li>Success comes from <strong>coordination, trust, and clear cues</strong>, not from one person doing everything.</li>
+          </ul>
+          <div class="badge-grid">
+            <span class="badge accent">Guide, don’t overpower</span>
+            <span class="badge">Create harmony</span>
+            <span class="badge">Respect expertise</span>
+          </div>
+        </div>
+        <div>
+          <h3>Situational Takeaways</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🧩</span>
+              <span>Good PMI-style Action</span>
+            </div>
+            <p>
+              When a question shows the PM trying to do all the work alone, or ignoring the team’s expertise,
+              the better answer is usually to:
+            </p>
+            <ul>
+              <li><strong>Involve the team</strong> in planning and decisions.</li>
+              <li><strong>Delegate</strong> tasks according to skills.</li>
+              <li><strong>Facilitate collaboration</strong> rather than dictate every detail.</li>
+            </ul>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">🚫</span>
+              <span>Red Flag Behaviours</span>
+            </div>
+            <p>
+              Micromanaging experts, making unilateral decisions without stakeholder input, or ignoring team
+              morale are normally <strong>poor choices</strong> in PMI’s view.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>A great PM conducts the team; they don’t try to be the whole orchestra.</span>
+        <span>Slide 4</span>
+      </div>
+    </section>
+
+    <!-- Slide 5 – Communication Techniques Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">💬</span>
+          <span>Communication Techniques – PM’s Core Activity</span>
+        </div>
+        <div class="slide-tag">
+          <span>📡 ~90% of PM’s Time</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Communication Concepts</h2>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Key Details &amp; Situational Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Communication Flow</strong></td>
+                <td>
+                  Flows <strong>vertically</strong> (upward to management / downward to team)
+                  and <strong>horizontally</strong> (across peers and other departments).
+                  Good PMs tailor message content and tone depending on direction.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Adaptive Communication</strong></td>
+                <td>
+                  Adaptive/Agile environments need <strong>frequent, fast</strong> communication
+                  (e.g., daily stand-ups, demos). Favour <strong>interactive</strong> channels
+                  (face-to-face, video) that allow rapid feedback.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Communication Gaps</strong></td>
+                <td>
+                  The <strong>gulf of execution</strong> (what user wants vs what the system does)
+                  and the <strong>gulf of evaluation</strong> (can users tell if it worked?)
+                  highlight why clear, user-focused communication is crucial.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Active Listening</strong></td>
+                <td>
+                  Involves <strong>acknowledging, clarifying, and confirming</strong> the message.
+                  The PM paraphrases back to ensure mutual understanding and reduce misinterpretation.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>The 5 Cs</strong></td>
+                <td>
+                  Written communication should be:
+                  <strong>Correct, Concise, Clear, Coherent, and Controlled</strong>.
+                  Poor grammar or vague messages weaken the PM’s credibility.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Communication Channels & Complexity</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🔗</span>
+              <span>Channels Formula</span>
+            </div>
+            <p>
+              As you add stakeholders, communication complexity grows quickly.
+              The number of potential one-to-one channels is:
+            </p>
+            <p style="margin-top:4px;">
+              <code>Channels = N (N - 1) / 2</code> &nbsp;&nbsp; where <code>N</code> = number of stakeholders.
+            </p>
+            <p style="margin-top:4px;">
+              More channels → more risk of confusion → stronger need for a
+              <strong>Communications Management Plan</strong>.
+            </p>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">🎧</span>
+              <span>Exam Tip</span>
+            </div>
+            <p>
+              If the scenario shows stakeholders are confused or complaining about not being informed,
+              the best response is usually to <strong>review and adjust the communications plan</strong>,
+              not simply “send more emails”.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Communication isn’t just talking; it’s making sure the message is received and understood.</span>
+        <span>Slide 5</span>
+      </div>
+    </section>
+
+    <!-- Slide 6 – Communication Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🔀</span>
+          <span>Communication Analogy – Conference Introductions</span>
+        </div>
+        <div class="slide-tag">
+          <span>🧩 Multiplying Pathways</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Analogy: Large Conference Networking</h2>
+          <p>
+            Imagine hosting a conference where everyone should know everyone else:
+          </p>
+          <ul>
+            <li>With 3 people, introductions are simple.</li>
+            <li>With 10 people, there are <code>10×9/2 = 45</code> possible one-on-one links.</li>
+            <li>With 20+, unstructured introductions become chaotic.</li>
+          </ul>
+          <p style="margin-top:4px;">
+            As the PM, you must design <strong>structured communication</strong>:
+            central briefings, written summaries, and agreed channels.
+          </p>
+        </div>
+        <div>
+          <h3>Situational Connection</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">📌</span>
+              <span>When the Exam Mentions...</span>
+            </div>
+            <ul>
+              <li>
+                &ldquo;Project has many new stakeholders and messages are getting lost&rdquo; →
+                Update the <strong>communication plan</strong>, maybe introduce
+                dashboards, newsletters, or structured meetings.
+              </li>
+              <li>
+                &ldquo;Team is distributed across time zones&rdquo; →
+                Use <strong>asynchronous tools</strong> plus well-timed interactive sessions.
+              </li>
+              <li>
+                &ldquo;Sponsor says they never see progress updates&rdquo; →
+                Tailor frequency and format of communication to sponsor needs.
+              </li>
+            </ul>
+          </div>
+          <div class="badge-grid" style="margin-top:8px;">
+            <span class="badge accent">Right info</span>
+            <span class="badge accent">Right person</span>
+            <span class="badge accent">Right time</span>
+            <span class="badge">Right channel</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Good communication is designed, not accidental.</span>
+        <span>Slide 6</span>
+      </div>
+    </section>
+
+    <!-- Slide 7 – Conflict Management Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">⚔️</span>
+          <span>Conflict Management – Turning Tension into Progress</span>
+        </div>
+        <div class="slide-tag">
+          <span>🔥 Inevitable but Manageable</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Conflict in Projects</h2>
+          <p>
+            PMI views conflict as <strong>inevitable</strong> – and potentially
+            <strong>healthy</strong> when managed constructively.
+          </p>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Conflict Concept</th>
+                <th>Key Details &amp; Situational Insight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sources of Conflict</strong></td>
+                <td>
+                  Common: <strong>scarce resources, scheduling priorities,
+                  and personal work styles</strong>. Personality clashes are actually
+                  less common than disagreements over workload and priorities.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Timely Resolution</strong></td>
+                <td>
+                  Good PMs address conflict <strong>early and privately</strong>
+                  where possible, focusing on the issue rather than the person.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Healthy Conflict</strong></td>
+                <td>
+                  Constructive debate can lead to better decisions and
+                  innovation – as long as it is managed respectfully and results
+                  in clear decisions.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Conflict Resolution Approaches</h3>
+          <div class="icon-column-list">
+            <div class="icon-row">
+              <div class="icon-badge">🤝</div>
+              <div>
+                <div class="icon-text-title">Collaborating / Problem-solving (Win–Win)</div>
+                <div class="icon-text-body">
+                  Parties openly discuss differences and integrate views.
+                  Often the <strong>best PMI answer</strong> when the issue is important and time allows.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">⚖️</div>
+              <div>
+                <div class="icon-text-title">Compromising / Reconciling (Partial Win–Win / Lose–Lose)</div>
+                <div class="icon-text-body">
+                  Each side gives up something. Second-best option when there’s limited time
+                  or when a balanced, middle-ground solution is acceptable.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">🚫</div>
+              <div>
+                <div class="icon-text-title">Forcing / Directing (Win–Lose)</div>
+                <div class="icon-text-body">
+                  Imposing a decision using authority. Typically <strong>worst choice</strong>,
+                  but can be necessary for safety, compliance, or urgent crises.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">🕊️</div>
+              <div>
+                <div class="icon-text-title">Smoothing / Accommodating</div>
+                <div class="icon-text-body">
+                  Emphasize areas of agreement and downplay disagreement
+                  to preserve relationships. Useful short-term, but does not address root cause.
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">🏃🏽‍♂️</div>
+              <div>
+                <div class="icon-text-title">Withdrawing / Avoiding</div>
+                <div class="icon-text-body">
+                  Step away from the conflict. Suitable only when the issue is minor
+                  or more time/data is needed. Long-term avoidance is a red flag.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>On the exam, &ldquo;Collaborate/Problem-solve&rdquo; is usually the hero.</span>
+        <span>Slide 7</span>
+      </div>
+    </section>
+
+    <!-- Slide 8 – Conflict Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🎂</span>
+          <span>Conflict Analogy – Baking the Cake</span>
+        </div>
+        <div class="slide-tag">
+          <span>🧁 Ingredients of a Win–Win</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Analogy: Baking a Cake Together</h2>
+          <p>
+            Imagine two people with different cake recipes:
+          </p>
+          <ul>
+            <li>
+              <strong>Forcing:</strong> One person insists their entire recipe is used; the other’s input is ignored.
+            </li>
+            <li>
+              <strong>Compromising:</strong> They mix half of each recipe – maybe acceptable, but not ideal.
+            </li>
+            <li>
+              <strong>Collaborating:</strong> They take the <strong>best ingredients</strong> and techniques from both
+              recipes to create an even better cake than either original.
+            </li>
+          </ul>
+          <p style="margin-top:4px;">
+            In projects, collaboration means combining the strongest ideas from each party into a
+            superior solution.
+          </p>
+        </div>
+        <div>
+          <h3>Situational Clues</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🔍</span>
+              <span>Look for These Phrases</span>
+            </div>
+            <ul>
+              <li>
+                &ldquo;Team members strongly disagree about the technical approach&rdquo; →
+                Facilitate a <strong>problem-solving meeting</strong> to explore options together.
+              </li>
+              <li>
+                &ldquo;Issue affects safety or regulatory compliance&rdquo; →
+                <strong>Forcing/directing</strong> may be justified (enforce standards).
+              </li>
+              <li>
+                &ldquo;Issue is minor and will delay critical work&rdquo; →
+                Temporary <strong>smoothing or withdrawing</strong> might be acceptable.
+              </li>
+            </ul>
+          </div>
+          <div class="badge-grid" style="margin-top:8px;">
+            <span class="badge accent">Address conflict early</span>
+            <span class="badge">Focus on issues, not people</span>
+            <span class="badge">Seek win–win where possible</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Don’t just split the cake; design a better recipe together.</span>
+        <span>Slide 8</span>
+      </div>
+    </section>
+
+    <!-- Slide 9 – Negotiation Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🤝</span>
+          <span>Negotiation – Reaching Win–Win Agreements</span>
+        </div>
+        <div class="slide-tag">
+          <span>📑 Internal &amp; External</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Negotiation Contexts</h2>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Context</th>
+                <th>Key Details &amp; PMP Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Core Goal</strong></td>
+                <td>
+                  Aim for a <strong>Win–Win</strong> outcome where each side is reasonably satisfied.
+                  Even when contracts are involved, relationships and long-term collaboration matter.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Internal Negotiation</strong></td>
+                <td>
+                  Negotiating with functional managers for staff, budget, or equipment.
+                  The PM should understand their constraints and needs (e.g., peak workload)
+                  to build a sustainable agreement.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Procurement Negotiation</strong></td>
+                <td>
+                  Clarifying rights, obligations, and terms <strong>before signing the contract</strong>.
+                  Goals: fair price, acceptable risk allocation, and a solid working relationship.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Agile Value</strong></td>
+                <td>
+                  Agile values <strong>customer collaboration over contract negotiation</strong>.
+                  Contracts still exist, but emphasis is on ongoing dialogue and flexibility
+                  to handle changing requirements.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Negotiation Mindset</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🧠</span>
+              <span>Before Negotiation</span>
+            </div>
+            <ul>
+              <li>Know your objectives and constraints (scope, cost, time, quality).</li>
+              <li>Understand the other party’s interests, not just their demands.</li>
+              <li>Identify your alternatives if negotiation fails.</li>
+            </ul>
+          </div>
+          <div class="highlight-box" style="margin-top:8px;">
+            <div class="highlight-title">
+              <span class="emoji">📌</span>
+              <span>On the Exam</span>
+            </div>
+            <p>
+              If the scenario shows a disagreement with a functional manager, sponsor, or seller,
+              and there is still room to talk, the PM should usually
+              <strong>negotiate a mutually acceptable solution</strong> before escalating.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Negotiation is about protecting project objectives <em>and</em> relationships.</span>
+        <span>Slide 9</span>
+      </div>
+    </section>
+
+    <!-- Slide 10 – Negotiation Analogy -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">📈</span>
+          <span>Negotiation Analogy – Mutual Investment</span>
+        </div>
+        <div class="slide-tag">
+          <span>💼 Long-term Value</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>Analogy: Mutual Investment</h2>
+          <p>
+            Think of negotiation with a vendor as setting up a <strong>mutual investment</strong>:
+          </p>
+          <ul>
+            <li>
+              If you use <strong>forcing (win–lose)</strong> and squeeze their fees too low,
+              they might cut corners or stop being responsive.
+            </li>
+            <li>
+              In a <strong>win–win</strong> negotiation, the vendor earns a fair profit and
+              is motivated to go the extra mile to help the project succeed.
+            </li>
+            <li>
+              You’re both “investing” in a relationship that should deliver long-term value,
+              not just a one-off transaction.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Situational Clues &amp; Good Responses</h3>
+          <div class="highlight-box">
+            <div class="highlight-title">
+              <span class="emoji">🔍</span>
+              <span>Look for...</span>
+            </div>
+            <ul>
+              <li>
+                &ldquo;Functional manager refuses to release key resource&rdquo; →
+                PM should <strong>negotiate priorities and timing</strong>, explaining project benefits.
+              </li>
+              <li>
+                &ldquo;Supplier is open to changing scope or price&rdquo; →
+                PM should <strong>negotiate a revised agreement</strong> that still protects
+                project objectives.
+              </li>
+              <li>
+                &ldquo;Customer keeps changing requirements in a fixed-price contract&rdquo; →
+                Discuss <strong>change control and possibly renegotiate</strong> scope, cost, or timeline.
+              </li>
+            </ul>
+          </div>
+          <div class="badge-grid" style="margin-top:8px;">
+            <span class="badge accent">Protect value</span>
+            <span class="badge">Preserve relationship</span>
+            <span class="badge">Stay fair &amp; transparent</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Win–win keeps everyone motivated to deliver quality.</span>
+        <span>Slide 10</span>
+      </div>
+    </section>
+
+    <!-- Slide 11 – Integrated Situational View -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🧩</span>
+          <span>Putting It All Together – People Domain in Action</span>
+        </div>
+        <div class="slide-tag">
+          <span>🎓 Exam Situations</span>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div>
+          <h2>One Scenario, Four Skills</h2>
+          <p>Imagine this project situation:</p>
+          <ul>
+            <li>
+              The team is under pressure; two members are arguing about the design.
+              The sponsor is worried about delays and feels out of the loop.
+            </li>
+          </ul>
+          <p style="margin-top:4px;">A strong PMI-style response might look like:</p>
+          <ol style="margin-left:1.1rem;margin-top:4px;">
+            <li><strong>Leadership:</strong> PM stays calm, acknowledges concerns, and re-focuses everyone on the project goal.</li>
+            <li><strong>Communication:</strong> Schedules an interactive meeting with key stakeholders and updates the communication plan for more frequent sponsor updates.</li>
+            <li><strong>Conflict Management:</strong> Facilitates a <strong>collaborative problem-solving session</strong> for the design dispute.</li>
+            <li><strong>Negotiation:</strong> Negotiates priorities and timelines with the sponsor or functional managers if capacity is constrained.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Quick Mental Checklist for the Exam</h3>
+          <div class="icon-column-list">
+            <div class="icon-row">
+              <div class="icon-badge">🏅</div>
+              <div>
+                <div class="icon-text-title">Leadership</div>
+                <div class="icon-text-body">
+                  Is the PM behaving like a servant / collaborative leader who influences and empowers,
+                  not just orders people around?
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">💬</div>
+              <div>
+                <div class="icon-text-title">Communication</div>
+                <div class="icon-text-body">
+                  Is there a chance to clarify, tailor messages, or improve the communications plan
+                  instead of assuming people “should know”?
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">⚔️</div>
+              <div>
+                <div class="icon-text-title">Conflict</div>
+                <div class="icon-text-body">
+                  Would a collaborative, win–win conflict resolution approach be better than avoidance or force?
+                </div>
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-badge">🤝</div>
+              <div>
+                <div class="icon-text-title">Negotiation</div>
+                <div class="icon-text-body">
+                  Is there space to negotiate a solution that protects both project objectives and relationships,
+                  before escalating?
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>For each question: &ldquo;Which interpersonal skill is PMI testing here?&rdquo;</span>
+        <span>Slide 11</span>
+      </div>
+    </section>
+
+    <!-- Slide 12 – Rapid Review -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="emoji">🔁</span>
+          <span>Rapid Review &amp; Key Takeaways</span>
+        </div>
+        <div class="slide-tag">
+          <span>🧠 Lock It In</span>
+        </div>
+      </div>
+      <div class="slide-body full-width">
+        <div class="icon-column-list">
+          <div class="icon-row">
+            <div class="icon-badge">🏅</div>
+            <div>
+              <div class="icon-text-title">Leadership</div>
+              <div class="icon-text-body">
+                PM is both manager and leader. Uses <strong>influence, EI, and servant leadership</strong>
+                to guide the team and stakeholders towards shared goals.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">💬</div>
+            <div>
+              <div class="icon-text-title">Communication Techniques</div>
+              <div class="icon-text-body">
+                Tailor communication flow, channel, and frequency to stakeholder needs.
+                Use the <strong>5 Cs</strong>, active listening, and manage complexity with a clear plan.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">⚔️</div>
+            <div>
+              <div class="icon-text-title">Conflict Management</div>
+              <div class="icon-text-body">
+                Conflict is inevitable and can be healthy. <strong>Collaborate/problem-solve</strong> when possible,
+                compromise when needed, and reserve forcing for urgent or safety-critical issues.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🤝</div>
+            <div>
+              <div class="icon-text-title">Negotiation</div>
+              <div class="icon-text-body">
+                Aim for <strong>win–win</strong> agreements that protect both project objectives
+                and relationships, whether dealing with internal managers or external vendors.
+              </div>
+            </div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-badge">🎓</div>
+            <div>
+              <div class="icon-text-title">People Domain (42%)</div>
+              <div class="icon-text-body">
+                Many PMP questions are really testing how you handle people. Focus on
+                <strong>influence, collaboration, clear communication, and ethical behaviour</strong>
+                to choose the best next step.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-strip">
+        <span>Next step: turn 3–5 of your real project situations into practice PMP-style questions.</span>
+        <span>Slide 12</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

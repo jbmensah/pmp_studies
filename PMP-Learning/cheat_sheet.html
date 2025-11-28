@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet – Business Case & Needs Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Simple, clean, slide-style layout -->
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.18);
+      --accent-2: #a855f7;
+      --accent-3: #22c55e;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --danger: #f97373;
+      --warning: #fbbf24;
+      --info: #3b82f6;
+      --shadow-soft: 0 20px 40px rgba(0,0,0,0.35);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --transition-fast: 0.2s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px 12px 48px;
+    }
+
+    .deck {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* “Slide-like” sections */
+    .slide {
+      background: rgba(15,23,42,0.92);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(148,163,184,0.12);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+    }
+
+    .slide-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .slide-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text-muted);
+      background: rgba(15,23,42,0.85);
+    }
+
+    .pill.exam {
+      border-color: rgba(248,250,252,0.5);
+      color: #fbbf24;
+    }
+
+    .slide-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: -4px;
+    }
+
+    h2, h3, h4 {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Hero / overview */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 18px;
+    }
+
+    .hero-main {
+      background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(168,85,247,0.12));
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-main h1 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .kpi-chip {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    .hero-cheat {
+      background: rgba(15,23,42,0.9);
+      border-radius: var(--radius-lg);
+      padding: 14px 12px;
+      border: 1px dashed rgba(148,163,184,0.4);
+      font-size: 0.85rem;
+    }
+
+    .hero-cheat ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .hero-cheat li {
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Process flow “infographic” */
+    .flow-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.85rem;
+    }
+
+    .flow-step {
+      flex: 1 1 120px;
+      background: rgba(15,23,42,0.9);
+      border-radius: 999px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(148,163,184,0.35);
+      white-space: nowrap;
+      justify-content: center;
+    }
+
+    .flow-arrow {
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    /* Two-column layouts */
+    .cols-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(17,24,39,0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 12px;
+      font-size: 0.9rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-muted);
+    }
+
+    .badge.agile { border-color: var(--accent-2); color: var(--accent-2); }
+    .badge.predictive { border-color: var(--accent); color: var(--accent); }
+
+    ul {
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+
+    li {
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Option categories */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .option-card {
+      border-radius: var(--radius-md);
+      padding: 10px 10px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), rgba(15,23,42,0.95));
+      font-size: 0.85rem;
+    }
+
+    .option-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .option-label {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--text-muted);
+    }
+
+    .option-card p {
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+
+    /* Tiny exam tip blocks */
+    .exam-tip {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      background: rgba(15,23,42,0.9);
+      border: 1px dashed rgba(248,250,252,0.25);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .exam-tip span.icon {
+      font-size: 1rem;
+      margin-top: 2px;
+    }
+
+    /* Agile strip */
+    .agile-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .mini-tag {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-muted);
+    }
+
+    /* Key takeaways */
+    .takeaways-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .takeaway {
+      padding: 10px 10px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(34,197,94,0.24), rgba(15,23,42,1));
+      border: 1px solid rgba(34,197,94,0.35);
+      font-size: 0.86rem;
+    }
+
+    .takeaway h4 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Quick “formula” bar */
+    .formula-bar {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.95);
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .formula-key {
+      font-weight: 600;
+      color: var(--accent-3);
+    }
+
+    .formula-bar .arrow {
+      color: var(--accent);
+      margin: 0 4px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .cols-2,
+      .agile-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .flow-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <!-- Slide 1: Overview -->
+    <section class="slide">
+      <div class="slide-header">
+        <div>
+          <div class="slide-title">
+            📊 Business Case & Needs Assessment – PMP Cheat Sheet
+          </div>
+          <p class="slide-subtitle">
+            From idea ➜ justification ➜ green light. Use this as a quick reference for exams and real projects.
+          </p>
+        </div>
+        <div class="pill exam">PMP PEOPLE / PROCESS / BUSINESS ENVIRONMENT</div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="hero-tag">Big Picture</div>
+          <h1>💼 What is a Business Case?</h1>
+          <p>
+            A <strong>business case</strong> is a <em>feasibility study</em> that answers:<br>
+            <strong>“Is this project worth our time, cost, and effort?”</strong>
+          </p>
+          <div class="kpi-strip">
+            <span class="kpi-chip">✅ Worth it? (Benefits &gt; Costs)</span>
+            <span class="kpi-chip">🕒 Time &amp; effort justified</span>
+            <span class="kpi-chip">🚦 Go / No-Go decision</span>
+            <span class="kpi-chip">🎯 Aligned with strategy</span>
+          </div>
+        </div>
+
+        <div class="hero-cheat">
+          <strong>Exam Lens 👀 – Think “Best Next Step”</strong>
+          <ul>
+            <li>Business case is used to <strong>approve or reject</strong> projects.</li>
+            <li>It is prepared <strong>before the Project Charter</strong>.</li>
+            <li>It proves the project will <strong>deliver value</strong>, not just output.</li>
+          </ul>
+          <div class="formula-bar">
+            <span class="formula-key">Feasibility</span>
+            <span class="arrow">=</span>
+            <span>Benefits (tangible + intangible)</span>
+            <span class="arrow">−</span>
+            <span>Costs, Risks, Time</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <div class="muted">
+          ✏️ Think of the business case as the “why” behind the project. The Project Charter is the “what” and “who”, and the Project Management Plan is the detailed “how”.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Flow – From Need to Plan -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">🧭 From Need ➜ Business Case ➜ Charter ➜ Plan</div>
+        <div class="pill">Lifecycle View</div>
+      </div>
+
+      <p>
+        The journey starts with recognizing a <strong>need or opportunity</strong> and ends with a managed project delivering value.
+      </p>
+
+      <div class="flow-row">
+        <div class="flow-step">🔍 Needs Assessment</div>
+        <div class="flow-arrow">➜</div>
+        <div class="flow-step">📊 Business Case</div>
+        <div class="flow-arrow">➜</div>
+        <div class="flow-step">📜 Project Charter</div>
+        <div class="flow-arrow">➜</div>
+        <div class="flow-step">🗂️ Project Management Plan</div>
+      </div>
+
+      <div class="cols-2" style="margin-top:16px;">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🔍 Needs Assessment</div>
+          </div>
+          <ul>
+            <li>Identifies the <strong>problem or opportunity</strong>.</li>
+            <li>May come from <strong>benchmarking, strategy shifts, or tech changes</strong>.</li>
+            <li>Shows <strong>organizational goals &amp; objectives</strong> and proposes project ideas.</li>
+            <li>Explains the <strong>trigger</strong> for the project (“why now?”).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📊 Business Case</div>
+          </div>
+          <ul>
+            <li>Uses the needs assessment as an <strong>input</strong>.</li>
+            <li>Weighs <strong>cost vs benefit vs risk</strong>.</li>
+            <li>Feeds into the <strong>Project Charter</strong>.</li>
+            <li>Leads to a <strong>go / no-go decision</strong> by the sponsor.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exam-tip">
+        <span class="icon">💡</span>
+        <div>
+          <strong>Exam tip:</strong> If a question asks what to review to confirm <em>why</em> a project was selected or <em>whether it is still worth continuing</em>,
+          the best answer is usually <strong>“review the business case”</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Contents of a Business Case -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">📚 Core Contents of a Business Case</div>
+        <div class="pill">Structure &amp; Analysis</div>
+      </div>
+
+      <div class="cols-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">1️⃣ Business Need &amp; Stakeholders</div>
+          </div>
+          <ul>
+            <li>What has <strong>prompted action</strong>?
+              <ul>
+                <li>New competitor ⚔️</li>
+                <li>Technology change 💻</li>
+                <li>Regulatory change 📜</li>
+              </ul>
+            </li>
+            <li>Problem or opportunity clearly stated.</li>
+            <li>Which areas are affected?
+              <ul>
+                <li>Single department</li>
+                <li>Product line</li>
+                <li>Entire organization</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">2️⃣ Goals &amp; Strategic Alignment 🎯</div>
+          </div>
+          <ul>
+            <li>Links the project to <strong>organizational goals &amp; strategy</strong>.</li>
+            <li>Shows how the project supports:
+              <ul>
+                <li>Revenue growth 💹</li>
+                <li>Cost reduction 💰</li>
+                <li>Customer experience improvement 😊</li>
+              </ul>
+            </li>
+            <li>Helps justify <strong>priority</strong> vs other initiatives.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cols-2" style="margin-top:12px;">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">3️⃣ Current Situation &amp; Gap Analysis</div>
+          </div>
+          <ul>
+            <li>Describe <strong>where we are now</strong>.</li>
+            <li>Identify <strong>root causes</strong>:
+              <ul>
+                <li>Why is this happening?</li>
+                <li>What are the main contributors?</li>
+              </ul>
+            </li>
+            <li>Gap analysis:
+              <ul>
+                <li><em>Current state</em> vs <em>target state</em>.</li>
+                <li>Quantify the gap if possible (KPIs).</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">4️⃣ Risks, Assumptions &amp; Milestones</div>
+          </div>
+          <ul>
+            <li><strong>Known risks</strong> at this early stage (will evolve later).</li>
+            <li><strong>Assumptions</strong> due to incomplete info:
+              <ul>
+                <li>Market growth rates 📈</li>
+                <li>Vendor availability 🤝</li>
+              </ul>
+            </li>
+            <li><strong>High-level milestones</strong>:
+              <ul>
+                <li>Launch by date X to beat competition ⏱️</li>
+                <li>Compliance deadline, etc.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exam-tip">
+        <span class="icon">📝</span>
+        <div>
+          For exam questions, if they mention <strong>root cause</strong> or <strong>gap analysis</strong>, think of this as part of the
+          <strong>analysis section of the business case</strong>, not detailed project planning.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Options & Recommendations -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">⚖️ Solution Options & Recommendations</div>
+        <div class="pill">Prioritization &amp; Decision</div>
+      </div>
+
+      <p>
+        Once the problem and context are understood, the business case explores <strong>solution options</strong> and recommends what to do.
+      </p>
+
+      <div class="option-grid">
+        <div class="option-card">
+          <h4>✅ Required <span class="option-label">Must-have</span></h4>
+          <p>Essential items needed to address the core problem.</p>
+          <ul>
+            <li>Without these, the project <strong>cannot</strong> meet its objective.</li>
+            <li>Usually tied directly to compliance, core service, or critical value.</li>
+          </ul>
+        </div>
+
+        <div class="option-card">
+          <h4>⭐ Desired <span class="option-label">Nice-to-have</span></h4>
+          <p>Important but not mandatory items.</p>
+          <ul>
+            <li>Improve user experience, performance, or efficiency.</li>
+            <li>Can be included if budget/time allow.</li>
+          </ul>
+        </div>
+
+        <div class="option-card">
+          <h4>✨ Optional <span class="option-label">Bonus</span></h4>
+          <p>Small extra benefits or enhancements.</p>
+          <ul>
+            <li>Lowest priority, easiest to drop if constrained.</li>
+            <li>Useful for incremental improvements later.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exam-tip">
+        <span class="icon">🎯</span>
+        <div>
+          <strong>Exam angle:</strong> Required / Desired / Optional is an easy prioritization model you may see in
+          scenario questions where you must decide what to include first under constraints.
+        </div>
+      </div>
+
+      <div class="cols-2" style="margin-top:16px;">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📌 Typical Options Considered</div>
+          </div>
+          <ul>
+            <li><strong>Do nothing</strong> (business as usual):
+              <ul>
+                <li>Document impact (e.g., lost market share, penalties).</li>
+              </ul>
+            </li>
+            <li><strong>Do the minimum</strong>:
+              <ul>
+                <li>Implement only required items to reduce risk/cost.</li>
+              </ul>
+            </li>
+            <li><strong>Do more than minimum</strong>:
+              <ul>
+                <li>Include desired/optional items for extra benefit.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">✅ Final Recommendation</div>
+          </div>
+          <ul>
+            <li>Summarizes which option is preferred and <strong>why</strong>.</li>
+            <li>Shows expected <strong>financial impact</strong>:
+              <ul>
+                <li>Gains (revenue, savings, share)</li>
+                <li>Losses/risks if not done</li>
+              </ul>
+            </li>
+            <li><strong>Sponsor/funder</strong> uses this to approve or reject the project.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Business Case in Agile -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">🚀 Business Case in Agile Environments</div>
+        <div class="pill agile">Agile &amp; Hybrid View</div>
+      </div>
+
+      <div class="agile-strip">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              🧩 Feature-Based Value Delivery
+            </div>
+            <span class="badge agile">Product Owner Focus</span>
+          </div>
+          <p>
+            In agile, the business case still matters, but it is often applied at the
+            <strong>feature or release level</strong>, not just to a one-time big project.
+          </p>
+          <ul>
+            <li>Backlog items/features are ordered by <strong>customer value</strong>.</li>
+            <li>Each feature can have a <strong>mini business case</strong>:
+              <ul>
+                <li>Expected benefit</li>
+                <li>Estimated effort/cost</li>
+              </ul>
+            </li>
+            <li>High-value, low-cost items are implemented <strong>first</strong>.</li>
+            <li>Value is delivered <strong>incrementally</strong>, early and often.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🔁 Continuous Re-Justification</div>
+          </div>
+          <ul>
+            <li>As the product evolves, the team and PO revisit:
+              <ul>
+                <li>Is this still worth doing?</li>
+                <li>Should we pivot or stop?</li>
+              </ul>
+            </li>
+            <li>The <strong>business case thinking</strong> is continuous, not one-off.</li>
+            <li>Helps avoid sunk-cost fallacy in long-running initiatives.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tag-row">
+        <span class="mini-tag">📌 Agile ≠ “No Business Case”</span>
+        <span class="mini-tag">🎯 Always maximize value per sprint/release</span>
+        <span class="mini-tag">📈 Prioritization = Cost vs Benefit vs Risk</span>
+      </div>
+
+      <div class="exam-tip">
+        <span class="icon">🧠</span>
+        <div>
+          If a scenario shows an agile project and asks how to ensure the team delivers the <strong>highest value first</strong>,
+          the best answer often involves the product owner using business case logic to <strong>prioritize the backlog by value</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Key Takeaways -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="slide-title">✅ Key Takeaways – Quick Revision</div>
+        <div class="pill">Last-Minute Review</div>
+      </div>
+
+      <div class="takeaways-grid">
+        <div class="takeaway">
+          <h4>1. Business Case = Feasibility Study 📊</h4>
+          <p>
+            It checks if the project is <strong>worth the investment</strong> in time, cost, and risk, and
+            leads to a <strong>go / no-go decision</strong>.
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h4>2. Needs Assessment Comes First 🔍</h4>
+          <p>
+            It identifies the <strong>problem or opportunity</strong>, the trigger for change, and links the
+            project idea to <strong>organizational goals</strong>.
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h4>3. Contents Are Analytical, Not Just Narrative 🧠</h4>
+          <p>
+            Includes <strong>business need, goals, current situation, root cause, gap analysis, risks, options,
+            assumptions, milestones</strong>.
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h4>4. Options &amp; Priorities Matter ⚖️</h4>
+          <p>
+            Use <strong>Required / Desired / Optional</strong> to structure options. Evaluate “do nothing,”
+            “do minimum,” or “do more” and recommend one.
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h4>5. Agile Still Uses Business Case Thinking 🚀</h4>
+          <p>
+            In agile, value justification is done at the <strong>feature/backlog</strong> level. The product
+            owner prioritizes based on <strong>cost vs benefit</strong>.
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h4>6. Exam Mindset 📝</h4>
+          <p>
+            When in doubt, ask: <br>
+            <strong>“Which action best protects value and aligns with the business case?”</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="formula-bar">
+        <span class="formula-key">For PMP answers</span>
+        <span class="arrow">→</span>
+        <span>Think like a PM who knows the <strong>business case</strong>, protects <strong>value</strong>, and
+          links actions back to <strong>strategy</strong>.</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

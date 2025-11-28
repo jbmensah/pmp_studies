@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Schedule Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 { font-weight: 700; }
+    h4 { font-weight: 600; }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">⏱️ Schedule Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          PMP-focused cheat sheet covering rolling wave planning, leads & lags, PDM, estimating methods,
+          resource optimization, critical path, and schedule compression.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Schedule
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Technique</span>
+          <span>🧰 Tool</span>
+          <span>🧭 Exam Hint</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#overview" class="btn btn-outline-dark btn-sm nav-chip">1. Overview</a>
+        <a href="#rolling-wave" class="btn btn-outline-secondary btn-sm nav-chip">2. Rolling Wave</a>
+        <a href="#leads-lags" class="btn btn-outline-secondary btn-sm nav-chip">3. Leads & Lags</a>
+        <a href="#pdm" class="btn btn-outline-secondary btn-sm nav-chip">4. PDM</a>
+        <a href="#estimating" class="btn btn-outline-secondary btn-sm nav-chip">5. Estimating</a>
+        <a href="#pert" class="btn btn-outline-secondary btn-sm nav-chip">6. PERT</a>
+        <a href="#resources" class="btn btn-outline-secondary btn-sm nav-chip">7. Resource Optimization</a>
+        <a href="#critical-path" class="btn btn-outline-secondary btn-sm nav-chip">8. Critical Path</a>
+        <a href="#compression" class="btn btn-outline-secondary btn-sm nav-chip">9. Compression</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. OVERVIEW -->
+  <section id="overview" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>1. Schedule Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      This knowledge area focuses on <strong>planning, estimating, sequencing, optimizing, and controlling</strong> the project schedule.  
+      You’ll encounter core techniques such as rolling wave planning, leads/lags, PDM, three-point estimating, parametric estimating,
+      resource optimization, critical path analysis, fast tracking, and crashing.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>What You’ll Use Often</h5>
+          <ul class="mb-0">
+            <li>Rolling wave planning</li>
+            <li>Leads and lags</li>
+            <li>Network diagrams & dependencies</li>
+            <li>Estimating: parametric, analogous, bottom-up</li>
+            <li>Three-point and PERT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Schedule Control</h5>
+          <ul class="mb-0">
+            <li>Resource leveling</li>
+            <li>Resource smoothing</li>
+            <li>Float analysis</li>
+            <li>Critical path method</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Accelerating Work</h5>
+          <ul class="mb-0">
+            <li>Fast tracking</li>
+            <li>Crashing</li>
+            <li>Schedule compression trade-offs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Schedule management is about building a realistic timeline and protecting it using dependencies, estimating, float, resources, and compression techniques.
+    </div>
+  </section>
+
+  <!-- 2. ROLLING WAVE PLANNING -->
+  <section id="rolling-wave" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>2. Rolling Wave Planning</h2>
+      <span class="tag-pill bg-info text-white">📊 Iterative Planning</span>
+    </div>
+
+    <p>
+      Rolling wave planning is an <strong>iterative, progressive detailing</strong> technique.  
+      Work far in the future is planned at a high level; work near-term is planned in detail.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It Works</h5>
+          <ul class="mb-0">
+            <li>High-level planning for distant work.</li>
+            <li>Detailed planning when work is near execution.</li>
+            <li>Revisited regularly — plans “roll forward.”</li>
+            <li>Reduces waste vs planning everything upfront.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Why It’s Useful</h5>
+          <ul class="mb-0">
+            <li>Supports uncertainty and evolving requirements.</li>
+            <li>Strong fit with Agile – detailed sprint-level planning.</li>
+            <li>Works with decomposition (WBS → work packages).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question says “plan in detail only for near-term work,” the answer is always <strong>Rolling Wave Planning</strong>.
+    </div>
+  </section>
+
+  <!-- 3. LEADS & LAGS -->
+  <section id="leads-lags" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>3. Leads & Lags</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Schedule Adjustment</span>
+    </div>
+
+    <p>Leads and lags adjust the timing between activities to optimise the schedule.</p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Lead (Start Earlier)</h5>
+          <ul class="mb-0">
+            <li>Brings the next activity forward.</li>
+            <li>Example: Start editing photos before shooting is finished.</li>
+            <li>Reduces total project duration.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Lag (Delay Start)</h5>
+          <ul class="mb-0">
+            <li>Introduces a waiting period.</li>
+            <li>Example: Wait 5 days for concrete to cure before framing.</li>
+            <li>Represents necessary delay.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Remember:</strong> Leads shorten the schedule. Lags extend it (when needed).
+    </div>
+  </section>
+
+  <!-- 4. PRECEDENCE DIAGRAMMING METHOD -->
+  <section id="pdm" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>4. Precedence Diagramming Method (PDM)</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Dependencies</span>
+    </div>
+
+    <p>
+      PDM is used to sequence activities and show logical relationships between them.
+      It is central to building the network diagram and identifying the critical path.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Four Relationship Types</h5>
+          <ul class="mb-0">
+            <li><strong>Finish to Start (FS):</strong> Most common — Task B starts after A finishes.</li>
+            <li><strong>Start to Start (SS):</strong> B starts after A starts.</li>
+            <li><strong>Finish to Finish (FF):</strong> B finishes after A finishes.</li>
+            <li><strong>Start to Finish (SF):</strong> B finishes after A starts (least common).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Examples</h5>
+          <ul class="mb-0">
+            <li>FS: Build PC → Install software.</li>
+            <li>SS: Start pouring concrete → Start leveling.</li>
+            <li>FF: Finish writing → Finish editing.</li>
+            <li>SF: Start new AP system → Shutdown old system.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> FS is by far the most common and default dependency.
+    </div>
+  </section>
+
+  <!-- 5. ESTIMATING TECHNIQUES -->
+  <section id="estimating" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>5. Estimating Techniques</h2>
+      <span class="tag-pill bg-info text-white">📊 Duration Estimation</span>
+    </div>
+
+    <p>Four core duration estimating methods you must know well.</p>
+
+    <div class="row g-3 small">
+      <div class="col-md-3">
+        <div class="mini-card">
+          <h5>Parametric</h5>
+          <ul class="mb-0">
+            <li>Uses measurable unit rate.</li>
+            <li>Example: GHS 55 per sq ft, 8 hours per risk assessment.</li>
+            <li>Good accuracy when data is strong.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="mini-card">
+          <h5>Analogous</h5>
+          <ul class="mb-0">
+            <li>Based on similar past project.</li>
+            <li>Fast and cheap.</li>
+            <li>Low accuracy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="mini-card">
+          <h5>Bottom-Up</h5>
+          <ul class="mb-0">
+            <li>Estimate work packages individually.</li>
+            <li>Sum them to form total estimate.</li>
+            <li>Most accurate, most time-consuming.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="mini-card">
+          <h5>Three-Point</h5>
+          <ul class="mb-0">
+            <li>Optimistic, Most Likely, Pessimistic.</li>
+            <li>Simple average of the three.</li>
+            <li>Helps when uncertainty exists.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PERT ESTIMATING -->
+  <section id="pert" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>6. Beta / PERT Estimating</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Weighted Estimation</span>
+    </div>
+
+    <p>
+      PERT is a variant of three-point estimating that <strong>weights the most likely estimate four times</strong>.
+    </p>
+
+    <h5 class="mt-3">Formula</h5>
+    <p class="small mb-0">
+      <strong>(Optimistic + 4 × Most Likely + Pessimistic) ÷ 6</strong>
+    </p>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> If the question mentions a “weighted average” or “PERT,”  
+      they want the 6-point weighted formula.
+    </div>
+  </section>
+
+  <!-- 7. RESOURCE LEVELING vs RESOURCE SMOOTHING -->
+  <section id="resources" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>7. Resource Leveling vs Resource Smoothing</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Resource Optimization</span>
+    </div>
+
+    <p>
+      Resource optimization fixes overloaded resources or schedule risks by adjusting activity timing.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Resource Leveling</h5>
+          <ul class="mb-0">
+            <li>Adjusts schedule based on resource limits.</li>
+            <li>Fixes over-allocation.</li>
+            <li>May extend the project end date.</li>
+            <li>Example: Sue cannot do two tasks at once → move tasks to new days.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Resource Smoothing</h5>
+          <ul class="mb-0">
+            <li>Delays activities <strong>only within float</strong>.</li>
+            <li>Does NOT change project end date.</li>
+            <li>Uses free and total float.</li>
+            <li>Activities without float cannot be smoothed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Key difference:</strong> Leveling may delay the project. Smoothing cannot delay the project.
+    </div>
+  </section>
+
+  <!-- 8. CRITICAL PATH METHOD -->
+  <section id="critical-path" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>8. Critical Path Method</h2>
+      <span class="tag-pill bg-dark text-white">📊 Scheduling Core</span>
+    </div>
+
+    <p>
+      The critical path is the <strong>longest sequence of activities with zero float</strong> and determines the shortest possible overall project duration.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-12">
+        <div class="mini-card">
+          <h5>How It Works</h5>
+          <ul class="mb-0">
+            <li>Use PDM to define activity dependencies.</li>
+            <li>Perform a <strong>forward pass</strong> → calculate early start/finish.</li>
+            <li>Perform a <strong>backward pass</strong> → calculate late start/finish.</li>
+            <li>Float = Late Start − Early Start.</li>
+            <li>Critical path = activities with <strong>zero float</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Memory tip:</strong> Longest path = shortest schedule. Critical path has zero float.
+    </div>
+  </section>
+
+  <!-- 9. SCHEDULE COMPRESSION -->
+  <section id="compression" class="slide">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>9. Schedule Compression Techniques</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Acceleration</span>
+    </div>
+
+    <p>Compression reduces schedule duration <strong>without changing project scope</strong>.</p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Crashing</h5>
+          <ul class="mb-0">
+            <li>Add resources or money.</li>
+            <li>Often increases cost significantly.</li>
+            <li>Used only on tasks on the critical path.</li>
+            <li>Can increase risk (overtime, fatigue, errors).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Fast Tracking</h5>
+          <ul class="mb-0">
+            <li>Overlap sequential tasks.</li>
+            <li>Uses the same resources — no added cost.</li>
+            <li>Works only when activities can be parallelised.</li>
+            <li>Often increases risk (rework, errors).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key rule:</strong> Crash = add resources.  
+      Fast-track = overlap tasks.  
+      Both apply only to activities on the critical path.
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Schedule Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Core Techniques</h5>
+          <ul class="mb-0">
+            <li>Rolling wave planning → detail near-term, high-level long-term.</li>
+            <li>PDM dependencies → FS, SS, FF, SF.</li>
+            <li>Estimating → parametric, analogous, bottom-up, 3-point.</li>
+            <li>PERT → weighted average.</li>
+            <li>Critical path → zero float path.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Schedule Control & Acceleration</h5>
+          <ul class="mb-0">
+            <li>Resource leveling → may change end date.</li>
+            <li>Resource smoothing → must stay within float.</li>
+            <li>Fast tracking → overlap (risk ↑).</li>
+            <li>Crashing → add resources (cost ↑).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Schedule management is about estimating, sequencing, analysing float,
+      and accelerating work while protecting scope and quality.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

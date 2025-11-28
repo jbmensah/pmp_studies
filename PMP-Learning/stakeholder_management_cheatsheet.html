@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Stakeholder Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">👥 Stakeholder Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          Focused PMP cheat sheet on <strong>Stakeholder Management</strong> — from identifying stakeholders to mapping, engagement, and interpersonal skills.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: People • Knowledge Area: Stakeholder
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Tool / Artifact</span>
+          <span>🧭 Exam Hint</span>
+          <span>🤝 Soft Skills</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#stakeholder-overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-people"></i> 1. Overview</a>
+        <a href="#obs" class="btn btn-outline-secondary btn-sm nav-chip">2. OBS</a>
+        <a href="#stakeholder-mapping" class="btn btn-outline-secondary btn-sm nav-chip">3. Stakeholder Mapping</a>
+        <a href="#stakeholder-register" class="btn btn-outline-secondary btn-sm nav-chip">4. Stakeholder Register</a>
+        <a href="#engagement-matrix" class="btn btn-outline-secondary btn-sm nav-chip">5. Engagement Matrix</a>
+        <a href="#interpersonal-skills" class="btn btn-outline-secondary btn-sm nav-chip">6. Interpersonal Skills</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. STAKEHOLDER MANAGEMENT KEY CONCEPTS -->
+  <section id="stakeholder-overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Stakeholder Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      Stakeholders are individuals, groups, or organizations that can <strong>affect or be affected by the project</strong>.
+      They can <strong>make or break</strong> your project, so identifying, analyzing, and engaging them is critical.
+    </p>
+
+    <div class="row g-3 small mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Why Stakeholders Matter</h5>
+          <ul class="mb-0">
+            <li>Control or influence <strong>funding, resources, approvals</strong>.</li>
+            <li>Can <strong>support</strong> or <strong>resist</strong> your project.</li>
+            <li>Determine whether the project is considered a <strong>success</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Key Activities</h5>
+          <ul class="mb-0">
+            <li>Identify stakeholders (who are they?).</li>
+            <li>Analyze & categorize them (impact, influence, interest).</li>
+            <li>Plan how to engage them.</li>
+            <li>Monitor and adapt engagement over time.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Core Tools</h5>
+          <ul class="mb-0">
+            <li>📦 Organizational Breakdown Structure (OBS).</li>
+            <li>📊 Stakeholder mapping (impact / influence / salience).</li>
+            <li>📋 Stakeholder Register.</li>
+            <li>🧮 Stakeholder Engagement Assessment Matrix.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Stakeholder work is not “one-off” at the start — it is a
+      <strong>continuous process</strong> throughout the project.
+    </div>
+  </section>
+
+  <!-- 2. ORGANIZATIONAL BREAKDOWN STRUCTURE (OBS) -->
+  <section id="obs" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. Organizational Breakdown Structure (OBS)</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Finding Stakeholders</span>
+    </div>
+
+    <p>
+      The <strong>Organizational Breakdown Structure (OBS)</strong> depicts an organization’s existing
+      <strong>departments, units, and teams</strong>. It looks like an org chart and is a powerful tool for
+      <strong>discovering stakeholders</strong>.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>What the OBS Shows</h5>
+          <ul class="mb-0">
+            <li>Executive managers and leadership.</li>
+            <li>Middle managers / team leaders.</li>
+            <li>Operational teams and staff.</li>
+            <li>Which departments use or are impacted by the project’s product.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How We Use It</h5>
+          <ul class="mb-0">
+            <li>Identify stakeholders who:
+              <ul>
+                <li>Use the product or process.</li>
+                <li>Provide resources or funding.</li>
+                <li>Offer vital information or expertise.</li>
+              </ul>
+            </li>
+            <li>Understand <strong>where stakeholders sit in the hierarchy</strong>.</li>
+            <li>Highlight early which areas are most impacted by the project.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When you see “find who is impacted” or “identify stakeholders,” the OBS (or org chart)
+      is a strong early tool to mention.
+    </div>
+  </section>
+
+  <!-- 3. STAKEHOLDER MAPPING -->
+  <section id="stakeholder-mapping" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Stakeholder Mapping</h2>
+      <span class="tag-pill bg-info text-white">📊 Prioritizing Stakeholders</span>
+    </div>
+
+    <p>
+      Stakeholder mapping categorizes stakeholders so we can <strong>prioritize engagement and communication</strong>.
+      We look at dimensions like <strong>impact, influence, power, interest, urgency, and legitimacy</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Impact vs Influence Grid</h5>
+          <p class="mb-1">A very practical and commonly used map:</p>
+          <ul class="mb-0">
+            <li><strong>Impact:</strong> How much the project affects the stakeholder.</li>
+            <li><strong>Influence:</strong> How much the stakeholder can affect the project (e.g., approve, delay, cancel).</li>
+            <li>We rank each stakeholder 1–10 for impact and influence, then plot them.</li>
+            <li>
+              Stakeholders who are <strong>high-impact and high-influence</strong> are the most critical:
+              they need frequent communication and active engagement.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Other Mapping Approaches</h5>
+          <ul class="mb-1">
+            <li><strong>Power–Interest</strong> or <strong>Power–Influence</strong> grids:
+              <ul>
+                <li>High power, high interest → manage closely.</li>
+                <li>High power, low interest → keep satisfied.</li>
+                <li>Low power, high interest → keep informed.</li>
+                <li>Low power, low interest → monitor only.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h6 class="mt-2 mb-1">Salience Model (Power, Urgency, Legitimacy)</h6>
+          <ul class="mb-0">
+            <li><strong>Power:</strong> Authority to influence the project.</li>
+            <li><strong>Urgency:</strong> Need for immediate attention.</li>
+            <li><strong>Legitimacy:</strong> Appropriateness of their involvement.</li>
+            <li>Stakeholders with all three are <strong>definitive</strong> and must be actively managed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">Directions of Influence</h5>
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <ul class="mb-0">
+            <li><strong>Upward:</strong> Sponsors, senior management, steering committee.</li>
+            <li><strong>Sideways:</strong> Peers of the PM – functional managers, middle managers.</li>
+            <li><strong>Downward:</strong> Project team and specialist contributors.</li>
+            <li><strong>Outward:</strong> Suppliers, end users, regulators, government, public.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-card">
+          <p class="mb-0"><strong>Why this matters:</strong> Engagement style and communication strategy may differ depending on direction of influence (e.g., how you speak to sponsors vs. technical team vs. regulators).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. STAKEHOLDER REGISTER -->
+  <section id="stakeholder-register" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. Stakeholder Register</h2>
+      <span class="tag-pill bg-secondary text-white">📋 Core Artifact</span>
+    </div>
+
+    <p>
+      The <strong>Stakeholder Register</strong> is the documented list of stakeholders and key information about them.
+      It is a <strong>living document</strong> that evolves as new stakeholders are identified and others change.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Identification Information</h5>
+          <ul class="mb-0">
+            <li>Name and organizational position.</li>
+            <li>Role in the project (sponsor, SME, user, developer, etc.).</li>
+            <li>Contact details.</li>
+            <li>Direction of influence (upward, sideways, downward, outward).</li>
+            <li>Internal vs external stakeholder.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Assessment & Classification</h5>
+          <ul class="mb-0">
+            <li>Major requirements or expectations.</li>
+            <li>Stages where they are most needed (initiation, discovery, testing, etc.).</li>
+            <li>Impact, influence, interest ratings.</li>
+            <li>Engagement level (e.g., from the engagement matrix).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Output of <em>Identify Stakeholders</em> often includes the
+      <strong>Stakeholder Register</strong> plus initial classifications.
+    </div>
+  </section>
+
+  <!-- 5. STAKEHOLDER ENGAGEMENT MATRIX -->
+  <section id="engagement-matrix" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Stakeholder Engagement Assessment Matrix</h2>
+      <span class="tag-pill bg-info text-white">📊 Engagement Levels</span>
+    </div>
+
+    <p>
+      The <strong>Stakeholder Engagement Assessment Matrix</strong> compares each stakeholder’s
+      <strong>current</strong> vs <strong>desired</strong> level of engagement, helping you plan how to move them toward
+      the desired state.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Engagement Levels</h5>
+          <ul class="mb-0">
+            <li><strong>Unaware:</strong> Does not know about the project.</li>
+            <li><strong>Resistant:</strong> Opposes or obstructs the project.</li>
+            <li><strong>Neutral:</strong> No strong opinion; not for or against.</li>
+            <li><strong>Supportive:</strong> Supports the project and outcomes.</li>
+            <li><strong>Leading:</strong> Actively champions and drives the project.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It’s Used</h5>
+          <ul class="mb-1">
+            <li>For each stakeholder, record:
+              <ul>
+                <li><strong>Current</strong> engagement level.</li>
+                <li><strong>Desired</strong> engagement level.</li>
+              </ul>
+            </li>
+            <li>Identify gaps — e.g., Current: Resistant → Desired: Supportive.</li>
+            <li>Design targeted actions:
+              <ul>
+                <li>More frequent communication.</li>
+                <li>Workshops, demos, pilots.</li>
+                <li>Relationship-building and listening sessions.</li>
+              </ul>
+            </li>
+          </ul>
+          <p class="mb-0">
+            Example: “Billy” is currently <strong>Resistant</strong>, desired is <strong>Supportive</strong>.  
+            Plan: more involvement in decisions, better information, addressing his concerns.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> The matrix is not just a table; it is a planning tool to
+      <strong>change behaviour and attitudes</strong> through deliberate engagement.
+    </div>
+  </section>
+
+  <!-- 6. INTERPERSONAL AND TEAM SKILLS -->
+  <section id="interpersonal-skills" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Interpersonal and Team Skills</h2>
+      <span class="tag-pill bg-warning text-dark">🤝 Soft Skills Toolkit</span>
+    </div>
+
+    <p>
+      Stakeholder management is heavily dependent on <strong>interpersonal and team skills</strong>.
+      Project managers rarely have direct authority over everyone, so they must rely on influence, relationships, and communication.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Core Interaction Skills</h5>
+          <ul class="mb-0">
+            <li><strong>Conflict management:</strong> surface issues and resolve them constructively.</li>
+            <li><strong>Facilitation:</strong> guide workshops to decisions and consensus.</li>
+            <li><strong>Meeting management:</strong> clear agenda, right people, on time, action items.</li>
+            <li><strong>Active listening:</strong> reflect, clarify, confirm understanding.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Leadership & Influence</h5>
+          <ul class="mb-0">
+            <li><strong>Leadership:</strong> communicate vision, build trust, maintain optimism.</li>
+            <li><strong>Critical thinking:</strong> challenge assumptions, seek evidence.</li>
+            <li><strong>Influencing:</strong> persuade without authority, maintain trust.</li>
+            <li><strong>Motivation:</strong> encourage ownership, autonomy, and engagement.</li>
+            <li><strong>Team building:</strong> build collaboration and cohesion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Context & Awareness</h5>
+          <ul class="mb-0">
+            <li><strong>Networking:</strong> build informal support and information channels.</li>
+            <li><strong>Political awareness:</strong> understand power structures and gatekeepers.</li>
+            <li><strong>Cultural awareness:</strong> adapt style to different cultures and preferences.</li>
+            <li><strong>Emotional intelligence:</strong>
+              self-awareness, self-control, empathy, and social skills.</li>
+            <li><strong>Observation & conversation:</strong> go to where work happens (e.g., job shadowing).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">Communication Style & Negotiation</h5>
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Communication Styles Assessment</h5>
+          <ul class="mb-0">
+            <li>Ask stakeholders how they prefer to receive information (email, meetings, dashboards, summaries).</li>
+            <li>Adjust <strong>frequency, channel, and level of detail</strong> to match their style.</li>
+            <li>Use surveys, direct questions, or observation to learn preferences.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Negotiation</h5>
+          <ul class="mb-0">
+            <li>Used for resources, scope changes, priorities, timelines.</li>
+            <li>Involves trade-offs and concessions from both sides.</li>
+            <li>Know your <strong>BATNA</strong> (Best Alternative To a Negotiated Agreement).</li>
+            <li>Goal: reach a <strong>mutually beneficial</strong> agreement or, if not possible, fall back to BATNA.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Stakeholder Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Concept Flow</h5>
+          <ul class="mb-0">
+            <li>Use the <strong>OBS</strong> and other org info to <strong>identify stakeholders</strong>.</li>
+            <li>Map them using <strong>impact / influence / power / interest / salience</strong>.</li>
+            <li>Record details in the <strong>Stakeholder Register</strong>.</li>
+            <li>Assess their <strong>current vs desired engagement</strong> in the Engagement Matrix.</li>
+            <li>Plan and execute targeted strategies to move them to the desired level.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Soft Skills & Behaviour</h5>
+          <ul class="mb-0">
+            <li>Stakeholder issues are rarely solved by documents alone — they require <strong>interpersonal skills</strong>.</li>
+            <li>Conflict management, facilitation, and active listening appear frequently in situational questions.</li>
+            <li>Emotional intelligence, cultural and political awareness help maintain relationships.</li>
+            <li>Communication style adaptation and negotiation are key when interests conflict.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Stakeholder Management is about <strong>figuring out who matters, how they feel,
+      and what you must do so they stay engaged and supportive</strong> from start to finish.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

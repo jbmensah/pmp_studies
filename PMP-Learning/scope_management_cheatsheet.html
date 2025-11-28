@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PMP Cheat Sheet — Scope Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 12px 48px;
+    }
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .tag-pill {
+      border-radius: 999px;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+    }
+    .nav-chip {
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .badge-topic {
+      font-size: 0.75rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      height: 100%;
+      background: #fafbff;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, #f5f7fb 80%, rgba(245,247,251,0));
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+    .table-sm td, .table-sm th {
+      padding: .4rem .5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header class="slide mb-3">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h1 class="mb-2">📦 Scope Management — Key Concepts</h1>
+        <p class="text-muted mb-1">
+          PMP-focused cheat sheet for the <strong>Scope Management</strong> knowledge area: requirements traceability, brainstorming, voting, prototyping, prioritisation, decomposition, scope baseline, and scope vs quality control.
+        </p>
+        <span class="badge bg-dark badge-topic mt-2">
+          Domain: Process • Knowledge Area: Scope
+        </span>
+      </div>
+      <div class="border rounded-3 p-2 bg-light">
+        <div class="section-label mb-1">Legend</div>
+        <div class="d-flex flex-column gap-1 small">
+          <span>💡 Concept</span>
+          <span>📊 Tool / Artifact</span>
+          <span>🧰 Technique</span>
+          <span>🧭 Exam Hint</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <div class="sticky-nav">
+    <div class="slide py-3 mb-0">
+      <div class="section-label mb-2">Quick Navigation</div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#scope-overview" class="btn btn-outline-dark btn-sm nav-chip"><i class="bi bi-box"></i> 1. Scope Overview</a>
+        <a href="#rtm" class="btn btn-outline-secondary btn-sm nav-chip">2. Requirements Traceability Matrix</a>
+        <a href="#brainstorming" class="btn btn-outline-secondary btn-sm nav-chip">3. Brainstorming</a>
+        <a href="#voting" class="btn btn-outline-secondary btn-sm nav-chip">4. Voting & Nominal Group</a>
+        <a href="#prototyping" class="btn btn-outline-secondary btn-sm nav-chip">5. Prototyping</a>
+        <a href="#prioritisation" class="btn btn-outline-secondary btn-sm nav-chip">6. Prioritisation</a>
+        <a href="#decomposition" class="btn btn-outline-secondary btn-sm nav-chip">7. Decomposition</a>
+        <a href="#scope-baseline" class="btn btn-outline-secondary btn-sm nav-chip">8. Scope Baseline</a>
+        <a href="#validate-vs-quality" class="btn btn-outline-secondary btn-sm nav-chip">9. Validate Scope vs Quality</a>
+        <a href="#summary" class="btn btn-success btn-sm nav-chip"><i class="bi bi-stars"></i> Exam Summary</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. SCOPE MANAGEMENT KEY CONCEPTS -->
+  <section id="scope-overview" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>1. Scope Management — Key Concepts</h2>
+      <span class="tag-pill bg-dark text-white">💡 Big Picture</span>
+    </div>
+
+    <p>
+      Scope Management is about <strong>defining what is included in the project and ensuring only that work is done</strong>.
+      It uses tools like requirements planning, traceability, prototyping, and validation to keep the project focused and controlled.
+    </p>
+
+    <div class="row g-3 small mt-2">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>What Scope Covers</h5>
+          <ul class="mb-0">
+            <li>Requirements management plan.</li>
+            <li>Requirements traceability matrix (RTM).</li>
+            <li>Brainstorming & idea generation.</li>
+            <li>Voting and prioritisation techniques.</li>
+            <li>Prototyping (storyboards, wireframes, mockups).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Structures & Control</h5>
+          <ul class="mb-0">
+            <li>Decomposition (WBS, PBS, OBS).</li>
+            <li>Scope baseline (scope statement, WBS, WBS dictionary, work packages).</li>
+            <li>Validate Scope vs Control Quality vs Control Scope.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Why It Matters</h5>
+          <ul class="mb-0">
+            <li>Prevents <strong>scope creep</strong>.</li>
+            <li>Ensures deliverables match <strong>requirements</strong>.</li>
+            <li>Supports <strong>quality assurance</strong> and customer satisfaction.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Key takeaway:</strong> Scope management is about <strong>clarity + control</strong> —
+      knowing exactly what you’re delivering and keeping changes managed.
+    </div>
+  </section>
+
+  <!-- 2. REQUIREMENTS TRACEABILITY MATRIX (RTM) -->
+  <section id="rtm" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>2. Requirements Traceability Matrix (RTM)</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Link Requirements → Deliverables</span>
+    </div>
+
+    <p>
+      The <strong>Requirements Traceability Matrix</strong> links each requirement from its <strong>origin</strong>
+      (e.g., stakeholder request) through to <strong>design, development, testing, and final deliverable</strong>.
+    </p>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Purpose</h5>
+          <ul class="mb-0">
+            <li>Ensures every requirement:
+              <ul>
+                <li>Supports <strong>business needs and objectives</strong>.</li>
+                <li>Is represented in the <strong>scope and WBS</strong>.</li>
+                <li>Has associated <strong>test cases</strong> and acceptance criteria.</li>
+              </ul>
+            </li>
+            <li>Helps confirm that the <strong>right product</strong> is delivered.</li>
+            <li>Useful in <strong>predictive and agile</strong> environments.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Typical RTM Columns</h5>
+          <ul class="mb-0">
+            <li>Requirement ID (e.g., REQ-001).</li>
+            <li>Description / text of the requirement.</li>
+            <li>Business need / objective it supports.</li>
+            <li>Related scope / WBS element.</li>
+            <li>Design reference, development status.</li>
+            <li>Test cases / scenarios and status.</li>
+            <li>Rationale (why included) & requester/source.</li>
+            <li>Owner (who is responsible).</li>
+            <li>Priority (H/M/L, or must/should/could).</li>
+            <li>Current status (discovery, dev, testing, complete).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question is about <em>“ensuring each requirement is fulfilled and aligned with business objectives”</em>,
+      the answer often involves the <strong>Requirements Traceability Matrix</strong>.
+    </div>
+  </section>
+
+  <!-- 3. BRAINSTORMING -->
+  <section id="brainstorming" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>3. Brainstorming</h2>
+      <span class="tag-pill bg-info text-white">🧰 Idea Generation</span>
+    </div>
+
+    <p>
+      Brainstorming is a technique to <strong>generate a large number of ideas quickly</strong> — often used to collect
+      requirements or solution options.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>How It Works</h5>
+          <ul class="mb-0">
+            <li>Can be done individually or in groups (often workshops).</li>
+            <li>Participants share any ideas that come to mind.</li>
+            <li><strong>No criticism</strong> during idea generation — volume first.</li>
+            <li>All ideas are captured visibly (whiteboard, digital board, etc.).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Role of the Facilitator</h5>
+          <ul class="mb-0">
+            <li>Ensure everyone participates (no one dominates).</li>
+            <li>Keep the session focused on the topic.</li>
+            <li>Record ideas clearly.</li>
+            <li>Guide follow-up steps: grouping, prioritising, action items.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3">From Ideas to Structure</h5>
+    <p class="small mb-0">
+      After brainstorming, ideas are typically grouped using <strong>affinity analysis</strong> — clustering similar ideas together.
+      This helps prepare for prioritisation and selection.
+    </p>
+  </section>
+
+  <!-- 4. VOTING & NOMINAL GROUP TECHNIQUE -->
+  <section id="voting" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>4. Voting & Nominal Group Technique</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Decision & Prioritisation</span>
+    </div>
+
+    <p>
+      Voting is a basic decision-making method used when there are <strong>multiple options</strong> and
+      more than a few people involved.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Types of Voting Outcomes</h5>
+          <ul class="mb-0">
+            <li><strong>Unanimity:</strong> Everyone agrees.</li>
+            <li><strong>Majority:</strong> &gt; 50% support one option.</li>
+            <li><strong>Plurality:</strong> Largest group wins, even if &lt; 50%.</li>
+          </ul>
+
+          <h6 class="mt-3 mb-1">Agile: Fist of Five</h6>
+          <ul class="mb-0">
+            <li>Closed fist = 0 (no support); 1–5 fingers = level of support.</li>
+            <li>&lt; 3 fingers → person explains concern, team discusses.</li>
+            <li>Repeat until the group reaches a workable consensus (usually 4–5 fingers).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Nominal Group Technique (NGT)</h5>
+          <ul class="mb-0">
+            <li>Question posed → each member generates ideas <strong>silently</strong>.</li>
+            <li>Ideas collected by the facilitator (often anonymously).</li>
+            <li>Similar ideas grouped (affinity diagram).</li>
+            <li>Each idea explained to ensure common understanding.</li>
+            <li>Private voting (e.g., 1–5 scale) to prioritise ideas.</li>
+            <li>Votes tallied → highest scoring ideas selected.</li>
+          </ul>
+          <p class="mt-2 mb-0">
+            <strong>Benefit:</strong> anonymity reduces bias from dominant personalities or managers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> When the question mentions “anonymous prioritisation” or “reducing influence of a powerful stakeholder,”
+      think of the <strong>Nominal Group Technique</strong>.
+    </div>
+  </section>
+
+  <!-- 5. PROTOTYPING -->
+  <section id="prototyping" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>5. Prototyping</h2>
+      <span class="tag-pill bg-info text-white">📊 Early Feedback</span>
+    </div>
+
+    <p>
+      Prototyping means providing a <strong>model of the expected product</strong> before committing full time and budget.
+      It’s a way to get <strongearly feedback on requirements</strong> at low cost.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Types of Prototypes</h5>
+          <ul class="mb-0">
+            <li><strong>Computer-generated models:</strong> 2D/3D models (e.g., CAD, 3D tools).</li>
+            <li><strong>Mock-ups & wireframes:</strong> simplified screens for software or web pages.</li>
+            <li><strong>Storyboards:</strong> sequence of frames showing screen or process flow.</li>
+            <li><strong>Process maps:</strong> step-by-step diagrams of how work will flow after the change.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Why Prototyping Is Powerful</h5>
+          <ul class="mb-0">
+            <li>Cheap way to validate understanding before large investment.</li>
+            <li>Helps stakeholders <strong>visualise the solution</strong>.</li>
+            <li>Reduces risk of building the wrong thing.</li>
+            <li>Works well in both predictive and agile environments.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PRIORITISATION -->
+  <section id="prioritisation" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>6. Prioritisation Techniques</h2>
+      <span class="tag-pill bg-warning text-dark">🧰 Picking What to Do First</span>
+    </div>
+
+    <p>
+      Prioritisation decides <strong>which requirements or features to implement first</strong> when you have more ideas than resources.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>MoSCoW</h5>
+          <ul class="mb-0">
+            <li><strong>M</strong>ust have.</li>
+            <li><strong>S</strong>hould have.</li>
+            <li><strong>C</strong>ould have.</li>
+            <li><strong>W</strong>ill not have (now).</li>
+          </ul>
+          <p class="mt-2 mb-0">
+            Beware: stakeholders often want to mark everything as “Must have” — facilitation and constraints help prevent this.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Benefit–Cost Ratio</h5>
+          <ul class="mb-0">
+            <li>Compute <strong>Benefit ÷ Cost</strong> (or Benefit ÷ Effort).</li>
+            <li>Higher ratio → higher priority.</li>
+            <li>Can use subjective scoring (e.g., effort 1–10).</li>
+            <li>Focus on maximising value for minimal effort.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Cost of Delay</h5>
+          <ul class="mb-0">
+            <li>Common in Agile / SAFe (e.g., WSJF variants).</li>
+            <li>Roughly: <strong>Expected Profit / Time to Deliver</strong>.</li>
+            <li>Higher values → higher urgency (more is lost by delaying).</li>
+            <li>Prioritise items with the highest cost of delay first.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Key rule:</strong> For most prioritisation metrics, <strong>higher scores = higher priority</strong> —
+      except in methods like payback period where <strong>shorter</strong> is better.
+    </div>
+  </section>
+
+  <!-- 7. DECOMPOSITION -->
+  <section id="decomposition" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>7. Decomposition</h2>
+      <span class="tag-pill bg-secondary text-white">📊 Breaking Work Down</span>
+    </div>
+
+    <p>
+      Decomposition is the technique of <strong>dividing and subdividing work into smaller, manageable pieces</strong>.
+      It is central to scope planning and is reflected in multiple breakdown structures.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Work Breakdown Structure (WBS)</h5>
+          <ul class="mb-0">
+            <li>Breaks the overall product or outcome into <strong>deliverables and work packages</strong>.</li>
+            <li>Each level provides more detail than the one above.</li>
+            <li>Used to plan scope, cost, and schedule.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Organizational Breakdown Structure (OBS)</h5>
+          <ul class="mb-0">
+            <li>Shows <strong>roles, responsibilities, reporting lines</strong>.</li>
+            <li>Runs from executives → managers → team leads → team members.</li>
+            <li>Helps assign work packages to responsible units.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Product Breakdown Structure (PBS)</h5>
+          <ul class="mb-0">
+            <li>Breaks product into <strong>features, subfeatures, and components</strong>.</li>
+            <li>Very useful in agile: features → epics → user stories.</li>
+            <li>User stories fit into sprints and have clear acceptance criteria.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="small mt-3 mb-0">
+      Example: A “Value Management System” might decompose into: Needs Assessment → Standards Development → Systems Engineering.  
+      Each of those can be further broken into activities and tasks.
+    </p>
+  </section>
+
+  <!-- 8. SCOPE BASELINE -->
+  <section id="scope-baseline" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>8. The Scope Baseline</h2>
+      <span class="tag-pill bg-info text-white">📌 Fixed Scope Reference</span>
+    </div>
+
+    <p>
+      The <strong>Scope Baseline</strong> is the approved, fixed reference for the scope. Once baselined,
+      changes require a <strong>formal change request</strong>.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Scope Baseline Components</h5>
+          <ul class="mb-0">
+            <li><strong>Project Scope Statement</strong> — narrative description:
+              <ul>
+                <li>Scope description & major deliverables.</li>
+                <li>Assumptions and constraints.</li>
+                <li>Acceptance criteria (how we know it’s done and successful).</li>
+                <li>Project <strong>exclusions</strong> (what is not included).</li>
+              </ul>
+            </li>
+            <li><strong>Work Breakdown Structure (WBS)</strong>.</li>
+            <li><strong>WBS Dictionary</strong>.</li>
+            <li><strong>Work Packages</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>WBS Dictionary & Work Packages</h5>
+          <ul class="mb-0">
+            <li><strong>WBS Dictionary</strong> may include:
+              <ul>
+                <li>Codes and descriptions.</li>
+                <li>Assumptions.</li>
+                <li>Schedule milestones & dependencies.</li>
+                <li>Resources and cost estimates.</li>
+                <li>Quality requirements & acceptance criteria.</li>
+                <li>Sign-offs or agreements.</li>
+              </ul>
+            </li>
+            <li><strong>Work Packages</strong>:
+              <ul>
+                <li>Lowest level of the WBS, with unique IDs.</li>
+                <li>Basis for estimating duration and cost.</li>
+                <li>Used in <strong>bottom-up estimating</strong>.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-primary mt-3 mb-0">
+      🧭 <strong>Exam hint:</strong> Scope creep = adding scope without adjusting time/cost/quality.
+      The scope baseline and formal change control are your defence against this.
+    </div>
+  </section>
+
+  <!-- 9. VALIDATE SCOPE VS CONTROL QUALITY -->
+  <section id="validate-vs-quality" class="slide">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2>9. Validate Scope vs Control Quality</h2>
+      <span class="tag-pill bg-warning text-dark">🧭 Don’t Mix These Up</span>
+    </div>
+
+    <p>
+      Three related but distinct processes:
+      <strong>Validate Scope</strong>, <strong>Control Quality</strong>, and <strong>Control Scope</strong>.
+      The exam loves to test the difference.
+    </p>
+
+    <div class="row g-3 small">
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Validate Scope</h5>
+          <ul class="mb-0">
+            <li>Present completed deliverables to <strong>customer / sponsor</strong>.</li>
+            <li>Obtain <strong>formal acceptance</strong> or sign-off.</li>
+            <li>Usually uses results from quality control as input.</li>
+            <li>Output often includes <strong>Accepted Deliverables</strong> or change requests if rejected.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Control Quality</h5>
+          <ul class="mb-0">
+            <li>Focuses on <strong>testing and inspection</strong>.</li>
+            <li>Records and monitors results versus quality standards.</li>
+            <li>Checks whether deliverables meet specified requirements.</li>
+            <li>Produces <strong>verified deliverables</strong> and quality measurement data.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mini-card">
+          <h5>Control Scope</h5>
+          <ul class="mb-0">
+            <li>Manages <strong>changes to the scope baseline</strong>.</li>
+            <li>Prevents uncontrolled scope changes (scope creep).</li>
+            <li>Ensures only approved changes are included.</li>
+            <li>Uses change requests and update to the scope baseline as needed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🧭 <strong>Memory tip:</strong>
+      <strong>Control Quality</strong> = “Did we build it right?” (testing) •
+      <strong>Validate Scope</strong> = “Is this what the customer will accept?” (sign-off) •
+      <strong>Control Scope</strong> = “Are we controlling what’s in / out of the scope?”
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="slide">
+    <h2>🔥 Exam-Focused Summary — Scope Management</h2>
+
+    <div class="row g-3 small mt-1">
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Tools & Artifacts to Remember</h5>
+          <ul class="mb-0">
+            <li><strong>Requirements Traceability Matrix</strong> — links requirements to objectives, scope, design, tests, and status.</li>
+            <li><strong>Brainstorming + NGT + Voting</strong> — gather ideas and decide as a group.</li>
+            <li><strong>Prototyping</strong> — early feedback via models, mockups, storyboards, process maps.</li>
+            <li><strong>Prioritisation</strong> — MoSCoW, benefit–cost, cost of delay.</li>
+            <li><strong>Decomposition</strong> — WBS, PBS, OBS.</li>
+            <li><strong>Scope Baseline</strong> — scope statement, WBS, WBS dictionary, work packages.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mini-card">
+          <h5>Control & Acceptance</h5>
+          <ul class="mb-0">
+            <li><strong>Control Quality</strong> → test results & verified deliverables.</li>
+            <li><strong>Validate Scope</strong> → formal customer/sponsor acceptance.</li>
+            <li><strong>Control Scope</strong> → manage changes to the scope baseline.</li>
+            <li>Use formal change requests whenever a deliverable or baseline must change.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success mt-3 mb-0">
+      🎓 <strong>One-liner:</strong> Scope Management is about <strong>defining, decomposing, prioritising, and protecting</strong>
+      what you will deliver — and making sure the customer formally agrees you delivered it.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
