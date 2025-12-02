@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP Team Performance Cheat Sheet 🚀</title>
+    <style>
+        :root {
+            --primary:#007bff;
+            --primary-dark:#0056b3;
+            --accent-green:#38c172;
+            --bg:#f4f7f9;
+            --card-bg:#ffffff;
+            --danger:#ff4d4f;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: #333;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0 0 5px 0;
+            font-size: 1.8rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px 40px;
+            gap: 30px;
+        }
+
+        nav {
+            width: 280px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        nav h3 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 4px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 8px 10px;
+            display: block;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus-visible {
+            color: #fff;
+            background-color: var(--primary-dark);
+            outline: none;
+            transform: translateX(2px);
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        section:target {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        h3 {
+            color: var(--accent-green);
+            margin-top: 20px;
+            font-size: 1.05rem;
+        }
+
+        p {
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .tip,
+        .warning {
+            padding: 10px 12px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+
+        .tip {
+            background-color: #e6f7ff;
+            border-left: 5px solid var(--primary);
+        }
+
+        .warning {
+            background-color: #fff0f0;
+            border-left: 5px solid var(--danger);
+        }
+
+        .process-list {
+            padding-left: 20px;
+        }
+
+        .process-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Table wrapper for responsiveness */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Visual ITTO cards */
+        .process-card {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .process-card h3 {
+            margin-top: 0;
+        }
+
+        .process-card.blue {
+            border-left: 6px solid #007bff;
+            background: #f7faff;
+        }
+
+        .process-card.green {
+            border-left: 6px solid #38c172;
+            background: #f2faf5;
+        }
+
+        .process-card.orange {
+            border-left: 6px solid #ff9800;
+            background: #fff7ec;
+        }
+
+        .process-card.purple {
+            border-left: 6px solid #8e44ad;
+            background: #faf5ff;
+        }
+
+        .process-card.red {
+            border-left: 6px solid #c0392b;
+            background: #fff5f5;
+        }
+
+        .process-card.yellow {
+            border-left: 6px solid #f1c40f;
+            background: #fffdf2;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                padding: 0 15px 30px;
+            }
+
+            nav {
+                width: 100%;
+                position: static;
+                order: -1;
+            }
+
+            main {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 10px;
+            }
+
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            header p {
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            nav ul li a {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            table {
+                min-width: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PMP Exam Cheat Sheet: Build &amp; Support Team Performance 🛠️👥</h1>
+    <p>Focusing on the ECO People Domain and Resource Management Processes</p>
+</header>
+
+<div class="container">
+    <nav>
+        <h3>🧭 Navigation</h3>
+        <ul>
+            <li><a href="#resource-visual-memory">0. Resource ITTO Visual Map</a></li>
+            <li><a href="#overview">1. ECO People Domain Overview</a></li>
+            <li><a href="#leadership">2. PM Leadership Responsibilities</a></li>
+            <li><a href="#plan-resources">3. Plan Resource Management</a></li>
+            <li><a href="#estimate-resources">4. Estimate Resource Requirements</a></li>
+            <li><a href="#acquire-resources">5. Acquire Resources</a></li>
+            <li><a href="#develop-team">6. Develop Team</a></li>
+            <li><a href="#manage-team">7. Manage Team</a></li>
+            <li><a href="#roles-cheat">8. 🚨 Role Responsibility Cheat Sheet</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- ITTO Visual Memory System -->
+        <section id="resource-visual-memory">
+            <h2>🔍 Resource Management ITTO Visual Memory System</h2>
+            <p>This visual system helps you quickly memorize each Resource Management process and its core inputs, tools, and outputs through pattern recognition and icon mapping.</p>
+
+            <div class="process-card blue">
+                <h3>🧭 Plan Resource Management — “Draw the Map First”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Project Charter, Project Management Plan (scope, schedule, cost, quality), project documents, OPAs, EEFs</li>
+                    <li><strong>Tools:</strong> Expert judgment, meetings, data representation (RACI/RAM/OBS/RBS)</li>
+                    <li><strong>Outputs:</strong> Resource Management Plan, Team Charter, updates to project documents</li>
+                </ul>
+            </div>
+
+            <div class="process-card green">
+                <h3>📏 Estimate Activity Resources — “How Much Do We Need?”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Scope baseline, activity list, activity attributes, cost estimates, resource calendars</li>
+                    <li><strong>Tools:</strong> Estimating techniques (analogous, parametric, bottom-up, expert judgment), alternative analysis, data representation (resource histograms)</li>
+                    <li><strong>Outputs:</strong> Resource requirements, basis of estimates, updates to documents</li>
+                </ul>
+            </div>
+
+            <div class="process-card orange">
+                <h3>🤝 Acquire Resources — “Bring the Team Onboard”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Resource Management Plan, procurement documentation, resource calendars</li>
+                    <li><strong>Tools:</strong> Negotiation, pre-assignment, acquisition, virtual teams, multi-criteria decision analysis</li>
+                    <li><strong>Outputs:</strong> Physical resource assignments, project team assignments, resource calendars, change requests</li>
+                </ul>
+            </div>
+
+            <div class="process-card purple">
+                <h3>🚀 Develop Team — “Make Them Awesome”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Resource Management Plan, team assignments, team charter</li>
+                    <li><strong>Tools:</strong> Training, team-building, colocation, recognition &amp; rewards, individual &amp; team assessments</li>
+                    <li><strong>Outputs:</strong> Team performance assessments, EEF updates, OPA updates</li>
+                </ul>
+            </div>
+
+            <div class="process-card red">
+                <h3>🎯 Manage Team — “Steer the Ship”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Team assignments, performance reports, feedback, issue log</li>
+                    <li><strong>Tools:</strong> Conflict management, decision-making, emotional intelligence, leadership, influencing</li>
+                    <li><strong>Outputs:</strong> Change requests, updates to issue log, lessons learned, EEFs, OPAs</li>
+                </ul>
+            </div>
+
+            <div class="process-card yellow">
+                <h3>🛠️ Control Resources — “Protect the Equipment”</h3>
+                <ul>
+                    <li><strong>Inputs:</strong> Resource Management Plan, physical resource assignments, work performance data, agreements</li>
+                    <li><strong>Tools:</strong> Problem-solving, inspections, audits, performance reviews</li>
+                    <li><strong>Outputs:</strong> Work performance information, change requests, updates to plans &amp; documents</li>
+                </ul>
+            </div>
+
+            <p style="margin-top:25px;font-style:italic;color:#555;">✨ Tip: Use the icon + colour + phrase for each process. Focus on the pattern (Plan → Estimate → Acquire → Develop → Manage → Control) rather than memorizing long lists.</p>
+        </section>
+
+        <!-- Existing sections below -->
+
+        <section id="overview">
+            <h2>1. ECO People Domain Overview 🧠</h2>
+            <p>Working with others is critical, so <strong>42% of exam questions are based on the People Domain</strong> in the ECO (Exam Content Outline). This domain combines interpersonal and team skills with technical project management skills.</p>
+
+            <h3>The 14 People Domain Skills (Build vs. Support Model) 🧱🤝</h3>
+            <p class="tip">We can break the 14 People Domain tasks into two study groups: Building Performance (B) and Supporting Performance (S).</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Task (7 Tasks)</th>
+                            <th>Emoticon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Building Performance (B)</strong></td>
+                            <td>
+                                <ul class="process-list">
+                                    <li>Lead a team</li>
+                                    <li>Empower team members and stakeholders</li>
+                                    <li>Ensure adequate training is provided</li>
+                                    <li>Build a team</li>
+                                    <li>Negotiate project agreements</li>
+                                    <li>Build shared understanding</li>
+                                    <li>Define team ground rules</li>
+                                </ul>
+                            </td>
+                            <td>🏗️</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supporting Performance (S)</strong></td>
+                            <td>
+                                <ul class="process-list">
+                                    <li>Manage conflict</li>
+                                    <li>Support team performance</li>
+                                    <li>Address and remove impediments, obstacles, and blockers for the team</li>
+                                    <li>Collaborate with stakeholders</li>
+                                    <li>Engage and support virtual teams</li>
+                                    <li>Mentor relevant stakeholders</li>
+                                    <li>Promote performance through emotional intelligence</li>
+                                </ul>
+                            </td>
+                            <td>🛡️</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Process Group Model for Resources 🔄</h3>
+            <p>The Resource Management Process groups map most closely to these People Domain skills:</p>
+            <ul class="process-list">
+                <li><strong>Planning:</strong> Plan Resource Management, Estimate Activity Resources.</li>
+                <li><strong>Executing:</strong> Acquire Resources, Develop Team, Manage Team.</li>
+                <li><strong>Monitoring/Controlling:</strong> Control Resources (Note: This is dedicated to material resources like equipment, not team management).</li>
+            </ul>
+        </section>
+
+        <section id="leadership">
+            <h2>2. PM Leadership Responsibilities 👑</h2>
+            <p>The project manager's role requires formal documentation and continuous planning.</p>
+            <ul>
+                <li><strong>Documentation &amp; Formal Processes:</strong> Resource management activities are formal and require documentation. The processes of resource management are repeated and updated throughout the project.</li>
+                <li><strong>Roles &amp; Responsibilities:</strong> Must be clear.</li>
+                <li><strong>Team Planning:</strong> Projects are planned by the team and coordinated by the PM. PM formally plans team building activities in advance—these are a required part of project management.</li>
+                <li><strong>Recognition:</strong> Creating a recognition and reward system is an important and required resource management function.</li>
+                <li><strong>Competencies:</strong> PM is responsible for improving team members' competencies.</li>
+                <li><strong>Resources:</strong> PM must continually confirm resource availability and control physical resources (not just procurement).</li>
+            </ul>
+
+            <h3>Agile Leadership Focus 🧘‍♂️</h3>
+            <p>On agile projects, the PM (or Scrum Master/Agile Coach) is a <strong>Servant Leader</strong>:</p>
+            <ul class="process-list">
+                <li>Focus on making sure processes are understood and followed.</li>
+                <li>Provide team training where needed.</ to=python.exec

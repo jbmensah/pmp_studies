@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Knowledge Areas — Index</title>
+
+<style>
+    :root {
+        --primary:#007bff;
+        --primary-dark:#0056b3;
+        --bg:#f4f7f9;
+        --card-bg:#ffffff;
+        --text:#333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    header {
+        background: var(--primary);
+        color: white;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    header p {
+        margin: 5px 0 0;
+        opacity: 0.9;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+    }
+
+    h3 {
+        margin: 10px 0;
+        color: var(--primary-dark);
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin: 0;
+        color: #555;
+    }
+
+    .card a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 16px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background .2s;
+    }
+
+    .card a:hover {
+        background: var(--primary-dark);
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>PMP Knowledge Area Navigator 🎓</h1>
+    <p>Select a knowledge area to open its detailed cheat sheet.</p>
+</header>
+
+<div class="container">
+
+    <!-- Integration -->
+    <div class="card">
+        <div class="icon">🔗</div>
+        <h3>Project Integration Management</h3>
+        <p>Unifying processes, decisions & project direction.</p>
+        <a href="integration.html">Open</a>
+    </div>
+
+    <!-- Scope -->
+    <div class="card">
+        <div class="icon">📏</div>
+        <h3>Project Scope Management</h3>
+        <p>Defining and controlling what is in and out.</p>
+        <a href="scope.html">Open</a>
+    </div>
+
+    <!-- Schedule -->
+    <div class="card">
+        <div class="icon">⏰</div>
+        <h3>Project Schedule Management</h3>
+        <p>Creating & controlling timelines and activities.</p>
+        <a href="schedule.html">Open</a>
+    </div>
+
+    <!-- Cost -->
+    <div class="card">
+        <div class="icon">💰</div>
+        <h3>Project Cost Management</h3>
+        <p>Estimating, budgeting & managing project cost.</p>
+        <a href="cost.html">Open</a>
+    </div>
+
+    <!-- Quality -->
+    <div class="card">
+        <div class="icon">⭐</div>
+        <h3>Project Quality Management</h3>
+        <p>Policies, processes & quality assurance.</p>
+        <a href="quality.html">Open</a>
+    </div>
+
+    <!-- Resource -->
+    <div class="card">
+        <div class="icon">👥</div>
+        <h3>Project Resource Management</h3>
+        <p>Team development, physical resources & leadership.</p>
+        <a href="resource_management.html">Open</a>
+    </div>
+
+    <!-- Communications -->
+    <div class="card">
+        <div class="icon">📢</div>
+        <h3>Project Communications Management</h3>
+        <p>Ensuring clear, effective information flow.</p>
+        <a href="communications.html">Open</a>
+    </div>
+
+    <!-- Risk -->
+    <div class="card">
+        <div class="icon">⚠️</div>
+        <h3>Project Risk Management</h3>
+        <p>Identifying, analyzing and responding to risks.</p>
+        <a href="risk.html">Open</a>
+    </div>
+
+    <!-- Procurement -->
+    <div class="card">
+        <div class="icon">📦</div>
+        <h3>Project Procurement Management</h3>
+        <p>Acquiring goods, services and managing contracts.</p>
+        <a href="procurement.html">Open</a>
+    </div>
+
+    <!-- Stakeholder -->
+    <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Project Stakeholder Management</h3>
+        <p>Engaging individuals & groups effectively.</p>
+        <a href="stakeholder.html">Open</a>
+    </div>
+
+</div>
+
+</body>
+</html>
