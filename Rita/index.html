@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PMP Knowledge Areas — Index</title>
+<title>PMP Rita Chapters — Cheat Sheet Index</title>
 
 <style>
     :root {
@@ -12,6 +12,8 @@
         --bg:#f4f7f9;
         --card-bg:#ffffff;
         --text:#333;
+        --muted:#777;
+        --done:#28a745;
     }
 
     * { box-sizing: border-box; }
@@ -26,7 +28,7 @@
     header {
         background: var(--primary);
         color: white;
-        padding: 25px;
+        padding: 24px 16px;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
@@ -37,41 +39,81 @@
     }
 
     header p {
-        margin: 5px 0 0;
-        opacity: 0.9;
+        margin: 6px 0 0;
+        opacity: 0.95;
+        font-size: 0.95rem;
     }
 
-    .container {
+    .wrapper {
         max-width: 1200px;
-        margin: 40px auto;
+        margin: 32px auto 40px;
         padding: 0 20px;
+    }
+
+    .section-heading {
+        margin: 32px 0 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+    }
+
+    .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 25px;
+        gap: 20px;
     }
 
     .card {
         background: var(--card-bg);
         border-radius: 10px;
-        padding: 25px;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        padding: 18px 18px 20px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         transition: transform .2s, box-shadow .2s;
+        position: relative;
     }
 
     .card:hover {
-        transform: scale(1.03);
+        transform: translateY(-3px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
+    .card.done {
+        border: 2px solid var(--done);
+    }
+
+    .done-badge {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        background: var(--done);
+        color:#fff;
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        border-radius: 999px;
+    }
+
     .icon {
-        font-size: 40px;
-        margin-bottom: 15px;
-        color: var(--primary-dark);
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .chapter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
     }
 
     h3 {
-        margin: 10px 0;
+        margin: 2px 0 6px;
+        font-size: 1.05rem;
         color: var(--primary-dark);
     }
 
@@ -82,13 +124,14 @@
     }
 
     .card a {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 8px 16px;
+        align-self: flex-start;
+        margin-top: 14px;
+        padding: 7px 14px;
         background: var(--primary);
         color: white;
         text-decoration: none;
         border-radius: 6px;
+        font-size: 0.85rem;
         transition: background .2s;
     }
 
@@ -96,95 +139,229 @@
         background: var(--primary-dark);
     }
 
+    @media (max-width: 600px) {
+        header h1 { font-size: 1.6rem; }
+        header p { font-size: 0.85rem; }
+    }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>PMP Knowledge Area Navigator 🎓</h1>
-    <p>Select a knowledge area to open its detailed cheat sheet.</p>
+    <h1>PMP Cheat Sheets — Rita Chapter Navigator 📚</h1>
+    <p>Aligned with Rita Mulcahy’s PMP® Exam Prep chapters. Click a card to open the matching cheat sheet.</p>
 </header>
 
-<div class="container">
+<div class="wrapper">
 
-    <!-- Integration -->
-    <div class="card">
-        <div class="icon">🔗</div>
-        <h3>Project Integration Management</h3>
-        <p>Unifying processes, decisions & project direction.</p>
-        <a href="integration.html">Open</a>
+    <!-- Section I -->
+    <div class="section-heading">Section I – Studying for the PMP® Exam</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">🧠</div>
+                <div class="chapter-label">Chapter 1</div>
+                <h3>Tricks of the Trade for Studying for the PMP® Exam</h3>
+                <p>Study strategy, exam mindset, and how to use the book effectively.</p>
+            </div>
+            <a href="ch01_tricks_of_the_trade.html">Open</a>
+        </div>
     </div>
 
-    <!-- Scope -->
-    <div class="card">
-        <div class="icon">📏</div>
-        <h3>Project Scope Management</h3>
-        <p>Defining and controlling what is in and out.</p>
-        <a href="scope.html">Open</a>
+    <!-- Section II -->
+    <div class="section-heading">Section II – Foundations</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">📊</div>
+                <div class="chapter-label">Chapter 2</div>
+                <h3>PMP® Exam References in Context</h3>
+                <p>ECO overview, process chart, agile process chart, and exam mapping.</p>
+            </div>
+            <a href="ch02_exam_references_in_context.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">🏗️</div>
+                <div class="chapter-label">Chapter 3</div>
+                <h3>Project Management Foundations</h3>
+                <p>Organizational context, selection methods, roles, and artifacts.</p>
+            </div>
+            <a href="ch03_pm_foundations.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">🔗</div>
+                <div class="chapter-label">Chapter 4</div>
+                <h3>Integration</h3>
+                <p>Charter, project management plan, directing work, and closing.</p>
+            </div>
+            <a href="ch04_integration.html">Open</a>
+        </div>
     </div>
 
-    <!-- Schedule -->
-    <div class="card">
-        <div class="icon">⏰</div>
-        <h3>Project Schedule Management</h3>
-        <p>Creating & controlling timelines and activities.</p>
-        <a href="schedule.html">Open</a>
+    <!-- Section III – Domain 1: People -->
+    <div class="section-heading">Section III – Domain 1: People</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">🧭</div>
+                <div class="chapter-label">Chapter 5</div>
+                <h3>Leadership Skills</h3>
+                <p>Leadership models, communication, motivation, and conflict management.</p>
+            </div>
+            <a href="ch05_leadership_skills.html">Open</a>
+        </div>
+
+        <div class="card done">
+            <span class="done-badge">Done ✅</span>
+            <div>
+                <div class="icon">👥</div>
+                <div class="chapter-label">Chapter 6</div>
+                <h3>Build and Support Team Performance</h3>
+                <p>Plan resources, estimate, acquire, develop, and manage the team.</p>
+            </div>
+            <!-- Link this to your current Resource/Team Performance cheat sheet -->
+            <a href="ch06_build_and_support_team_performance.html">Open</a>
+        </div>
     </div>
 
-    <!-- Cost -->
-    <div class="card">
-        <div class="icon">💰</div>
-        <h3>Project Cost Management</h3>
-        <p>Estimating, budgeting & managing project cost.</p>
-        <a href="cost.html">Open</a>
+    <!-- Section IV – Domain II: Process -->
+    <div class="section-heading">Section IV – Domain II: Process</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">📐</div>
+                <div class="chapter-label">Chapter 7</div>
+                <h3>Scope</h3>
+                <p>Requirements, defining scope, WBS, validation, and control.</p>
+            </div>
+            <a href="ch07_scope.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">⏰</div>
+                <div class="chapter-label">Chapter 8</div>
+                <h3>Schedule</h3>
+                <p>Defining activities, sequencing, estimating durations, and building the schedule.</p>
+            </div>
+            <a href="ch08_schedule.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">💰</div>
+                <div class="chapter-label">Chapter 9</div>
+                <h3>Budget and Resources</h3>
+                <p>Cost management overview, estimating, budgeting, and controlling costs.</p>
+            </div>
+            <a href="ch09_budget_and_resources.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">⭐</div>
+                <div class="chapter-label">Chapter 10</div>
+                <h3>Quality of Deliverables and Products</h3>
+                <p>Planning, managing, and controlling quality in predictive and agile.</p>
+            </div>
+            <a href="ch10_quality_of_deliverables.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">📢</div>
+                <div class="chapter-label">Chapter 11</div>
+                <h3>Communications</h3>
+                <p>Communication planning, managing information, and monitoring effectiveness.</p>
+            </div>
+            <a href="ch11_communications.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">⚠️</div>
+                <div class="chapter-label">Chapter 12</div>
+                <h3>Risks and Issues</h3>
+                <p>Risk identification, analysis, responses, and monitoring.</p>
+            </div>
+            <a href="ch12_risks_and_issues.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">📦</div>
+                <div class="chapter-label">Chapter 13</div>
+                <h3>Procurement</h3>
+                <p>Understanding contracts, planning, conducting, and controlling procurements.</p>
+            </div>
+            <a href="ch13_procurement.html">Open</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="icon">🤝</div>
+                <div class="chapter-label">Chapter 14</div>
+                <h3>Stakeholders</h3>
+                <p>Identifying, planning, managing, and monitoring stakeholder engagement.</p>
+            </div>
+            <a href="ch14_stakeholders.html">Open</a>
+        </div>
     </div>
 
-    <!-- Quality -->
-    <div class="card">
-        <div class="icon">⭐</div>
-        <h3>Project Quality Management</h3>
-        <p>Policies, processes & quality assurance.</p>
-        <a href="quality.html">Open</a>
+    <!-- Section V – Domain III: Business Environment -->
+    <div class="section-heading">Section V – Domain III: Business Environment</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">🏛️</div>
+                <div class="chapter-label">Chapter 15</div>
+                <h3>Compliance and Delivering Value</h3>
+                <p>Compliance, delivering value, external influences, and organizational change.</p>
+            </div>
+            <a href="ch15_compliance_and_value.html">Open</a>
+        </div>
     </div>
 
-    <!-- Resource -->
-    <div class="card">
-        <div class="icon">👥</div>
-        <h3>Project Resource Management</h3>
-        <p>Team development, physical resources & leadership.</p>
-        <a href="resource_management.html">Open</a>
+    <!-- Section VI – Pulling It All Together -->
+    <div class="section-heading">Section VI – Pulling It All Together</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">🎯</div>
+                <div class="chapter-label">Chapter 16</div>
+                <h3>Tips for Passing the PMP® Exam the First Time</h3>
+                <p>Core concept review, exam tactics, and common pitfalls.</p>
+            </div>
+            <a href="ch16_exam_tips.html">Open</a>
+        </div>
     </div>
 
-    <!-- Communications -->
-    <div class="card">
-        <div class="icon">📢</div>
-        <h3>Project Communications Management</h3>
-        <p>Ensuring clear, effective information flow.</p>
-        <a href="communications.html">Open</a>
-    </div>
+    <!-- Agile & PMBOK Chapters -->
+    <div class="section-heading">Agile & PMBOK®</div>
+    <div class="grid">
+        <div class="card">
+            <div>
+                <div class="icon">⚡</div>
+                <div class="chapter-label">Chapter 17</div>
+                <h3>Common Agile Methodologies</h3>
+                <p>Scrum, Kanban, XP, SAFe®, agile values, and the agile mindset.</p>
+            </div>
+            <a href="ch17_common_agile_methodologies.html">Open</a>
+        </div>
 
-    <!-- Risk -->
-    <div class="card">
-        <div class="icon">⚠️</div>
-        <h3>Project Risk Management</h3>
-        <p>Identifying, analyzing and responding to risks.</p>
-        <a href="risk.html">Open</a>
-    </div>
-
-    <!-- Procurement -->
-    <div class="card">
-        <div class="icon">📦</div>
-        <h3>Project Procurement Management</h3>
-        <p>Acquiring goods, services and managing contracts.</p>
-        <a href="procurement.html">Open</a>
-    </div>
-
-    <!-- Stakeholder -->
-    <div class="card">
-        <div class="icon">🤝</div>
-        <h3>Project Stakeholder Management</h3>
-        <p>Engaging individuals & groups effectively.</p>
-        <a href="stakeholder.html">Open</a>
+        <div class="card">
+            <div>
+                <div class="icon">📘</div>
+                <div class="chapter-label">Chapter 18</div>
+                <h3>PMBOK® Guide & PM Standard Principles</h3>
+                <p>Linking the PMBOK® Guide, ECO, process groups, and principles.</p>
+            </div>
+            <a href="ch18_pmbok_and_principles.html">Open</a>
+        </div>
     </div>
 
 </div>
