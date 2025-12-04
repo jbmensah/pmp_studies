@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP Foundations: Organizational Context Cheat Sheet</title>
+    <style>
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --secondary-color: #6c757d; /* Gray */
+            --success-color: #28a745; /* Green */
+            --warning-color: #ffc107; /* Yellow */
+            --danger-color: #dc3545; /* Red */
+            --light-bg: #f8f9fa;
+            --dark-text: #343a40;
+            --nav-bg: #e9ecef;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 60px; /* Below the header */
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: var(--dark-text);
+            border-bottom: 1px solid var(--nav-bg);
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--nav-bg);
+            padding-left: 5px;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        h3 {
+            color: var(--dark-text);
+            margin-top: 20px;
+            border-left: 4px solid var(--success-color);
+            padding-left: 10px;
+        }
+
+        /* --- Card Styles --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .card {
+            padding: 15px;
+            border-radius: 6px;
+            background-color: var(--light-bg);
+            border: 1px solid #ddd;
+        }
+        
+        /* --- Callout Box Styles (Tips/Warnings) --- */
+        .callout {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .tip {
+            background-color: #d1ecf1;
+            border-left: 5px solid var(--primary-color);
+            color: #0c5460;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 5px solid var(--warning-color);
+            color: #856404;
+        }
+
+        .exam-trick {
+            background-color: #e2f0d9;
+            border-left: 5px solid var(--success-color);
+            color: #155724;
+        }
+
+        /* --- Comparison/Infographic Styles --- */
+        .comparison-table, .economic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th, .economic-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .comparison-table td, .economic-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .economic-table tr:nth-child(even) {
+            background-color: var(--nav-bg);
+        }
+        
+        .flow-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .flow-item {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* --- Memory Booster specific styles --- */
+        .memory-booster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .memory-hook {
+            background-color: #f0f0f5;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .memory-hook h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+        .memory-hook .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                overflow-x: auto;
+                white-space: nowrap;
+                border-bottom: 2px solid var(--primary-color);
+            }
+            nav a {
+                display: inline-block;
+                border-bottom: none;
+                border-right: 1px solid #ddd;
+                padding: 10px 15px;
+            }
+            main {
+                padding: 10px;
+            }
+            .flow-container {
+                flex-direction: column;
+            }
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PMP FOUNDATIONS: Organizational Context & Business Environment (Chapter 3)</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="#foundations">1. Organizational Foundations 🏢</a>
+            <a href="#context">2. Governance & Context (EEFs/OPAs) ⚙️</a>
+            <a href="#structure">3. Organizational Structures 🔗</a>
+            <a href="#economics">4. Project Selection & Economics 💰</a>
+            <a href="#roles">5. Key Project Roles 👤</a>
+            <a href="#methods">6. Methods & Techniques 🛠️</a>
+            <a href="#memory">7. Memory Booster Summary 🧠</a>
+        </nav>
+
+        <main>
+            
+            <section id="foundations">
+                <h2>1. Organizational Foundations 🏢</h2>
+                
+                <h3>Projects vs. Operations</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Project Work 🚀</h4>
+                        <ul>
+                            <li>A **temporary endeavor** with a distinct beginning and end.</li>
+                            <li>Creates a **unique product, service, or result**.</li>
+                            <li>Undertaken to drive a **change** from a current state to a future state.</li>
+                            <li>Ends when the project is closed.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Operational Work 🔁</h4>
+                        <ul>
+                            <li>**Ongoing work** to support the business and systems.</li>
+                            <li>Typically a repeatable process (e.g., processing payroll every month).</li>
+                            <li>Project deliverables are transitioned to ongoing business operations for value integration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Programs, Portfolios, and OPM</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Project (Pj)</h4>
+                        Temporary, unique outcome, creates business value.
+                    </div>
+                    <div class="card">
+                        <h4>Program (Pg)</h4>
+                        A group of **related sub-projects** and other activities managed in a coordinated set of efforts. Managed to add value beyond individual project management.
+                    </div>
+                    <div class="card">
+                        <h4>Portfolio (Pf)</h4>
+                        Includes programs, projects, and related operational work, prioritized to achieve a **specific business objective**. Programs/Projects may **not be related** other than achieving that common objective.
+                    </div>
+                </div>
+
+                <div class="callout tip">
+                    <h4>Organizational Project Management (OPM)</h4>
+                    OPM is a framework that serves as a guide for project, program, and portfolio management, ensuring the organization remains focused on its **overall strategy**. All organizational efforts should be guided by and support business objectives.
+                </div>
+            </section>
+            
+            <section id="context">
+                <h2>2. Governance & Context (EEFs/OPAs) ⚙️</h2>
+                
+                <h3>Organizational Governance</h3>
+                <div class="card">
+                    Refers to how an organization sets the policies and procedures for work performance to meet business objectives and support decision-making. It ensures work conforms to external (regulatory) and internal standards. Project managers must align their project management practices with organizational governance.
+                </div>
+
+                <h3>EEFs vs. OPAs Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Influence</th>
+                            <th>Enterprise Environmental Factors (EEFs)</th>
+                            <th>Organizational Process Assets (OPAs)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definition</td>
+                            <td>Factors **outside the control** of the project team that impact its work.</td>
+                            <td>Things **within the organization** that facilitate project work and product development.</td>
+                        </tr>
+                        <tr>
+                            <td>Types (External)</td>
+                            <td>Governmental or regulatory rules and standards.</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Types (Internal)</td>
+                            <td>Organization's culture, structure, governance, technology, and systems. Resource related EEFs (e.g., skills documentation).</td>
+                            <td>**1. Processes, Procedures, Policies** (owned by PMO/Governance). 
+                                
+                                **2. Organizational Knowledge Repositories** (Historical knowledge bases, Lessons Learned, Configuration management, Financial data, Templates).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Project Interaction</td>
+                            <td>Project team uses these but generally cannot change them.</td>
+                            <td>Project manager and team use these and update them (e.g., updating Lessons Learned).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Constraints and Assumptions</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Constraints</h4>
+                        Factors that limit options, often clearly imposed by management or the sponsor. Examples: schedule, cost, risk, scope, quality, resources, customer satisfaction. Changes generally impact multiple constraints, necessitating integrated change control.
+                    </div>
+                    <div class="card">
+                        <h4>Assumptions</h4>
+                        Comparable to expectations; they may not be entirely based on fact. If incorrect, they introduce risk and must be managed. The **Assumption Log** tracks both assumptions and constraints.
+                    </div>
+                </div>
+            </section>
+
+            <section id="structure">
+                <h2>3. Organizational Structures 🔗</h2>
+
+                <div class="exam-trick">
+                    <h4>PMP Exam Trick of the Trade 💡</h4>
+                    If the exam question does not explicitly identify the form of organization, you should **assume Matrix** as it is the most common.
+                </div>
+
+                <h3>Structural Model Comparison (Power & Focus)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Structure</th>
+                            <th>Key Concept / Think Silo</th>
+                            <th>PM Authority</th>
+                            <th>Team Focus</th>
+                            <th>Communication</th>
+                            <th>Team Home?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Functional</td>
+                            <td>**Silo** (Grouped by specialization, e.g., Accounting).</td>
+                            <td>Little or no authority.</td>
+                            <td>Emphasis on functional specialty. Project work is **in addition** to normal departmental work.</td>
+                            <td>Transmitted through department heads.</td>
+                            <td>Yes, reports to only one supervisor.</td>
+                        </tr>
+                        <tr>
+                            <td>Project-Oriented (Projectized)</td>
+                            <td>**No Home** (Company organized entirely by projects).</td>
+                            <td>Complete Project Control; PM has **more power**.</td>
+                            <td>Team loyalty to the project; only complete project work.</td>
+                            <td>Primarily occurs within the project.</td>
+                            <td>No, need new assignment/employer when project ends.</td>
+                        </tr>
+                        <tr>
+                            <td>Matrix</td>
+                            <td>**Two Managers** (Maximizes strengths of Functional & Projectized).</td>
+                            <td>Varies (Weak, Balanced, Strong).</td>
+                            <td>Do project work **in addition** to operations work.</td>
+                            <td>Team members communicate to both managers.</td>
+                            <td>Yes, team members maintain a home.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Matrix Subcategories (The Power Scale)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Power Rests With</th>
+                            <th>PM Authority Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Weak Matrix</td>
+                            <td>Functional Manager</td>
+                            <td>Comparable to a Coordinator (some authority) or Expediter (organizes comms/admin, no decision power).</td>
+                        </tr>
+                        <tr>
+                            <td>Balanced Matrix</td>
+                            <td>Shared (Functional Manager & Project Manager)</td>
+                            <td>Shared power.</td>
+                        </tr>
+                        <tr>
+                            <td>Strong Matrix</td>
+                            <td>Project Manager</td>
+                            <td>Power rests with the PM.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Project Management Office (PMO) Types</h3>
+                The PMO supports projects, matures project management capabilities, and ensures compliance with project governance.
+
+                <div class="memory-booster-grid">
+                    <div class="memory-hook">
+                        <span class="icon">📜</span>
+                        <h4>Supportive PMO (Low Control)</h4>
+                        Provides policies, methodologies, templates, and lessons learned.
+                    </div>
+                    <div class="memory-hook">
+                        <span class="icon">👮</span>
+                        <h4>Controlling PMO (Moderate Control)</h4>
+                        Provides guidance, trains others, ensures compliance with organizational policies, and may require designated software.
+                    </div>
+                    <div class="memory-hook">
+                        <span class="icon">👑</span>
+                        <h4>Directive PMO (High Control)</h4>
+                        Provides the project managers and is directly responsible for the results of the projects (manages all projects).
+                    </div>
+                </div>
+
+                <div class="exam-trick">
+                    <h4>PMO Exam Tip</h4>
+                    Assume there is a PMO unless the question indicates otherwise. Read carefully to determine if it is supportive, controlling, or directive. Both Controlling and Directive PMOs may coordinate all projects or prioritize projects.
+                </div>
+            </section>
+
+            <section id="economics">
+                <h2>4. Project Selection & Economics 💰</h2>
+                
+                <div class="card">
+                    Projects are selected based on business value, alignment with corporate strategy, and factors critical to organizational success. A Project Manager is typically **not involved** in project selection, but must understand *why* the project was selected to manage constraints effectively.
+                </div>
+                
+                <h3>Economic Measures for Selection</h3>
+                <table class="economic-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Definition</th>
+                            <th>Selection Rule (Better If...)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Return on Investment (ROI)**</td>
+                            <td>Potential profitability calculation: benefits received in relation to cost.</td>
+                            <td>Higher ROI is better.</td>
+                        </tr>
+                        <tr>
+                            <td>**Present Value (PV)**</td>
+                            <td>The value today of future cash flows. Calculation: $PV = FV / (1 + r)^n$.</td>
+                            <td>Higher PV is better.</td>
+                        </tr>
+                        <tr>
+                            <td>**Net Present Value (NPV)**</td>
+                            <td>Present value of total benefits (revenue) minus costs over many time periods.</td>
+                            <td>**Positive** NPV is a good choice. Project with the **greatest NPV** is typically selected.</td>
+                        </tr>
+                        <tr>
+                            <td>**Internal Rate of Return (IRR)**</td>
+                            <td>The interest rate at which project inflows (revenues) equal project outflows (costs). (Calculation is complex).</td>
+                            <td>The **higher the IRR number**, the better.</td>
+                        </tr>
+                        <tr>
+                            <td>**Payback Period**</td>
+                            <td>Length of time it takes to recover the investment before accumulating profit.</td>
+                            <td>Project with the **shorter payback period** is the best choice (ceteris paribus).</td>
+                        </tr>
+                        <tr>
+                            <td>**Benefit Cost Ratio (BCR)**</td>
+                            <td>Compares expected costs to potential benefits. Calculated as Benefits / Costs.</td>
+                            <td>BCR **greater than one** means benefits are greater than costs. Project with the **highest BCR** is chosen.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="warning callout">
+                    <h4>⚠️ PV Confusion & BCR Reminder</h4>
+                    Be careful not to confuse Present Value (PV) with Planned Value (PV) used in Earned Value Management (EVM). Context is key: funding/selection context means Present Value. Also, a BCR of 1.7 means **revenue/benefits** are 1.7 times the costs, not profit.
+                </div>
+
+                <h3>Other Selection Concepts</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Opportunity Cost</h4>
+                        The value of the project or opportunity **given up** by selecting another. It is the value of the project *not* selected. (Example: If Project B ($85k NPV) is chosen over Project A ($45k NPV), the opportunity cost is $45,000).
+                    </div>
+                    <div class="card">
+                        <h4>Sunk Costs</h4>
+                        Expended costs—money already spent. Sunk costs **should not be considered** when deciding whether to continue with a troubled project.
+                    </div>
+                    <div class="card">
+                        <h4>Law of Diminishing Returns</h4>
+                        After a certain point, adding more input (e.g., programmers) will **not produce a proportional increase in productivity**.
+                    </div>
+                    <div class="card">
+                        <h4>Depreciation</h4>
+                        When large assets lose value over time. **Straight Line** (same amount each year) vs. **Accelerated** (depreciates faster, e.g., Double Declining Balance or Sum of the Year's Digits).
+                    </div>
+                </div>
+            </section>
+
+            <section id="roles">
+                <h2>5. Key Project Roles 👤</h2>
+
+                <div class="exam-trick">
+                    <h4>Agile/Predictive Role Tip</h4>
+                    The exam may use the term "Project Manager" regardless of whether the project is predictive, adaptive (agile), or hybrid. If a question describes a plan-driven methodology, choose answers adhering to the **Process Groups Model** terminology (e.g., phase, lessons learned), not agile terms (e.g., iteration, retrospective).
+                </div>
+
+                <h3>Leadership Roles Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Primary Responsibility/Accountability</th>
+                            <th>Context</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Project Manager (PM)**</td>
+                            <td>Accountable for ensuring the project meets its objectives and delivers defined value/benefits. Focuses on scope, time, budget, governance, organizational change management.</td>
+                            <td>Predictive, Hybrid, or Adaptive. Directs planning, manages resources.</td>
+                        </tr>
+                        <tr>
+                            <td>**Agile Coach / Scrum Master / Team Lead**</td>
+                            <td>Servant leader. Ensures adaptive methods/processes are followed. Removes **impediments** to delivery.</td>
+                            <td>Adaptive/Agile environments (Scrum Master is specific to Scrum methodology).</td>
+                        </tr>
+                        <tr>
+                            <td>**Product Owner (PO)**</td>
+                            <td>Maximizing the **value** of the product to the customer and ROI for the organization. Prioritizes all work in the backlog.</td>
+                            <td>Agile/Scrum. Works daily with the team to clarify stories/requirements.</td>
+                        </tr>
+                        <tr>
+                            <td>**Project Sponsor / Initiator**</td>
+                            <td>Represents organizational leadership, supports the project financially, helps with decisions outside the PM/Team authority, and protects the project. Accountable for ensuring the product delivers business value.</td>
+                            <td>All environments.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Support & Execution Roles</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Project Team</h4>
+                        Group (including the PM) that completes the work. Responsibilities include creating the WBS/backlog, estimating, completing activities/features, and looking for deviations.
+                    </div>
+                    <div class="card">
+                        <h4>Functional / Resource Manager</h4>
+                        Responsible for the human and physical resources in a specific department (e.g., IT, Engineering). Collaborates and negotiates with the PM regarding resource availability.
+                    </div>
+                    <div class="card">
+                        <h4>Stakeholder</h4>
+                        Anyone impacted by the project or who may positively or negatively impact the project (includes customer, PM, team, functional managers, PMO, etc.). Should be involved extensively in planning and controlling the project.
+                    </div>
+                    <div class="card">
+                        <h4>Program / Portfolio Managers</h4>
+                        Program Manager: Manages related projects for coordinated control and guidance. Portfolio Manager: Responsible for executive-level governance of programs, projects, and operational work toward strategy.
+                    </div>
+                </div>
+            </section>
+
+            <section id="methods">
+                <h2>6. Frequently Used Methods & Techniques 🛠️</h2>
+                
+                <div class="card">
+                    Project methods (tools and techniques) are numerous and can have multiple applications. The project manager must understand the purpose of each method.
+                </div>
+
+                <h3>Data & Information Flow</h3>
+                <div class="flow-container">
+                    <div class="flow-item" style="border-color: var(--danger-color);">
+                        <h4>Work Performance Data (WPD) 🔴</h4>
+                        Initial measurements and details about activities gathered during executing (e.g., Activity A took 10 hours, completed July 21st).
+                    </div>
+                    <span class="flow-arrow">➡️</span>
+                    <div class="flow-item" style="border-color: var(--warning-color);">
+                        <h4>Work Performance Information (WPI) 🟡</h4>
+                        Data analyzed and assessed against the plan to determine meaning for the project (e.g., analyzing why Activity A took less time than planned).
+                    </div>
+                    <span class="flow-arrow">➡️</span>
+                    <div class="flow-item" style="border-color: var(--success-color);">
+                        <h4>Work Performance Reports (WPR) 🟢</h4>
+                        WPI organized and distributed to stakeholders who need to receive or act on the information.
+                    </div>
+                </div>
+                
+                <h3>Key Tools and Techniques Categories</h3>
+                
+                <h4>Data Gathering (Collecting Input)</h4>
+                Benchmarking, Brainstorming, Interviews, Market Research, Questionnaires/Surveys, Prompt Lists, Checklists, Cost of Quality.
+
+                <h4>Data Analysis (Transforming Data to Information)</h4>
+                Alternative Analysis, Assumptions & Constraints analysis, Business Justification Analysis (NPV, IRR, Payback, ROI, Cost-Benefit), Decision Tree Analysis, Earned Value Analysis (EVM), Root Cause Analysis, Variance Analysis, What-If Analysis.
+
+                <h4>Data Representation (Communicating Information)</h4>
+                Affinity Diagrams, Cause and Effect Diagrams, Control Charts, Flowcharts, Histograms, Matrix Diagrams, Mind Mapping, Probability and Impact Matrices, Scatter Diagrams.
+
+                <h4>Decision-Making Approaches</h4>
+                Fist of Five, Multi-Criteria Decision Analysis, Voting.
+
+                <h4>Estimating Methods (For Schedule, Cost, Resources)</h4>
+                Analogous (Top-Down), Bottom-Up, Parametric, Expert Judgment, Planning Poker.
+                
+                <h4>PMIS and Expert Judgment</h4>
+                The Project Management Information System (PMIS) is part of the EEFs and includes automated tools like scheduling software, configuration management systems, and shared workspaces. Expert judgment is consulting experts, often those within the organization or team.
+            </section>
+
+            <section id="memory">
+                <h2>7. Memory Booster Summary 🧠</h2>
+                <p>This section summarizes key concepts and rules from the foundational chapter, utilizing quick visual cues for recall.</p>
+
+                <h3>Concept-Based Memory Hooks</h3>
+                <div class="memory-booster-grid">
+                    <div class="memory-hook" style="background-color: #f7e6e6;">
+                        <span class="icon">🚫🏠</span>
+                        <h4>Projectized: "No Home"</h4>
+                        Complete PM control, team loses department when done.
+                    </div>
+                    <div class="memory-hook" style="background-color: #e6f7e6;">
+                        <span class="icon">🗣️👤👤</span>
+                        <h4>Functional: "Silo"</h4>
+                        Grouped by specialty, PM has low authority, comms via heads.
+                    </div>
+                    <div class="memory-hook" style="background-color: #f7f7e6;">
+                        <span class="icon">🤝🧑‍🤝‍🧑</span>
+                        <h4>Matrix: "Two Managers"</h4>
+                        Most common type, power is shared or balanced.
+                    </div>
+                    <div class="memory-hook" style="background-color: #e6e6f7;">
+                        <span class="icon">📈👑</span>
+                        <h4>IRR / NPV: Maximize</h4>
+                        Choose the project with the highest Internal Rate of Return and highest Net Present Value.
+                    </div>
+                    <div class="memory-hook" style="background-color: #f7e6e6;">
+                        <span class="icon">📉⏱️</span>
+                        <h4>Payback: Minimize</h4>
+                        Choose the project with the shortest Payback Period.
+                    </div>
+                    <div class="memory-hook" style="background-color: #e6f7f7;">
+                        <span class="icon">⚖️ > 1</span>
+                        <h4>BCR: Benefits Win</h4>
+                        Benefit Cost Ratio must be greater than 1.0; choose the highest ratio.
+                    </div>
+                    <div class="memory-hook" style="background-color: #f7f0e6;">
+                        <span class="icon">💔💸</span>
+                        <h4>Sunk Costs: Ignore</h4>
+                        Money already spent should not factor into continuation decisions.
+                    </div>
+                    <div class="memory-hook" style="background-color: #f7e6f7;">
+                        <span class="icon">🎁↩️</span>
+                        <h4>Opportunity Cost: Lost Value</h4>
+                        The value of the next best project you passed up (the one not chosen).
+                    </div>
+                </div>
+                
+                <h3>Visual Summary: PMO Control vs. Organizational Power</h3>
+                <table class="economic-table">
+                    <thead>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Icon</th>
+                            <th>Low Power/Control</th>
+                            <th>Moderate Power/Control</th>
+                            <th>High Power/Control</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PMO Type</td>
+                            <td>&#128081;</td>
+                            <td>**Supportive** (Provides templates)</td>
+                            <td>**Controlling** (Ensures compliance, mandates software)</td>
+                            <td>**Directive** (Manages all projects, appoints PMs)</td>
+                        </tr>
+                        <tr>
+                            <td>Matrix Structure</td>
+                            <td>&#128170;</td>
+                            <td>**Weak Matrix** (Power with Functional Manager)</td>
+                            <td>**Balanced Matrix** (Power is shared)</td>
+                            <td>**Strong Matrix** (Power with Project Manager)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
