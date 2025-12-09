@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP Integration Management Cheat Sheet 🚀</title>
+    <style>
+        :root {
+            --color-integration: #4A4E69;
+            --color-initiating: #9D8BB0;
+            --color-planning: #A3B18A;
+            --color-executing: #F98866;
+            --color-m-c: #5D9CEC;
+            --color-closing: #B392AC;
+            --color-bg: #F4F7F9;
+            --color-text: #333;
+            --color-card-bg: #FFFFFF;
+            --color-tip: #FFC300;
+            --color-warning: #C70039;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--color-integration);
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0 0 5px 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: var(--color-card-bg);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        nav {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: #f0f0f5;
+            padding: 20px 0;
+            border-right: 1px solid #ddd;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--color-integration);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.25s, color 0.25s, padding-left 0.15s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus-visible {
+            background-color: var(--color-planning);
+            color: white;
+            padding-left: 24px;
+            outline: none;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        section {
+            padding-bottom: 40px;
+            border-bottom: 2px dashed #eee;
+            margin-bottom: 40px;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            border-left: 5px solid var(--color-integration);
+            padding-left: 10px;
+            color: var(--color-integration);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        h4 {
+            margin-top: 0;
+            font-size: 1rem;
+        }
+
+        p {
+            margin: 0.35rem 0;
+        }
+
+        ul {
+            padding-left: 1.1rem;
+        }
+
+        .process-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+
+        .process-box h3 {
+            padding-bottom: 5px;
+            border-bottom: 2px solid;
+        }
+
+        .group-initiating { border-left: 8px solid var(--color-initiating); }
+        .group-planning { border-left: 8px solid var(--color-planning); }
+        .group-executing { border-left: 8px solid var(--color-executing); }
+        .group-m-c { border-left: 8px solid var(--color-m-c); }
+        .group-closing { border-left: 8px solid var(--color-closing); }
+
+        .card {
+            background-color: var(--color-card-bg);
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-itto {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .itto-list {
+            flex: 1 1 220px;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .itto-input { background-color: #e6f7ff; }
+        .itto-output { background-color: #fff0e6; }
+
+        .callout {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .tip {
+            background-color: #fffbe6;
+            border-left: 5px solid var(--color-tip);
+            color: #8a6d3b;
+        }
+
+        .warning {
+            background-color: #f2dede;
+            border-left: 5px solid var(--color-warning);
+            color: #a94442;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 20px 0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            padding: 10px 15px;
+            background: #e9ecef;
+            border-radius: 50px;
+            font-size: 0.9em;
+            position: relative;
+            flex-basis: 25%;
+            min-width: 170px;
+        }
+
+        .flow-step::after {
+            content: '➡️';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+        }
+
+        .flow-step:last-child::after {
+            content: none;
+        }
+
+        .memory-booster {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border: 2px dashed var(--color-integration);
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        .icon-hook {
+            font-size: 1.1em;
+            margin: 10px 0;
+            padding: 8px;
+            background: #fff;
+            border-radius: 4px;
+            border-left: 4px solid var(--color-integration);
+        }
+
+        .icon-hook strong {
+            font-weight: 600;
+        }
+
+        /* Visual Summary Styles */
+        .visual-summary-wrapper {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .visual-summary-grid {
+            display: grid;
+            grid-template-columns: 0.5fr 1fr 2fr 1fr;
+            gap: 1px;
+            border: 1px solid #ccc;
+            min-width: 720px;
+        }
+
+        .vs-header,
+        .vs-cell {
+            padding: 8px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+        
+        .vs-header {
+            background-color: var(--color-integration);
+            color: white;
+            font-weight: bold;
+        }
+
+        .vs-cell {
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #eee;
+        }
+
+        .vs-group-1 { background-color: var(--color-initiating); color: white; font-weight: bold; }
+        .vs-group-2 { background-color: var(--color-planning); color: white; font-weight: bold; }
+        .vs-group-3 { background-color: var(--color-executing); color: white; font-weight: bold; }
+        .vs-group-4 { background-color: var(--color-m-c); color: white; font-weight: bold; }
+        .vs-group-5 { background-color: var(--color-closing); color: white; font-weight: bold; }
+
+        .itto-pattern {
+            font-family: monospace;
+            font-size: 1.05em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+            }
+            nav {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                padding: 10px 0;
+            }
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li a {
+                padding: 10px 15px;
+            }
+            main {
+                padding: 20px 15px;
+            }
+            .flow-diagram {
+                flex-direction: column;
+            }
+            .flow-step {
+                flex-basis: auto;
+            }
+            .flow-step::after {
+                content: '⬇️';
+                top: auto;
+                bottom: -20px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+            .flow-step:last-child::after {
+                content: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+            header p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Integration Management 🧠 PMP Cheat Sheet</h1>
+        <p>The Project Manager's Primary Role: Pulling it all together into a cohesive whole.</p>
+    </header>
+
+    <div class="container">
+        <nav aria-label="Project Integration Processes">
+            <ul>
+                <li><a href="#intro">📚 Overview</a></li>
+                <li><a href="#charter">1. Develop Project Charter</a></li>
+                <li><a href="#plan">2. Develop PM Plan</a></li>
+                <li><a href="#direct">3. Direct &amp; Manage Work</a></li>
+                <li><a href="#knowledge">4. Manage Project Knowledge</a></li>
+                <li><a href="#monitor">5. Monitor &amp; Control Work</a></li>
+                <li><a href="#change">6. Perform Integrated Change Control</a></li>
+                <li><a href="#close">7. Close Project or Phase</a></li>
+                <li><a href="#memory">✨ Memory System</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="intro">
+                <h2>📚 Integration Management Overview</h2>
+                <p>Integration is the process of balancing all project activities with each other while acting as a project ambassador for all stakeholders.</p>
+                
+                <div class="card">
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li>The PM's primary role is performing integration management.</li>
+                        <li>It requires the PM to be an accomplished, innovative thinker, collaborative leader, and possess business savvy.</li>
+                        <li>Integration ensures project needs align with related portfolios and programs within the larger organization.</li>
+                        <li>Project management activities are interdependent (e.g., budget is affected by time, resources, and risk costs).</li>
+                    </ul>
+                </div>
+
+                <div class="tip callout">
+                    <strong>💡 Trick of the Trade: Integration Ambassador</strong>
+                    <br>Think of integration as balancing all project activities (constraints) while simultaneously being the project ambassador to stakeholders (team, customers, management, regulators).
+                </div>
+            </section>
+
+            <!-- PROCESS 1: DEVELOP PROJECT CHARTER -->
+            <section id="charter">
+                <article class="process-box group-initiating">
+                    <h3>1. Develop Project Charter 📜</h3>
+                    <p><strong>Process Group:</strong> Initiating (Task 9: Initiate project planning activities starts here)</p>
+                    <p><strong>Purpose:</strong> Formal authorization for the project to continue. It assesses feasibility within constraints at a high level and grants the Project Manager authority to apply organizational resources.</p>
+                    
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li>Agreements / Contracts</li>
+                                <li>Business Documents (Business Case / Benefits Management Plan)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Project Charter</strong> (Crucial artifact, signed off by the sponsor)</li>
+                                <li><strong>Assumption Log</strong> (Starts here; includes initial assumptions and constraints)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            📜 <strong>Memory Hook: Authority Granted, Assumptions Logged.</strong>
+                        </div>
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>Agile Note:</strong>
+                        Tailored charter documents may articulate more uncertainty about requirements. The Product Owner may have authority over change management and prioritizing requirements instead of a formal CCB.
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 2: DEVELOP PROJECT MANAGEMENT PLAN -->
+            <section id="plan">
+                <article class="process-box group-planning">
+                    <h3>2. Develop Project Management Plan 🗺️</h3>
+                    <p><strong>Process Group:</strong> Planning</p>
+                    <p><strong>Purpose:</strong> To integrate all individual management plans (scope, schedule, cost, quality, risk, etc.) and baselines into a cohesive, centralized document that describes how the project will be executed and controlled.</p>
+                    
+                    <div class="card">
+                        <h4>PMP Core Components</h4>
+                        <p>The PMP includes management plans for 10 knowledge areas, plus the Change, Configuration, and Requirements Management Plans.</p>
+                        <p><strong>Performance Measurement Baseline (PMB):</strong> The integrated baselines:</p>
+                        <ul>
+                            <li><strong>Scope Baseline:</strong> Project Scope Statement, WBS, WBS Dictionary.</li>
+                            <li><strong>Schedule Baseline:</strong> Agreed-upon schedule with start/stop dates/milestones.</li>
+                            <li><strong>Cost Baseline:</strong> Time-phased cost budget (spending plan).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-itto">
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Project Management Plan (PMP)</strong> (Must be bought into, approved, realistic, and formal)</li>
+                                <li><em>Baselines are included in the PMP.</em></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            🗺️ <strong>Memory Hook: The Blueprint, Baselines Defined.</strong>
+                        </div>
+                    </div>
+
+                    <div class="warning callout">
+                        <strong>⚠️ Crucial Reminder:</strong>
+                        The PMP is a set of plans and baselines, not just a schedule. Assume management plans (Change, Config, Requirements) have been created. If a problem arises, the PM should consult the corresponding management plan first.
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>Agile Note:</strong>
+                        Initial plans may be deliberately light and progressively elaborated (release / iteration planning). Scope, schedule, and risk plans are often incorporated into the product backlog and release road maps.
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 3: DIRECT AND MANAGE PROJECT WORK -->
+            <section id="direct">
+                <article class="process-box group-executing">
+                    <h3>3. Direct and Manage Project Work 🛠️</h3>
+                    <p><strong>Process Group:</strong> Executing</p>
+                    <p><strong>Purpose:</strong> To perform the work defined in the PMP, producing project deliverables, and integrating all executing work into one coordinated effort. This includes managing work, keeping people engaged, and facilitating issue resolution.</p>
+                    
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li>Project Management Plan (PMP)</li>
+                                <li><strong>Approved Change Requests</strong> (Work resulting from approved changes is completed here)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Deliverables</strong> (Products / services / results produced)</li>
+                                <li><strong>Work Performance Data (WPD)</strong> (Raw measurements, gathered here)</li>
+                                <li>Issue Log (Created and used here)</li>
+                                <li>Change Requests (Identified here)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            🛠️ <strong>Memory Hook: Executing the Plan, Generating Data (WPD).</strong>
+                        </div>
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>Plan-Driven Tool:</strong>
+                        A Work Authorization System (WAS) may be used to ensure work is only started when formally authorized, preventing conflicts (e.g., plumber / electrician conflict).
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 4: MANAGE PROJECT KNOWLEDGE -->
+            <section id="knowledge">
+                <article class="process-box group-executing">
+                    <h3>4. Manage Project Knowledge 🧠</h3>
+                    <p><strong>Process Group:</strong> Executing</p>
+                    <p><strong>Purpose:</strong> To use existing organizational knowledge and create/share new knowledge (lessons learned) to benefit the current project and make the organization better for future projects.</p>
+                    
+                    <div class="card">
+                        <h4>Knowledge Types</h4>
+                        <ul>
+                            <li><strong>Explicit Knowledge:</strong> Fact-based, easily communicated (e.g., documentation, processes, traditional lessons learned).</li>
+                            <li><strong>Tacit Knowledge:</strong> Not easily documented (e.g., emotions, experience, ability; learned through job shadowing / apprenticeship). The PM needs to foster a trusting environment for sharing both.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li>Project Artifacts (e.g., PMP, Documents, Deliverables)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Lessons Learned Register Updates</strong> (Main output; describes what was right / wrong / what to do differently)</li>
+                                <li>Organizational Process Assets Updates (Knowledge is documented in OPAs for future projects)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            🧠 <strong>Memory Hook: Lessons Learned Shared (Explicit &amp; Tacit).</strong>
+                        </div>
+                        <p><strong>Osmotic Communication:</strong> Informal knowledge sharing facilitated by physical proximity among team members.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 5: MONITOR AND CONTROL PROJECT WORK -->
+            <section id="monitor">
+                <article class="process-box group-m-c">
+                    <h3>5. Monitor and Control Project Work 🔭</h3>
+                    <p><strong>Process Group:</strong> Monitoring &amp; Controlling</p>
+                    <p><strong>Purpose:</strong> To observe, track, review, and report overall project performance. It aggregates work data to evaluate impacts on plans and baselines, enabling the PM to take corrective actions.</p>
+                    
+                    <div class="card">
+                        <h4>Key Activities</h4>
+                        <p>This process encourages a <strong>holistic view</strong> of performance (e.g., scope met, but cost excessive).</p>
+                        <ul>
+                            <li>Analyzing and tracking risks.</li>
+                            <li>Performing data analysis (Trend, Variance, Earned Value, Root Cause).</li>
+                            <li>Reviewing change effectiveness.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li><strong>Work Performance Information (WPI)</strong> (Processed data, comes from other M&amp;C processes)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Work Performance Reports (WPR)</strong> (Performance metrics communicated to stakeholders)</li>
+                                <li>Change Requests (Generated when variances or issues are discovered)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            🔭 <strong>Memory Hook: Watching Performance, Aggregating WPI.</strong>
+                        </div>
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>WPD vs WPI vs WPR:</strong>
+                        <ol>
+                            <li>WPD (Data) is raw, gathered in Direct &amp; Manage Project Work (Executing).</li>
+                            <li>WPD is processed into WPI (Information) in Monitoring processes.</li>
+                            <li>WPI is compiled into WPR (Reports) in Monitor &amp; Control Project Work (Integration M&amp;C).</li>
+                        </ol>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 6: PERFORM INTEGRATED CHANGE CONTROL -->
+            <section id="change">
+                <article class="process-box group-m-c">
+                    <h3>6. Perform Integrated Change Control ⚖️</h3>
+                    <p><strong>Process Group:</strong> Monitoring &amp; Controlling (Task 10: Manage project changes)</p>
+                    <p><strong>Purpose:</strong> To review all change requests and either approve, reject, or defer them. The key focus is assessing the impact of a change on ALL project constraints (scope, schedule, cost, risk, quality, etc.) before implementation.</p>
+                    
+                    <div class="card">
+                        <h4>Categories of Change Requests (CRs)</h4>
+                        <ul>
+                            <li><strong>Corrective Action:</strong> Brings expected future performance in line with the PMP (deals with ACTUAL deviations).</li>
+                            <li><strong>Preventive Action:</strong> Deals with ANTICIPATED deviations (e.g., adjusting the project to prevent a problem from recurring).</li>
+                            <li><strong>Defect Repair:</strong> Rework required when a component does not meet requirements.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">1. Evaluate Impact (on ALL constraints)</div>
+                        <div class="flow-step">2. Identify Options (e.g., crashing, cutting scope)</div>
+                        <div class="flow-step">3. Get Approval (CCB / Sponsor)</div>
+                        <div class="flow-step">4. Implement Change (in Direct &amp; Manage Work)</div>
+                    </div>
+
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li>Project Management Plan (PMP)</li>
+                                <li><strong>Change Requests</strong> (Generated from many processes)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Approved Change Requests</strong> (Input to Direct &amp; Manage Project Work)</li>
+                                <li><strong>Change Log</strong> (Documents the status and reason for approval/rejection)</li>
+                                <li>PMP Updates &amp; Project Document Updates (If baselines or plans change)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            ⚖️ <strong>Memory Hook: Balance Constraints, Approve / Reject / Defer.</strong>
+                        </div>
+                    </div>
+
+                    <div class="warning callout">
+                        <strong>⚠️ When is Integrated Change Control needed?</strong>
+                        It is required when changes affect the <strong>approved Project Charter, PMP, or Baselines.</strong>
+                        Changes to project documents (like the Issue Log) do not usually require formal CRs or CCB approval.
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>CCB (Change Control Board):</strong>
+                        Assume plan-driven projects have a formal CCB (Steering Committee) responsible for review. Changes to contracts, baselines, or the charter typically require CCB/Sponsor approval.
+                        <br><strong>Deviation from Baselines:</strong>
+                        If a project deviates significantly, the PM should often review the Risk Management process for incompleteness.
+                    </div>
+                </article>
+            </section>
+
+            <!-- PROCESS 7: CLOSE PROJECT OR PHASE -->
+            <section id="close">
+                <article class="process-box group-closing">
+                    <h3>7. Close Project or Phase ✅</h3>
+                    <p><strong>Process Group:</strong> Closing (ECO Task 17: Plan and manage project phase closure or transitions)</p>
+                    <p><strong>Purpose:</strong> To finalize all activities across tasks and processes to formally conclude the project or phase, ensure final requirements are met, and transition the final product.</p>
+                    
+                    <div class="card">
+                        <h4>Mandatory Closing Steps</h4>
+                        <p>Closing must be done, even if the project is terminated early.</p>
+                        <ul>
+                            <li>Obtain <strong>Final Formal Acceptance</strong> of the product/project from the customer.</li>
+                            <li>Complete financial closure and final procurement closure.</li>
+                            <li>Issue final performance reporting.</li>
+                            <li>Index and archive all project records.</li>
+                            <li>Gather final lessons learned and update the knowledge base (OPAs).</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-itto">
+                        <div class="itto-list itto-input">
+                            <h4>Key Inputs (I)</h4>
+                            <ul>
+                                <li>Project Management Plan (PMP)</li>
+                                <li>Accepted Deliverables (from Validate Scope)</li>
+                            </ul>
+                        </div>
+                        <div class="itto-list itto-output">
+                            <h4>Key Outputs (O)</h4>
+                            <ul>
+                                <li><strong>Final Product, Service, or Result Transition</strong></li>
+                                <li>Organizational Process Assets Updates (Final archiving and lessons learned)</li>
+                                <li>Final Report</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="memory-booster">
+                        <div class="icon-hook">
+                            ✅ <strong>Memory Hook: Formal Acceptance, Final Archive.</strong>
+                        </div>
+                    </div>
+
+                    <div class="tip callout">
+                        <strong>Closure vs. Validation:</strong>
+                        Close Project or Phase obtains <strong>formal acceptance of the entire project/phase</strong> from the customer.
+                        Validate Scope (M&amp;C process) obtains formal acceptance for <strong>interim deliverables</strong>. The project needs both.
+                    </div>
+                </article>
+            </section>
+
+            <!-- MEMORY SYSTEM SUMMARY -->
+            <section id="memory">
+                <h2>✨ Integration Management Memory System</h2>
+                <div class="memory-booster">
+                    <h3>Pattern Recognition &amp; ITTO Visual Summary</h3>
+                    <p>The flow of information is key to understanding Integration. WPD is raw data, WPI is analyzed information, and WPR is the packaged report.</p>
+
+                    <div class="visual-summary-wrapper">
+                        <div class="visual-summary-grid">
+                            <div class="vs-header">Group/Domain</div>
+                            <div class="vs-header">Process &amp; Icon</div>
+                            <div class="vs-header">Condensed Purpose</div>
+                            <div class="vs-header">Key Flow Pattern</div>
+
+                            <!-- 1. Initiating -->
+                            <div class="vs-cell vs-group-1">INITIATING</div>
+                            <div class="vs-cell">1. Charter 📜</div>
+                            <div class="vs-cell">Get formal authorization and PM authority.</div>
+                            <div class="vs-cell itto-pattern">I → T → O (Charter, Assumptions)</div>
+                            
+                            <!-- 2. Planning -->
+                            <div class="vs-cell vs-group-2">PLANNING</div>
+                            <div class="vs-cell">2. Develop PMP 🗺️</div>
+                            <div class="vs-cell">Integrate all plans and baselines into a cohesive document.</div>
+                            <div class="vs-cell itto-pattern">I (Many Plans/Assets) → T → O (PMP/PMB)</div>
+
+                            <!-- 3. Executing -->
+                            <div class="vs-cell vs-group-3">EXECUTING</div>
+                            <div class="vs-cell">3. Direct Work 🛠️</div>
+                            <div class="vs-cell">Execute the plan, produce deliverables, and gather raw data.</div>
+                            <div class="vs-cell itto-pattern">I (Approved CRs) → T → O (Deliverables, WPD)</div>
+
+                            <!-- 4. Executing -->
+                            <div class="vs-cell vs-group-3">EXECUTING</div>
+                            <div class="vs-cell">4. Manage Knowledge 🧠</div>
+                            <div class="vs-cell">Share explicit and tacit knowledge; update OPAs.</div>
+                            <div class="vs-cell itto-pattern">I (Artifacts) → T (Sharing) → O (LL Register, OPA Updates)</div>
+
+                            <!-- 5. M&C -->
+                            <div class="vs-cell vs-group-4">M &amp; C</div>
+                            <div class="vs-cell">5. Monitor &amp; Control 🔭</div>
+                            <div class="vs-cell">Measure holistic performance against baselines, create reports.</div>
+                            <div class="vs-cell itto-pattern">I (WPI) → T (Analysis) → O (WPR, Change Requests)</div>
+
+                            <!-- 6. M&C -->
+                            <div class="vs-cell vs-group-4">M &amp; C</div>
+                            <div class="vs-cell">6. Integrated Change ⚖️</div>
+                            <div class="vs-cell">Evaluate change requests for impact on all constraints; approve/reject/defer.</div>
+                            <div class="vs-cell itto-pattern">I (Change Requests) → T (CCB/Analysis) → O (Approved CRs, Change Log)</div>
+                            
+                            <!-- 7. Closing -->
+                            <div class="vs-cell vs-group-5">CLOSING</div>
+                            <div class="vs-cell">7. Close Project ✅</div>
+                            <div class="vs-cell">Formal acceptance, archives records, final lessons learned.</div>
+                            <div class="vs-cell itto-pattern">I (Accepted Deliverables) → T → O (Transition, OPA Updates)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
