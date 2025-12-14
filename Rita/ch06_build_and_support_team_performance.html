@@ -1,725 +1,938 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMP Team Performance Cheat Sheet 🚀</title>
-    <style>
-        :root {
-            --primary:#007bff;
-            --primary-dark:#0056b3;
-            --accent-green:#38c172;
-            --bg:#f4f7f9;
-            --card-bg:#ffffff;
-            --danger:#ff4d4f;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PMP Team Performance Cheat Sheet | People Domain + Resource Mgmt</title>
+  <style>
+    :root{
+      --primary:#1f6feb;
+      --primary-dark:#174ea6;
+      --success:#16a34a;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --info:#0ea5e9;
+      --muted:#6b7280;
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ink:#111827;
+      --line:#e5e7eb;
 
-        html {
-            scroll-behavior: smooth;
-        }
+      --radius:14px;
+      --shadow:0 8px 20px rgba(17,24,39,.07);
+      --shadow-soft:0 2px 10px rgba(17,24,39,.06);
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: #333;
-        }
+      --nav-w:300px;
+      --focus:0 0 0 3px rgba(31,111,235,.25);
+    }
 
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
+    a{color:inherit;}
+    :focus-visible{outline:none; box-shadow:var(--focus); border-radius:12px;}
 
-        header h1 {
-            margin: 0 0 5px 0;
-            font-size: 1.8rem;
-        }
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(90deg,var(--primary),#4f46e5);
+      color:#fff;
+      box-shadow:0 6px 18px rgba(17,24,39,.12);
+    }
+    .header-inner{
+      max-width:1250px;
+      margin:0 auto;
+      padding:16px 16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .title-wrap{display:flex; flex-direction:column; gap:2px; min-width:260px;}
+    header h1{margin:0; font-size:1.2rem; line-height:1.2;}
+    header p{margin:0; opacity:.92; font-size:.92rem;}
+    .header-badges{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .badge{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
 
-        header p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
+    /* Layout */
+    .shell{
+      max-width:1250px;
+      margin:0 auto;
+      padding:18px 16px 44px;
+      display:grid;
+      grid-template-columns: var(--nav-w) 1fr;
+      gap:18px;
+      align-items:start;
+    }
 
-        .container {
-            display: flex;
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px 40px;
-            gap: 30px;
-        }
+    nav{
+      position:sticky;
+      top:92px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      padding:14px;
+      max-height:calc(100vh - 110px);
+      overflow:auto;
+    }
+    .nav-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+      padding:6px 6px 10px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-title h2{margin:0; font-size:1rem;}
+    .nav-mini{font-size:.8rem; color:var(--muted);}
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:6px;
+    }
+    .nav-links a{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition: background .15s, border-color .15s, transform .08s;
+    }
+    .nav-links a:hover{
+      background:#f3f4f6;
+      border-color:#eef2ff;
+      transform:translateY(-1px);
+    }
+    .nav-links a span{color:var(--muted); font-size:.82rem; white-space:nowrap;}
 
-        nav {
-            width: 280px;
-            padding: 20px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-        }
+    main{display:flex; flex-direction:column; gap:18px; min-width:0;}
 
-        nav h3 {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 5px;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    section:target{
+      box-shadow:0 0 0 4px rgba(31,111,235,.18), var(--shadow);
+      border-color:rgba(31,111,235,.35);
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .sec-head{display:flex; flex-direction:column; gap:6px; margin-bottom:10px;}
+    .sec-head h2{margin:0; font-size:1.12rem;}
+    .sub{margin:0; color:var(--muted); font-size:.95rem;}
 
-        nav ul li {
-            margin-bottom: 4px;
-        }
+    /* Pills / micro labels */
+    .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;}
+    .pill{
+      background:#f3f4f6;
+      border:1px solid var(--line);
+      color:var(--ink);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      white-space:nowrap;
+    }
+    .pill.primary{background:rgba(31,111,235,.10); border-color:rgba(31,111,235,.25); color:var(--primary-dark);}
+    .pill.info{background:rgba(14,165,233,.10); border-color:rgba(14,165,233,.25); color:#075985;}
+    .pill.success{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.25); color:#14532d;}
+    .pill.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); color:#7c2d12;}
+    .pill.danger{background:rgba(239,68,68,.10); border-color:rgba(239,68,68,.25); color:#7f1d1d;}
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--primary);
-            padding: 8px 10px;
-            display: block;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            transition: background-color 0.2s, color 0.2s, transform 0.1s;
-        }
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+    .card{
+      background:#fbfbfd;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      box-shadow:0 1px 0 rgba(17,24,39,.03);
+    }
+    .card h3{margin:0 0 8px 0; font-size:1rem;}
+    .card p{margin:0; color:var(--muted);}
 
-        nav ul li a:hover,
-        nav ul li a:focus-visible {
-            color: #fff;
-            background-color: var(--primary-dark);
-            outline: none;
-            transform: translateX(2px);
-        }
+    /* Callouts */
+    .callout{
+      border-radius:14px;
+      padding:14px;
+      border:1px solid;
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .callout .icon{font-size:1.2rem; line-height:1.2; margin-top:2px;}
+    .callout .body{flex:1; min-width:0;}
+    .callout .body strong{display:block; margin-bottom:2px;}
+    .callout.tip{background:rgba(14,165,233,.08); border-color:rgba(14,165,233,.22);}
+    .callout.warn{background:rgba(239,68,68,.08); border-color:rgba(239,68,68,.22);}
+    .callout.trick{background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.25);}
+    .callout.ok{background:rgba(22,163,74,.08); border-color:rgba(22,163,74,.22);}
 
-        main {
-            flex-grow: 1;
-        }
+    /* Tables */
+    .table-wrap{
+      overflow:auto;
+      border-radius:14px;
+      border:1px solid var(--line);
+      margin-top:12px;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:760px;
+      background:#fff;
+    }
+    th,td{
+      padding:12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:.95rem;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#f3f4f6;
+      font-weight:800;
+      z-index:1;
+    }
+    tr:last-child td{border-bottom:none;}
+    td ul{margin:0; padding-left:18px;}
+    td li{margin:6px 0;}
 
-        section {
-            background-color: var(--card-bg);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
+    /* Process cards (ITTO) */
+    .process{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      margin-top:12px;
+      background:#fff;
+    }
+    .process-head{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding-bottom:10px;
+      border-bottom:1px dashed var(--line);
+      margin-bottom:12px;
+    }
+    .process-title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      min-width:260px;
+      flex:1;
+    }
+    .process-title .picon{font-size:1.4rem; line-height:1.1; margin-top:1px;}
+    .process-title h3{margin:0; font-size:1.03rem;}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-items:center;}
 
-        section:target {
-            outline: 2px solid var(--primary);
-            outline-offset: 4px;
-        }
+    .itto{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .itto .box{
+      border-radius:14px;
+      border:1px solid var(--line);
+      padding:12px;
+      background:#fbfbfd;
+    }
+    .itto .box h4{
+      margin:0 0 8px 0;
+      font-size:.95rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .itto ul{margin:0; padding-left:18px;}
+    .itto li{margin:6px 0; color:#1f2937;}
+    .itto .in h4{color:#0b5394;}
+    .itto .out h4{color:#7c2d12;}
 
-        h2 {
-            color: var(--primary);
-            border-bottom: 3px solid #f0f0f0;
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
+    /* One-page Memory Band */
+    .summary{
+      background:linear-gradient(180deg, rgba(14,165,233,.08), rgba(31,111,235,.05));
+      border:1px solid rgba(14,165,233,.20);
+    }
+    .bands{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px;}
+    .band{
+      border-radius:14px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:#fff;
+    }
+    .band .label{
+      padding:10px 12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:.9rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .band.exec .label{background:rgba(245,158,11,.10);}
+    .band.plan .label{background:rgba(22,163,74,.10);}
+    .band.mc .label{background:rgba(14,165,233,.10);}
+    .band .steps{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap:10px;
+      padding:12px;
+    }
+    .step{
+      border:1px solid var(--line);
+      background:#fbfbfd;
+      border-radius:12px;
+      padding:10px;
+      min-height:78px;
+    }
+    .step .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:4px;
+    }
+    .step .top strong{font-size:.95rem;}
+    .step small{color:var(--muted); display:block; line-height:1.35;}
 
-        h3 {
-            color: var(--accent-green);
-            margin-top: 20px;
-            font-size: 1.05rem;
-        }
-
-        p {
-            margin-top: 0.4rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .tip,
-        .warning {
-            padding: 10px 12px;
-            margin: 15px 0;
-            border-radius: 5px;
-            font-size: 0.95rem;
-        }
-
-        .tip {
-            background-color: #e6f7ff;
-            border-left: 5px solid var(--primary);
-        }
-
-        .warning {
-            background-color: #fff0f0;
-            border-left: 5px solid var(--danger);
-        }
-
-        .process-list {
-            padding-left: 20px;
-        }
-
-        .process-list li {
-            margin-bottom: 8px;
-        }
-
-        /* Table wrapper for responsiveness */
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 500px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: #f8f8f8;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Visual ITTO cards */
-        .process-card {
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-
-        .process-card h3 {
-            margin-top: 0;
-        }
-
-        .process-card.blue {
-            border-left: 6px solid #007bff;
-            background: #f7faff;
-        }
-
-        .process-card.green {
-            border-left: 6px solid #38c172;
-            background: #f2faf5;
-        }
-
-        .process-card.orange {
-            border-left: 6px solid #ff9800;
-            background: #fff7ec;
-        }
-
-        .process-card.purple {
-            border-left: 6px solid #8e44ad;
-            background: #faf5ff;
-        }
-
-        .process-card.red {
-            border-left: 6px solid #c0392b;
-            background: #fff5f5;
-        }
-
-        .process-card.yellow {
-            border-left: 6px solid #f1c40f;
-            background: #fffdf2;
-        }
-
-        /* Responsive layout */
-        @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
-                padding: 0 15px 30px;
-            }
-
-            nav {
-                width: 100%;
-                position: static;
-                order: -1;
-            }
-
-            main {
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 15px 10px;
-            }
-
-            header h1 {
-                font-size: 1.4rem;
-            }
-
-            header p {
-                font-size: 0.85rem;
-            }
-
-            section {
-                padding: 18px;
-            }
-
-            nav ul li a {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-
-            table {
-                min-width: 450px;
-            }
-        }
-    </style>
+    /* Mobile */
+    @media (max-width: 980px){
+      .shell{grid-template-columns:1fr;}
+      nav{position:sticky; top:92px; max-height:none;}
+      .nav-links{flex-direction:row; flex-wrap:wrap;}
+      .nav-links a{flex:1 1 220px;}
+    }
+    @media (max-width: 720px){
+      header h1{font-size:1.05rem;}
+      .itto{grid-template-columns:1fr;}
+      table{min-width:680px;}
+      .band .steps{grid-template-columns:1fr;}
+    }
+    @media print{
+      header{position:static; box-shadow:none;}
+      nav{display:none;}
+      .shell{grid-template-columns:1fr; padding:0;}
+      section{box-shadow:none;}
+    }
+  </style>
 </head>
-<body>
 
+<body>
 <header>
-    <h1>PMP Exam Cheat Sheet: Build &amp; Support Team Performance 🛠️👥</h1>
-    <p>Focusing on the ECO People Domain and Resource Management Processes</p>
+  <div class="header-inner">
+    <div class="title-wrap">
+      <h1>PMP Cheat Sheet: Build &amp; Support Team Performance 🛠️👥</h1>
+      <p>ECO People Domain + Resource Management (high-yield situational logic)</p>
+    </div>
+    <div class="header-badges" aria-label="Quick tags">
+      <span class="badge">People Domain ≈ 42%</span>
+      <span class="badge">Plan → Acquire → Develop → Manage</span>
+      <span class="badge">Control Resources = equipment</span>
+    </div>
+  </div>
 </header>
 
-<div class="container">
-    <nav>
-        <h3>🧭 Navigation</h3>
-        <ul>
-            <li><a href="#resource-visual-memory">0. Resource ITTO Visual Map</a></li>
-            <li><a href="#overview">1. ECO People Domain Overview</a></li>
-            <li><a href="#leadership">2. PM Leadership Responsibilities</a></li>
-            <li><a href="#plan-resources">3. Plan Resource Management</a></li>
-            <li><a href="#estimate-resources">4. Estimate Resource Requirements</a></li>
-            <li><a href="#acquire-resources">5. Acquire Resources</a></li>
-            <li><a href="#develop-team">6. Develop Team</a></li>
-            <li><a href="#manage-team">7. Manage Team</a></li>
-            <li><a href="#roles-cheat">8. 🚨 Role Responsibility Cheat Sheet</a></li>
-        </ul>
-    </nav>
+<div class="shell">
+  <nav aria-label="Page navigation">
+    <div class="nav-title">
+      <h2>🧭 Navigation</h2>
+      <div class="nav-mini">Jump fast</div>
+    </div>
+    <div class="nav-links">
+      <a href="#visual-memory">0. Visual Memory Map <span>icons</span></a>
+      <a href="#overview">1. People Domain Overview <span>ECO</span></a>
+      <a href="#leadership">2. PM Leadership <span>servant</span></a>
+      <a href="#plan">3. Plan Resource Mgmt <span>🧭</span></a>
+      <a href="#estimate">4. Estimate Resources <span>📏</span></a>
+      <a href="#acquire">5. Acquire Resources <span>🤝</span></a>
+      <a href="#develop">6. Develop Team <span>🚀</span></a>
+      <a href="#manage">7. Manage Team <span>🎯</span></a>
+      <a href="#roles">8. Role Cheat Sheet <span>exam</span></a>
+    </div>
+  </nav>
 
-    <main>
+  <main>
+    <!-- 0 -->
+    <section id="visual-memory" class="summary">
+      <div class="sec-head">
+        <h2>🔍 Resource Management ITTO Visual Memory System</h2>
+        <p class="sub">Memorize the pattern first (Plan → Estimate → Acquire → Develop → Manage → Control). Then attach “signature outputs.”</p>
+        <div class="pill-row">
+          <span class="pill primary">Plan = plans + team charter</span>
+          <span class="pill info">Acquire = assignments + calendars</span>
+          <span class="pill success">Develop = performance assessments</span>
+          <span class="pill warn">Manage = issues + change requests</span>
+        </div>
+      </div>
 
-        <!-- ITTO Visual Memory System -->
-        <section id="resource-visual-memory">
-            <h2>🔍 Resource Management ITTO Visual Memory System</h2>
-            <p>This visual system helps you quickly memorize each Resource Management process and its core inputs, tools, and outputs through pattern recognition and icon mapping.</p>
+      <div class="bands" aria-label="One-page visual memory band">
+        <div class="band plan">
+          <div class="label">🟢 Planning band — “Prepare the team + estimate needs”</div>
+          <div class="steps">
+            <div class="step">
+              <div class="top"><strong>🧭 Plan Resource Mgmt</strong><span class="pill success">Plans</span></div>
+              <small>Outputs: Resource Mgmt Plan + Team Charter</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>📏 Estimate Activity Resources</strong><span class="pill info">Reqs</span></div>
+              <small>Outputs: Resource Requirements + Basis of Estimates</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>📌 Reminder</strong><span class="pill warn">Exam</span></div>
+              <small>Know RAM/RACI/OBS/RBS use-cases</small>
+            </div>
+          </div>
+        </div>
 
-            <div class="process-card blue">
-                <h3>🧭 Plan Resource Management — “Draw the Map First”</h3>
+        <div class="band exec">
+          <div class="label">🟠 Executing band — “Onboard + grow + steer”</div>
+          <div class="steps">
+            <div class="step">
+              <div class="top"><strong>🤝 Acquire Resources</strong><span class="pill info">Assign</span></div>
+              <small>Outputs: Team/Physical assignments + Calendars + CRs</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>🚀 Develop Team</strong><span class="pill success">Improve</span></div>
+              <small>Outputs: Team performance assessments + OPA/EEF updates</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>🎯 Manage Team</strong><span class="pill warn">Fix</span></div>
+              <small>Outputs: CRs + Issue log + Lessons learned</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="band mc">
+          <div class="label">🔵 Monitoring &amp; Controlling band — “Protect physical resources”</div>
+          <div class="steps">
+            <div class="step">
+              <div class="top"><strong>🛠️ Control Resources</strong><span class="pill info">WPI</span></div>
+              <small>Focus: equipment/materials; outputs WPI + CRs</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>⚠️ Trap</strong><span class="pill danger">Common</span></div>
+              <small>Control Resources ≠ Manage Team</small>
+            </div>
+            <div class="step">
+              <div class="top"><strong>✅ Tip</strong><span class="pill success">Fast</span></div>
+              <small>Plan → Acquire (get) → Develop (grow) → Manage (lead)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout ok">
+        <div class="icon">✨</div>
+        <div class="body">
+          <strong>Memory method</strong>
+          Use: <em>icon + color + phrase</em>. Learn the “signature outputs” for each process (Team Charter, Assignments, Assessments, Issue Log/CRs).
+        </div>
+      </div>
+
+      <!-- ITTO Cards (shorter, cleaner) -->
+      <div class="grid" style="margin-top:12px;">
+        <div class="card">
+          <h3>🧭 Plan — “Draw the Map”</h3>
+          <p><strong>O:</strong> Resource Mgmt Plan, Team Charter</p>
+        </div>
+        <div class="card">
+          <h3>📏 Estimate — “How much?”</h3>
+          <p><strong>O:</strong> Resource Requirements, Basis of Estimates</p>
+        </div>
+        <div class="card">
+          <h3>🤝 Acquire — “Onboard”</h3>
+          <p><strong>O:</strong> Assignments, Calendars, CRs</p>
+        </div>
+        <div class="card">
+          <h3>🚀 Develop — “Improve”</h3>
+          <p><strong>O:</strong> Team Performance Assessments</p>
+        </div>
+        <div class="card">
+          <h3>🎯 Manage — “Steer”</h3>
+          <p><strong>O:</strong> CRs, Issue Log updates, Lessons Learned</p>
+        </div>
+        <div class="card">
+          <h3>🛠️ Control — “Protect equipment”</h3>
+          <p><strong>O:</strong> WPI, CRs (physical resources)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 -->
+    <section id="overview">
+      <div class="sec-head">
+        <h2>1. ECO People Domain Overview 🧠</h2>
+        <p class="sub">People Domain is heavily tested. Expect situational questions about leadership, conflict, coaching, and team performance.</p>
+        <div class="pill-row">
+          <span class="pill primary">Think: people-first, value delivery</span>
+          <span class="pill info">Support &amp; remove blockers</span>
+          <span class="pill warn">Escalate only after trying the right steps</span>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="icon">🧱</div>
+        <div class="body">
+          <strong>Simple split</strong>
+          <em>Build</em> performance (set team up) vs <em>Support</em> performance (keep team moving).
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concept</th>
+              <th>Tasks (7)</th>
+              <th>Icon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Building Performance</strong></td>
+              <td>
                 <ul>
-                    <li><strong>Inputs:</strong> Project Charter, Project Management Plan (scope, schedule, cost, quality), project documents, OPAs, EEFs</li>
-                    <li><strong>Tools:</strong> Expert judgment, meetings, data representation (RACI/RAM/OBS/RBS)</li>
-                    <li><strong>Outputs:</strong> Resource Management Plan, Team Charter, updates to project documents</li>
+                  <li>Lead a team</li>
+                  <li>Empower team members and stakeholders</li>
+                  <li>Ensure adequate training is provided</li>
+                  <li>Build a team</li>
+                  <li>Negotiate project agreements</li>
+                  <li>Build shared understanding</li>
+                  <li>Define team ground rules</li>
                 </ul>
-            </div>
-
-            <div class="process-card green">
-                <h3>📏 Estimate Activity Resources — “How Much Do We Need?”</h3>
+              </td>
+              <td>🏗️</td>
+            </tr>
+            <tr>
+              <td><strong>Supporting Performance</strong></td>
+              <td>
                 <ul>
-                    <li><strong>Inputs:</strong> Scope baseline, activity list, activity attributes, cost estimates, resource calendars</li>
-                    <li><strong>Tools:</strong> Estimating techniques (analogous, parametric, bottom-up, expert judgment), alternative analysis, data representation (resource histograms)</li>
-                    <li><strong>Outputs:</strong> Resource requirements, basis of estimates, updates to documents</li>
+                  <li>Manage conflict</li>
+                  <li>Support team performance</li>
+                  <li>Remove impediments/obstacles/blockers</li>
+                  <li>Collaborate with stakeholders</li>
+                  <li>Engage and support virtual teams</li>
+                  <li>Mentor relevant stakeholders</li>
+                  <li>Promote performance through emotional intelligence</li>
                 </ul>
+              </td>
+              <td>🛡️</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:12px;">
+        <h3>🔄 Resource process group mapping</h3>
+        <p><strong>Planning:</strong> Plan Resource Mgmt, Estimate Activity Resources • <strong>Executing:</strong> Acquire, Develop, Manage • <strong>M&amp;C:</strong> Control Resources (physical)</p>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section id="leadership">
+      <div class="sec-head">
+        <h2>2. PM Leadership Responsibilities 👑</h2>
+        <p class="sub">The exam often rewards a calm, structured, people-first approach (clarify, coach, collaborate, then escalate if needed).</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>📌 Make roles clear</h3>
+          <p>Document roles/responsibilities and get agreement early (Team Charter + RAM/RACI).</p>
+        </div>
+        <div class="card">
+          <h3>🎖️ Recognition matters</h3>
+          <p>Plan recognition/rewards. Small, timely, specific praise works.</p>
+        </div>
+        <div class="card">
+          <h3>🧠 Build competence</h3>
+          <p>Training + coaching. Improve team capability continuously.</p>
+        </div>
+      </div>
+
+      <div class="callout ok">
+        <div class="icon">🧘‍♂️</div>
+        <div class="body">
+          <strong>Agile leadership</strong>
+          Servant leadership: enable the team, remove impediments, coach practices, protect focus, align with stakeholders.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section id="plan">
+      <div class="sec-head">
+        <h2>3. Plan Resource Management 🧭</h2>
+        <p class="sub">Defines how roles, responsibilities, reporting, acquisition, training, and recognition will be handled.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🧭</div>
+            <div>
+              <h3>Plan Resource Management</h3>
+              <p class="sub">Build the team system (rules + ground rules)</p>
             </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill info">Signature: Team Charter</span>
+            <span class="pill primary">Tools: RAM/RACI/OBS/RBS</span>
+          </div>
+        </div>
 
-            <div class="process-card orange">
-                <h3>🤝 Acquire Resources — “Bring the Team Onboard”</h3>
-                <ul>
-                    <li><strong>Inputs:</strong> Resource Management Plan, procurement documentation, resource calendars</li>
-                    <li><strong>Tools:</strong> Negotiation, pre-assignment, acquisition, virtual teams, multi-criteria decision analysis</li>
-                    <li><strong>Outputs:</strong> Physical resource assignments, project team assignments, resource calendars, change requests</li>
-                </ul>
-            </div>
-
-            <div class="process-card purple">
-                <h3>🚀 Develop Team — “Make Them Awesome”</h3>
-                <ul>
-                    <li><strong>Inputs:</strong> Resource Management Plan, team assignments, team charter</li>
-                    <li><strong>Tools:</strong> Training, team-building, colocation, recognition &amp; rewards, individual &amp; team assessments</li>
-                    <li><strong>Outputs:</strong> Team performance assessments, EEF updates, OPA updates</li>
-                </ul>
-            </div>
-
-            <div class="process-card red">
-                <h3>🎯 Manage Team — “Steer the Ship”</h3>
-                <ul>
-                    <li><strong>Inputs:</strong> Team assignments, performance reports, feedback, issue log</li>
-                    <li><strong>Tools:</strong> Conflict management, decision-making, emotional intelligence, leadership, influencing</li>
-                    <li><strong>Outputs:</strong> Change requests, updates to issue log, lessons learned, EEFs, OPAs</li>
-                </ul>
-            </div>
-
-            <div class="process-card yellow">
-                <h3>🛠️ Control Resources — “Protect the Equipment”</h3>
-                <ul>
-                    <li><strong>Inputs:</strong> Resource Management Plan, physical resource assignments, work performance data, agreements</li>
-                    <li><strong>Tools:</strong> Problem-solving, inspections, audits, performance reviews</li>
-                    <li><strong>Outputs:</strong> Work performance information, change requests, updates to plans &amp; documents</li>
-                </ul>
-            </div>
-
-            <p style="margin-top:25px;font-style:italic;color:#555;">✨ Tip: Use the icon + colour + phrase for each process. Focus on the pattern (Plan → Estimate → Acquire → Develop → Manage → Control) rather than memorizing long lists.</p>
-        </section>
-
-        <!-- 1. Overview -->
-        <section id="overview">
-            <h2>1. ECO People Domain Overview 🧠</h2>
-            <p>Working with others is critical, so <strong>42% of exam questions are based on the People Domain</strong> in the ECO (Exam Content Outline). This domain combines interpersonal and team skills with technical project management skills.</p>
-
-            <h3>The 14 People Domain Skills (Build vs. Support Model) 🧱🤝</h3>
-            <p class="tip">We can break the 14 People Domain tasks into two study groups: Building Performance (B) and Supporting Performance (S).</p>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Concept</th>
-                            <th>Task (7 Tasks)</th>
-                            <th>Emoticon</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Building Performance (B)</strong></td>
-                            <td>
-                                <ul class="process-list">
-                                    <li>Lead a team</li>
-                                    <li>Empower team members and stakeholders</li>
-                                    <li>Ensure adequate training is provided</li>
-                                    <li>Build a team</li>
-                                    <li>Negotiate project agreements</li>
-                                    <li>Build shared understanding</li>
-                                    <li>Define team ground rules</li>
-                                </ul>
-                            </td>
-                            <td>🏗️</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Supporting Performance (S)</strong></td>
-                            <td>
-                                <ul class="process-list">
-                                    <li>Manage conflict</li>
-                                    <li>Support team performance</li>
-                                    <li>Address and remove impediments, obstacles, and blockers for the team</li>
-                                    <li>Collaborate with stakeholders</li>
-                                    <li>Engage and support virtual teams</li>
-                                    <li>Mentor relevant stakeholders</li>
-                                    <li>Promote performance through emotional intelligence</li>
-                                </ul>
-                            </td>
-                            <td>🛡️</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Process Group Model for Resources 🔄</h3>
-            <p>The Resource Management Process groups map most closely to these People Domain skills:</p>
-            <ul class="process-list">
-                <li><strong>Planning:</strong> Plan Resource Management, Estimate Activity Resources.</li>
-                <li><strong>Executing:</strong> Acquire Resources, Develop Team, Manage Team.</li>
-                <li><strong>Monitoring/Controlling:</strong> Control Resources (Note: This is dedicated to material resources like equipment, not team management).</li>
-            </ul>
-        </section>
-
-        <!-- 2. Leadership -->
-        <section id="leadership">
-            <h2>2. PM Leadership Responsibilities 👑</h2>
-            <p>The project manager's role requires formal documentation and continuous planning.</p>
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
             <ul>
-                <li><strong>Documentation &amp; Formal Processes:</strong> Resource management activities are formal and require documentation. The processes of resource management are repeated and updated throughout the project.</li>
-                <li><strong>Roles &amp; Responsibilities:</strong> Must be clear.</li>
-                <li><strong>Team Planning:</strong> Projects are planned by the team and coordinated by the PM. PM formally plans team building activities in advance—these are a required part of project management.</li>
-                <li><strong>Recognition:</strong> Creating a recognition and reward system is an important and required resource management function.</li>
-                <li><strong>Competencies:</strong> PM is responsible for improving team members' competencies.</li>
-                <li><strong>Resources:</strong> PM must continually confirm resource availability and control physical resources (not just procurement).</li>
+              <li>Project Charter; PM Plan components (scope/schedule/cost/quality)</li>
+              <li>Project documents; OPAs; EEFs</li>
             </ul>
-
-            <h3>Agile Leadership Focus 🧘‍♂️</h3>
-            <p>On agile projects, the PM (or Scrum Master/Agile Coach) is a <strong>Servant Leader</strong>:</p>
-            <ul class="process-list">
-                <li>Focus on making sure processes are understood and followed.</li>
-                <li>Provide team training where needed.</li>
-                <li><strong>Remove impediments</strong> to project progress.</li>
-                <li>Interface with stakeholders like the project sponsor.</li>
-            </ul>
-        </section>
-
-        <!-- 3. Plan Resource Management -->
-        <section id="plan-resources">
-            <h2>3. Plan Resource Management 📋</h2>
-            <p>This process defines roles, responsibilities, and authority, documenting them in the Resource Management Plan.</p>
-
-            <h3>Key Planning Outcomes (The "Build" Concept) 🛠️</h3>
-            <p>Planning answers these questions, covering the 'Build Performance' tasks:</p>
-            <ol>
-                <li>How are we going to do all this as a team?</li>
-                <li>Who needs to be on the team to accomplish it?</li>
-                <li>What do I need to do to be a good servant leader on this project?</li>
-            </ol>
-
-            <h3>Essential Artifacts (Inputs) 📝</h3>
-            <p>Factors documented early that inform resource planning:</p>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
             <ul>
-                <li>Scope Baseline (helps determine resources needed for deliverables).</li>
-                <li>Stakeholder Register (lists individuals/groups, including their power/interest analysis).</li>
-                <li>Quality Management Plan (defines required quality/grade of physical resources).</li>
-                <li>Organizational Process Assets (e.g., resource management plan templates, policies, lessons learned).</li>
-                <li>Enterprise Environmental Factors (e.g., company culture, team collocation status, availability of contract help).</li>
+              <li><strong>Resource Management Plan</strong></li>
+              <li><strong>Team Charter</strong> (ground rules)</li>
+              <li>Project document updates</li>
             </ul>
+          </div>
+        </div>
 
-            <h3>Methods for Defining Roles 📊</h3>
-            <p class="tip">Know what each visualization tool is used for to answer situational questions.</p>
-            <ul class="process-list">
-                <li><strong>Responsibility Assignment Matrix (RAM):</strong> Chart cross-referencing team members with activities/work packages (doesn't show time).</li>
-                <li><strong>RACI Chart:</strong> A type of RAM that defines roles more clearly.
-                    <ul>
-                        <li>R: Responsible (Multiple resources possible).</li>
-                        <li><strong>A: Accountable (Only ONE person held accountable)</strong>.</li>
-                        <li>C: Consult (Multiple resources possible).</li>
-                        <li>I: Inform (Multiple resources possible).</li>
-                    </ul>
-                </li>
-                <li><strong>Organizational Breakdown Structure (OBS):</strong> Used to assign responsibilities to organizational divisions (e.g., Marketing, IT).</li>
-                <li><strong>Resource Breakdown Structure (RBS):</strong> Hierarchical structure breaking down work by resource type (People, Materials, Equipment, etc.). Referenced from the WBS.</li>
-            </ul>
+        <div class="callout tip">
+          <div class="icon">📊</div>
+          <div class="body">
+            <strong>RACI exam nugget</strong>
+            Only <strong>one</strong> person is <strong>Accountable</strong>. Many can be Responsible/Consulted/Informed.
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <h3>Artifacts of Planning (Outputs) 📄</h3>
-            <ul class="process-list">
-                <li><strong>Resource Management Plan:</strong> Includes a Human Resources/Team Management Plan (roles, acquisition process, training, safety) and a Recognition Plan.</li>
-                <li><strong>Recognition Plan:</strong> Details when/how resources will be recognized and what achievements will be rewarded. Personal recognition (like saying "thank you") is highly effective.</li>
-                <li><strong>Team Charter (Ground Rules):</strong> A working agreement developed by team members. Defines approach for communication, decision-making, and conflict resolution.
-                    <ul>
-                        <li>Ground rules are especially important for virtual teams.</li>
-                        <li>Examples: conflict resolution process, notification of difficulty, meeting rules, status update methods.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
+    <!-- 4 -->
+    <section id="estimate">
+      <div class="sec-head">
+        <h2>4. Estimate Resource Requirements 📏</h2>
+        <p class="sub">Predictive: estimate type/quantity of resources at activity/work package level.</p>
+      </div>
 
-        <!-- 4. Estimate Resources -->
-        <section id="estimate-resources">
-            <h2>4. Estimate Resource Requirements 🗓️💰</h2>
-            <p>In predictive environments, the PM estimates the <strong>type and quantity of all resources</strong> needed at the work package and activity level.</p>
-
-            <h3>Key Inputs/Artifacts 🗄️</h3>
-            <p>Planning is iterative; refining scope, schedule, and cost happens concurrently.</p>
-            <ul>
-                <li>Scope Baseline &amp; Activity List (contains WBS work package estimates).</li>
-                <li>Activity Attributes (specific info like type/quantity of resources expected).</li>
-                <li>Cost Estimates (provides constraints since resource costs must fit within the cost baseline).</li>
-                <li>Resource Calendars (shows organizational work hours, holidays, and resource availability).</li>
-            </ul>
-
-            <h3>Methods &amp; Techniques 📈</h3>
-            <ul>
-                <li><strong>Resource Histograms:</strong> Bar chart visualizing resource requirements vs. availability per time period, showing spikes in need.</li>
-                <li><strong>Resource Leveling:</strong> Technique used to change the project to <strong>minimize the peaks and valleys of resource usage</strong>.</li>
-                <li>Estimating techniques: Analogous, Bottom-up, Parametric, and Expert Judgment.</li>
-                <li>Analyze alternative equipment or methods.</li>
-            </ul>
-        </section>
-
-        <!-- 5. Acquire Resources -->
-        <section id="acquire-resources">
-            <h2>5. Acquire Resources 🤝 (Executing)</h2>
-            <p>This executing process involves securing people (onboarding) and releasing them throughout the project as their work finishes (predictive environment).</p>
-
-            <h3>Agile vs. Predictive Acquisition 💡</h3>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Predictive Environment</th>
-                            <th>Agile Environment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Resources enter and leave over time.</td>
-                            <td>Teams are <strong>stable</strong>, relatively small (approx. 8–12 people).</td>
-                        </tr>
-                        <tr>
-                            <td>Focus on securing needed resources via internal negotiation or procurement.</td>
-                            <td>Teams are <strong>dedicated</strong>, have all necessary members (PM, PO, developers, testers), and projects are brought to the team.</td>
-                        </tr>
-                    </tbody>
-                </table>
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">📏</div>
+            <div>
+              <h3>Estimate Activity Resources</h3>
+              <p class="sub">Figure out what you need to do the work</p>
             </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill info">Output: Resource Requirements</span>
+            <span class="pill warn">Tools: leveling/histograms</span>
+          </div>
+        </div>
 
-            <h3>Team Configurations 👥</h3>
-            <p class="tip">Be aware how team configuration impacts the PM's work (e.g., negotiation with part-time teams, communication complexity with partnerships/virtual teams).</p>
-            <ul class="process-list">
-                <li><strong>Dedicated Teams:</strong> Members work full-time exclusively on the project. Common in projectized organizations; important for rapidly changing agile projects.</li>
-                <li><strong>Part-Time Teams:</strong> Members split time between the project and other work. Common in functional/matrix organizations.</li>
-                <li><strong>Virtual Teams:</strong> Geographic distance necessitates use. PM can negotiate for the best resources regardless of location. Agile organizations generally try to avoid virtual teams, preferring face-to-face.</li>
-                <li><strong>Preassigned Team Members:</strong> Resources listed in the Project Charter before the project starts.</li>
-            </ul>
-
-            <h3>Negotiating Internal Resources 🗣️</h3>
-            <p>The PM negotiates with resource managers:</p>
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
             <ul>
-                <li>Know the project's needs and priority within the organization.</li>
-                <li>Express how the resource manager will benefit.</li>
-                <li>Be open to creative ways to help the resource manager meet their own needs.</li>
-                <li><strong>DO NOT ask for the best resources if the project does not need them</strong>.</li>
+              <li>Scope baseline; activity list/attributes</li>
+              <li>Cost estimates; resource calendars</li>
             </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
+            <ul>
+              <li><strong>Resource requirements</strong></li>
+              <li><strong>Basis of estimates</strong></li>
+              <li>Project document updates</li>
+            </ul>
+          </div>
+        </div>
 
-            <div class="warning">
-                🚨 <strong>Halo Effect:</strong> Avoid rating team members high or low on all criteria based on performance in just one specific criterion (e.g., assuming a great programmer will be a great team leader).
+        <div class="callout trick">
+          <div class="icon">📉</div>
+          <div class="body">
+            <strong>Leveling vs “just add people”</strong>
+            Leveling smooths peaks/valleys by adjusting work; it can impact schedule. Don’t assume extra resources are available.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section id="acquire">
+      <div class="sec-head">
+        <h2>5. Acquire Resources 🤝 (Executing)</h2>
+        <p class="sub">Secure people and physical resources. Negotiation is common in matrix orgs.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🤝</div>
+            <div>
+              <h3>Acquire Resources</h3>
+              <p class="sub">Bring resources onboard (then release when done)</p>
             </div>
-        </section>
+          </div>
+          <div class="meta">
+            <span class="pill warn">Process Group: Executing</span>
+            <span class="pill info">Outputs: assignments</span>
+            <span class="pill primary">Tools: negotiation/MCDA</span>
+          </div>
+        </div>
 
-        <!-- 6. Develop Team -->
-        <section id="develop-team">
-            <h2>6. Develop Team 📈 (Executing)</h2>
-            <p>The process of leading, empowering, and motivating the team to achieve high performance levels. Requires all People Domain skills.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Predictive environment</th>
+                <th>Agile environment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Resources can enter/exit over time based on phase needs.</td>
+                <td>Teams are <strong>stable</strong>, small (often 8–12), and dedicated.</td>
+              </tr>
+              <tr>
+                <td>PM negotiates with resource managers and may procure contractors.</td>
+                <td>Work is brought to the team; focus on flow and sustainable pace.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            <h3>Key Development Methods 🛠️</h3>
-            <ul class="process-list">
-                <li><strong>Collocation:</strong> Having the entire team in one place (office/room). Improves communication, decreases conflict, and improves project identity. Adaptive approaches encourage this.</li>
-                <li><strong>Virtual Teams:</strong> Must rely on technology (video conferencing, interactive whiteboards, presence-based apps) to simulate collocation benefits and improve communication.</li>
-                <li><strong>Team Building Activities:</strong> Required, concerted, and continued effort throughout the project. Start early.
-                    <ul>
-                        <li>Examples: Collaborative problem solving, creating the WBS as a group, retrospectives, milestone parties.</li>
-                    </ul>
-                </li>
-                <li><strong>Training:</strong> Provides needed competencies.</li>
-                <li><strong>Recognition and Rewards:</strong> Must be systematic and planned.</li>
-                <li><strong>Individual &amp; Team Assessments:</strong> Used to evaluate effectiveness, skill improvement, conflict handling, and identify needed support.</li>
-            </ul>
+        <div class="callout warn">
+          <div class="icon">🚨</div>
+          <div class="body">
+            <strong>Halo effect</strong>
+            Don’t rate someone as “good at everything” (or “bad at everything”) based on one trait.
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <h3>PM’s Role in Culture Development 💖</h3>
-            <p>The PM develops a positive team culture by leading by example:</p>
-            <ul class="process-list">
-                <li>Allowing transparency, integrity, and respect.</li>
-                <li>Fostering positive interactions.</li>
-                <li>Creating a safe and open environment for voicing opinions/issues.</li>
-                <li>Using soft skills: mentoring, negotiation, influencing, and active listening.</li>
-            </ul>
+    <!-- 6 -->
+    <section id="develop">
+      <div class="sec-head">
+        <h2>6. Develop Team 🚀 (Executing)</h2>
+        <p class="sub">Improve competencies, cohesion, and performance—training + team-building + recognition.</p>
+      </div>
 
-            <p class="tip"><strong>Team Performance Appraisals vs. Rewards:</strong> Project performance appraisals are part of the <strong>Manage Team</strong> process, while the resulting rewards and additional training are given as part of the <strong>Develop Team</strong> process.</p>
-        </section>
-
-        <!-- 7. Manage Team -->
-        <section id="manage-team">
-            <h2>7. Manage Team ✅ (Executing)</h2>
-            <p>Involves day-to-day management, tracking performance, and resolving issues. It utilizes information from performance assessments to identify successes and conflicts.</p>
-
-            <h3>Sustaining High Performance (The "Support" Concept) 🛡️</h3>
-            <ul class="process-list">
-                <li>Observe what is happening (beyond reports).</li>
-                <li>Track and evaluate team performance.</li>
-                <li>Mentor and provide leadership.</li>
-                <li>Facilitate conflict resolution (for conflicts team members cannot resolve themselves).</li>
-            </ul>
-
-            <h3>Tools for Tracking Performance 📊</h3>
-            <ul>
-                <li><strong>Earned Value Measurement (EVM):</strong> Reflects project progression relative to the plan.</li>
-                <li><strong>Burndown Charts (Agile):</strong> Track the amount of <strong>work to be done</strong>; line moves downward as work is completed.</li>
-                <li><strong>Burnup Charts (Agile):</strong> Track the amount of <strong>work that has been completed</strong>; line moves upward. <strong>Key Advantage:</strong> They can show changes in scope, making the impact visible.</li>
-            </ul>
-
-            <h3>The Issue Log 📋</h3>
-            <p>Used to record problems and their resolutions.</p>
-            <ul>
-                <li>Tracks resolution of conflicts and team issues.</li>
-                <li>It facilitates assessment of causes, impact on constraints (scope, schedule, cost, risk), and recommendations for corrective actions.</li>
-                <li>It is frequently an input and an output of the same processes because it is continuously updated.</li>
-            </ul>
-
-            <h3>Outputs of Manage Team 📦</h3>
-            <p>Includes change requests (if resource needs, cost, or schedule change), updates to the issue log and lessons learned. Plans for <strong>releasing team members</strong> are documented in the Resource Management Plan.</p>
-        </section>
-
-        <!-- 8. Roles Cheat Sheet -->
-        <section id="roles-cheat">
-            <h2>8. 🚨 Role Responsibility Cheat Sheet (Situational Questions)</h2>
-            <p class="warning">For exam purposes, assume project management is done correctly unless the question indicates otherwise. These answers identify the key role responsible for resolution/decision-making.</p>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Situation / Problem</th>
-                            <th>Responsible Role</th>
-                            <th>Reasoning / Context</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Two project team members are having a disagreement.</td>
-                            <td><strong>Team Members</strong></td>
-                            <td>They should attempt to solve it themselves first. PM assists if unresolved.</td>
-                        </tr>
-                        <tr>
-                            <td>A change to the overall project deliverable is needed.</td>
-                            <td><strong>Sponsor</strong></td>
-                            <td>This is a change to the Project Charter, which only the sponsor can approve.</td>
-                        </tr>
-                        <tr>
-                            <td>A functional manager is <em>trying</em> to pull a team member off the project.</td>
-                            <td><strong>Team Members</strong></td>
-                            <td>Team members should be empowered with enough information (schedule, risks) to manage their own workloads. If the manager <em>has pulled</em> the resource, the PM steps in.</td>
-                        </tr>
-                        <tr>
-                            <td>The Project Manager does not have the authority to get things done.</td>
-                            <td><strong>Sponsor</strong></td>
-                            <td>The sponsor provides the PM's authority via the Project Charter.</td>
-                        </tr>
-                        <tr>
-                            <td>There are not enough resources to complete the project.</td>
-                            <td><strong>Sponsor and Functional Manager</strong></td>
-                            <td>They control resources (funding and personnel).</td>
-                        </tr>
-                        <tr>
-                            <td>An activity needs more time and <strong>WILL</strong> cause the project to be delayed.</td>
-                            <td><strong>Sponsor</strong></td>
-                            <td>The project completion date is likely in the Charter; delaying the project is a Charter change requiring sponsor approval (assuming no reserve is available).</td>
-                        </tr>
-                        <tr>
-                            <td>A team member is not performing.</td>
-                            <td><strong>Project Manager and Functional Manager</strong></td>
-                            <td>They share responsibility for directing resources.</td>
-                        </tr>
-                        <tr>
-                            <td>The project is behind schedule.</td>
-                            <td><strong>Project Manager</strong></td>
-                            <td>PM controls the overall project schedule.</td>
-                        </tr>
-                        <tr>
-                            <td>The project is running out of funds.</td>
-                            <td><strong>Sponsor</strong></td>
-                            <td>The sponsor provides funding.</td>
-                        </tr>
-                        <tr>
-                            <td>Team member determines a different method should be used to complete an activity.</td>
-                            <td><strong>Team Member</strong></td>
-                            <td>Team members control their activities as long as they meet time, cost, quality, and scope objectives. They must keep the PM informed.</td>
-                        </tr>
-                        <tr>
-                            <td>The team is in conflict over priorities between activities.</td>
-                            <td><strong>Project Manager</strong></td>
-                            <td>The PM must settle such conflicts and ensure the network diagram/critical path are established.</td>
-                        </tr>
-                    </tbody>
-                </table>
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🚀</div>
+            <div>
+              <h3>Develop Team</h3>
+              <p class="sub">Make the team stronger (skills + culture)</p>
             </div>
-        </section>
+          </div>
+          <div class="meta">
+            <span class="pill warn">Process Group: Executing</span>
+            <span class="pill success">Output: performance assessments</span>
+            <span class="pill info">Tools: training/rewards</span>
+          </div>
+        </div>
 
-    </main>
+        <div class="grid">
+          <div class="card">
+            <h3>🏢 Collocation</h3>
+            <p>Better comms, fewer misunderstandings, stronger identity.</p>
+          </div>
+          <div class="card">
+            <h3>🧩 Team-building</h3>
+            <p>Ongoing effort. Start early (workshops, retros, milestones).</p>
+          </div>
+          <div class="card">
+            <h3>🎖️ Recognition</h3>
+            <p>Planned + fair + specific. “Thank you” is powerful when timely.</p>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">✅</div>
+          <div class="body">
+            <strong>Exam distinction</strong>
+            Performance appraisals happen in <strong>Manage Team</strong>. Rewards/training are delivered via <strong>Develop Team</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section id="manage">
+      <div class="sec-head">
+        <h2>7. Manage Team 🎯 (Executing)</h2>
+        <p class="sub">Day-to-day leadership: track performance, resolve issues, manage conflict, and propose changes.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🎯</div>
+            <div>
+              <h3>Manage Team</h3>
+              <p class="sub">Steer the ship (conflict, feedback, issues)</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill warn">Process Group: Executing</span>
+            <span class="pill danger">Outputs: CRs</span>
+            <span class="pill info">Artifact: Issue Log</span>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>📊 Tracking tools</h3>
+            <p>EVM (predictive), Burndown/Burnup (agile). Burnup shows scope changes clearly.</p>
+          </div>
+          <div class="card">
+            <h3>📋 Issue log</h3>
+            <p>Record problems + owners + actions. Often both input and output because it’s updated continuously.</p>
+          </div>
+          <div class="card">
+            <h3>🧠 Soft skills</h3>
+            <p>EI, influencing, coaching, conflict management. Try to resolve at the lowest level first.</p>
+          </div>
+        </div>
+
+        <div class="callout trick">
+          <div class="icon">🧯</div>
+          <div class="body">
+            <strong>Conflict sequence (typical exam logic)</strong>
+            Address directly → collaborate/coach → facilitate → escalate (only if needed).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section id="roles">
+      <div class="sec-head">
+        <h2>8. 🚨 Role Responsibility Cheat Sheet</h2>
+        <p class="sub">Assume PM best practice unless the question says otherwise. Focus on the <em>first best action</em>.</p>
+      </div>
+
+      <div class="callout warn">
+        <div class="icon">🧠</div>
+        <div class="body">
+          <strong>Exam mindset</strong>
+          Don’t jump to escalation. Empower the team first, then involve sponsor/functional manager when authority/funding/charter is impacted.
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Situation / problem</th>
+              <th>Responsible role</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Two team members disagree.</td>
+              <td><strong>Team members</strong></td>
+              <td>They attempt to resolve first; PM supports if unresolved.</td>
+            </tr>
+            <tr>
+              <td>Change to overall project deliverable is needed.</td>
+              <td><strong>Sponsor</strong></td>
+              <td>Likely a charter-level change; sponsor authorizes.</td>
+            </tr>
+            <tr>
+              <td>Functional manager <em>tries</em> to pull a resource.</td>
+              <td><strong>Team member</strong> (first), then <strong>PM</strong></td>
+              <td>Empower self-management first; PM intervenes if removed or risk escalates.</td>
+            </tr>
+            <tr>
+              <td>PM lacks authority to get things done.</td>
+              <td><strong>Sponsor</strong></td>
+              <td>Authority is granted via charter / governance.</td>
+            </tr>
+            <tr>
+              <td>Not enough resources to complete project.</td>
+              <td><strong>Sponsor + Functional manager</strong></td>
+              <td>Funding + staffing authority sits there.</td>
+            </tr>
+            <tr>
+              <td>Activity needs more time and <strong>will</strong> delay completion.</td>
+              <td><strong>Sponsor</strong></td>
+              <td>Completion date often charter-bound; delay approval required (unless reserve applies).</td>
+            </tr>
+            <tr>
+              <td>Team member not performing.</td>
+              <td><strong>PM + Functional manager</strong></td>
+              <td>PM manages project work; functional manager handles line performance aspects.</td>
+            </tr>
+            <tr>
+              <td>Project behind schedule.</td>
+              <td><strong>Project manager</strong></td>
+              <td>PM owns integrated schedule and corrective actions.</td>
+            </tr>
+            <tr>
+              <td>Project running out of funds.</td>
+              <td><strong>Sponsor</strong></td>
+              <td>Sponsor provides/adjusts funding.</td>
+            </tr>
+            <tr>
+              <td>Team member wants a different method to complete an activity.</td>
+              <td><strong>Team member</strong></td>
+              <td>They control their work methods if constraints/requirements are met; keep PM informed.</td>
+            </tr>
+            <tr>
+              <td>Conflict over priorities between activities.</td>
+              <td><strong>Project manager</strong></td>
+              <td>PM resolves priorities and protects critical path / commitments.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 </div>
-
 </body>
 </html>
