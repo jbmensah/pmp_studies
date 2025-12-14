@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PMP Scope Management Cheat Sheet | Process Domain</title>
+  <style>
+    :root{
+      --primary:#1f6feb;
+      --primary-dark:#174ea6;
+      --info:#0ea5e9;
+      --success:#16a34a;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --muted:#6b7280;
+
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ink:#111827;
+      --line:#e5e7eb;
+
+      --radius:14px;
+      --shadow:0 8px 20px rgba(17,24,39,.07);
+      --shadow-soft:0 2px 10px rgba(17,24,39,.06);
+
+      --space-1:8px;
+      --space-2:12px;
+      --space-3:16px;
+      --space-4:20px;
+      --space-5:28px;
+      --space-6:36px;
+
+      --nav-w:280px;
+      --focus:0 0 0 3px rgba(31,111,235,.25);
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    a{color:inherit;}
+    :focus-visible{outline:none; box-shadow:var(--focus); border-radius:10px;}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(90deg,var(--primary),#4f46e5);
+      color:#fff;
+      box-shadow:0 6px 18px rgba(17,24,39,.12);
+    }
+    .header-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:16px 16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .title-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:260px;
+    }
+    header h1{
+      margin:0;
+      font-size:1.25rem;
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    header p{
+      margin:0;
+      opacity:.92;
+      font-size:.9rem;
+    }
+    .header-badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .badge{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+
+    /* Layout */
+    .shell{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px 16px 40px;
+      display:grid;
+      grid-template-columns: var(--nav-w) 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    nav{
+      position:sticky;
+      top:92px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      padding:14px;
+      max-height:calc(100vh - 110px);
+      overflow:auto;
+    }
+
+    .nav-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+      padding:6px 6px 10px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-title h2{
+      margin:0;
+      font-size:1rem;
+      color:var(--ink);
+    }
+    .nav-mini{
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:6px;
+    }
+    .nav-links a{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color:var(--ink);
+      transition: background .15s, border-color .15s, transform .08s;
+    }
+    .nav-links a:hover{
+      background:#f3f4f6;
+      border-color:#eef2ff;
+      transform:translateY(-1px);
+    }
+    .nav-links a span{
+      color:var(--muted);
+      font-size:.82rem;
+      white-space:nowrap;
+    }
+
+    main{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      min-width:0;
+    }
+
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    section:target{
+      box-shadow:0 0 0 4px rgba(31,111,235,.18), var(--shadow);
+      border-color:rgba(31,111,235,.35);
+    }
+
+    .sec-head{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-bottom:10px;
+    }
+    h2{
+      margin:0;
+      font-size:1.15rem;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* Quick utilities */
+    .pill-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .pill{
+      background:#f3f4f6;
+      border:1px solid var(--line);
+      color:var(--ink);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      white-space:nowrap;
+    }
+    .pill.primary{background:rgba(31,111,235,.10); border-color:rgba(31,111,235,.25); color:var(--primary-dark);}
+    .pill.info{background:rgba(14,165,233,.10); border-color:rgba(14,165,233,.25); color:#075985;}
+    .pill.success{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.25); color:#14532d;}
+    .pill.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); color:#7c2d12;}
+    .pill.danger{background:rgba(239,68,68,.10); border-color:rgba(239,68,68,.25); color:#7f1d1d;}
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .card{
+      background:#fbfbfd;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      box-shadow:0 1px 0 rgba(17,24,39,.03);
+    }
+    .card h3{
+      margin:0 0 8px 0;
+      font-size:1rem;
+    }
+    .card p{margin:0; color:var(--muted); font-size:.95rem;}
+
+    /* Callouts */
+    .callout{
+      border-radius:14px;
+      padding:14px;
+      border:1px solid;
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .callout .icon{
+      font-size:1.2rem;
+      line-height:1.2;
+      margin-top:2px;
+    }
+    .callout .body{flex:1; min-width:0;}
+    .callout .body strong{display:block; margin-bottom:2px;}
+    .callout.tip{background:rgba(22,163,74,.08); border-color:rgba(22,163,74,.25);}
+    .callout.warn{background:rgba(239,68,68,.08); border-color:rgba(239,68,68,.22);}
+    .callout.trick{background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.25);}
+
+    /* Process blocks */
+    .process{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:16px;
+      padding:16px;
+      margin-top:14px;
+    }
+
+    .process-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      padding-bottom:10px;
+      border-bottom:1px dashed var(--line);
+      margin-bottom:12px;
+    }
+    .process-title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      min-width:260px;
+      flex:1;
+    }
+    .process-title .picon{
+      font-size:1.4rem;
+      line-height:1.1;
+      margin-top:1px;
+    }
+    .process-title h3{
+      margin:0;
+      font-size:1.05rem;
+    }
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .itto{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .itto .box{
+      border-radius:14px;
+      border:1px solid var(--line);
+      padding:12px;
+      background:#fbfbfd;
+    }
+    .itto .box h4{
+      margin:0 0 8px 0;
+      font-size:.95rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .itto ul{
+      margin:0;
+      padding-left:18px;
+    }
+    .itto li{margin:6px 0; color:#1f2937;}
+    .itto .in h4{color:#0b5394;}
+    .itto .out h4{color:#7c2d12;}
+
+    .purpose{
+      margin-top:10px;
+      color:#1f2937;
+    }
+    .purpose strong{color:#111827;}
+
+    /* Tables */
+    .table-wrap{
+      overflow:auto;
+      border-radius:14px;
+      border:1px solid var(--line);
+      margin-top:12px;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:720px;
+      background:#fff;
+    }
+    th,td{
+      padding:12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:.95rem;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#f3f4f6;
+      color:#111827;
+      font-weight:700;
+      z-index:1;
+    }
+    tr:last-child td{border-bottom:none;}
+    td strong{color:#111827;}
+
+    /* One-page visual summary */
+    .summary{
+      background:linear-gradient(180deg, rgba(14,165,233,.08), rgba(31,111,235,.05));
+      border:1px solid rgba(14,165,233,.20);
+    }
+    .bands{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .band{
+      border-radius:14px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:#fff;
+    }
+    .band .label{
+      padding:10px 12px;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:.9rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#111827;
+    }
+    .band.planning .label{background:rgba(22,163,74,.10);}
+    .band.mc .label{background:rgba(14,165,233,.10);}
+    .band .steps{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap:10px;
+      padding:12px;
+    }
+    .step{
+      border:1px solid var(--line);
+      background:#fbfbfd;
+      border-radius:12px;
+      padding:10px;
+      min-height:72px;
+    }
+    .step .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:4px;
+    }
+    .step .top strong{font-size:.95rem;}
+    .step small{color:var(--muted); display:block; line-height:1.35;}
+
+    .divider-note{
+      margin:12px 0 2px;
+      text-align:center;
+      font-style:italic;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Memory hooks */
+    .mem-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .mem{
+      border:1px dashed rgba(107,114,128,.55);
+      background:#fff;
+      border-radius:14px;
+      padding:12px;
+      text-align:left;
+    }
+    .mem .row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:6px;
+    }
+    .mem .micon{font-size:1.6rem;}
+    .mem strong{display:block;}
+    .mem small{color:var(--muted);}
+    .mem code{
+      display:block;
+      margin-top:8px;
+      background:#f3f4f6;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:.86rem;
+      overflow:auto;
+    }
+
+    /* Mobile nav as top bar */
+    @media (max-width: 980px){
+      .shell{grid-template-columns: 1fr;}
+      nav{
+        position:sticky;
+        top:92px;
+        max-height:none;
+        overflow:auto;
+      }
+      .nav-links{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+      .nav-links a{
+        flex:1 1 210px;
+      }
+    }
+
+    @media (max-width: 720px){
+      header h1{font-size:1.1rem;}
+      .header-badges{justify-content:flex-start;}
+      main{gap:14px;}
+      section{padding:16px;}
+      .itto{grid-template-columns: 1fr;}
+      .band .steps{grid-template-columns: 1fr;}
+      table{min-width:640px;}
+    }
+
+    /* Print-friendly */
+    @media print{
+      header{position:static; box-shadow:none;}
+      nav{display:none;}
+      .shell{grid-template-columns:1fr; padding:0;}
+      section{box-shadow:none;}
+      .badge{border:1px solid #ddd; color:#111; background:#fff;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="title-wrap">
+        <h1>🗺️ PMP Cheat Sheet: Project Scope Management</h1>
+        <p>Define the work • Prevent creep • Get acceptance • Deliver value</p>
+      </div>
+      <div class="header-badges" aria-label="Quick tags">
+        <span class="badge">Process Domain (Planning + M&amp;C)</span>
+        <span class="badge">Scope Baseline = SOW? ❌</span>
+        <span class="badge">Gold Plating ❌</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav aria-label="Page navigation">
+      <div class="nav-title">
+        <h2>📌 Navigation</h2>
+        <div class="nav-mini">Jump fast</div>
+      </div>
+      <div class="nav-links">
+        <a href="#overview">Overview <span>why scope matters</span></a>
+        <a href="#process-map">Process Map <span>Planning vs M&amp;C</span></a>
+        <a href="#p1">1. Plan Scope Mgmt <span>🧭</span></a>
+        <a href="#p2">2. Collect Req <span>🗣️</span></a>
+        <a href="#p3">3. Define Scope <span>📝</span></a>
+        <a href="#p4">4. Create WBS <span>🧱</span></a>
+        <a href="#p56">5–6 Validate vs Control <span>✅🛡️</span></a>
+        <a href="#key">Key Comparisons <span>tables</span></a>
+        <a href="#memory">Memory Booster <span>patterns</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="overview">
+        <div class="sec-head">
+          <h2>Scope Fundamentals & ECO Alignment</h2>
+          <p class="sub">Scope = define <strong>what work is required</strong> and ensure <strong>all and only</strong> that work is done.</p>
+          <div class="pill-row">
+            <span class="pill primary">Core rule: If it’s not in scope, it’s not work</span>
+            <span class="pill warn">Exam trap: “Nice-to-have” ≠ approved scope</span>
+            <span class="pill info">Acceptance criteria shows “done”</span>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">✅</div>
+          <div class="body">
+            <strong>Exam rule: Gold plating is not allowed</strong>
+            Even if it “helps,” extra features without approval create risk, cost, and rework. Use change control.
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <h3>🧩 ECO context (simple)</h3>
+          <p>Scope questions typically test: planning boundaries, managing requirements, preventing creep, and getting acceptance—especially under time/cost constraints.</p>
+        </div>
+      </section>
+
+      <section id="process-map">
+        <div class="sec-head">
+          <h2>⚙️ Scope Processes (Process Group View)</h2>
+          <p class="sub">Most scope work sits in <strong>Planning</strong>, then you protect it in <strong>Monitoring &amp; Controlling</strong>.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Planning (4)</h3>
+            <p><strong>🧭 Plan</strong>, <strong>🗣️ Collect</strong>, <strong>📝 Define</strong>, <strong>🧱 Create WBS</strong></p>
+          </div>
+          <div class="card">
+            <h3>M&amp;C (2)</h3>
+            <p><strong>✅ Validate</strong> (acceptance) + <strong>🛡️ Control</strong> (protect baseline)</p>
+          </div>
+          <div class="card">
+            <h3>ITTO “shape”</h3>
+            <p>Planning outputs become baselines/plans; M&amp;C turns data into decisions + change requests.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1">
+        <div class="sec-head">
+          <h2>1. Plan Scope Management 🧭</h2>
+          <p class="sub">Set the rules: how scope/requirements will be defined, managed, accepted, and controlled.</p>
+        </div>
+
+        <div class="process">
+          <div class="process-head">
+            <div class="process-title">
+              <div class="picon">🧭</div>
+              <div>
+                <h3>Plan Scope Management</h3>
+                <p class="sub">Blueprint for scope + requirements management</p>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill success">Process Group: Planning</span>
+              <span class="pill info">Outputs: 2 plans</span>
+              <span class="pill warn">Trap: “start building” too early</span>
+            </div>
+          </div>
+
+          <p class="purpose"><strong>Purpose:</strong> Decide how you’ll define scope, gather requirements, control changes, and confirm acceptance.</p>
+
+          <div class="itto">
+            <div class="box in">
+              <h4>📥 Key Inputs</h4>
+              <ul>
+                <li>Project Charter</li>
+                <li>Life cycle / development approach</li>
+                <li>OPAs (templates, standards)</li>
+              </ul>
+            </div>
+            <div class="box out">
+              <h4>📤 Key Outputs</h4>
+              <ul>
+                <li><strong>Scope Management Plan</strong></li>
+                <li><strong>Requirements Management Plan</strong> (incl. RTM approach)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout trick">
+            <div class="icon">🎯</div>
+            <div class="body">
+              <strong>Memory hook</strong>
+              “Plan = plans out.” If you’re unsure what to do, the answer is often: check/update the relevant management plan.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="p2">
+        <div class="sec-head">
+          <h2>2. Collect Requirements 🗣️</h2>
+          <p class="sub">Elicit, analyze, and document stakeholder needs (including acceptance criteria).</p>
+        </div>
+
+        <div class="process">
+          <div class="process-head">
+            <div class="process-title">
+              <div class="picon">🗣️</div>
+              <div>
+                <h3>Collect Requirements</h3>
+                <p class="sub">Needs → documented requirements + traceability</p>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill success">Process Group: Planning</span>
+              <span class="pill info">Key artifact: RTM</span>
+              <span class="pill warn">Trap: missing acceptance criteria</span>
+            </div>
+          </div>
+
+          <p class="purpose"><strong>Purpose:</strong> Gather requirements (product + project) and define how “done” will be judged.</p>
+
+          <div class="itto">
+            <div class="box in">
+              <h4>📥 Key Inputs</h4>
+              <ul>
+                <li>Project Charter (high-level reqs)</li>
+                <li>Assumption Log</li>
+                <li>Stakeholder Register</li>
+              </ul>
+            </div>
+            <div class="box out">
+              <h4>📤 Key Outputs</h4>
+              <ul>
+                <li><strong>Requirements Documentation</strong> (include acceptance criteria)</li>
+                <li><strong>Requirements Traceability Matrix (RTM)</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="table-wrap" aria-label="Requirements elicitation methods">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method bucket</th>
+                  <th>Examples</th>
+                  <th>When it’s useful</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Conversational</strong></td>
+                  <td>Interviews, brainstorming</td>
+                  <td>Quick discovery, clarifying expectations</td>
+                </tr>
+                <tr>
+                  <td><strong>Group</strong></td>
+                  <td>Workshops/JAD, focus groups, surveys</td>
+                  <td>Alignment + faster consensus</td>
+                </tr>
+                <tr>
+                  <td><strong>Observation/analysis</strong></td>
+                  <td>Job shadowing, MCDA, NGT</td>
+                  <td>Real workflow insight; prioritizing objectively</td>
+                </tr>
+                <tr>
+                  <td><strong>Agile-specific</strong></td>
+                  <td>User stories, prototypes</td>
+                  <td>Iterative learning; reduce ambiguity early</td>
+                </tr>
+                <tr>
+                  <td><strong>Visual</strong></td>
+                  <td>Mind maps, context diagrams, affinity diagrams</td>
+                  <td>Pattern discovery; clustering requirements</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout warn">
+            <div class="icon">⚠️</div>
+            <div class="body">
+              <strong>Conflict rule</strong>
+              If a request isn’t aligned to the charter/business case, don’t “just include it.” Escalate or push it through change control.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3">
+        <div class="sec-head">
+          <h2>3. Define Scope 📝</h2>
+          <p class="sub">Turn requirements into a clear scope statement: included + excluded.</p>
+        </div>
+
+        <div class="process">
+          <div class="process-head">
+            <div class="process-title">
+              <div class="picon">📝</div>
+              <div>
+                <h3>Define Scope</h3>
+                <p class="sub">Boundaries + deliverables + exclusions</p>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill success">Process Group: Planning</span>
+              <span class="pill info">Key artifact: Scope Statement</span>
+              <span class="pill warn">Trap: no exclusions</span>
+            </div>
+          </div>
+
+          <p class="purpose"><strong>Purpose:</strong> Finalize project/product scope with explicit boundaries and acceptance criteria.</p>
+
+          <div class="itto">
+            <div class="box in">
+              <h4>📥 Key Inputs</h4>
+              <ul>
+                <li>Requirements Documentation</li>
+                <li>Project Charter</li>
+                <li>Scope Management Plan</li>
+              </ul>
+            </div>
+            <div class="box out">
+              <h4>📤 Key Outputs</h4>
+              <ul>
+                <li><strong>Project Scope Statement</strong> (include what’s NOT included)</li>
+                <li>Updates (RTM, Assumption Log)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout trick">
+            <div class="icon">🔍</div>
+            <div class="body">
+              <strong>Tool clue: Product analysis</strong>
+              Used here to translate objectives into tangible deliverables (value analysis, systems engineering, etc.).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="p4">
+        <div class="sec-head">
+          <h2>4. Create WBS 🧱</h2>
+          <p class="sub">Decompose scope into deliverables → work packages. This establishes the scope baseline.</p>
+        </div>
+
+        <div class="process">
+          <div class="process-head">
+            <div class="process-title">
+              <div class="picon">🧱</div>
+              <div>
+                <h3>Create WBS</h3>
+                <p class="sub">Decomposition → work packages</p>
+              </div>
+            </div>
+            <div class="meta">
+              <span class="pill success">Process Group: Planning</span>
+              <span class="pill info">Key output: Scope Baseline</span>
+              <span class="pill warn">Trap: work not in WBS</span>
+            </div>
+          </div>
+
+          <p class="purpose"><strong>Purpose:</strong> Break scope down until you can estimate, assign, and manage delivery confidently.</p>
+
+          <div class="itto">
+            <div class="box in">
+              <h4>📥 Key Inputs</h4>
+              <ul>
+                <li>Project Scope Statement</li>
+                <li>Requirements Documentation</li>
+              </ul>
+            </div>
+            <div class="box out">
+              <h4>📤 Key Outputs</h4>
+              <ul>
+                <li><strong>Scope Baseline</strong> (Scope Statement + WBS + WBS Dictionary)</li>
+                <li>WBS</li>
+                <li>WBS Dictionary (incl. acceptance criteria per work package)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <div class="icon">✅</div>
+            <div class="body">
+              <strong>Rule</strong>
+              “If it’s not in the WBS, it’s not in the project.” (Predictive mindset)
+            </div>
+          </div>
+
+          <div class="callout warn">
+            <div class="icon">⚠️</div>
+            <div class="body">
+              <strong>WBS vs Decomposition</strong>
+              Decomposition is the activity; WBS is the structure/artifact you create.
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Agile parallel</h3>
+            <p>Agile decomposes into features → user stories, and prioritizes via backlog refinement (progressive elaboration).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p56">
+        <div class="sec-head">
+          <h2>5–6. Validate Scope ✅ vs Control Scope 🛡️</h2>
+          <p class="sub">Validate = customer acceptance. Control = protect baseline and manage changes.</p>
+        </div>
+
+        <div class="table-wrap" aria-label="Validate vs Control Scope comparison">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Validate Scope ✅</th>
+                <th>Control Scope 🛡️</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Purpose</strong></td>
+                <td>Formal acceptance of <strong>completed deliverables</strong></td>
+                <td>Monitor scope status and manage changes (prevent creep)</td>
+              </tr>
+              <tr>
+                <td><strong>Key input</strong></td>
+                <td><strong>Verified deliverables</strong> (from Control Quality)</td>
+                <td>Scope baseline + performance data</td>
+              </tr>
+              <tr>
+                <td><strong>Key outputs</strong></td>
+                <td>Accepted deliverables or change requests</td>
+                <td>Work performance info + change requests</td>
+              </tr>
+              <tr>
+                <td><strong>Exam trap</strong></td>
+                <td>Confusing with Control Quality</td>
+                <td>Letting “small changes” bypass control</td>
+              </tr>
+              <tr>
+                <td><strong>Agile analogue</strong></td>
+                <td>Iteration review / demo acceptance</td>
+                <td>Backlog reprioritization each iteration</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout trick">
+          <div class="icon">🧪</div>
+          <div class="body">
+            <strong>Control Quality vs Validate Scope</strong>
+            Control Quality = internal correctness. Validate Scope = external acceptance/sign-off.
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Inputs (Validate)</h3>
+            <p>Verified deliverables • Scope baseline • RTM (to show coverage)</p>
+          </div>
+          <div class="card">
+            <h3>Inputs (Control)</h3>
+            <p>Scope baseline • Work performance data • Change requests (as needed)</p>
+          </div>
+          <div class="card">
+            <h3>Common tools</h3>
+            <p>Inspection • Variance/trend analysis • Decision-making (consensus)</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="key">
+        <div class="sec-head">
+          <h2>💡 Key Concepts & Comparisons</h2>
+          <p class="sub">High-yield distinctions that show up often.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card" style="border-top:4px solid var(--info);">
+            <h3>Product scope vs Project scope</h3>
+            <p><strong>Product scope:</strong> features/functions (the “what”).<br>
+               <strong>Project scope:</strong> work to deliver it (the “how much work”).</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--success);">
+            <h3>Agile: MVP &amp; MMF</h3>
+            <p><strong>MVP:</strong> smallest usable increment.<br>
+               <strong>MMF:</strong> feature set marketable in a release.</p>
+          </div>
+          <div class="card" style="border-top:4px solid var(--danger);">
+            <h3>Predictive vs Adaptive scope</h3>
+            <p><strong>Predictive:</strong> scope defined early; formal change control; WBS common.<br>
+               <strong>Adaptive:</strong> scope evolves; backlog + timeboxes; prioritize value.</p>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">🔁</div>
+          <div class="body">
+            <strong>Agile scope flow (simple)</strong>
+            Vision → high-level backlog → roadmap/releases → iteration planning/refinement.
+          </div>
+        </div>
+      </section>
+
+      <section id="memory" class="summary">
+        <div class="sec-head">
+          <h2>🧠 Memory Booster</h2>
+          <p class="sub">Use patterns + icons instead of brute-force memorization.</p>
+        </div>
+
+        <div class="callout trick">
+          <div class="icon">🧩</div>
+          <div class="body">
+            <strong>ITTO pattern (“shape”)</strong>
+            Planning creates <em>plans/baselines</em>. M&amp;C compares performance to the baseline and produces <em>information + change requests</em>.
+          </div>
+        </div>
+
+        <div class="mem-grid" aria-label="Icon memory hooks">
+          <div class="mem">
+            <div class="row"><div class="micon">🧭</div><div><strong>Plan Scope Mgmt</strong><small>“Plans out”</small></div></div>
+            <code>I: Charter/OPAs → O: Scope Plan + Req Plan</code>
+          </div>
+          <div class="mem">
+            <div class="row"><div class="micon">🗣️</div><div><strong>Collect Requirements</strong><small>“Needs captured”</small></div></div>
+            <code>I: Charter/Stakeholders → O: Req Docs + RTM</code>
+          </div>
+          <div class="mem">
+            <div class="row"><div class="micon">📝</div><div><strong>Define Scope</strong><small>“Boundaries”</small></div></div>
+            <code>I: Req Docs → O: Scope Statement (incl. exclusions)</code>
+          </div>
+          <div class="mem">
+            <div class="row"><div class="micon">🧱</div><div><strong>Create WBS</strong><small>“Break it down”</small></div></div>
+            <code>I: Scope Statement → O: Scope Baseline</code>
+          </div>
+          <div class="mem">
+            <div class="row"><div class="micon">✅</div><div><strong>Validate Scope</strong><small>“Customer sign-off”</small></div></div>
+            <code>I: Verified Deliverables → O: Accepted Deliverables / CRs</code>
+          </div>
+          <div class="mem">
+            <div class="row"><div class="micon">🛡️</div><div><strong>Control Scope</strong><small>“Protect baseline”</small></div></div>
+            <code>I: Baseline + WPD → O: WPI + CRs</code>
+          </div>
+        </div>
+
+        <div class="bands" aria-label="One-page visual summary">
+          <div class="band planning">
+            <div class="label">🟢 Planning band — “Define &amp; decompose”</div>
+            <div class="steps">
+              <div class="step">
+                <div class="top"><strong>🧭 Plan</strong><span class="pill success">Plans</span></div>
+                <small>Plans in → plans out</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>🗣️ Collect</strong><span class="pill info">Docs</span></div>
+                <small>Needs → requirements + RTM</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>📝 Define</strong><span class="pill primary">Boundaries</span></div>
+                <small>Included + excluded scope</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>🧱 WBS</strong><span class="pill warn">Baseline</span></div>
+                <small>Statement → baseline</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider-note">Baseline feeds execution work (team delivers against it)</div>
+
+          <div class="band mc">
+            <div class="label">🔵 M&amp;C band — “Accept &amp; control”</div>
+            <div class="steps">
+              <div class="step">
+                <div class="top"><strong>🛡️ Control</strong><span class="pill info">Change</span></div>
+                <small>Baseline + data → WPI + CRs</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>✅ Validate</strong><span class="pill success">Acceptance</span></div>
+                <small>Verified → accepted (or CR)</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>🧪 Quality</strong><span class="pill danger">Not scope</span></div>
+                <small>Control Quality ≠ Validate Scope</small>
+              </div>
+              <div class="step">
+                <div class="top"><strong>🚫 Gold plate</strong><span class="pill danger">Never</span></div>
+                <small>Extra work requires approval</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
