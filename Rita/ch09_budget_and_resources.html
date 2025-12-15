@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMP Cheat Sheet: Budget & Resources Management (Chapter 9)</title>
+  <style>
+    /* ==========================
+       Kaizen upgrades (small wins):
+       1) Accessibility: skip-link, focus styles, better contrast + reduced motion
+       2) UX: active nav highlight, sticky aside, progress bar, back-to-top
+       3) Readability: consistent spacing scale, typographic rhythm, cleaner cards
+       4) Memory: exam triggers + quick formulas + mini drills
+       ========================== */
+
+    :root{
+      --primary:#0b63d1;
+      --secondary:#1f9d55;
+      --warning:#f59f00;
+      --danger:#dc3545;
+
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+
+      --radius:14px;
+      --shadow: 0 10px 22px rgba(17,24,39,.08);
+      --shadow-soft: 0 4px 10px rgba(17,24,39,.06);
+
+      --pad-1:.6rem;
+      --pad-2:1rem;
+      --pad-3:1.5rem;
+      --pad-4:2rem;
+
+      --max: 1300px;
+      --navw: 270px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: "Segoe UI", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: var(--sans);
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
+
+    /* Skip link (a11y) */
+    .skip{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#fff;
+      padding:.6rem 1rem;
+      border-radius:10px;
+      box-shadow: var(--shadow-soft);
+      z-index:9999;
+    }
+    .skip:focus{ left:10px; outline:3px solid rgba(11,99,209,.35); }
+
+    /* Page progress bar */
+    .progress{
+      position:fixed;
+      left:0; top:0;
+      height:4px;
+      width:100%;
+      background:rgba(11,99,209,.10);
+      z-index:2000;
+    }
+    .progress > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1500;
+      background: linear-gradient(90deg, var(--primary), #1246a6);
+      color:#fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    }
+    .header-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: var(--pad-3) var(--pad-4);
+      display:flex;
+      gap:1rem;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    header h1{
+      margin:0;
+      font-size:1.5rem;
+      letter-spacing:.2px;
+    }
+    header p{
+      margin:.25rem 0 0;
+      opacity:.92;
+      color:#eaf2ff;
+      max-width: 70ch;
+    }
+
+    .chips{
+      display:flex;
+      gap:.5rem;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:.4rem;
+    }
+    .chip{
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      padding:.35rem .6rem;
+      border-radius:999px;
+      font-size:.85rem;
+      white-space:nowrap;
+    }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: var(--pad-4);
+      display:grid;
+      grid-template-columns: var(--navw) 1fr;
+      gap: var(--pad-4);
+      align-items:start;
+    }
+
+    /* Nav */
+    nav{
+      position:sticky;
+      top:96px;
+      background:#eef2f7;
+      border:1px solid rgba(17,24,39,.06);
+      border-radius: var(--radius);
+      padding: var(--pad-3);
+      box-shadow: var(--shadow-soft);
+    }
+    nav .nav-title{
+      font-weight:700;
+      margin:0 0 .75rem;
+      color:#111827;
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+    }
+    nav ul{ list-style:none; padding:0; margin:0; }
+    nav li{ margin:.35rem 0; }
+    nav a{
+      display:flex;
+      gap:.6rem;
+      align-items:center;
+      text-decoration:none;
+      color:#0b3e86;
+      padding:.55rem .65rem;
+      border-radius:12px;
+      transition: transform .12s ease, background .12s ease;
+      outline:none;
+    }
+    nav a:hover{
+      background: rgba(11,99,209,.10);
+      transform: translateX(2px);
+    }
+    nav a.active{
+      background: rgba(11,99,209,.16);
+      border:1px solid rgba(11,99,209,.25);
+      color:#0a2f66;
+    }
+    nav a:focus-visible{
+      outline:3px solid rgba(11,99,209,.25);
+    }
+    .nav-mini{
+      margin-top:1rem;
+      padding-top:1rem;
+      border-top:1px dashed rgba(17,24,39,.15);
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .nav-mini kbd{
+      font-family: var(--mono);
+      background:#fff;
+      border:1px solid rgba(17,24,39,.15);
+      border-bottom-width:2px;
+      padding:.12rem .35rem;
+      border-radius:6px;
+      font-size:.85rem;
+      color:#111827;
+    }
+
+    /* Main */
+    main{ min-width: 0; }
+
+    section{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--pad-4);
+      margin-bottom: var(--pad-4);
+      border: 1px solid rgba(17,24,39,.06);
+    }
+
+    h2{
+      margin:0 0 1rem;
+      color:#0b3e86;
+      font-size:1.35rem;
+      letter-spacing:.2px;
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+    }
+    h3{
+      margin:1.5rem 0 .6rem;
+      color: var(--secondary);
+      font-size:1.1rem;
+    }
+    h4{
+      margin:1rem 0 .5rem;
+      color:#0b3e86;
+      font-size:1rem;
+    }
+    p{ margin:.6rem 0; color:#111827; }
+    .muted{ color: var(--muted); }
+
+    /* Grid cards */
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: .75rem;
+    }
+    .card{
+      background: #f3f6fb;
+      border: 1px solid rgba(17,24,39,.06);
+      border-left: 6px solid var(--primary);
+      border-radius: 14px;
+      padding: var(--pad-3);
+      box-shadow: var(--shadow-soft);
+    }
+    .card .tag{
+      display:inline-block;
+      font-size:.8rem;
+      padding:.18rem .5rem;
+      border-radius:999px;
+      background: rgba(11,99,209,.12);
+      color:#0b3e86;
+      margin-bottom:.4rem;
+    }
+
+    /* Callouts */
+    .callout{
+      padding: var(--pad-3);
+      border-radius: 14px;
+      margin: 1rem 0;
+      border:1px solid rgba(17,24,39,.08);
+      box-shadow: var(--shadow-soft);
+    }
+    .tip{
+      background:#e9f8ef;
+      border-left: 6px solid var(--secondary);
+    }
+    .warning{
+      background:#fff6df;
+      border-left: 6px solid var(--warning);
+    }
+    .danger{
+      background:#ffe8eb;
+      border-left: 6px solid var(--danger);
+    }
+
+    /* Comparison */
+    .comparison{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: .9rem 0;
+    }
+    .comparison .pane{
+      border-radius: 14px;
+      border:1px solid rgba(17,24,39,.08);
+      padding: var(--pad-3);
+      box-shadow: var(--shadow-soft);
+      background:#f7fafc;
+    }
+    .comparison .pane.left{ background:#eaf4ff; }
+    .comparison .pane.right{ background:#ecffef; }
+
+    /* Process flow */
+    .process-flow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      align-items:center;
+      justify-content:flex-start;
+      margin-top:.8rem;
+    }
+    .flow-step{
+      background:#f3f4f6;
+      border:1px dashed rgba(17,24,39,.25);
+      padding:.8rem 1rem;
+      border-radius: 12px;
+      min-width: 170px;
+      text-align:center;
+      font-weight:600;
+    }
+    .arrow{
+      font-size:1.35rem;
+      color: rgba(17,24,39,.45);
+      user-select:none;
+    }
+
+    /* ITTO blocks */
+    .process-detail{
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: 14px;
+      padding: var(--pad-3);
+      background:#fbfcfe;
+      box-shadow: var(--shadow-soft);
+    }
+    .ittu-list{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top:.6rem;
+    }
+    .ittu{
+      border-radius:12px;
+      padding:.8rem 1rem;
+      border:1px solid rgba(17,24,39,.10);
+      font-size:.95rem;
+    }
+    .ittu strong{ display:block; margin-bottom:.35rem; }
+    .ittu-input{ background:#eef6ff; }
+    .ittu-output{ background:#ecffef; }
+
+    /* Tables */
+    .table-wrap{ overflow:auto; border-radius: 14px; border:1px solid rgba(17,24,39,.08); }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width: 760px;
+      background:#fff;
+    }
+    th, td{
+      padding:.75rem .8rem;
+      border-bottom:1px solid rgba(17,24,39,.08);
+      text-align:left;
+      vertical-align:top;
+    }
+    th{
+      background: linear-gradient(90deg, var(--primary), #1246a6);
+      color:#fff;
+      position:sticky;
+      top:0;
+      z-index:1;
+    }
+    tr:hover td{ background:#f8fbff; }
+
+    /* Formula chips */
+    .formula-row{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap;
+      margin-top:.75rem;
+    }
+    .formula{
+      font-family: var(--mono);
+      font-size:.9rem;
+      background:#0b1220;
+      color:#e5e7eb;
+      padding:.5rem .7rem;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    /* Memory booster */
+    .memory-booster{
+      border:2px solid rgba(220,53,69,.35);
+      background: linear-gradient(180deg, #fff, #fff7f8);
+    }
+    .micro-drill{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top:1rem;
+    }
+    .drill{
+      background:#fff;
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:14px;
+      padding: var(--pad-3);
+      box-shadow: var(--shadow-soft);
+    }
+    .drill .q{ font-weight:700; margin:0 0 .35rem; }
+    details{
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: 14px;
+      padding: .7rem 1rem;
+      background:#fff;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      color:#0b3e86;
+      outline:none;
+    }
+
+    /* Back-to-top */
+    .to-top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:#111827;
+      color:#fff;
+      border:none;
+      padding:.75rem .9rem;
+      border-radius:999px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .to-top.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .to-top:focus-visible{ outline:3px solid rgba(11,99,209,.35); }
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .container{
+        grid-template-columns: 1fr;
+      }
+      nav{
+        position:relative;
+        top:auto;
+      }
+      .comparison{ grid-template-columns:1fr; }
+      .ittu-list{ grid-template-columns:1fr; }
+      table{ min-width: 620px; }
+      .micro-drill{ grid-template-columns:1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      nav a{ transition:none; }
+      .to-top{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#intro">Skip to content</a>
+
+  <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+
+  <header>
+    <div class="header-inner">
+      <div>
+        <h1>💵 PMP Budget & Resources Management Cheat Sheet (Chapter 9)</h1>
+        <p>Cost planning → estimating → budgeting → controlling using EVM (and doing it the “PMI way”).</p>
+        <div class="chips" aria-label="Quick exam cues">
+          <span class="chip">🧩 Baselines: Scope + Schedule + Cost</span>
+          <span class="chip">🧯 Contingency = known-unknowns</span>
+          <span class="chip">🧱 Management reserve = unknown-unknowns</span>
+          <span class="chip">📈 Exam loves interpretation</span>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">⏱️ Kaizen: clearer + faster</span>
+        <span class="chip">✅ Memory hooks added</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav aria-label="Section navigation">
+      <p class="nav-title">🧭 Navigation</p>
+      <ul>
+        <li><a href="#intro">🚀 Intro & Key Concepts</a></li>
+        <li><a href="#processes">🗺️ Cost Management Processes</a></li>
+        <li><a href="#planning">➡️ Planning: Estimate & Determine</a></li>
+        <li><a href="#control">⚙️ M&C: Control Costs & Resources</a></li>
+        <li><a href="#evm">📊 EVM: Metrics & Analysis</a></li>
+        <li><a href="#agile">🏃 Agile Budgeting Focus</a></li>
+        <li><a href="#memory">🧠 Memory Booster Summary</a></li>
+      </ul>
+
+      <div class="nav-mini">
+        <p style="margin:.2rem 0 .6rem;"><strong>Quick keys</strong></p>
+        <p style="margin:0;">Use <kbd>Ctrl</kbd> + <kbd>F</kbd> for “CPI”, “SPI”, “EAC”.</p>
+      </div>
+    </nav>
+
+    <main id="main">
+      <section id="intro">
+        <h2>🚀 Introduction & Core Concepts</h2>
+        <p>
+          Cost management is about <strong>estimating</strong>, setting a <strong>time-phased cost baseline</strong>,
+          and then <strong>controlling</strong> via performance data (especially <strong>EVM</strong>).
+          On the exam, expect “what do these numbers mean?” more than math.
+        </p>
+
+        <div class="comparison" role="group" aria-label="Traditional vs Agile decomposition comparison">
+          <div class="pane left">
+            <h4>Plan-Driven (Traditional) 🧱</h4>
+            <p class="muted">Decompose scope → plan schedule → estimate costs.</p>
+            <ul>
+              <li><strong>WBS</strong> → Work Packages</li>
+              <li>Activities build the work packages</li>
+              <li>Estimate costs at activity/work package level</li>
+            </ul>
+          </div>
+          <div class="pane right">
+            <h4>Agile (Adaptive) 🏃</h4>
+            <p class="muted">Fix time & cost; vary scope.</p>
+            <ul>
+              <li><strong>Backlog</strong> ≈ WBS (features → stories → tasks)</li>
+              <li>Stable team cost per iteration (burn rate)</li>
+              <li>Forecast by velocity + burn rate</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Types of Costs 🏷️</h3>
+        <div class="card-grid">
+          <div class="card">
+            <div class="tag">Variable</div>
+            <h4 style="margin:.2rem 0 .35rem;">Variable Costs</h4>
+            <p>Change with output/work volume (materials, supplies, wages).</p>
+          </div>
+          <div class="card" style="border-left-color: var(--secondary);">
+            <div class="tag" style="background: rgba(31,157,85,.12); color:#0f5f33;">Fixed</div>
+            <h4 style="margin:.2rem 0 .35rem;">Fixed Costs</h4>
+            <p>Do not change with production (rent, utilities baseline).</p>
+          </div>
+          <div class="card" style="border-left-color: var(--warning);">
+            <div class="tag" style="background: rgba(245,159,0,.14); color:#7a4a00;">Direct</div>
+            <h4 style="margin:.2rem 0 .35rem;">Direct Costs</h4>
+            <p>Directly tied to project work (team, travel, materials).</p>
+          </div>
+          <div class="card" style="border-left-color: var(--danger);">
+            <div class="tag" style="background: rgba(220,53,69,.12); color:#8a1e2a;">Indirect</div>
+            <h4 style="margin:.2rem 0 .35rem;">Indirect Costs</h4>
+            <p>Shared overhead (taxes, benefits, general office expenses).</p>
+          </div>
+        </div>
+
+        <div class="tip callout">
+          💡 <strong>Kaizen exam habit:</strong> When you see a cost question, immediately ask:
+          “Is this <em>planning</em> (estimate/budget) or <em>controlling</em> (EVM/variance/change request)?”
+        </div>
+      </section>
+
+      <section id="processes">
+        <h2>🗺️ Cost Management Processes Overview</h2>
+        <p class="muted">These are mostly Planning + Monitoring & Controlling.</p>
+
+        <div class="process-flow" aria-label="Process flow overview">
+          <div class="flow-step" style="background:#d1ecf1;">1. Plan Cost Management (Planning)</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step" style="background:#cce5ff;">2. Estimate Costs (Planning)</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step" style="background:#d4edda;">3. Determine Budget (Planning)</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step" style="background:#fff3cd;">4. Control Costs (M&amp;C)</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step" style="background:#f8d7da;">5. Control Resources (M&amp;C)</div>
+        </div>
+
+        <details style="margin-top:1rem;">
+          <summary>🧠 “PMI way” trigger for selecting answers</summary>
+          <div style="margin-top:.6rem;">
+            <ul>
+              <li>If you’re <strong>above baseline</strong> → analyze root cause, use EVM, propose corrective action.</li>
+              <li>If it impacts baseline → <strong>change request</strong> (formal approval).</li>
+              <li>Never “just spend management reserve” without formal approval.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="planning">
+        <h2>➡️ Planning: Estimate Costs & Determine Budget</h2>
+
+        <div class="tip callout">
+          💡 <strong>Trick of the trade:</strong> Estimating happens in Planning; controlling happens continuously using EVM + variance analysis.
+        </div>
+
+        <h3>1) Plan Cost Management</h3>
+        <div class="process-detail">
+          <p class="muted" style="margin:0 0 .6rem;">Sets the “rules of the game” (how you’ll estimate, report, and control cost).</p>
+          <div class="ittu-list">
+            <div class="ittu ittu-input">
+              <strong>Key Inputs</strong>
+              Project Charter (constraints), OPAs (historical data/standards), EEFs.
+            </div>
+            <div class="ittu ittu-output">
+              <strong>Key Output</strong>
+              Cost Management Plan (precision, units, thresholds, reporting, control).
+            </div>
+          </div>
+        </div>
+
+        <h3>2) Estimate Costs (Guessing the Dollars)</h3>
+        <p>
+          Outputs: <strong>Cost Estimates</strong> + <strong>Basis of Estimates</strong>.
+          On the exam, they’ll test <em>when</em> to use which technique and the trade-offs.
+        </p>
+
+        <h4>A) Estimating Techniques</h4>
+        <div class="comparison">
+          <div class="pane left">
+            <h4>Top-Down / Analogous 📉</h4>
+            <ul>
+              <li><strong>When:</strong> early, limited detail</li>
+              <li><strong>Pros:</strong> fast, cheap</li>
+              <li><strong>Cons:</strong> less accurate</li>
+            </ul>
+          </div>
+          <div class="pane right">
+            <h4>Bottom-Up 📈</h4>
+            <ul>
+              <li><strong>When:</strong> scope is well-defined</li>
+              <li><strong>Pros:</strong> more accurate, team buy-in</li>
+              <li><strong>Cons:</strong> slower, more effort</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>B) Estimate Ranges (Refinement Over Time)</h4>
+        <div class="card-grid">
+          <div class="card" style="border-left-color: var(--danger);">
+            <h4 style="margin:.2rem 0 .35rem;">ROM (Initiating)</h4>
+            <p><strong>Typical:</strong> −25% to +75%</p>
+            <p class="muted">Very early ballpark.</p>
+          </div>
+          <div class="card" style="border-left-color: var(--warning);">
+            <h4 style="margin:.2rem 0 .35rem;">Budget Estimate</h4>
+            <p><strong>Typical:</strong> −10% to +25%</p>
+            <p class="muted">More detail, still not final.</p>
+          </div>
+          <div class="card" style="border-left-color: var(--secondary);">
+            <h4 style="margin:.2rem 0 .35rem;">Definitive</h4>
+            <p><strong>Typical:</strong> ±10% (or −5% to +10%)</p>
+            <p class="muted">Late planning confidence.</p>
+          </div>
+        </div>
+
+        <div class="warning callout">
+          ⚠️ <strong>Kaizen correction:</strong> If estimates exceed the Charter constraint, PMI expects you to
+          <strong>analyze options</strong> (reduce scope, change approach, negotiate funding) — not “hide the overrun.”
+        </div>
+
+        <h3>3) Determine Budget (Locking Down the Baseline)</h3>
+        <p>
+          Aggregate estimates + reserves to create the <strong>cost baseline</strong> (time-phased).
+          Then add management reserve to get the <strong>project budget</strong>.
+        </p>
+
+        <h4>Budget Construction (Cost Aggregation)</h4>
+        <div class="process-flow">
+          <div class="flow-step">Activity Cost Estimates</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step">Work Package Estimates</div>
+          <div class="arrow">➡️</div>
+          <div class="flow-step">Control Account Costs</div>
+        </div>
+        <div class="process-flow" style="margin-top:.8rem;">
+          <div class="flow-step">+ Contingency Reserves</div>
+          <div class="arrow">=</div>
+          <div class="flow-step" style="background: var(--secondary); color:#fff; border-style:solid;">
+            Cost Baseline (time-phased)
+          </div>
+          <div class="arrow">+</div>
+          <div class="flow-step" style="background: var(--warning); border-style:solid;">Management Reserves</div>
+          <div class="arrow">=</div>
+          <div class="flow-step" style="background: var(--primary); color:#fff; border-style:solid;">
+            Project Budget
+          </div>
+        </div>
+
+        <h4>Reserves Distinction 🛑</h4>
+        <div class="comparison">
+          <div class="pane left">
+            <h4>Contingency (Known-Unknowns)</h4>
+            <p>For <strong>identified risks</strong>. Included in the <strong>cost baseline</strong>. PM can use within defined thresholds.</p>
+          </div>
+          <div class="pane right">
+            <h4>Management Reserve (Unknown-Unknowns)</h4>
+            <p>Not in the cost baseline. To use it, you typically need a <strong>formal change request</strong> to move funds into the baseline.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="control">
+        <h2>⚙️ Monitoring & Controlling: Control Costs & Resources</h2>
+        <p>
+          After baselines are set, you monitor performance and manage variances.
+          PMI logic: measure → analyze → act → (if baseline impacted) raise change request.
+        </p>
+
+        <h3>Control Costs: Typical Activities</h3>
+        <ul>
+          <li>Compare actuals vs baseline; identify variance trends.</li>
+          <li>Use <strong>EVM</strong> + forecasting (EAC/ETC).</li>
+          <li>Perform <strong>reserve analysis</strong> for risk.</li>
+          <li>Recommend corrective/preventive actions.</li>
+          <li>Issue <strong>change requests</strong> when baseline needs adjustment.</li>
+        </ul>
+
+        <div class="tip callout">
+          🕵️ <strong>Detective mindset:</strong> The best exam answers sound like root-cause + data-driven action,
+          not panic actions (“add overtime immediately”) unless justified.
+        </div>
+
+        <h3>Reserve Analysis in Control Costs</h3>
+        <ul>
+          <li>Removing contingency (risk retired) → typically needs <strong>formal approval</strong>.</li>
+          <li>Adding contingency (new risk) → <strong>formal approval</strong>.</li>
+          <li>Using management reserve → <strong>formal approval</strong> to move it into baseline.</li>
+        </ul>
+
+        <details style="margin-top:1rem;">
+          <summary>✅ Exam mini-pattern: what do you do first?</summary>
+          <div style="margin-top:.6rem;">
+            <p class="muted" style="margin:.2rem 0 .6rem;">When asked “project is over budget / behind schedule…”</p>
+            <ol>
+              <li><strong>Review data</strong> (WPI/WPR, EVM).</li>
+              <li><strong>Identify cause</strong> and evaluate options.</li>
+              <li><strong>Recommend action</strong> (corrective/preventive).</li>
+              <li>If baseline impacted → <strong>change request</strong>.</li>
+            </ol>
+          </div>
+        </details>
+      </section>
+
+      <section id="evm">
+        <h2>📊 EVM: Metrics & Analysis (Earned Value Management)</h2>
+        <p>
+          EVM integrates scope + schedule + cost to evaluate performance against the baseline and forecast outcomes.
+          Memorize definitions, then master <strong>interpretation</strong>.
+        </p>
+
+        <div class="warning callout">
+          🧠 <strong>Exam focus:</strong> “What does CPI/SPI mean?” beats “calculate CPI/SPI”.
+          If you can interpret fast, you’ll score fast.
+        </div>
+
+        <h3>Core Metrics</h3>
+        <div class="table-wrap">
+          <table aria-label="EVM core metrics">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Acronym</th>
+                <th>Interpretation (As of Today...)</th>
+                <th>Direction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Planned Value</td>
+                <td><strong>PV</strong></td>
+                <td>Value of work <em>planned</em> to be done.</td>
+                <td>Planned</td>
+              </tr>
+              <tr>
+                <td>Earned Value</td>
+                <td><strong>EV</strong></td>
+                <td>Value of work <em>actually accomplished</em>.</td>
+                <td>Performance</td>
+              </tr>
+              <tr>
+                <td>Actual Cost</td>
+                <td><strong>AC</strong></td>
+                <td>Actual cost incurred for the work accomplished.</td>
+                <td>Spending</td>
+              </tr>
+              <tr>
+                <td>Budget at Completion</td>
+                <td><strong>BAC</strong></td>
+                <td>Total budget for the full project (baseline total).</td>
+                <td>Baseline total</td>
+              </tr>
+              <tr>
+                <td>Estimate at Completion</td>
+                <td><strong>EAC</strong></td>
+                <td>Forecasted total cost at finish (based on performance).</td>
+                <td>Forecast</td>
+              </tr>
+              <tr>
+                <td>Estimate to Complete</td>
+                <td><strong>ETC</strong></td>
+                <td>Forecasted cost to finish remaining work from now.</td>
+                <td>Forecast remaining</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Fast Formulas (the ones that keep showing up)</h3>
+        <div class="formula-row" aria-label="EVM formulas">
+          <div class="formula">CV = EV − AC</div>
+          <div class="formula">SV = EV − PV</div>
+          <div class="formula">CPI = EV / AC</div>
+          <div class="formula">SPI = EV / PV</div>
+          <div class="formula">EAC ≈ BAC / CPI</div>
+          <div class="formula">ETC = EAC − AC</div>
+          <div class="formula">VAC = BAC − EAC</div>
+        </div>
+
+        <div class="tip callout">
+          ✅ <strong>Interpretation cheat:</strong>
+          <ul style="margin:.5rem 0 0;">
+            <li><strong>CPI &gt; 1</strong> good (under budget); <strong>CPI &lt; 1</strong> bad (over budget)</li>
+            <li><strong>SPI &gt; 1</strong> good (ahead); <strong>SPI &lt; 1</strong> bad (behind)</li>
+            <li><strong>CV positive</strong> good; <strong>SV positive</strong> good</li>
+          </ul>
+        </div>
+
+        <h4>Examples (interpretation)</h4>
+        <ul>
+          <li>If <strong>CPI = 1.2</strong> → under budget: you’re getting <strong>$1.20 value</strong> per $1 spent.</li>
+          <li>If <strong>SPI = 0.89</strong> → behind schedule: progressing at <strong>89%</strong> of planned rate.</li>
+        </ul>
+      </section>
+
+      <section id="agile">
+        <h2>🏃 Agile Budgeting Focus</h2>
+        <p>Agile commonly fixes <strong>time + cost</strong>, and adjusts <strong>scope</strong>. Estimation is relative; forecasting uses flow metrics.</p>
+
+        <div class="card-grid">
+          <div class="card" style="border-left-color:#9333ea;">
+            <div class="tag" style="background:rgba(147,51,234,.14); color:#4c1d95;">Agile metric</div>
+            <h4 style="margin:.2rem 0 .35rem;">Velocity</h4>
+            <p>Work completed per iteration (story points). Helps forecast schedule and budget risk.</p>
+          </div>
+
+          <div class="card" style="border-left-color:var(--primary);">
+            <div class="tag">Agile metric</div>
+            <h4 style="margin:.2rem 0 .35rem;">Burn Rate</h4>
+            <p>Money spent per iteration (often stable). Combine with velocity to forecast cost.</p>
+          </div>
+
+          <div class="card" style="border-left-color:var(--secondary);">
+            <div class="tag" style="background:rgba(31,157,85,.12); color:#0f5f33;">Agile artifact</div>
+            <h4 style="margin:.2rem 0 .35rem;">Backlog</h4>
+            <p>Prioritized work list (≈ WBS). Track delivery vs plan using completion trends.</p>
+          </div>
+        </div>
+
+        <details style="margin-top:1rem;">
+          <summary>🎯 Exam hook: Agile budgeting answer style</summary>
+          <div style="margin-top:.6rem;">
+            <ul>
+              <li>Prefer “re-prioritize backlog / adjust scope” over “increase budget” as first move.</li>
+              <li>Use stable teams → predictable costs → forecast with burn rate.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="memory" class="memory-booster">
+        <h2>🧠 Memory Booster: Visual Summary</h2>
+
+        <div class="danger callout">
+          🔥 <strong>One-liner:</strong> “Plan the rules → estimate the work → baseline the budget → control with EVM → change request if baseline shifts.”
+        </div>
+
+        <h3>Cost Processes & Hooks</h3>
+        <div class="card-grid">
+          <div class="card" style="border-left-color:var(--primary);">
+            <h4 style="margin:.2rem 0 .35rem;">Plan Cost Mgmt 📜</h4>
+            <p><strong>Hook:</strong> “Set the spending rules.”</p>
+            <p class="muted" style="margin:.3rem 0 0;">Output: Cost Mgmt Plan</p>
+          </div>
+          <div class="card" style="border-left-color:var(--primary);">
+            <h4 style="margin:.2rem 0 .35rem;">Estimate Costs 💰</h4>
+            <p><strong>Hook:</strong> “Price the work.”</p>
+            <p class="muted" style="margin:.3rem 0 0;">Outputs: Cost Estimates + Basis</p>
+          </div>
+          <div class="card" style="border-left-color:var(--secondary);">
+            <h4 style="margin:.2rem 0 .35rem;">Determine Budget 🛡️</h4>
+            <p><strong>Hook:</strong> “Build the baseline.”</p>
+            <p class="muted" style="margin:.3rem 0 0;">Output: Cost Baseline (time-phased)</p>
+          </div>
+          <div class="card" style="border-left-color:var(--warning);">
+            <h4 style="margin:.2rem 0 .35rem;">Control Costs ⚖️</h4>
+            <p><strong>Hook:</strong> “Measure & correct.”</p>
+            <p class="muted" style="margin:.3rem 0 0;">Tools: EVM, variance & reserve analysis</p>
+          </div>
+        </div>
+
+        <h3>Micro-Drills (30 seconds each) ⏱️</h3>
+        <div class="micro-drill">
+          <div class="drill">
+            <p class="q">Q1: CPI = 0.92. What does it mean?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;">Over budget. You’re getting $0.92 of value per $1 spent → analyze cause, corrective action, possible change request.</p>
+            </details>
+          </div>
+
+          <div class="drill">
+            <p class="q">Q2: Risk event is retired. What happens to contingency?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;">Adjusting reserves typically needs formal approval; don’t casually move baseline money.</p>
+            </details>
+          </div>
+
+          <div class="drill">
+            <p class="q">Q3: Agile delivery is behind. What’s the PMI-leaning move?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;">Re-prioritize backlog / reduce scope / improve flow; time+cost are usually fixed.</p>
+            </details>
+          </div>
+
+          <div class="drill">
+            <p class="q">Q4: Estimate exceeds Charter constraint. What next?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;">Evaluate options (scope, approach, schedule, funding) and escalate/seek approval rather than “hiding” the overrun.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="tip callout" style="margin-top:1.2rem;">
+          ✅ <strong>Kaizen practice loop:</strong> After each mock question, write a 1-line rule:
+          “When X happens, PMI expects Y first.”
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top">⬆️ Top</button>
+
+  <script>
+    // Kaizen JS: tiny improvements only (no frameworks)
+    (function () {
+      const sections = Array.from(document.querySelectorAll("main section[id]"));
+      const navLinks = Array.from(document.querySelectorAll("nav a[href^='#']"));
+      const progressBar = document.getElementById("progressBar");
+      const toTop = document.getElementById("toTop");
+
+      // Active nav highlighting
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const id = e.target.getAttribute("id");
+          navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+        });
+      }, { rootMargin: "-35% 0px -60% 0px", threshold: 0.01 });
+
+      sections.forEach(s => obs.observe(s));
+
+      // Progress bar + back-to-top
+      function onScroll() {
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const height = doc.scrollHeight - doc.clientHeight;
+        const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+        progressBar.style.width = pct.toFixed(2) + "%";
+
+        toTop.classList.toggle("show", scrollTop > 500);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    })();
+  </script>
+</body>
+</html>
