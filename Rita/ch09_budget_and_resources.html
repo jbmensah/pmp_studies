@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PMP Cheat Sheet: Budget & Resources Management (Chapter 9)</title>
+
   <style>
     /* ==========================
        Kaizen upgrades (small wins):
-       1) Accessibility: skip-link, focus styles, better contrast + reduced motion
-       2) UX: active nav highlight, sticky aside, progress bar, back-to-top
-       3) Readability: consistent spacing scale, typographic rhythm, cleaner cards
-       4) Memory: exam triggers + quick formulas + mini drills
+       - Compact header (more reading space)
+       - Accessibility: skip-link, focus styles, reduced motion support
+       - UX: active nav highlight, sticky aside, progress bar, back-to-top
+       - Memory: exam triggers + fast formulas + mini drills
        ========================== */
 
     :root{
@@ -77,6 +78,9 @@
       background:linear-gradient(90deg, var(--primary), var(--secondary));
     }
 
+    /* ==========================
+       COMPACT HEADER (reduced height)
+       ========================== */
     header{
       position:sticky;
       top:0;
@@ -85,42 +89,54 @@
       color:#fff;
       box-shadow: 0 6px 16px rgba(0,0,0,.12);
     }
+
     .header-inner{
       max-width: var(--max);
       margin:0 auto;
-      padding: var(--pad-3) var(--pad-4);
+      padding: .9rem var(--pad-4); /* ↓ reduced header padding */
       display:flex;
-      gap:1rem;
-      align-items:flex-start;
+      gap:.8rem;
+      align-items:center;
       justify-content:space-between;
       flex-wrap:wrap;
     }
+
     header h1{
       margin:0;
-      font-size:1.5rem;
+      font-size: 1.18rem;         /* ↓ smaller title */
+      line-height: 1.2;
       letter-spacing:.2px;
     }
+
     header p{
-      margin:.25rem 0 0;
-      opacity:.92;
+      margin:.15rem 0 0;
+      opacity:.9;
       color:#eaf2ff;
       max-width: 70ch;
+      font-size:.92rem;           /* ↓ smaller subtitle */
     }
 
     .chips{
       display:flex;
-      gap:.5rem;
+      gap:.4rem;
       flex-wrap:wrap;
       align-items:center;
-      margin-top:.4rem;
+      margin-top:.35rem;          /* ↓ reduced */
     }
+
     .chip{
       background: rgba(255,255,255,.14);
       border:1px solid rgba(255,255,255,.18);
-      padding:.35rem .6rem;
+      padding:.22rem .5rem;       /* ↓ tighter */
       border-radius:999px;
-      font-size:.85rem;
+      font-size:.78rem;           /* ↓ smaller chips */
       white-space:nowrap;
+    }
+
+    /* Optional: hide the secondary chip row except on wide screens */
+    .chips.extra { display:none; }
+    @media (min-width: 980px){
+      .chips.extra { display:flex; }
     }
 
     .container{
@@ -136,7 +152,7 @@
     /* Nav */
     nav{
       position:sticky;
-      top:96px;
+      top:72px; /* ↓ reduced from 96px to match compact header */
       background:#eef2f7;
       border:1px solid rgba(17,24,39,.06);
       border-radius: var(--radius);
@@ -461,21 +477,25 @@
 
   <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
 
+  <!-- COMPACT HEADER -->
   <header>
     <div class="header-inner">
       <div>
-        <h1>💵 PMP Budget & Resources Management Cheat Sheet (Chapter 9)</h1>
-        <p>Cost planning → estimating → budgeting → controlling using EVM (and doing it the “PMI way”).</p>
+        <h1>💵 PMP Budget &amp; Resources Management Cheat Sheet (Chapter 9)</h1>
+        <p>Cost planning → estimating → budgeting → controlling using EVM (PMI way).</p>
+
         <div class="chips" aria-label="Quick exam cues">
           <span class="chip">🧩 Baselines: Scope + Schedule + Cost</span>
           <span class="chip">🧯 Contingency = known-unknowns</span>
-          <span class="chip">🧱 Management reserve = unknown-unknowns</span>
+          <span class="chip">🧱 Mgmt reserve = unknown-unknowns</span>
           <span class="chip">📈 Exam loves interpretation</span>
         </div>
-      </div>
-      <div class="chips">
-        <span class="chip">⏱️ Kaizen: clearer + faster</span>
-        <span class="chip">✅ Memory hooks added</span>
+
+        <!-- Optional: shown only on wide screens -->
+        <div class="chips extra" aria-label="Secondary cues">
+          <span class="chip">⏱️ Kaizen: clearer + faster</span>
+          <span class="chip">✅ Memory hooks added</span>
+        </div>
       </div>
     </div>
   </header>
@@ -484,11 +504,11 @@
     <nav aria-label="Section navigation">
       <p class="nav-title">🧭 Navigation</p>
       <ul>
-        <li><a href="#intro">🚀 Intro & Key Concepts</a></li>
+        <li><a href="#intro">🚀 Intro &amp; Key Concepts</a></li>
         <li><a href="#processes">🗺️ Cost Management Processes</a></li>
-        <li><a href="#planning">➡️ Planning: Estimate & Determine</a></li>
-        <li><a href="#control">⚙️ M&C: Control Costs & Resources</a></li>
-        <li><a href="#evm">📊 EVM: Metrics & Analysis</a></li>
+        <li><a href="#planning">➡️ Planning: Estimate &amp; Determine</a></li>
+        <li><a href="#control">⚙️ M&amp;C: Control Costs &amp; Resources</a></li>
+        <li><a href="#evm">📊 EVM: Metrics &amp; Analysis</a></li>
         <li><a href="#agile">🏃 Agile Budgeting Focus</a></li>
         <li><a href="#memory">🧠 Memory Booster Summary</a></li>
       </ul>
@@ -501,7 +521,7 @@
 
     <main id="main">
       <section id="intro">
-        <h2>🚀 Introduction & Core Concepts</h2>
+        <h2>🚀 Introduction &amp; Core Concepts</h2>
         <p>
           Cost management is about <strong>estimating</strong>, setting a <strong>time-phased cost baseline</strong>,
           and then <strong>controlling</strong> via performance data (especially <strong>EVM</strong>).
@@ -520,7 +540,7 @@
           </div>
           <div class="pane right">
             <h4>Agile (Adaptive) 🏃</h4>
-            <p class="muted">Fix time & cost; vary scope.</p>
+            <p class="muted">Fix time &amp; cost; vary scope.</p>
             <ul>
               <li><strong>Backlog</strong> ≈ WBS (features → stories → tasks)</li>
               <li>Stable team cost per iteration (burn rate)</li>
@@ -561,7 +581,7 @@
 
       <section id="processes">
         <h2>🗺️ Cost Management Processes Overview</h2>
-        <p class="muted">These are mostly Planning + Monitoring & Controlling.</p>
+        <p class="muted">These are mostly Planning + Monitoring &amp; Controlling.</p>
 
         <div class="process-flow" aria-label="Process flow overview">
           <div class="flow-step" style="background:#d1ecf1;">1. Plan Cost Management (Planning)</div>
@@ -588,7 +608,7 @@
       </section>
 
       <section id="planning">
-        <h2>➡️ Planning: Estimate Costs & Determine Budget</h2>
+        <h2>➡️ Planning: Estimate Costs &amp; Determine Budget</h2>
 
         <div class="tip callout">
           💡 <strong>Trick of the trade:</strong> Estimating happens in Planning; controlling happens continuously using EVM + variance analysis.
@@ -701,7 +721,7 @@
       </section>
 
       <section id="control">
-        <h2>⚙️ Monitoring & Controlling: Control Costs & Resources</h2>
+        <h2>⚙️ Monitoring &amp; Controlling: Control Costs &amp; Resources</h2>
         <p>
           After baselines are set, you monitor performance and manage variances.
           PMI logic: measure → analyze → act → (if baseline impacted) raise change request.
@@ -743,7 +763,7 @@
       </section>
 
       <section id="evm">
-        <h2>📊 EVM: Metrics & Analysis (Earned Value Management)</h2>
+        <h2>📊 EVM: Metrics &amp; Analysis (Earned Value Management)</h2>
         <p>
           EVM integrates scope + schedule + cost to evaluate performance against the baseline and forecast outcomes.
           Memorize definitions, then master <strong>interpretation</strong>.
@@ -806,7 +826,7 @@
           </table>
         </div>
 
-        <h3>Fast Formulas (the ones that keep showing up)</h3>
+        <h3>Fast Formulas (high yield)</h3>
         <div class="formula-row" aria-label="EVM formulas">
           <div class="formula">CV = EV − AC</div>
           <div class="formula">SV = EV − PV</div>
@@ -875,7 +895,7 @@
           🔥 <strong>One-liner:</strong> “Plan the rules → estimate the work → baseline the budget → control with EVM → change request if baseline shifts.”
         </div>
 
-        <h3>Cost Processes & Hooks</h3>
+        <h3>Cost Processes &amp; Hooks</h3>
         <div class="card-grid">
           <div class="card" style="border-left-color:var(--primary);">
             <h4 style="margin:.2rem 0 .35rem;">Plan Cost Mgmt 📜</h4>
@@ -894,8 +914,8 @@
           </div>
           <div class="card" style="border-left-color:var(--warning);">
             <h4 style="margin:.2rem 0 .35rem;">Control Costs ⚖️</h4>
-            <p><strong>Hook:</strong> “Measure & correct.”</p>
-            <p class="muted" style="margin:.3rem 0 0;">Tools: EVM, variance & reserve analysis</p>
+            <p><strong>Hook:</strong> “Measure &amp; correct.”</p>
+            <p class="muted" style="margin:.3rem 0 0;">Tools: EVM, variance &amp; reserve analysis</p>
           </div>
         </div>
 
@@ -945,7 +965,7 @@
   <button class="to-top" id="toTop" type="button" aria-label="Back to top">⬆️ Top</button>
 
   <script>
-    // Kaizen JS: tiny improvements only (no frameworks)
+    // Tiny JS helpers: active nav, progress bar, back-to-top
     (function () {
       const sections = Array.from(document.querySelectorAll("main section[id]"));
       const navLinks = Array.from(document.querySelectorAll("nav a[href^='#']"));
@@ -970,7 +990,6 @@
         const height = doc.scrollHeight - doc.clientHeight;
         const pct = height > 0 ? (scrollTop / height) * 100 : 0;
         progressBar.style.width = pct.toFixed(2) + "%";
-
         toTop.classList.toggle("show", scrollTop > 500);
       }
       window.addEventListener("scroll", onScroll, { passive: true });
