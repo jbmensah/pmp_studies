@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PMP Schedule Management Cheat Sheet | Process Groups Model</title>
+  <style>
+    :root{
+      --primary:#1f6feb;
+      --primary-dark:#174ea6;
+      --success:#16a34a;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --info:#0ea5e9;
+
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ink:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+
+      --radius:14px;
+      --shadow:0 10px 24px rgba(17,24,39,.08);
+      --shadow-soft:0 2px 10px rgba(17,24,39,.06);
+
+      --nav-w:300px;
+      --focus:0 0 0 3px rgba(31,111,235,.25);
+
+      --band-plan:rgba(22,163,74,.10);
+      --band-mc:rgba(14,165,233,.10);
+      --band-plan-b:#16a34a;
+      --band-mc-b:#0ea5e9;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
+    a{color:inherit;}
+    :focus-visible{outline:none; box-shadow:var(--focus); border-radius:12px;}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(90deg,var(--primary),#4f46e5);
+      color:#fff;
+      box-shadow:0 6px 18px rgba(17,24,39,.12);
+    }
+    .header-inner{
+      max-width:1250px;
+      margin:0 auto;
+      padding:16px 16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .title-wrap{display:flex; flex-direction:column; gap:2px; min-width:260px;}
+    header h1{margin:0; font-size:1.18rem; line-height:1.2;}
+    header p{margin:0; opacity:.92; font-size:.92rem;}
+    .header-badges{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .badge{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.22);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+
+    /* Layout */
+    .shell{
+      max-width:1250px;
+      margin:0 auto;
+      padding:18px 16px 44px;
+      display:grid;
+      grid-template-columns: var(--nav-w) 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    nav{
+      position:sticky;
+      top:92px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      padding:14px;
+      max-height:calc(100vh - 110px);
+      overflow:auto;
+    }
+    .nav-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+      padding:6px 6px 10px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-title h2{margin:0; font-size:1rem;}
+    .nav-mini{font-size:.8rem; color:var(--muted);}
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:6px;
+    }
+    .nav-links a{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition: background .15s, border-color .15s, transform .08s;
+    }
+    .nav-links a:hover{
+      background:#f3f4f6;
+      border-color:#eef2ff;
+      transform:translateY(-1px);
+    }
+    .nav-links a span{color:var(--muted); font-size:.82rem; white-space:nowrap;}
+
+    main{display:flex; flex-direction:column; gap:18px; min-width:0;}
+
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    section:target{
+      box-shadow:0 0 0 4px rgba(31,111,235,.18), var(--shadow);
+      border-color:rgba(31,111,235,.35);
+    }
+
+    .sec-head{display:flex; flex-direction:column; gap:6px; margin-bottom:10px;}
+    .sec-head h2{margin:0; font-size:1.12rem;}
+    .sub{margin:0; color:var(--muted); font-size:.95rem;}
+
+    /* Pills */
+    .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;}
+    .pill{
+      background:#f3f4f6;
+      border:1px solid var(--line);
+      color:var(--ink);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      white-space:nowrap;
+    }
+    .pill.primary{background:rgba(31,111,235,.10); border-color:rgba(31,111,235,.25); color:var(--primary-dark);}
+    .pill.info{background:rgba(14,165,233,.10); border-color:rgba(14,165,233,.25); color:#075985;}
+    .pill.success{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.25); color:#14532d;}
+    .pill.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); color:#7c2d12;}
+    .pill.danger{background:rgba(239,68,68,.10); border-color:rgba(239,68,68,.25); color:#7f1d1d;}
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+    .card{
+      background:#fbfbfd;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      box-shadow:0 1px 0 rgba(17,24,39,.03);
+    }
+    .card h3{margin:0 0 8px 0; font-size:1rem;}
+    .card p{margin:0; color:var(--muted);}
+    .card ul{margin:8px 0 0; padding-left:18px;}
+    .card li{margin:6px 0;}
+
+    /* Callouts */
+    .callout{
+      border-radius:14px;
+      padding:14px;
+      border:1px solid;
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .callout .icon{font-size:1.2rem; line-height:1.2; margin-top:2px;}
+    .callout .body{flex:1; min-width:0;}
+    .callout .body strong{display:block; margin-bottom:2px;}
+    .callout.tip{background:rgba(14,165,233,.08); border-color:rgba(14,165,233,.22);}
+    .callout.warn{background:rgba(239,68,68,.08); border-color:rgba(239,68,68,.22);}
+    .callout.trick{background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.25);}
+    .callout.ok{background:rgba(22,163,74,.08); border-color:rgba(22,163,74,.22);}
+
+    /* Tables */
+    .table-wrap{
+      overflow:auto;
+      border-radius:14px;
+      border:1px solid var(--line);
+      margin-top:12px;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:760px;
+      background:#fff;
+    }
+    th,td{
+      padding:12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:.95rem;
+    }
+    th{
+      position:sticky;
+      top:0;
+      background:#f3f4f6;
+      font-weight:800;
+      z-index:1;
+    }
+    tr:last-child td{border-bottom:none;}
+    caption{
+      text-align:left;
+      padding:10px 12px;
+      font-weight:800;
+      color:#374151;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    /* Process blocks with ITTO */
+    .process{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      margin-top:12px;
+      background:#fff;
+    }
+    .process-head{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding-bottom:10px;
+      border-bottom:1px dashed var(--line);
+      margin-bottom:12px;
+    }
+    .process-title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      min-width:260px;
+      flex:1;
+    }
+    .process-title .picon{font-size:1.4rem; line-height:1.1; margin-top:1px;}
+    .process-title h3{margin:0; font-size:1.03rem;}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-items:center;}
+
+    .itto{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .itto .box{
+      border-radius:14px;
+      border:1px solid var(--line);
+      padding:12px;
+      background:#fbfbfd;
+    }
+    .itto .box h4{
+      margin:0 0 8px 0;
+      font-size:.95rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .itto ul{margin:0; padding-left:18px;}
+    .itto li{margin:6px 0; color:#1f2937;}
+    .itto .in h4{color:#0b5394;}
+    .itto .tool h4{color:#7c2d12;}
+    .itto .out h4{color:#14532d;}
+
+    /* Memory hooks */
+    .hooks{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .hook{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#fff, #fafafa);
+      border-radius:14px;
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .hook .hicon{font-size:1.3rem; line-height:1.1; margin-top:1px;}
+    .hook strong{display:block;}
+    .hook small{display:block; color:var(--muted); margin-top:2px; line-height:1.35;}
+
+    /* One-page visual summary band */
+    .summary{
+      background:linear-gradient(180deg, rgba(14,165,233,.08), rgba(31,111,235,.04));
+      border:1px solid rgba(14,165,233,.20);
+    }
+    .bands{display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px;}
+    .band{
+      border-radius:14px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:#fff;
+    }
+    .band .label{
+      padding:10px 12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:.9rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .band.plan .label{background:var(--band-plan);}
+    .band.mc .label{background:var(--band-mc);}
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(6, minmax(170px, 1fr));
+      gap:10px;
+      padding:12px;
+    }
+    .step{
+      border:1px solid var(--line);
+      background:#fbfbfd;
+      border-radius:12px;
+      padding:10px;
+      position:relative;
+      min-height:92px;
+    }
+    .step .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:4px;
+    }
+    .step .top strong{font-size:.95rem;}
+    .step small{color:var(--muted); display:block; line-height:1.35;}
+    .arrow{
+      position:absolute;
+      right:-10px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#9ca3af;
+      font-weight:900;
+      font-size:1.1rem;
+    }
+    .step:last-child .arrow{display:none;}
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .shell{grid-template-columns:1fr;}
+      nav{position:sticky; top:92px; max-height:none;}
+      .nav-links{flex-direction:row; flex-wrap:wrap;}
+      .nav-links a{flex:1 1 220px;}
+      .steps{grid-template-columns: 1fr 1fr;}
+      .arrow{display:none;}
+      .itto{grid-template-columns:1fr;}
+      table{min-width:680px;}
+    }
+    @media (max-width: 560px){
+      header h1{font-size:1.02rem;}
+      .steps{grid-template-columns:1fr;}
+      table{min-width:620px;}
+    }
+    @media print{
+      header{position:static; box-shadow:none;}
+      nav{display:none;}
+      .shell{grid-template-columns:1fr; padding:0;}
+      section{box-shadow:none;}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="header-inner">
+    <div class="title-wrap">
+      <h1>PMP Cheat Sheet: Schedule Management ⏱️</h1>
+      <p>Process Domain | ECO Task 2.6: Plan and Manage Schedule</p>
+    </div>
+    <div class="header-badges">
+      <span class="badge">Plan → Define → Sequence → Estimate → Develop → Control</span>
+      <span class="badge">CPM = Develop Schedule</span>
+      <span class="badge">EVM = Control Schedule</span>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav aria-label="Page navigation">
+    <div class="nav-title">
+      <h2>🧭 Quick Links</h2>
+      <div class="nav-mini">Jump fast</div>
+    </div>
+    <div class="nav-links">
+      <a href="#fundamentals">Overview & Terms <span>must-know</span></a>
+      <a href="#visual">One-Page Visual <span>memory</span></a>
+      <a href="#p1">1. Plan Schedule <span>📝</span></a>
+      <a href="#p2">2. Define Activities <span>🧱</span></a>
+      <a href="#p3">3. Sequence Activities <span>➡️</span></a>
+      <a href="#p4">4. Estimate Durations <span>⏱️</span></a>
+      <a href="#p5">5. Develop Schedule <span>📅</span></a>
+      <a href="#p6">6. Control Schedule <span>🎯</span></a>
+      <a href="#adaptive">Adaptive Focus <span>🏃‍♂️</span></a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Fundamentals -->
+    <section id="fundamentals">
+      <div class="sec-head">
+        <h2>Schedule Management Fundamentals</h2>
+        <p class="sub">Know the vocabulary, then apply it to situational questions (compression, float, critical path, and tracking).</p>
+        <div class="pill-row">
+          <span class="pill primary">Critical Path = longest path</span>
+          <span class="pill info">Float = flexibility</span>
+          <span class="pill warn">Fast-track adds risk</span>
+          <span class="pill danger">Padding ≠ best practice</span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🔗 Dependencies</h3>
+          <p>Logical relationships define order (A must happen before B).</p>
+        </div>
+        <div class="card">
+          <h3>🧵 Float (Slack)</h3>
+          <p>Time an activity can slip without impacting the finish date (critical path ≈ 0 float).</p>
+        </div>
+        <div class="card">
+          <h3>🛣️ Critical Path</h3>
+          <p>Longest duration path → shortest possible project duration.</p>
+        </div>
+        <div class="card">
+          <h3>⏩ Lead / ⏳ Lag</h3>
+          <p>Lead = overlap; Lag = waiting time between activities.</p>
+        </div>
+        <div class="card">
+          <h3>🏁 Milestones</h3>
+          <p>Zero-duration checkpoints (major achievements).</p>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="icon">🧠</div>
+        <div class="body">
+          <strong>ECO exam logic</strong>
+          Planning processes build the baseline first. Then Monitoring &amp; Controlling uses analysis (EVM/trends) to protect it.
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual summary -->
+    <section id="visual" class="summary">
+      <div class="sec-head">
+        <h2>One-Page Visual Summary 🎨</h2>
+        <p class="sub">Your memory band: learn the flow + each step’s “signature output.”</p>
+      </div>
+
+      <div class="bands">
+        <div class="band plan">
+          <div class="label">🟢 Planning band — build the schedule system + baseline</div>
+          <div class="steps">
+            <div class="step">
+              <div class="top"><strong>📝 Plan</strong><span class="pill success">Plan</span></div>
+              <small>Output: Schedule Mgmt Plan</small>
+              <span class="arrow">→</span>
+            </div>
+            <div class="step">
+              <div class="top"><strong>🧱 Define</strong><span class="pill info">List</span></div>
+              <small>Output: Activity List</small>
+              <span class="arrow">→</span>
+            </div>
+            <div class="step">
+              <div class="top"><strong>➡️ Sequence</strong><span class="pill warn">Net</span></div>
+              <small>Output: Network Diagram</small>
+              <span class="arrow">→</span>
+            </div>
+            <div class="step">
+              <div class="top"><strong>⏱️ Estimate</strong><span class="pill primary">Ranges</span></div>
+              <small>Output: Duration Estimates + Basis</small>
+              <span class="arrow">→</span>
+            </div>
+            <div class="step">
+              <div class="top"><strong>📅 Develop</strong><span class="pill success">Base</span></div>
+              <small>Output: Project Schedule + Baseline</small>
+              <span class="arrow">→</span>
+            </div>
+            <div class="step">
+              <div class="top"><strong>🎯 Control</strong><span class="pill info">WPI</span></div>
+              <small>Output: WPI + Forecasts + CRs</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="band mc">
+          <div class="label">🔵 Monitoring &amp; Controlling — protect the baseline</div>
+          <div style="padding:12px;">
+            <div class="grid" style="margin-top:0;">
+              <div class="card">
+                <h3>📈 M&amp;C input pattern</h3>
+                <p><strong>WPD</strong> (raw) → analysis → <strong>WPI</strong> (meaning) → action/CR</p>
+              </div>
+              <div class="card">
+                <h3>⚠️ Compression order</h3>
+                <p>Analyze → apply compression → then request baseline change if needed.</p>
+              </div>
+              <div class="card">
+                <h3>✅ Fast memory</h3>
+                <p><strong>CPM</strong> lives in Develop Schedule; <strong>EVM</strong> lives in Control Schedule.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hooks" aria-label="Icon-based hooks">
+        <div class="hook"><div class="hicon">📝</div><div><strong>Plan</strong><small>Set rules + thresholds</small></div></div>
+        <div class="hook"><div class="hicon">🧱</div><div><strong>Define</strong><small>Work packages → activities</small></div></div>
+        <div class="hook"><div class="hicon">➡️</div><div><strong>Sequence</strong><small>Order + dependencies</small></div></div>
+        <div class="hook"><div class="hicon">⏱️</div><div><strong>Estimate</strong><small>Ranges + uncertainty</small></div></div>
+        <div class="hook"><div class="hicon">📅</div><div><strong>Develop</strong><small>Baseline + critical path</small></div></div>
+        <div class="hook"><div class="hicon">🎯</div><div><strong>Control</strong><small>Protect baseline with data</small></div></div>
+      </div>
+    </section>
+
+    <!-- P1 -->
+    <section id="p1">
+      <div class="sec-head">
+        <h2>1. Plan Schedule Management 📝</h2>
+        <p class="sub">Document policies, procedures, and how schedule planning/control will be done.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">📝</div>
+            <div>
+              <h3>Plan Schedule Management</h3>
+              <p class="sub">“Set the rules of the game.”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill primary">Signature Output: Schedule Mgmt Plan</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Project Charter (high-level requirements)</li>
+              <li>Project Management Plan components &amp; organizational context (EEFs/OPAs)</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li>Expert judgment</li>
+              <li>Alternatives analysis</li>
+              <li>Meetings (team/sponsor/stakeholders)</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Output</h4>
+            <ul>
+              <li><strong>Schedule Management Plan</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>What the plan typically specifies</h3>
+          <ul>
+            <li>Methodology/software; units (hours, story points); rules for estimates</li>
+            <li>How schedule baseline is expressed and controlled (change control)</li>
+            <li>Performance measures; variance thresholds; reporting frequency</li>
+            <li>Agile: iteration/release lengths and how forecasting will be done</li>
+          </ul>
+        </div>
+
+        <div class="callout ok">
+          <div class="icon">🧠</div>
+          <div class="body">
+            <strong>ITTO pattern recognition</strong>
+            “Plan” processes often output a named plan (Schedule Mgmt Plan, Cost Mgmt Plan, etc.).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P2 -->
+    <section id="p2">
+      <div class="sec-head">
+        <h2>2. Define Activities 🧱</h2>
+        <p class="sub">Turn scope deliverables into schedule activities small enough to estimate and control.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🧱</div>
+            <div>
+              <h3>Define Activities</h3>
+              <p class="sub">“Work packages → activities.”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill info">Signature Output: Activity List</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Schedule Management Plan</li>
+              <li>Scope baseline (WBS/WBS dictionary) <em>or</em> backlog/story cards (adaptive)</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li>Decomposition</li>
+              <li>Rolling wave planning / progressive elaboration</li>
+              <li>Team collaboration</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
+            <ul>
+              <li><strong>Activity List</strong></li>
+              <li>Activity attributes (details)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <div class="icon">🚨</div>
+          <div class="body">
+            <strong>Exam trap: decomposition</strong>
+            Deliverables → work packages = <strong>Scope (Create WBS)</strong>. Work packages → activities = <strong>Schedule (Define Activities)</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P3 -->
+    <section id="p3">
+      <div class="sec-head">
+        <h2>3. Sequence Activities ➡️</h2>
+        <p class="sub">Identify and document logical relationships (dependencies) between activities.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">➡️</div>
+            <div>
+              <h3>Sequence Activities</h3>
+              <p class="sub">“Connect the dots.”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill warn">Signature Output: Network Diagram</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Activity list &amp; attributes</li>
+              <li>Milestone list; assumption log</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li>PDM (precedence diagramming method)</li>
+              <li>Dependency determination (mandatory/discretionary/internal/external)</li>
+              <li>Leads &amp; lags</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Output</h4>
+            <ul>
+              <li><strong>Project Schedule Network Diagram</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>PDM relationship types</h3>
+            <ul>
+              <li><strong>FS</strong> (most common): finish A → start B</li>
+              <li><strong>SS</strong>: start A → start B</li>
+              <li><strong>FF</strong>: finish A → finish B</li>
+              <li><strong>SF</strong> (rare): start A → finish B</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Quick dependency table</h3>
+            <div class="table-wrap" style="margin-top:8px;">
+              <table>
+                <caption>Dependency types</caption>
+                <thead>
+                  <tr><th>Type</th><th>Logic</th><th>Control</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Mandatory (Hard)</td><td>Inherent/contractual</td><td>Hard to change</td></tr>
+                  <tr><td>Discretionary (Soft)</td><td>Preferred way of working</td><td>Good for compression</td></tr>
+                  <tr><td>External</td><td>Outside parties</td><td>Low control</td></tr>
+                  <tr><td>Internal</td><td>Within project</td><td>Higher control</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- P4 -->
+    <section id="p4">
+      <div class="sec-head">
+        <h2>4. Estimate Activity Durations ⏱️</h2>
+        <p class="sub">Estimate work periods needed to complete activities (account for uncertainty and risk).</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">⏱️</div>
+            <div>
+              <h3>Estimate Activity Durations</h3>
+              <p class="sub">“How long will it take (as a range)?”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill primary">Signature: Duration + Basis</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Activity list/attributes (incl. leads/lags)</li>
+              <li>Resource calendars/requirements</li>
+              <li>Risk register; assumption log</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li>Analogous / Parametric / Bottom-up</li>
+              <li>3-point estimates (Triangular / Beta)</li>
+              <li>Reserve analysis (contingency)</li>
+              <li>Adaptive: T-shirt sizing / Planning poker</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
+            <ul>
+              <li><strong>Activity duration estimates</strong> (often ranges)</li>
+              <li><strong>Basis of estimates</strong></li>
+              <li>Project document updates</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">✅</div>
+          <div class="body">
+            <strong>PMP rule</strong>
+            Don’t pad estimates. Handle uncertainty with <strong>risk responses</strong> and <strong>contingency reserves</strong>.
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Estimating techniques (high-yield)</caption>
+            <thead>
+              <tr><th>Method</th><th>Use</th><th>Shortcut</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Analogous</td><td>Fast, high-level</td><td>Less accurate</td></tr>
+              <tr><td>Bottom-up</td><td>Most detailed</td><td>More accurate (if WBS/activity details exist)</td></tr>
+              <tr><td>Parametric</td><td>Rate × units</td><td>Needs reliable metrics</td></tr>
+              <tr><td>Triangular</td><td>Simple 3-point</td><td>(O + M + P) / 3</td></tr>
+              <tr><td>Beta (PERT)</td><td>Weighted 3-point</td><td>(O + 4M + P) / 6</td></tr>
+              <tr><td>Planning Poker</td><td>Adaptive sizing</td><td>Relative points, not exact time</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Quick formulas</h3>
+          <ul>
+            <li><strong>PERT SD</strong> = (P − O) / 6 → bigger SD = higher uncertainty</li>
+            <li><strong>Float</strong> = (LS − ES) or (LF − EF)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- P5 -->
+    <section id="p5">
+      <div class="sec-head">
+        <h2>5. Develop Schedule 📅</h2>
+        <p class="sub">Synthesize sequence + durations + resources + constraints into the schedule model and baseline.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">📅</div>
+            <div>
+              <h3>Develop Schedule</h3>
+              <p class="sub">“Find critical path → set baseline.”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill success">Process Group: Planning</span>
+            <span class="pill primary">CPM lives here</span>
+            <span class="pill info">Output: Schedule Baseline</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Network diagram</li>
+              <li>Duration estimates + basis</li>
+              <li>Resource requirements + calendars</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li><strong>Critical Path Method (CPM)</strong></li>
+              <li>Compression: <strong>Crashing</strong> / <strong>Fast-tracking</strong></li>
+              <li>What-if &amp; simulation (Monte Carlo)</li>
+              <li>Resource optimization: leveling/smoothing</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
+            <ul>
+              <li><strong>Project schedule</strong></li>
+              <li><strong>Schedule baseline</strong></li>
+              <li>Schedule data; change requests</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Float types</h3>
+            <ul>
+              <li><strong>Total float</strong>: slip without impacting project end date</li>
+              <li><strong>Free float</strong>: slip without impacting successor early start</li>
+              <li><strong>Project float</strong>: slip without missing externally imposed date</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Compression options (exam truth)</h3>
+            <ul>
+              <li><strong>Crashing</strong> = adds cost (maybe risk)</li>
+              <li><strong>Fast-tracking</strong> = adds risk (often rework)</li>
+              <li><strong>Reduce scope</strong> = common in agile (trade scope for time)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout trick">
+          <div class="icon">⚠️</div>
+          <div class="body">
+            <strong>Leveling vs smoothing</strong>
+            Leveling may extend the schedule. Smoothing stays within float (doesn’t change critical path).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P6 -->
+    <section id="p6">
+      <div class="sec-head">
+        <h2>6. Control Schedule 🎯</h2>
+        <p class="sub">Monitor progress, forecast, and manage changes to protect the schedule baseline.</p>
+      </div>
+
+      <div class="process">
+        <div class="process-head">
+          <div class="process-title">
+            <div class="picon">🎯</div>
+            <div>
+              <h3>Control Schedule</h3>
+              <p class="sub">“WPD → analysis → WPI → action/CR.”</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="pill info">Process Group: Monitoring &amp; Controlling</span>
+            <span class="pill primary">EVM lives here</span>
+            <span class="pill danger">Output: CRs</span>
+          </div>
+        </div>
+
+        <div class="itto">
+          <div class="box in">
+            <h4>📥 Key Inputs</h4>
+            <ul>
+              <li>Schedule baseline</li>
+              <li>Work performance data (WPD)</li>
+            </ul>
+          </div>
+          <div class="box tool">
+            <h4>🛠️ Key Tools</h4>
+            <ul>
+              <li>Data analysis: EVM, variance, trend, what-if/simulation</li>
+              <li>Compression: leads/lags, crashing, fast-tracking</li>
+              <li>Adaptive: velocity, burndown/burnup, reprioritization</li>
+              <li>ETC (re-estimate remaining work)</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h4>📤 Key Outputs</h4>
+            <ul>
+              <li><strong>Work performance information (WPI)</strong></li>
+              <li>Forecasts</li>
+              <li>Change requests; updates to plans/docs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <div class="icon">🚨</div>
+          <div class="body">
+            <strong>Common exam move</strong>
+            When schedule slips: analyze + try compression first. Only request a baseline change if corrective actions can’t recover the plan.
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Reporting formats</h3>
+            <ul>
+              <li><strong>Network diagram</strong>: shows dependencies</li>
+              <li><strong>Milestone chart</strong>: exec reporting</li>
+              <li><strong>Gantt</strong>: tracking &amp; comms (weak for logic)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Agile tracking cheat</h3>
+            <ul>
+              <li><strong>Burndown</strong>: work remaining (down)</li>
+              <li><strong>Burnup</strong>: work completed (up) + shows scope changes clearly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adaptive Focus -->
+    <section id="adaptive">
+      <div class="sec-head">
+        <h2>Adaptive Scheduling Focus 🏃‍♂️</h2>
+        <p class="sub">Keep time &amp; cost stable; negotiate scope via backlog prioritization and release planning.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>📌 Velocity</h3>
+          <p>Average story points per iteration (use for forecasting). Comparing velocity across different teams is not meaningful.</p>
+        </div>
+        <div class="card">
+          <h3>🧩 Iterations &amp; releases</h3>
+          <p>Iterations (1–4 weeks) roll up into releases delivering value increments.</p>
+        </div>
+        <div class="card">
+          <h3>📊 CFDs</h3>
+          <p>Cumulative Flow Diagrams show WIP, bottlenecks, and flow stability over time.</p>
+        </div>
+      </div>
+
+      <div class="callout ok">
+        <div class="icon">✅</div>
+        <div class="body">
+          <strong>Adaptive “schedule” mindset</strong>
+          You manage predictability through cadence + throughput, not by locking a detailed long-range baseline early.
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
