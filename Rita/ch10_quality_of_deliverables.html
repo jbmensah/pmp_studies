@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMP Quality Management Cheat Sheet</title>
+
+  <style>
+    /* =========================================================
+       Kaizen Improvements (small, compounding upgrades)
+       - Semantic layout + accessibility (skip link, focus styles)
+       - Compact sticky header (more content on screen)
+       - Sticky left nav with active section highlight
+       - Consistent design system (tokens, cards, callouts, tags)
+       - Better “slide-deck” feel: sections as clean panels
+       - Memory Booster upgraded: ITTO shapes + hooks + mini drills
+       - No external libraries
+       ========================================================= */
+
+    :root{
+      /* Process-group palette */
+      --plan:#3B82F6;     /* Planning (blue) */
+      --exec:#10B981;     /* Executing / Manage Quality (green) */
+      --mc:#F59E0B;       /* Monitoring & Controlling (amber) */
+      --accent:#EF4444;   /* Attention (red) */
+
+      /* UI neutrals */
+      --bg:#F8FAFC;
+      --panel:#FFFFFF;
+      --ink:#111827;
+      --muted:#6B7280;
+      --line: rgba(17,24,39,.10);
+
+      --radius: 16px;
+      --shadow: 0 10px 24px rgba(17,24,39,.08);
+      --shadow-soft: 0 4px 10px rgba(17,24,39,.06);
+
+      --max: 1280px;
+      --navw: 290px;
+
+      --sans: "Segoe UI", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height:1.65;
+    }
+
+    /* A11y: Skip link */
+    .skip{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#fff;
+      padding:.6rem 1rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+      z-index: 9999;
+    }
+    .skip:focus{
+      left:12px;
+      outline: 3px solid rgba(59,130,246,.35);
+    }
+
+    /* Progress bar */
+    .progress{
+      position:fixed;
+      inset:0 0 auto 0;
+      height:4px;
+      background: rgba(59,130,246,.12);
+      z-index: 3000;
+    }
+    .progress > div{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--plan), var(--exec));
+    }
+
+    /* Header: compact, sticky */
+    header{
+      position: sticky;
+      top:0;
+      z-index: 2000;
+      background: linear-gradient(90deg, #0F172A, #111827);
+      color:#fff;
+      box-shadow: 0 10px 18px rgba(0,0,0,.10);
+    }
+    .header-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: .9rem 1.25rem; /* compact */
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 1rem;
+      flex-wrap:wrap;
+    }
+    .title-block h1{
+      margin:0;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      letter-spacing:.2px;
+    }
+    .title-block p{
+      margin:.2rem 0 0;
+      color: rgba(255,255,255,.85);
+      font-size:.92rem;
+      max-width: 70ch;
+    }
+
+    .chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+    }
+    .chip{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      padding: .22rem .55rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+
+    /* Layout container */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.25rem;
+      display:grid;
+      grid-template-columns: var(--navw) 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    /* Sidebar nav */
+    aside{
+      position: sticky;
+      top: 72px; /* header compact -> smaller top */
+      height: fit-content;
+      background: #EEF2F7;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+    }
+    .nav-title{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      font-weight: 800;
+      margin: 0 0 .75rem;
+      color:#0F172A;
+    }
+    nav ul{ list-style:none; padding:0; margin:0; }
+    nav li{ margin:.25rem 0; }
+    nav a{
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      text-decoration:none;
+      color:#0B3B82;
+      padding:.55rem .65rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: background .12s ease, transform .12s ease, border-color .12s ease;
+      outline:none;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    nav a:hover{
+      background: rgba(59,130,246,.10);
+      transform: translateX(2px);
+    }
+    nav a.active{
+      background: rgba(59,130,246,.16);
+      border-color: rgba(59,130,246,.25);
+      color:#062A5E;
+    }
+    nav a:focus-visible{
+      outline: 3px solid rgba(59,130,246,.30);
+    }
+    .nav-mini{
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(17,24,39,.18);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .nav-mini kbd{
+      font-family: var(--mono);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      padding: .12rem .35rem;
+      border-radius: 8px;
+      font-size: .85rem;
+      color:#0F172A;
+    }
+
+    /* Main content panels */
+    main{ min-width:0; }
+    section{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 1rem;
+      flex-wrap:wrap;
+      margin-bottom: .75rem;
+    }
+
+    h2{
+      margin:0;
+      font-size: 1.25rem;
+      color:#0F172A;
+      letter-spacing:.2px;
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+    }
+    h3{
+      margin: 1.1rem 0 .45rem;
+      color:#111827;
+      font-size: 1.02rem;
+    }
+    p{ margin:.55rem 0; color:#111827; }
+    .muted{ color: var(--muted); }
+
+    /* Tags / badges */
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.22rem .55rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .78rem;
+      border: 1px solid transparent;
+      white-space:nowrap;
+    }
+    .b-plan{ background: rgba(59,130,246,.12); color:#0B3B82; border-color: rgba(59,130,246,.20); }
+    .b-exec{ background: rgba(16,185,129,.12); color:#065F46; border-color: rgba(16,185,129,.22); }
+    .b-mc  { background: rgba(245,158,11,.14); color:#7A4A00; border-color: rgba(245,158,11,.25); }
+
+    /* Process “meta” row */
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      align-items:center;
+    }
+
+    /* Cards and grids */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .9rem;
+      margin-top: .8rem;
+    }
+    .card{
+      background: #F3F6FB;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      padding: .9rem;
+    }
+    .card h4{
+      margin:0 0 .35rem;
+      font-size: 1rem;
+      color:#0B3B82;
+    }
+    .card p{ margin:.35rem 0 0; color:#111827; }
+
+    /* Callouts */
+    .callout{
+      padding: .95rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      margin: .9rem 0;
+    }
+    .tip{
+      background: #ECFDF5;
+      border-left: 6px solid var(--exec);
+      color:#064E3B;
+    }
+    .warn{
+      background: #FEF2F2;
+      border-left: 6px solid var(--accent);
+      color:#7F1D1D;
+    }
+    .note{
+      background: #EFF6FF;
+      border-left: 6px solid var(--plan);
+      color:#0B3B82;
+    }
+
+    /* Process block (purpose + ITTO + tools) */
+    .process{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      background: #FBFCFE;
+      box-shadow: var(--shadow-soft);
+      margin-top: .75rem;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: .75rem;
+    }
+    .io{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: .85rem;
+      background: #fff;
+    }
+    .io strong{
+      display:block;
+      margin-bottom:.35rem;
+      font-size: .95rem;
+    }
+    .io ul{
+      margin:.4rem 0 0;
+      padding-left: 1.1rem;
+    }
+    .io li{ margin:.25rem 0; }
+
+    .io.inputs strong{ color:#0B3B82; }
+    .io.outputs strong{ color:#065F46; }
+
+    /* Mini infographic: flow */
+    .flow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      align-items:center;
+      margin-top: .75rem;
+    }
+    .step{
+      border-radius: 12px;
+      padding:.65rem .85rem;
+      border: 1px dashed rgba(17,24,39,.22);
+      background: #F3F4F6;
+      font-weight: 800;
+      min-width: 180px;
+      text-align:center;
+    }
+    .arrow{
+      color: rgba(17,24,39,.45);
+      font-size: 1.25rem;
+      user-select:none;
+    }
+
+    /* Tables (only where needed) */
+    .table-wrap{
+      overflow:auto;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      margin-top: .75rem;
+    }
+    table{
+      width:100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      background: #fff;
+    }
+    th, td{
+      padding: .75rem .85rem;
+      border-bottom: 1px solid rgba(17,24,39,.08);
+      text-align:left;
+      vertical-align: top;
+    }
+    th{
+      background: #0F172A;
+      color:#fff;
+      position: sticky;
+      top:0;
+      z-index:1;
+      letter-spacing:.2px;
+    }
+    tr:hover td{ background: #F8FBFF; }
+
+    /* Memory Booster */
+    .memory{
+      border: 2px solid rgba(239,68,68,.28);
+      background: linear-gradient(180deg, #fff, #FFF7F7);
+    }
+    .hooks{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .9rem;
+      margin-top: .8rem;
+    }
+    .hook{
+      border-radius: 14px;
+      padding: .9rem;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+      font-weight: 800;
+    }
+    .hook small{
+      display:block;
+      margin-top:.35rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .hook.plan{ border-left: 6px solid var(--plan); }
+    .hook.exec{ border-left: 6px solid var(--exec); }
+    .hook.mc{ border-left: 6px solid var(--mc); }
+
+    .summary-band{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .9rem;
+      margin-top: .9rem;
+    }
+    .band{
+      color:#fff;
+      border-radius: 16px;
+      padding: .95rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .band.plan{ background: var(--plan); }
+    .band.exec{ background: var(--exec); }
+    .band.mc{ background: var(--mc); color:#1f2937; } /* better contrast on amber */
+    .band h4{
+      margin:0 0 .3rem;
+      font-size: 1rem;
+      color: inherit;
+    }
+    .band p{ margin:.25rem 0; color: inherit; }
+
+    /* Micro drills */
+    .drills{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: .9rem;
+    }
+    .drill{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: .95rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .drill .q{
+      font-weight: 900;
+      margin:0 0 .35rem;
+      color:#0F172A;
+    }
+    details{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: .7rem .85rem;
+      background:#fff;
+      margin-top: .55rem;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      color:#0B3B82;
+      outline:none;
+    }
+
+    /* Back to top */
+    .to-top{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      border: none;
+      background: #0F172A;
+      color:#fff;
+      padding: .75rem .9rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .to-top.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .to-top:focus-visible{
+      outline: 3px solid rgba(59,130,246,.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+      aside{ position: relative; top:auto; }
+      .grid{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+      .hooks{ grid-template-columns: 1fr; }
+      .summary-band{ grid-template-columns: 1fr; }
+      .drills{ grid-template-columns: 1fr; }
+      table{ min-width: 620px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      nav a{ transition:none; }
+      .to-top{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#core">Skip to content</a>
+  <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>🛠️ Project Quality Management — PMP Cheat Sheet</h1>
+        <p>PMI theme: <strong>plan quality in</strong> (prevention) → <strong>improve processes</strong> → <strong>inspect deliverables</strong>.</p>
+      </div>
+      <div class="chip-row" aria-label="Quick cues">
+        <span class="chip">💡 Plan = define standards</span>
+        <span class="chip">⚙️ Manage = audit/improve process</span>
+        <span class="chip">✅ Control = inspect product</span>
+        <span class="chip">🚫 No gold plating</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside>
+      <div class="nav-title">🧭 Navigation</div>
+      <nav aria-label="Section navigation">
+        <ul>
+          <li><a href="#core">🎯 Core Concepts</a></li>
+          <li><a href="#plan">💡 Plan Quality Management</a></li>
+          <li><a href="#manage">⚙️ Manage Quality</a></li>
+          <li><a href="#control">✅ Control Quality</a></li>
+          <li><a href="#agile">🏃 Agile Quality</a></li>
+          <li><a href="#memory">🧠 Memory Booster</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-mini">
+        <p style="margin:.15rem 0 .5rem;"><strong>Fast search</strong></p>
+        <p style="margin:0;">Use <kbd>Ctrl</kbd> + <kbd>F</kbd> for “audit”, “inspect”, “control chart”.</p>
+      </div>
+    </aside>
+
+    <main id="main">
+      <!-- CORE -->
+      <section id="core" aria-labelledby="core-title">
+        <div class="section-head">
+          <h2 id="core-title">🎯 Core Concepts & Principles</h2>
+          <div class="meta">
+            <span class="badge b-plan">🧠 Exam anchor</span>
+            <span class="badge b-exec">📈 Continuous improvement</span>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <strong>PMI-ism:</strong> <em>Prevention over inspection.</em> Build quality into the process early; inspection alone is reactive and expensive.
+        </div>
+
+        <div class="grid" role="group" aria-label="Core definitions comparison">
+          <div class="card">
+            <h4>Quality ✅</h4>
+            <p>The degree to which the project’s deliverables <strong>fulfill requirements</strong> — nothing more, nothing less.</p>
+          </div>
+          <div class="card">
+            <h4>Grade 🏷️</h4>
+            <p>A category/classification (e.g., premium vs standard). A low-grade item can still be acceptable if it meets requirements (no defects).</p>
+          </div>
+          <div class="card">
+            <h4>Gold Plating ❌</h4>
+            <p>Adding extras beyond requirements. PMI expects you to avoid it (scope creep + risk + cost).</p>
+          </div>
+        </div>
+
+        <h3>Continuous Improvement Approaches 📈</h3>
+        <p class="muted">Think “improve the process so the product improves naturally.”</p>
+
+        <div class="table-wrap" aria-label="Continuous improvement methods (table)">
+          <table>
+            <thead>
+              <tr>
+                <th>Approach</th>
+                <th>Idea</th>
+                <th>PMP Exam Hook</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Kaizen</strong></td>
+                <td>Continuous small improvements</td>
+                <td>Inspect & adapt frequently; prioritize incremental change</td>
+              </tr>
+              <tr>
+                <td><strong>TQM</strong></td>
+                <td>Quality everywhere, everyone involved</td>
+                <td>Culture + process discipline</td>
+              </tr>
+              <tr>
+                <td><strong>Six Sigma</strong></td>
+                <td>Reduce variation/defects using data</td>
+                <td>Statistical thinking + root cause focus</td>
+              </tr>
+              <tr>
+                <td><strong>JIT</strong></td>
+                <td>Deliver resources just in time</td>
+                <td>Less inventory → quality must be strong to avoid rework</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout note">
+          <strong>Quick exam discriminator:</strong> If the question talks about <strong>process compliance</strong> → likely <strong>Manage Quality</strong> (audit).
+          If it talks about <strong>deliverables meeting requirements</strong> → likely <strong>Control Quality</strong> (inspect).
+        </div>
+      </section>
+
+      <!-- PLAN QUALITY -->
+      <section id="plan" aria-labelledby="plan-title">
+        <div class="section-head">
+          <h2 id="plan-title">💡 1) Plan Quality Management</h2>
+          <div class="meta">
+            <span class="badge b-plan">Planning</span>
+            <span class="badge b-plan">📌 Define standards</span>
+          </div>
+        </div>
+
+        <div class="process">
+          <p><strong>Purpose:</strong> Identify relevant standards/requirements and plan how to meet them. Define quality for the product and the work.</p>
+
+          <div class="two-col" role="group" aria-label="Key inputs and outputs for Plan Quality Management">
+            <div class="io inputs">
+              <strong>◀️ Key Inputs</strong>
+              <ul>
+                <li>Requirements documentation / RTM (what “must be true”)</li>
+                <li>Scope baseline (what we’re building)</li>
+                <li>OPAs/EEFs (org standards, historical data)</li>
+              </ul>
+            </div>
+            <div class="io outputs">
+              <strong>▶️ Key Outputs</strong>
+              <ul>
+                <li>Quality management plan (how quality is managed)</li>
+                <li>Quality metrics (how quality is measured)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>High-Yield Tools & Techniques</h3>
+          <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="card">
+              <h4>Cost of Quality (COQ) 💰</h4>
+              <p class="muted" style="margin:.25rem 0 0;">Balance prevention/appraisal vs failure costs.</p>
+              <ul style="margin:.5rem 0 0; padding-left: 1.1rem;">
+                <li><strong>Conformance:</strong> prevention + appraisal</li>
+                <li><strong>Nonconformance:</strong> internal failure + <strong>external failure (worst)</strong></li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Process Maps / Flowcharts 🧭</h4>
+              <p>Visualize process steps to spot where defects can occur and where to add controls/prevention.</p>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <strong>Kaizen cue:</strong> In Planning, you’re setting up the “system” that makes quality repeatable — metrics, roles, and improvement strategy.
+          </div>
+        </div>
+      </section>
+
+      <!-- MANAGE QUALITY -->
+      <section id="manage" aria-labelledby="manage-title">
+        <div class="section-head">
+          <h2 id="manage-title">⚙️ 2) Manage Quality</h2>
+          <div class="meta">
+            <span class="badge b-exec">Executing</span>
+            <span class="badge b-exec">🔍 Audit & improve</span>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>Exam trigger:</strong> If you see <strong>audit</strong>, think <strong>Manage Quality</strong>. Audits evaluate process compliance and effectiveness (not the product itself).
+        </div>
+
+        <div class="process">
+          <p><strong>Purpose:</strong> Evaluate whether the team is following processes/standards and whether the quality processes themselves need improvement.</p>
+
+          <div class="two-col" role="group" aria-label="Key inputs and outputs for Manage Quality">
+            <div class="io inputs">
+              <strong>◀️ Key Inputs</strong>
+              <ul>
+                <li>Quality management plan</li>
+                <li>Quality reports (what quality work is showing)</li>
+                <li>Work performance data (supporting evidence)</li>
+              </ul>
+            </div>
+            <div class="io outputs">
+              <strong>▶️ Key Outputs</strong>
+              <ul>
+                <li>Test & evaluation documents (for Control Quality)</li>
+                <li>Change requests (process improvements)</li>
+                <li>Updates to plans/procedures</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>High-Yield Tools & Techniques</h3>
+          <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card">
+              <h4>Quality Audits 🧾</h4>
+              <p>Structured review of adherence to policies/procedures; captures best practices + lessons learned.</p>
+            </div>
+            <div class="card">
+              <h4>Root Cause Analysis 🧠</h4>
+              <p>Find the underlying cause so you prevent recurrence (cause & effect thinking).</p>
+            </div>
+            <div class="card">
+              <h4>DOE / DfX 🧪</h4>
+              <p>Statistically test variables or design for a target attribute (reliability, security, etc.).</p>
+            </div>
+          </div>
+
+          <div class="callout note">
+            <strong>PMI pattern:</strong> Manage Quality often produces <strong>better tools</strong> (checklists, test plans, control charts) and <strong>change requests</strong> to improve the process.
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTROL QUALITY -->
+      <section id="control" aria-labelledby="control-title">
+        <div class="section-head">
+          <h2 id="control-title">✅ 3) Control Quality</h2>
+          <div class="meta">
+            <span class="badge b-mc">Monitoring &amp; Controlling</span>
+            <span class="badge b-mc">📦 Inspect deliverables</span>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>Exam trigger:</strong> If you see <strong>inspect / test deliverables</strong>, think <strong>Control Quality</strong>. This is product-focused verification against requirements.
+        </div>
+
+        <div class="process">
+          <p><strong>Purpose:</strong> Verify deliverables conform to requirements; identify defects/variances; document results and produce verified deliverables.</p>
+
+          <div class="two-col" role="group" aria-label="Key inputs and outputs for Control Quality">
+            <div class="io inputs">
+              <strong>◀️ Key Inputs</strong>
+              <ul>
+                <li>Deliverables</li>
+                <li>Quality metrics</li>
+                <li>Approved change requests</li>
+                <li>Test & evaluation documents</li>
+              </ul>
+            </div>
+            <div class="io outputs">
+              <strong>▶️ Key Outputs</strong>
+              <ul>
+                <li><strong>Verified deliverables</strong> (ready for Validate Scope)</li>
+                <li>Work performance information (measurements/variances)</li>
+                <li>Change requests (defect repair / rework)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Control Charts (high yield) 📉</h3>
+          <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="card">
+              <h4>Control Limits (UCL/LCL)</h4>
+              <p>Process limits set by organization/standards. Points outside = out of control (assignable cause).</p>
+            </div>
+            <div class="card">
+              <h4>Specification Limits</h4>
+              <p>Customer/contract expectations. A process can be “in control” but still fail specs (wrong target).</p>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <strong>Rule of Seven:</strong> Seven (or more) points on one side of the mean suggests non-random pattern → investigate.
+          </div>
+
+          <h3>Other Tools</h3>
+          <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card">
+              <h4>Inspection 🔎</h4>
+              <p>Measure/examine deliverables to confirm requirements are met.</p>
+            </div>
+            <div class="card">
+              <h4>Statistical Sampling 🎲</h4>
+              <p>Test a subset when full inspection is costly or impractical.</p>
+            </div>
+            <div class="card">
+              <h4>Check Sheets 🧾</h4>
+              <p>Simple defect-frequency capture for analysis and prioritization.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGILE -->
+      <section id="agile" aria-labelledby="agile-title">
+        <div class="section-head">
+          <h2 id="agile-title">🏃 Agile Quality Management Concepts</h2>
+          <div class="meta">
+            <span class="badge b-exec">Adaptive</span>
+            <span class="badge b-plan">🔁 Inspect & adapt</span>
+          </div>
+        </div>
+
+        <p>In adaptive environments, quality is reinforced by short feedback loops and frequent validation. Definitions of “done” are revisited as learning increases.</p>
+
+        <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>Definition of Done (DoD) ✅</h4>
+            <p>Shared standard for completion at story/release/project levels.</p>
+          </div>
+          <div class="card">
+            <h4>Cost of Change ⏱️</h4>
+            <p>Short iterations surface defects earlier → cheaper fixes and less rework.</p>
+          </div>
+          <div class="card">
+            <h4>Limit WIP 🚦</h4>
+            <p>Too much WIP hides bottlenecks and increases defect/rework risk.</p>
+          </div>
+        </div>
+
+        <h3>Agile Ceremonies & Quality</h3>
+        <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card">
+            <h4>Daily Standups 🗣️</h4>
+            <p>Expose impediments early; remove blockers quickly to protect flow and quality.</p>
+          </div>
+          <div class="card">
+            <h4>Retrospectives 🔁</h4>
+            <p>Dedicated inspect-and-adapt loop for process improvement (pure Kaizen).</p>
+          </div>
+        </div>
+
+        <div class="callout note">
+          <strong>Agile exam lean:</strong> Improve the process and feedback loop (automation, testing, reviews) rather than “inspect harder at the end.”
+        </div>
+      </section>
+
+      <!-- MEMORY BOOSTER -->
+      <section id="memory" class="memory" aria-labelledby="memory-title">
+        <div class="section-head">
+          <h2 id="memory-title">🧠 Memory Booster: ITTO Shapes + Hooks</h2>
+          <div class="meta">
+            <span class="badge b-plan">🧩 Patterns</span>
+            <span class="badge b-exec">🪝 Hooks</span>
+            <span class="badge b-mc">⚡ Speed recall</span>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <strong>Fast map:</strong> <span style="font-family:var(--mono);">Plan → Manage → Control</span>
+          = define standards → audit/improve process → inspect deliverables.
+        </div>
+
+        <h3>Icon-Based Memory Hooks (1 icon + short phrase)</h3>
+        <div class="hooks">
+          <div class="hook plan">💡 PLAN: “Define quality rules”<small>Outputs: QMP + metrics</small></div>
+          <div class="hook exec">⚙️ MANAGE: “Audit & improve process”<small>Outputs: test docs + CRs</small></div>
+          <div class="hook mc">✅ CONTROL: “Inspect deliverables”<small>Outputs: verified deliverables + WPI</small></div>
+        </div>
+
+        <h3>ITTO Shape Recognition (the “why it feels familiar”)</h3>
+        <div class="flow" aria-label="ITTO shape flow">
+          <div class="step">Wide inputs<br/><span class="muted" style="font-weight:700;">(reqs/scope + org standards)</span></div>
+          <div class="arrow">➡️</div>
+          <div class="step">Focused plans/tools<br/><span class="muted" style="font-weight:700;">(plans, metrics, test docs)</span></div>
+          <div class="arrow">➡️</div>
+          <div class="step">Product verification<br/><span class="muted" style="font-weight:700;">(verified deliverables + WPI)</span></div>
+        </div>
+
+        <h3>One-Page Visual Summary (color bands + condensed ITTO patterns)</h3>
+        <div class="summary-band">
+          <div class="band plan">
+            <h4>💡 Plan Quality Management</h4>
+            <p><strong>Inputs:</strong> Requirements, Scope baseline, OPAs/EEFs</p>
+            <p><strong>Outputs:</strong> QMP, Quality metrics</p>
+            <p class="muted" style="color:rgba(255,255,255,.88);"><strong>Theme:</strong> Define “good” early</p>
+          </div>
+          <div class="band exec">
+            <h4>⚙️ Manage Quality</h4>
+            <p><strong>Inputs:</strong> QMP, Reports, Work data</p>
+            <p><strong>Outputs:</strong> Test docs, CRs, updates</p>
+            <p class="muted" style="color:rgba(255,255,255,.88);"><strong>Theme:</strong> Audit & improve process</p>
+          </div>
+          <div class="band mc">
+            <h4>✅ Control Quality</h4>
+            <p><strong>Inputs:</strong> Deliverables, Metrics, Approved CRs</p>
+            <p><strong>Outputs:</strong> Verified deliverables, WPI, CRs</p>
+            <p class="muted" style="color:rgba(17,24,39,.75);"><strong>Theme:</strong> Inspect product vs requirements</p>
+          </div>
+        </div>
+
+        <h3>Micro-Drills (30 seconds each)</h3>
+        <div class="drills">
+          <div class="drill">
+            <p class="q">Q1: The question mentions “audit process compliance.” Which process?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;"><strong>Manage Quality</strong> (process-focused audits + improvements).</p>
+            </details>
+          </div>
+          <div class="drill">
+            <p class="q">Q2: The question mentions “inspect deliverables for defects.” Which process?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;"><strong>Control Quality</strong> (product-focused inspection/testing).</p>
+            </details>
+          </div>
+          <div class="drill">
+            <p class="q">Q3: Which is costliest: internal vs external failure?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;"><strong>External failure</strong> (customer impact, warranty, reputation, lost business).</p>
+            </details>
+          </div>
+          <div class="drill">
+            <p class="q">Q4: PMI stance on gold plating?</p>
+            <details>
+              <summary>Show answer</summary>
+              <p style="margin:.6rem 0 0;">Avoid it. It adds scope/risk/cost without being required.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="callout note" style="margin-top:1rem;">
+          <strong>Kaizen loop for your mock review:</strong> After each wrong question, write one rule:
+          <span style="font-family:var(--mono);">“If I see X, the PMI-best first move is Y.”</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top">⬆️ Top</button>
+
+  <script>
+    // Small JS upgrades: active nav, progress bar, back-to-top
+    (function(){
+      const sections = Array.from(document.querySelectorAll("main section[id]"));
+      const links = Array.from(document.querySelectorAll("nav a[href^='#']"));
+      const progress = document.getElementById("progressBar");
+      const toTop = document.getElementById("toTop");
+
+      // Active link highlighting
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          const id = e.target.id;
+          links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+        });
+      }, { rootMargin: "-35% 0px -60% 0px", threshold: 0.01 });
+
+      sections.forEach(s => obs.observe(s));
+
+      // Scroll progress + top button
+      function onScroll(){
+        const d = document.documentElement;
+        const st = d.scrollTop || document.body.scrollTop;
+        const h = d.scrollHeight - d.clientHeight;
+        const pct = h > 0 ? (st / h) * 100 : 0;
+        progress.style.width = pct.toFixed(2) + "%";
+        toTop.classList.toggle("show", st > 500);
+      }
+      window.addEventListener("scroll", onScroll, { passive:true });
+      onScroll();
+
+      toTop.addEventListener("click", ()=>window.scrollTo({ top:0, behavior:"smooth" }));
+    })();
+  </script>
+</body>
+</html>
