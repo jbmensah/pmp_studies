@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Communications Management – Cheat Sheet</title>
+
+<style>
+/* =========================
+   DESIGN TOKENS (Kaizen)
+   ========================= */
+:root{
+  --plan:#3498db;
+  --exec:#f39c12;
+  --mc:#e74c3c;
+
+  --bg:#ecf0f1;
+  --panel:#ffffff;
+  --ink:#2c3e50;
+  --muted:#6b7280;
+
+  --radius:14px;
+  --shadow:0 6px 16px rgba(0,0,0,.08);
+  --soft:0 2px 6px rgba(0,0,0,.06);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+}
+
+/* =========================
+   HEADER (COMPACT)
+   ========================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#1f2937;
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:.8rem 1rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  align-items:center;
+  justify-content:space-between;
+}
+header h1{
+  font-size:1.1rem;
+  margin:0;
+}
+header p{
+  margin:0;
+  font-size:.85rem;
+  color:#d1d5db;
+}
+.chips{
+  display:flex;
+  gap:.4rem;
+  flex-wrap:wrap;
+}
+.chip{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  padding:.2rem .55rem;
+  font-size:.72rem;
+}
+
+/* =========================
+   LAYOUT
+   ========================= */
+.wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:1rem;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:1rem;
+}
+
+/* =========================
+   SIDEBAR NAV
+   ========================= */
+aside{
+  position:sticky;
+  top:70px;
+  background:#f8fafc;
+  border-radius:var(--radius);
+  padding:1rem;
+  box-shadow:var(--soft);
+}
+nav a{
+  display:block;
+  padding:.55rem .7rem;
+  margin-bottom:.25rem;
+  text-decoration:none;
+  border-radius:10px;
+  color:#1f2937;
+  font-weight:600;
+  font-size:.9rem;
+}
+nav a:hover,
+nav a.active{
+  background:rgba(52,152,219,.15);
+}
+
+/* =========================
+   CONTENT SECTIONS
+   ========================= */
+main section{
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:1.2rem;
+  margin-bottom:1rem;
+  box-shadow:var(--soft);
+}
+h2{
+  margin-top:0;
+  font-size:1.25rem;
+}
+h3{
+  margin-top:1rem;
+  font-size:1.05rem;
+}
+.muted{color:var(--muted);}
+
+/* =========================
+   PROCESS CARDS
+   ========================= */
+.process{
+  border-left:6px solid;
+  padding:1rem;
+  border-radius:var(--radius);
+  margin-top:.8rem;
+}
+.plan{border-color:var(--plan); background:#ebf5fb;}
+.exec{border-color:var(--exec); background:#fef5e7;}
+.mc{border-color:var(--mc); background:#fdedec;}
+
+.badge{
+  display:inline-block;
+  padding:.15rem .5rem;
+  border-radius:999px;
+  font-size:.7rem;
+  font-weight:700;
+  color:#fff;
+}
+.b-plan{background:var(--plan);}
+.b-exec{background:var(--exec);}
+.b-mc{background:var(--mc);}
+
+/* =========================
+   ITTO BLOCKS
+   ========================= */
+.itto{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.6rem;
+  margin-top:.7rem;
+}
+.itto div{
+  background:#fff;
+  border:1px dashed #cbd5e1;
+  border-radius:10px;
+  padding:.6rem;
+  font-size:.9rem;
+}
+
+/* =========================
+   CALLOUTS
+   ========================= */
+.callout{
+  border-left:5px solid;
+  padding:.7rem;
+  border-radius:10px;
+  margin:.7rem 0;
+  font-size:.9rem;
+}
+.tip{border-color:#2ecc71; background:#e8f8f5;}
+.warn{border-color:#c0392b; background:#fbecec;}
+
+/* =========================
+   MEMORY BOOSTER
+   ========================= */
+.memory{
+  border:2px dashed #94a3b8;
+  background:#f8fafc;
+}
+.hooks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.6rem;
+  margin-top:.7rem;
+}
+.hook{
+  background:#fff;
+  padding:.8rem;
+  border-radius:12px;
+  text-align:center;
+  font-weight:700;
+  box-shadow:var(--soft);
+}
+.hook small{
+  display:block;
+  font-weight:500;
+  color:var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media(max-width:900px){
+  .wrapper{grid-template-columns:1fr;}
+  aside{position:relative; top:auto;}
+  .hooks{grid-template-columns:1fr;}
+  .itto{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>📣 PMP Communications Management</h1>
+      <p>Planning • Managing • Monitoring the #1 Project Risk</p>
+    </div>
+    <div class="chips">
+      <span class="chip">Plan → Manage → Monitor</span>
+      <span class="chip">Right info, right people</span>
+      <span class="chip">Feedback matters</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrapper">
+
+<aside>
+  <nav>
+    <a href="#overview">📄 Overview</a>
+    <a href="#plan">🗺️ Plan Communications</a>
+    <a href="#manage">🗣️ Manage Communications</a>
+    <a href="#monitor">👂 Monitor Communications</a>
+    <a href="#memory">🧠 Memory Booster</a>
+  </nav>
+</aside>
+
+<main>
+
+<section id="overview">
+  <h2>Overview & PMI Context</h2>
+  <p>Communications failure is the <strong>#1 cause of project problems</strong>. PMI expects proactive planning, continuous delivery, and constant feedback.</p>
+
+  <div class="callout tip">
+    <strong>PMI Expectation:</strong> If a question doesn’t say otherwise, assume communications are planned, tailored, and continuously improved.
+  </div>
+</section>
+
+<section id="plan">
+  <h2>1️⃣ Plan Communications Management <span class="badge b-plan">PLANNING</span></h2>
+
+  <div class="process plan">
+    <p><strong>Purpose:</strong> Decide <em>what</em> will be communicated, <em>to whom</em>, <em>how</em>, and <em>how often</em>.</p>
+
+    <div class="itto">
+      <div>
+        <strong>Inputs</strong>
+        <ul>
+          <li>Project Charter</li>
+          <li>Stakeholder Register</li>
+          <li>Stakeholder Engagement Plan</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Outputs</strong>
+        <ul>
+          <li>Communications Management Plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <strong>Exam Trigger:</strong> “Who needs what info?” → <strong>Plan Communications</strong>
+    </div>
+  </div>
+</section>
+
+<section id="manage">
+  <h2>2️⃣ Manage Communications <span class="badge b-exec">EXECUTING</span></h2>
+
+  <div class="process exec">
+    <p><strong>Purpose:</strong> Ensure information actually flows according to the plan.</p>
+
+    <ul>
+      <li>Meetings</li>
+      <li>Status / Progress / Forecast Reports</li>
+      <li>Information Radiators</li>
+    </ul>
+
+    <div class="itto">
+      <div>
+        <strong>Inputs</strong>
+        <ul>
+          <li>Comms Mgmt Plan</li>
+          <li>Work Performance Reports</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Outputs</strong>
+        <ul>
+          <li>Project Communications</li>
+          <li>Document Updates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>Hybrid Trap:</strong> Translate agile metrics (velocity) into exec-friendly reports.
+    </div>
+  </div>
+</section>
+
+<section id="monitor">
+  <h2>3️⃣ Monitor Communications <span class="badge b-mc">M & C</span></h2>
+
+  <div class="process mc">
+    <p><strong>Purpose:</strong> Confirm communications are effective and understood.</p>
+
+    <ul>
+      <li>Check feedback loops</li>
+      <li>Identify breakdowns</li>
+      <li>Adjust strategy</li>
+    </ul>
+
+    <div class="itto">
+      <div>
+        <strong>Inputs</strong>
+        <ul>
+          <li>Comms Mgmt Plan</li>
+          <li>Work Performance Data</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Outputs</strong>
+        <ul>
+          <li>Change Requests</li>
+          <li>Strategy Updates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <strong>Exam Trigger:</strong> “Is it working?” → <strong>Monitor Communications</strong>
+    </div>
+  </div>
+</section>
+
+<section id="memory" class="memory">
+  <h2>🧠 Memory Booster</h2>
+
+  <div class="hooks">
+    <div class="hook">
+      🗺️ PLAN
+      <small>Map the message</small>
+    </div>
+    <div class="hook">
+      🗣️ MANAGE
+      <small>Send & facilitate</small>
+    </div>
+    <div class="hook">
+      👂 MONITOR
+      <small>Listen & adjust</small>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <strong>30-Second Recall:</strong><br>
+    Plan = strategy • Manage = delivery • Monitor = effectiveness
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+/* Active nav highlighting */
+const links=document.querySelectorAll("nav a");
+const sections=document.querySelectorAll("main section");
+
+window.addEventListener("scroll",()=>{
+  let fromTop=window.scrollY+80;
+  sections.forEach(sec=>{
+    if(sec.offsetTop<=fromTop && sec.offsetTop+sec.offsetHeight>fromTop){
+      links.forEach(a=>a.classList.remove("active"));
+      document.querySelector(`nav a[href="#${sec.id}"]`)?.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
